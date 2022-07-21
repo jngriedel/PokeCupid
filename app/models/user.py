@@ -1,4 +1,5 @@
 from .db import db
+
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 import datetime
@@ -15,6 +16,9 @@ class User(db.Model, UserMixin):
     hashedPassword = db.Column(db.String(255), nullable=False)
     pokemonId = db.Column(db.Integer, nullable=False)
     createdAt = db.Column(db.DateTime, default=datetime.datetime.now(), nullable=False)
+
+    #relationship
+    profileImage = db.relationship('ProfileImage', back_populates='user')
 
     @property
     def password(self):
