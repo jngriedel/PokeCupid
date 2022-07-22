@@ -14,11 +14,15 @@ class User(db.Model, UserMixin):
     gender = db.Column(db.String(10), nullable=False)
     bio = db.Column(db.String(2000), nullable=False)
     hashedPassword = db.Column(db.String(255), nullable=False)
-    pokemonId = db.Column(db.Integer, nullable=False)
+    pokemonId = db.Column(db.Integer, db.ForeignKey('pokemon.id') nullable=False)
     createdAt = db.Column(db.DateTime, default=datetime.datetime.now(), nullable=False)
 
     #relationship
-    profileImage = db.relationship('ProfileImage', back_populates='user')
+    profileImage = db.relationship('ProfileImage', back_populates='users')
+    answers = db.relationship('Answer', back_populates='users')
+    pokemon = db.relationship('Pokemon', back_populates='users')
+    messages = db.relationship('Message', back_populates='users')
+    matches = db.relationship('Match', back_populates='users')
 
     @property
     def password(self):

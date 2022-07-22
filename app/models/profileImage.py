@@ -12,7 +12,7 @@ class ProfileImage(db.Model):
     userId = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
     #relationship
-    user = db.relationship('User', back_populates='profileImage')
+    user = db.relationship('User', back_populates='profileImages')
 
 
     def to_dict(self):
