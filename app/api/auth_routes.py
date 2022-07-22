@@ -63,7 +63,7 @@ def sign_up():
     """
     form = SignUpForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    
+
 
     if form.validate_on_submit():
 
@@ -79,7 +79,7 @@ def sign_up():
         db.session.add(user)
         db.session.commit()
         new_user = User.query.filter_by(email=form.data['email'])
-        console.log(new_user)
+        
 
 
         # if "image" not in request.files:
