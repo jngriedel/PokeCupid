@@ -4,7 +4,7 @@ import datetime
 
 
 class ProfileImage(db.Model):
-    __tablename__ = 'profileImages'
+    __tablename__ = 'profileimages'
 
     id = db.Column(db.Integer, primary_key=True)
     imgUrl = db.Column(db.String(255), default='https://p.kindpng.com/picc/s/74-743336_global-link-question-question-mark-unknown-pokemon-hd.png')
