@@ -7,6 +7,11 @@ const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+  const [gender, setGender] = useState('Male');
+  const [bio, setBio] = useState('');
+  const [pokemonId, setPokemonId] = useState(1);
+  // const [image, setImage] = useState(null);
+  // const [imageLoading, setImageLoading] = useState(false);
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
   const user = useSelector(state => state.session.user);
@@ -15,7 +20,8 @@ const SignUpForm = () => {
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      const data = await dispatch(signUp(name, email, password));
+      const data = await dispatch(signUp(name, email, gender, bio, pokemonId,  password));
+
       if (data) {
         setErrors(data)
       }
@@ -29,6 +35,20 @@ const SignUpForm = () => {
   const updateEmail = (e) => {
     setEmail(e.target.value);
   };
+  const updateGender = (e) => {
+    setGender(e.target.value);
+  };
+  const updateBio = (e) => {
+    setBio(e.target.value);
+  };
+  const updatePokemonId = (e) => {
+    setPokemonId(e.target.value);
+  };
+
+  // const updateImage = (e) => {
+  //   const file = e.target.files[0];
+  //   setImage(file);
+  // }
 
   const updatePassword = (e) => {
     setPassword(e.target.value);
@@ -67,6 +87,46 @@ const SignUpForm = () => {
           value={email}
         ></input>
       </div>
+      <div>
+        <label>Gender</label>
+        <select name="gender" onChange={updateGender} value={gender} >
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+      <div>
+        <label>Bio</label>
+        <textarea name="bio" onChange={updateBio} value={bio} >
+
+        </textarea>
+      </div>
+      <div>
+        <label>Choose a Pokemon!</label>
+        <select name="pokemonId" onChange={updatePokemonId} value={pokemonId} >
+          <option value="1">Bulbasaur</option>
+          <option value="2">Ivysaur</option>
+          <option value="3">Venusaur</option>
+          <option value="4">Charmander</option>
+          <option value="5">Charmeleon</option>
+          <option value="6">Charizard</option>
+          <option value="7">Squirtle</option>
+          <option value="8">Wartortle</option>
+          <option value="9">Blastoise</option>
+          <option value="10">Caterpie</option>
+
+        </select>
+      </div>
+      {/* <div>
+        <label>Prof Img</label>
+        <input
+                name='image'
+                type="file"
+                accept="image/*"
+                onChange={updateImage}
+              >
+              </input>
+      </div> */}
       <div>
         <label>Password</label>
         <input
