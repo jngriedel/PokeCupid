@@ -18,11 +18,12 @@ class User(db.Model, UserMixin):
     createdAt = db.Column(db.DateTime, default=datetime.datetime.now(), nullable=False)
 
     #relationship
-    profileImage = db.relationship('ProfileImage', back_populates='users')
-    answers = db.relationship('Answer', back_populates='users')
-    pokemon = db.relationship('Pokemon', back_populates='users')
-    messages = db.relationship('Message', back_populates='users')
-    matches = db.relationship('Match', back_populates='users')
+    profileImages = db.relationship('ProfileImage', back_populates='user')
+    answers = db.relationship('Answer', back_populates='user')
+    pokemon = db.relationship('Pokemon', back_populates='user')
+    messages = db.relationship('Message', back_populates='user')
+    matchesFirst = db.relationship('Match', back_populates='user', foreign_keys='[Match.userId]')
+    matchesSecond = db.relationship('Match', back_populates='user2', foreign_keys='[Match.userId2]')
 
     @property
     def password(self):
