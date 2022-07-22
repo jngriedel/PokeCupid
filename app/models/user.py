@@ -14,7 +14,7 @@ class User(db.Model, UserMixin):
     gender = db.Column(db.String(10), nullable=False)
     bio = db.Column(db.String(2000), nullable=False)
     hashedPassword = db.Column(db.String(255), nullable=False)
-    pokemonId = db.Column(db.Integer, db.ForeignKey('pokemon.id') nullable=False)
+    pokemonId = db.Column(db.Integer, db.ForeignKey('pokemon.id'), nullable=False)
     createdAt = db.Column(db.DateTime, default=datetime.datetime.now(), nullable=False)
 
     #relationship
