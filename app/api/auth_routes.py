@@ -78,8 +78,9 @@ def sign_up():
         )
         db.session.add(user)
         db.session.commit()
-        new_user = User.query.filter_by(email=form.data['email'])
-        
+        # new_user = User.query.filter_by(email=form.data['email'])
+        # print(new_user)
+
 
 
         # if "image" not in request.files:
