@@ -7,10 +7,10 @@ const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-  const [gender, setGender] = useState('');
+  const [gender, setGender] = useState('Male');
   const [bio, setBio] = useState('');
   const [pokemonId, setPokemonId] = useState(1);
-  const [image, setImage] = useState(null);
+  // const [image, setImage] = useState(null);
   // const [imageLoading, setImageLoading] = useState(false);
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
@@ -20,7 +20,8 @@ const SignUpForm = () => {
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      const data = await dispatch(signUp(name, email, gender, bio, pokemonId, image, password));
+      const data = await dispatch(signUp(name, email, gender, bio, pokemonId,  password));
+
       if (data) {
         setErrors(data)
       }
@@ -44,10 +45,10 @@ const SignUpForm = () => {
     setPokemonId(e.target.value);
   };
 
-  const updateImage = (e) => {
-    const file = e.target.files[0];
-    setImage(file);
-  }
+  // const updateImage = (e) => {
+  //   const file = e.target.files[0];
+  //   setImage(file);
+  // }
 
   const updatePassword = (e) => {
     setPassword(e.target.value);
@@ -116,15 +117,16 @@ const SignUpForm = () => {
 
         </select>
       </div>
-      <div>
+      {/* <div>
         <label>Prof Img</label>
         <input
+                name='image'
                 type="file"
                 accept="image/*"
                 onChange={updateImage}
               >
               </input>
-      </div>
+      </div> */}
       <div>
         <label>Password</label>
         <input
