@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import {getUserImages, uploadImage} from '../store/profileImages'
+import {getUserImages, uploadImage, deleteImage} from '../store/profileImages'
 
 function Profile() {
    const dispatch = useDispatch();
@@ -57,9 +57,12 @@ const addNewProfImg = async(e) => {
     const file = e.target.files[0];
     setImage(file);
   }
-  const handleDelete = () => {
-    alert('This Image will be gone forever. Are you Sure?')
-    return
+  const handleDelete = (imageId) => {
+    let result = window.confirm("This photo will be gone forever. Are you Sure?");
+    if (result) {
+        dispatch(deleteImage(imageId))
+        
+    }
   }
 
  return (

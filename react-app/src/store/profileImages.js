@@ -9,9 +9,9 @@ const addImage = (image) => ({
   payload: image
 });
 
-const removeImage = (image) => ({
+const removeImage = (imageId) => ({
   type: REMOVE_IMG,
-  payload: image
+  payload: imageId
 })
 
 const setImages = (images) => ({
@@ -47,9 +47,19 @@ export const uploadImage = (image) => async (dispatch) => {
 }
 
 export const deleteImage = (imageId) => async (dispatch) => {
-    const reponse = await fetch(`/api/images/${imageId}`, {
+    const response = await fetch(`/api/images/${imageId}`, {
     method: 'DELETE'}
     )
+    if (response.ok) {
+    const data = await response.json();
+    console.log(data.imageId)
+    dispatch(removeImage(data.imageId))
+    return null;
+  }
+  else {
+    return ['An error occurred. Please try again.']
+  }
+
 }
 
 
