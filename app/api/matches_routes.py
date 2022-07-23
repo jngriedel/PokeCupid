@@ -12,11 +12,10 @@ matches_routes = Blueprint('matches', __name__)
 def add_match():
     data = request.json
     liker = data['liker']
-    liked = data['liked']
+    liked = int(data['liked'])
 
     possibleLike = Match.query.filter(Match.userId == liked, Match.userId2 == liker)
-    print('**************************************',possibleLike)
-    print(possibleLike[0])
+
     if possibleLike:
         possibleLike[0]['matched'] = True
 
@@ -27,7 +26,7 @@ def add_match():
         new_Match = Match(userId=liker, userId2 = liked)
         db.session.add(new_Match)
         db.session.commit()
-        return {'matchId': new_Match['id']}
+        return {'matchId': new_Match.id}
 
 @matches_routes.route('/<int:id>', methods=['DELETE'])
 @login_required

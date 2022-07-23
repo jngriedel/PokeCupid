@@ -58,7 +58,7 @@ export const newMatch = (liker, liked) => async (dispatch) => {
         })
         if (response.ok) {
         const data = await response.json();
-        if (data.matchId) dispatch(addMatch(data.match))
+        if (data.match) dispatch(addMatch(data.match))
         return null;
       }
       else {
