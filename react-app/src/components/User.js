@@ -21,15 +21,18 @@ function User() {
   }
 
   return (
+    <>
     <ul>
       <li>
         <strong>User Id</strong> {userId}
       </li>
-      
+
       <li>
-        <strong>Email</strong> {user.email}
+        <strong>Name</strong> {user.name}
       </li>
     </ul>
+    <button>Like</button>
+    </>
   );
 }
 export default User;
