@@ -14,10 +14,10 @@ def add_match():
     liker = data['liker']
     liked = int(data['liked'])
 
-    possibleLike = Match.query.filter(Match.userId == liked, Match.userId2 == liker)
+    possibleLike = Match.query.filter(Match.userId == liked, Match.userId2 == liker).scalar()
 
     if possibleLike:
-        possibleLike[0]['matched'] = True
+        possibleLike.matched = True
 
         db.session.commit()
         return {'match' : possibleLike.to_dict()}
