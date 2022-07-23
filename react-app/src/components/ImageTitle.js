@@ -11,7 +11,7 @@ function ImageTitle ({image}) {
     const dispatch = useDispatch()
     const sessionUser = useSelector(state => state.session.user);
     const [editContent, setEditContent] = useState(false);
-    const [currentTitle, setCurrentTitle] = useState(image.title)
+    const [currentTitle, setCurrentTitle] = useState(image.title ? image.title : '')
     const [showModal, setShowModal] = useState(false);
     const [errors, setErrors] = useState([]);
 
