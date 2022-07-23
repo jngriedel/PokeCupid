@@ -19,6 +19,12 @@ const setImages = (images) => ({
     payload: images
 })
 
+const changeImage = (image) => ({
+  type: CHANGE_IMG,
+  payload: image
+})
+
+
 const initialState = { profileImages: null };
 
 
@@ -52,7 +58,7 @@ export const deleteImage = (imageId) => async (dispatch) => {
     )
     if (response.ok) {
     const data = await response.json();
-    console.log(data.imageId)
+
     dispatch(removeImage(data.imageId))
     return null;
   }
@@ -62,6 +68,28 @@ export const deleteImage = (imageId) => async (dispatch) => {
 
 }
 
+export const editImage = (imageId, title) => async (dispatch) => {
+  const response = await fetch(`/api/images/${imageId}`, {
+    method: 'PATCH',
+
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      title
+    })
+  })
+  if (response.ok) {
+    const data = await response.json();
+    console.log(data.image)
+    dispatch(changeImage(data.image))
+    return null;
+  }
+  else {
+    return ['An error occurred. Please try again.']
+  }
+
+}
 
 
 
@@ -82,6 +110,11 @@ export default function reducer(state = initialState, action) {
         action.payload.forEach((image)=>{
             newState[image.id] = image
         })
+        return newState
+    }
+    case CHANGE_IMG: {
+        const newState = {...state}
+        newState[action.payload.id] = action.payload
         return newState
     }
     default:

@@ -15,3 +15,13 @@ def remove_Image(id):
     db.session.commit()
 
     return {'imageId': id}
+
+@images_routes.route('/<int:id>', methods=['PATCH'])
+@login_required
+def edit_Image(id):
+    to_edit = ProfileImage.query.get(id)
+    data = request.json
+    to_edit.title = data['title']
+    db.session.commit()
+
+    return {'image': to_edit.to_dict()}
