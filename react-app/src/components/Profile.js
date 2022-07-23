@@ -108,8 +108,8 @@ const addNewProfImg = async(e) => {
             (
         <div key = {i} >
             <div>
-            <h1>{image.title}</h1>
-            <button onClick={()=>handleEdit(image.id)}>Edit Caption</button>
+            <h1>{image.title ? image.title : 'Add a Caption'}</h1>
+            <button onClick={()=>handleEdit(image.id, i)}>Edit</button>
             </div>
             <img src={image.imgUrl}/>
             <button onClick={()=>handleDelete(image.id)}>Delete</button>
