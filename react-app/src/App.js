@@ -9,7 +9,6 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import Profile from './components/Profile';
 import { authenticate } from './store/session';
-import Questionnaire from './components/Questionnaire';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
