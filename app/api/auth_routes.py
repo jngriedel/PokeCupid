@@ -3,8 +3,6 @@ from app.models import User, ProfileImage, db
 from app.forms import LoginForm
 from app.forms import SignUpForm
 from flask_login import current_user, login_user, logout_user, login_required
-#aws imports
-from app.aws import (upload_file_to_s3, allowed_file, get_unique_filename)
 
 auth_routes = Blueprint('auth', __name__)
 
@@ -78,29 +76,7 @@ def sign_up():
         )
         db.session.add(user)
         db.session.commit()
-        # new_user = User.query.filter_by(email=form.data['email'])
-        # print(new_user)
 
-
-
-        # if "image" not in request.files:
-        #     return {"errors": "image required"}, 400
-        # image = request.files['image']
-
-        # if not allowed_file(image.filename):
-        #     return {"errors": "file type not permitted"}, 400
-
-        # image.filename = get_unique_filename(image.filename)
-        # upload = upload_file_to_s3(image)
-        # if "url" not in upload:
-        # # if the dictionary doesn't have a url key
-        # # it means that there was an error when we tried to upload
-        # # so we send back that error message
-        #     return upload, 400
-        # url = upload["url"]
-        # new_image = ProfileImage(userId = current_user.id, imgUrl = url, title='')
-        # db.session.add(new_image)
-        # db.session.commit()
 
 
 

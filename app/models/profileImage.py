@@ -8,7 +8,7 @@ class ProfileImage(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     imgUrl = db.Column(db.String(255), default='https://p.kindpng.com/picc/s/74-743336_global-link-question-question-mark-unknown-pokemon-hd.png')
-    title = db.Column(db.String(50), default='Profile Img')
+    title = db.Column(db.String(50))
     userId = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
     #relationship
