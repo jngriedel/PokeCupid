@@ -24,12 +24,12 @@ const initialState = { profileImages: null };
 
 
 export const getUserImages = (userId) => async (dispatch) => {
-  const response = await fetch(`/api/users/${userId}/images`);
 
+  const response = await fetch(`/api/users/${userId}/images`);
 
   if (response.ok) {
     const data = await response.json();
-    console.log(data.images)
+
     dispatch(setImages(data.images))
     return null;
   } else if (response.status < 500) {
@@ -46,6 +46,12 @@ export const uploadImage = (image) => async (dispatch) => {
         dispatch(addImage(image))
 }
 
+export const deleteImage = (imageId) => async (dispatch) => {
+    const reponse = await fetch(`/api/images/${imageId}`, {
+    method: 'DELETE'}
+    )
+}
+
 
 
 
@@ -56,8 +62,11 @@ export default function reducer(state = initialState, action) {
       newState[action.payload.id] = action.payload
       return newState
     }
-    case REMOVE_IMG:
-      return { user: null }
+    case REMOVE_IMG: {
+      const newState = {...state}
+      delete newState[action.payload]
+      return newState
+    }
     case SET_IMAGES: {
         const newState = {}
         action.payload.forEach((image)=>{

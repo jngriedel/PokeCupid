@@ -6,7 +6,8 @@ function Profile() {
    const dispatch = useDispatch();
    const sessionUser = useSelector(state => state.session.user)
    const userImages = useSelector(state => state.profileImages)
-
+   const userImagesArr = Object.values(userImages)
+   console.log(userImagesArr)
 //    const [errors, setErrors] = useState([]);
 //    const [name, setName] = useState('');
 //    const [email, setEmail] = useState('');
@@ -50,25 +51,15 @@ const addNewProfImg = async(e) => {
     }
 
 
-    // const res = await dispatch(uploadImage(sessionUser.id, image))
-
-    // if (res.ok) {
-    //     await res.json();
-    //     setImageLoading(false);
-    //     console.log('Sucess')
-    // }
-    // else {
-    //     setImageLoading(false);
-
-    //     // a real app would probably use more advanced
-    //     // error handling
-    //     console.log('Fail');
-    // }
   }
 
   const updateImage = (e) => {
     const file = e.target.files[0];
     setImage(file);
+  }
+  const handleDelete = () => {
+    alert('This Image will be gone forever. Are you Sure?')
+    return
   }
 
  return (
@@ -91,10 +82,22 @@ const addNewProfImg = async(e) => {
             {(imageLoading)&& <p>Uploading Image...</p>}
             </form>
       </div>
-        <div>
-            <h1>{userImages[1]?.title}</h1>
-            <img src={userImages[1]?.imgUrl}/>
+      <div className='profileImages'>
+        {userImagesArr[0]   &&
+        <>
+        {userImagesArr.map((image, i)=>
+            (
+        <div key = {i} >
+            <h1>{image.title}</h1>
+            <img src={image.imgUrl}/>
+            <button onClick={()=>handleDelete(image.id)}>Delete</button>
         </div>
+            )
+        )}
+        </>
+        }
+
+    </div>
         <div>
             {sessionUser?.bio}
         </div>
