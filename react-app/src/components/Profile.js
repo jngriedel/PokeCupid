@@ -7,19 +7,29 @@ function Profile() {
    const sessionUser = useSelector(state => state.session.user)
    const userImages = useSelector(state => state.profileImages)
    const userImagesArr = Object.values(userImages)
-   console.log(userImagesArr)
+   const [userImageCaptions, setUserImageCaptions] = useState([userImagesArr[0]?.title, userImagesArr[1]?.title, userImagesArr[2]?.title, userImagesArr[3]?.title, userImagesArr[4]?.title, userImagesArr[5]?.title ])
+
 //    const [errors, setErrors] = useState([]);
 //    const [name, setName] = useState('');
 //    const [email, setEmail] = useState('');
 //    const [gender, setGender] = useState('Male');
 //    const [bio, setBio] = useState('');
 //    const [pokemonId, setPokemonId] = useState(1);
-   const [image, setImage] = useState(null);
+const [image, setImage] = useState(null);
   const [imageLoading, setImageLoading] = useState(false);
 
    useEffect(()=>{
     dispatch(getUserImages(sessionUser?.id))
    },[])
+
+
+useEffect(()=> {
+    if (userImagesArr) {
+
+        setUserImageCaptions([userImagesArr[0]?.title, userImagesArr[1]?.title, userImagesArr[2]?.title, userImagesArr[3]?.title, userImagesArr[4]?.title, userImagesArr[5]?.title ])
+        console.log(userImageCaptions)
+    }
+ },[userImages])
 
 
 const addNewProfImg = async(e) => {
@@ -61,8 +71,14 @@ const addNewProfImg = async(e) => {
     let result = window.confirm("This photo will be gone forever. Are you Sure?");
     if (result) {
         dispatch(deleteImage(imageId))
-        
+
     }
+  }
+  const handleEdit = (imageId) => {
+
+        // dispatch(deleteImage(imageId))
+
+
   }
 
  return (
@@ -91,7 +107,10 @@ const addNewProfImg = async(e) => {
         {userImagesArr.map((image, i)=>
             (
         <div key = {i} >
+            <div>
             <h1>{image.title}</h1>
+            <button onClick={()=>handleEdit(image.id)}>Edit Caption</button>
+            </div>
             <img src={image.imgUrl}/>
             <button onClick={()=>handleDelete(image.id)}>Delete</button>
         </div>
@@ -99,7 +118,8 @@ const addNewProfImg = async(e) => {
         )}
         </>
         }
-
+        {!userImagesArr[0] &&
+        <><img src='https://www.kindpng.com/picc/m/74-743336_global-link-question-question-mark-unknown-pokemon-hd.png'/></>}
     </div>
         <div>
             {sessionUser?.bio}
