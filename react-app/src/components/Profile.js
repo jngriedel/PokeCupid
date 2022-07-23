@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {getUserImages, uploadImage, deleteImage} from '../store/profileImages'
+import ImageTitle from './ImageTitle';
 
 function Profile() {
    const dispatch = useDispatch();
    const sessionUser = useSelector(state => state.session.user)
    const userImages = useSelector(state => state.profileImages)
    const userImagesArr = Object.values(userImages)
-   const [userImageCaptions, setUserImageCaptions] = useState([userImagesArr[0]?.title, userImagesArr[1]?.title, userImagesArr[2]?.title, userImagesArr[3]?.title, userImagesArr[4]?.title, userImagesArr[5]?.title ])
+
 
 //    const [errors, setErrors] = useState([]);
 //    const [name, setName] = useState('');
@@ -23,13 +24,7 @@ const [image, setImage] = useState(null);
    },[])
 
 
-useEffect(()=> {
-    if (userImagesArr) {
 
-        setUserImageCaptions([userImagesArr[0]?.title, userImagesArr[1]?.title, userImagesArr[2]?.title, userImagesArr[3]?.title, userImagesArr[4]?.title, userImagesArr[5]?.title ])
-        console.log(userImageCaptions)
-    }
- },[userImages])
 
 
 const addNewProfImg = async(e) => {
@@ -74,12 +69,7 @@ const addNewProfImg = async(e) => {
 
     }
   }
-  const handleEdit = (imageId) => {
 
-        // dispatch(deleteImage(imageId))
-
-
-  }
 
  return (
     <>
@@ -108,8 +98,7 @@ const addNewProfImg = async(e) => {
             (
         <div key = {i} >
             <div>
-            <h1>{image.title ? image.title : 'Add a Caption'}</h1>
-            <button onClick={()=>handleEdit(image.id, i)}>Edit</button>
+            <ImageTitle image={image} />
             </div>
             <img src={image.imgUrl}/>
             <button onClick={()=>handleDelete(image.id)}>Delete</button>
