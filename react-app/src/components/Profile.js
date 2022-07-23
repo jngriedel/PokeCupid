@@ -10,7 +10,7 @@ function Profile() {
    const userImagesArr = Object.values(userImages)
 
 
-//    const [errors, setErrors] = useState([]);
+   const [errors, setErrors] = useState([]);
 //    const [name, setName] = useState('');
 //    const [email, setEmail] = useState('');
 //    const [gender, setGender] = useState('Male');
@@ -46,13 +46,13 @@ const addNewProfImg = async(e) => {
         setImageLoading(false);
 
         await dispatch(uploadImage(data.image))
-
+        document.getElementById("uploadProfPic").value = null
     }
     else {
         setImageLoading(false);
         // a real app would probably use more advanced
         // error handling
-
+        
     }
 
 
@@ -82,6 +82,7 @@ const addNewProfImg = async(e) => {
         <form onSubmit={addNewProfImg}>
         <label>Add new Profile Image:</label>
         <input
+                id = 'uploadProfPic'
                 name='image'
                 type="file"
                 accept="image/*"
