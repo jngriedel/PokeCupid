@@ -4,14 +4,14 @@ from app.models import db, Match
 # Adds a demo user, you can add other users here if you want
 def seed_matches():
 
-    ash_match = Match(userId=1)
-    brock_match = Match()
-    misty_match = Match(userId=3, )
-    officer_jenny_match = Match()
-    nurse_joy_match = Match()
-    surge_match = Match()
 
-    db.session.add(ash_match)
+    brock_match = Match(userId=2, userId2=1)
+    misty_match = Match(userId=3, userId2=1 )
+    officer_jenny_match = Match(userId=4, userId2=1)
+    nurse_joy_match = Match(userId=5, userId2=1)
+    surge_match = Match(userId=6, userId2=1)
+
+
     db.session.add(brock_match)
     db.session.add(misty_match)
     db.session.add(officer_jenny_match)
