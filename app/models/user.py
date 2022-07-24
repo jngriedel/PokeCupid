@@ -43,5 +43,6 @@ class User(db.Model, UserMixin):
             'email': self.email,
             'gender': self.gender,
             'bio': self.bio,
-            'pokemonId': self.pokemonId
+            'pokemonId': self.pokemonId,
+            'pokemon': self.pokemon.to_dict()
         }

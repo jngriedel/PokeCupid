@@ -4,10 +4,10 @@ import { useParams } from 'react-router-dom';
 import {getAllPokemon} from '../store/pokemon'
 function FakeHome() {
     const dispatch = useDispatch()
-
+    const sessionUser = useSelector(state => state.session.user)
     useEffect(()=>{
         dispatch(getAllPokemon())
-
+        
        },[])
   return (
     <h1>My Home PlaceHolder</h1>
