@@ -3,11 +3,13 @@ import thunk from 'redux-thunk';
 import session from './session'
 import profileImages from './profileImages'
 import matches from './matches'
+import pokemon from './pokemon'
 
 const rootReducer = combineReducers({
   session,
   profileImages,
-  matches
+  matches,
+  pokemon
 });
 
 

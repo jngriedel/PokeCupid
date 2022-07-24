@@ -112,7 +112,7 @@ const SignUpForm = () => {
 
         </select>
       </div>
-      
+
       <div>
         <label>Password</label>
         <input
