@@ -8,7 +8,7 @@ function Profile() {
    const dispatch = useDispatch();
    const sessionUser = useSelector(state => state.session.user)
    const userImages = useSelector(state => state.profileImages)
-   const allPokemon = useSelector(state => state.pokemon)
+   
    const userImagesArr = Object.values(userImages)
 
 
