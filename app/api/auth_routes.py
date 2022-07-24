@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, session, request
-from app.models import User, ProfileImage, db
+from app.models import User, ProfileImage, db, Match
 from app.forms import LoginForm
 from app.forms import SignUpForm
 from flask_login import current_user, login_user, logout_user, login_required
@@ -75,6 +75,21 @@ def sign_up():
             password=form.data['password']
         )
         db.session.add(user)
+        db.session.commit()
+        ash_match = Match(userId = 1, userId2 = user.id)
+        brock_match = Match(userId = 2, userId2 = user.id)
+        misty_match = Match(userId = 3, userId2 = user.id)
+        jenny_match = Match(userId = 4, userId2 = user.id)
+        joy_match = Match(userId = 5, userId2 = user.id)
+        surge_match = Match(userId = 6, userId2 = user.id)
+
+
+        db.session.add(ash_match)
+        db.session.add(brock_match)
+        db.session.add(misty_match)
+        db.session.add(jenny_match)
+        db.session.add(joy_match)
+        db.session.add(surge_match)
         db.session.commit()
 
 
