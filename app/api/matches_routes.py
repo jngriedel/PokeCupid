@@ -36,3 +36,11 @@ def unmatch(id):
     db.session.commit()
 
     return {'matchId': id}
+
+@matches_routes.route('/<int:id>')
+@login_required
+def get_user_matches(id):
+    allmatches = Match.query.all()
+
+
+    return {'userMatches': [match.to_dict() for match in allmatches if match.userId is current_user.id or match.userId2 is current_user.id and match.matched]}

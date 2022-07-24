@@ -33,7 +33,7 @@ export const getUserMatches = (userId) => async (dispatch) => {
   if (response.ok) {
     const data = await response.json();
 
-    dispatch(getMatches(data.matches))
+    dispatch(getMatches(data.userMatches))
     return null;
   } else if (response.status < 500) {
     const data = await response.json();

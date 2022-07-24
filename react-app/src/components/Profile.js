@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {getUserImages, uploadImage, deleteImage} from '../store/profileImages'
+import { getUserMatches } from '../store/matches';
 import ImageTitle from './ImageTitle';
 
 function Profile() {
@@ -21,6 +22,7 @@ const [image, setImage] = useState(null);
 
    useEffect(()=>{
     dispatch(getUserImages(sessionUser?.id))
+    dispatch(getUserMatches(sessionUser?.id))
    },[])
 
 
@@ -52,7 +54,7 @@ const addNewProfImg = async(e) => {
         setImageLoading(false);
         // a real app would probably use more advanced
         // error handling
-        
+
     }
 
 
