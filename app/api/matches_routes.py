@@ -7,23 +7,40 @@ from app.models import User, Match, db
 matches_routes = Blueprint('matches', __name__)
 
 
-@matches_routes.route('/<int:id>', methods=['POST'])
+@matches_routes.route('/', methods=['POST'])
 @login_required
-def add_match(id):
+def add_match():
     data = request.json
-    userId = data[userId]
-    userId2 = data[userId2]
-    db.session.delete(to_delete)
-    db.session.commit()
+    liker = data['liker']
+    liked = int(data['liked'])
 
-    return {'imageId': id}
+    possibleLike = Match.query.filter(Match.userId == liked, Match.userId2 == liker).scalar()
+
+    if possibleLike:
+        possibleLike.matched = True
+
+        db.session.commit()
+        return {'match' : possibleLike.to_dict()}
+
+    else:
+        new_Match = Match(userId=liker, userId2 = liked)
+        db.session.add(new_Match)
+        db.session.commit()
+        return {'matchId': new_Match.id}
 
 @matches_routes.route('/<int:id>', methods=['DELETE'])
 @login_required
 def unmatch(id):
-    to_edit = ProfileImage.query.get(id)
-    data = request.json
-    to_edit.title = data['title']
+    to_delete = Match.query.get(id)
+    db.session.delete(to_delete)
     db.session.commit()
 
-    return {'image': to_edit.to_dict()}
+    return {'matchId': id}
+
+@matches_routes.route('/<int:id>')
+@login_required
+def get_user_matches(id):
+    allmatches = Match.query.all()
+
+
+    return {'userMatches': [match.to_dict() for match in allmatches if match.userId is current_user.id or match.userId2 is current_user.id and match.matched]}
