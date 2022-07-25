@@ -44,9 +44,10 @@ class User(db.Model, UserMixin):
             'gender': self.gender,
             'bio': self.bio,
             'pokemonId': self.pokemonId,
-            'pokemon': self.pokemon.to_dict(), 
+            'pokemon': self.pokemon.to_dict(),
             'profileImages': [profileImage.imgUrl for profileImage in self.profileImages],
-            'title': [profileImage.title for profileImage in self.profileImages]
+            'title': [profileImage.title for profileImage in self.profileImages],
+            'answers' :[answer.to_dict() for answer in self.answers]
 
         }
 

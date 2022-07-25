@@ -12,6 +12,7 @@ class Match(db.Model):
     matched = db.Column(db.Boolean, default=False)
     matchTime = db.Column(db.DateTime)
     createdAt = db.Column(db.DateTime, default=datetime.datetime.now(), nullable=False)
+    notInterested = db.Column(db.Boolean, default=False)
 
     #relationship
     user = db.relationship('User', back_populates='matchesFirst', foreign_keys=[userId])
