@@ -10,7 +10,9 @@ class Match(db.Model):
     userId = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     userId2 = db.Column(db.Integer, db.ForeignKey('users.id'))
     matched = db.Column(db.Boolean, default=False)
+    matchTime = db.Column(db.DateTime)
     createdAt = db.Column(db.DateTime, default=datetime.datetime.now(), nullable=False)
+    notInterested = db.Column(db.Boolean, default=False)
 
     #relationship
     user = db.relationship('User', back_populates='matchesFirst', foreign_keys=[userId])

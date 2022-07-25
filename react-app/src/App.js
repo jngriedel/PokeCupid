@@ -11,6 +11,7 @@ import User from './components/User';
 import Profile from './components/Profile';
 import FakeHome from './components/FakeHome';
 import Discover from "./components/Discover";
+import Matches from './components/Matches';
 import { authenticate } from "./store/session";
 
 
@@ -45,6 +46,9 @@ function App() {
         <Route path="/discover" exact={true}>
           <Discover />
         </Route>
+        <Route path="/matches" exact={true}>
+          <Matches/>
+        </Route>
         <ProtectedRoute path="/users" exact={true}>
           <UsersList />
         </ProtectedRoute>
@@ -54,7 +58,6 @@ function App() {
 
         <ProtectedRoute path='/' exact={true} >
           <FakeHome/>
-
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
