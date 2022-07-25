@@ -14,6 +14,7 @@ user_routes = Blueprint('users', __name__)
 @login_required
 def users():
     users = User.query.filter(User.id != current_user.id)
+    print(users)
     return {'users': [user.to_dict() for user in users]}
 
 
@@ -54,7 +55,7 @@ def add_profile_image(id):
         # it means that there was an error when we tried to upload
         # so we send back that error message
         return upload, 400
-    
+
     url = upload["url"]
     # flask_login allows us to get the current user from the request
 
