@@ -3,10 +3,29 @@ import { useSelector, useDispatch } from 'react-redux'
 import { Redirect } from 'react-router-dom';
 
 
-const Questionnaire = ({setShowSignUp}) => {
+const Questionnaire = ({setShowSignUp, setQuestionAnswers}) => {
     const [currentQuestion, setCurrentQuestion] = useState(1);
     const [showQuestionnaire, setShowQuestionnaire] = useState(true);
-    const [answer1, setAnswer1] = useState(null)
+    const [answer1, setAnswer1] = useState("")
+    const [answer2, setAnswer2] = useState("")
+    const [answer3, setAnswer3] = useState("")
+    const [answer4, setAnswer4] = useState("")
+    const [answer5, setAnswer5] = useState("")
+    const [answer6, setAnswer6] = useState("")
+    const [answer7, setAnswer7] = useState("")
+    const [answer8, setAnswer8] = useState("")
+    const [answer9, setAnswer9] = useState("")
+    const [answer10, setAnswer10] = useState("")
+    const [answer11, setAnswer11] = useState("")
+    const [answer12, setAnswer12] = useState("")
+    const [answer13, setAnswer13] = useState("")
+    const [answer14, setAnswer14] = useState("")
+    const [answer15, setAnswer15] = useState("")
+    const [answer16, setAnswer16] = useState("")
+    const [answer17, setAnswer17] = useState("")
+    const [answer18, setAnswer18] = useState("")
+    const [answer19, setAnswer19] = useState("")
+    const [answer20, setAnswer20] = useState("")
 
     const questionObj = {
         1: {Question: "What's the most important part of a Pokemon Battle?", Options: {1: "To have fun!", 2: "To win!", 3: "To Level Up!", 4: "To bond with my Pokémon!"}},
@@ -30,14 +49,89 @@ const Questionnaire = ({setShowSignUp}) => {
         19: {Question: "There is a festival going on in Cerulean City, but you're about to challenge the gym in Saffron City. You...", Options: {1: "Stop at the festival. The gym isn't going anywhere!", 2: "The festival might have important items to help me in my battle. Better check it out.", 3: "My Pokemon need a rest. I should take a nap at the PokeCenter.", 4: "The festival can wait! I've got a gym badge to earn!"}},
         20: {Question: "A stray cat appears in front of you. What do you do?", Options: {1: "Close enough to a Pokemon. Let's Battle!", 2: "Scan it with the Pokedex. What even is that?", 3: "Better leave it alone. Could be a dangerous legendary Pokemon.", 4: "Pet it, like I do with all new wild and possibly feral creatures."}},
     }
+    
+    const handleAnswer = async (e) => {
+        console.log(e.target.value)
+        const switchFunction = (currentQ) => {
+            switch(currentQuestion) {
+                case 1:
+                    setAnswer1(e.target.value)
+                    break;
+                case 2:
+                    setAnswer2(e.target.value)
+                    break;
+                case 3:
+                    setAnswer3(e.target.value)
+                    break;
+                case 4:
+                    setAnswer4(e.target.value)
+                    break;
+                case 5:
+                    setAnswer5(e.target.value)
+                    break;
+                case 6:
+                    setAnswer6(e.target.value)
+                    break;
+                case 7:
+                    setAnswer7(e.target.value)
+                    break;
+                case 8:
+                    setAnswer8(e.target.value)
+                    break;
+                case 9:
+                    setAnswer9(e.target.value)
+                    break;
+                case 10:
+                    setAnswer10(e.target.value)
+                    break;
+                case 11:
+                    setAnswer11(e.target.value)
+                    break;
+                case 12:
+                    setAnswer12(e.target.value)
+                    break;
+                case 13:
+                    setAnswer13(e.target.value)
+                    break;
+                case 14:
+                    setAnswer14(e.target.value)
+                    break;
+                case 15:
+                    setAnswer15(e.target.value)
+                    break;
+                case 16:
+                    setAnswer16(e.target.value)
+                    break;
+                case 17:
+                    setAnswer17(e.target.value)
+                    break;
+                case 18:
+                    setAnswer18(e.target.value)
+                    break;
+                case 19:
+                    setAnswer19(e.target.value)
+                    break;
+                case 20:
+                    setAnswer20(e.target.value)
+                    break;
+                default: 
+                    break;
+            }
+        }
+        if (currentQuestion <= 20) {
+            await switchFunction(currentQuestion)
 
-    const handleAnswer = (e) => {
-		console.log(e.target.value)
-		
-        if (currentQuestion < 20) setCurrentQuestion(currentQuestion+1)
-        else if (currentQuestion == 20) {
-            setShowSignUp(true) 
-            setShowQuestionnaire(false)
+            if (currentQuestion !== 20) {
+                setCurrentQuestion(currentQuestion+1)
+                console.log(currentQuestion)
+            } else {
+                setQuestionAnswers([answer1, answer2, answer3, answer4, answer5, answer6, answer7, answer8, answer9, answer10, answer11, answer12, answer13, answer14, answer15, answer16, answer17, answer18, answer19, answer20])
+                setShowSignUp(true) 
+                setShowQuestionnaire(false)
+            }
+
+        } else {
+            console.log("20 aint here mannnnnn")
         }
     }
     

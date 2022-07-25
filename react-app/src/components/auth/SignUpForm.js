@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
@@ -14,8 +14,15 @@ const SignUpForm = () => {
   const [showSignUp, setShowSignUp] = useState(false);
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
+  const [questionAnswers, setQuestionAnswers] = useState([])
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
+
+
+  useEffect(() => {
+    console.log(questionAnswers)
+  }, [questionAnswers])
+
 
   const onSignUp = async (e) => {
     e.preventDefault();
@@ -133,7 +140,7 @@ const SignUpForm = () => {
           required={true}
         ></input>
       </div>
-      <Questionnaire setShowSignUp={setShowSignUp}/>
+      <Questionnaire setShowSignUp={setShowSignUp} setQuestionAnswers={setQuestionAnswers}/>
       <button style={{visibility: showSignUp ? "visible" : "hidden" }} type='submit'>Sign Up</button>
     </form>
   );
