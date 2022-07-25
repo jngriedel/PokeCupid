@@ -49,11 +49,13 @@ const Questionnaire = ({setShowSignUp, setQuestionAnswers}) => {
         19: {Question: "There is a festival going on in Cerulean City, but you're about to challenge the gym in Saffron City. You...", Options: {1: "Stop at the festival. The gym isn't going anywhere!", 2: "The festival might have important items to help me in my battle. Better check it out.", 3: "My Pokemon need a rest. I should take a nap at the PokeCenter.", 4: "The festival can wait! I've got a gym badge to earn!"}},
         20: {Question: "A stray cat appears in front of you. What do you do?", Options: {1: "Close enough to a Pokemon. Let's Battle!", 2: "Scan it with the Pokedex. What even is that?", 3: "Better leave it alone. Could be a dangerous legendary Pokemon.", 4: "Pet it, like I do with all new wild and possibly feral creatures."}},
     }
-    
+
     const handleAnswer = async (e) => {
-        console.log(e.target.value)
+
         const switchFunction = (currentQ) => {
-            switch(currentQuestion) {
+            console.log(currentQ)
+            console.log(e.target.value)
+            switch(currentQ) {
                 case 1:
                     setAnswer1(e.target.value)
                     break;
@@ -113,8 +115,9 @@ const Questionnaire = ({setShowSignUp, setQuestionAnswers}) => {
                     break;
                 case 20:
                     setAnswer20(e.target.value)
+                    console.log('heyheyhey', e.target.value)
                     break;
-                default: 
+                default:
                     break;
             }
         }
@@ -123,18 +126,18 @@ const Questionnaire = ({setShowSignUp, setQuestionAnswers}) => {
 
             if (currentQuestion !== 20) {
                 setCurrentQuestion(currentQuestion+1)
-                console.log(currentQuestion)
+
             } else {
                 setQuestionAnswers([answer1, answer2, answer3, answer4, answer5, answer6, answer7, answer8, answer9, answer10, answer11, answer12, answer13, answer14, answer15, answer16, answer17, answer18, answer19, answer20])
-                setShowSignUp(true) 
+                setShowSignUp(true)
                 setShowQuestionnaire(false)
+                
             }
-
         } else {
             console.log("20 aint here mannnnnn")
         }
     }
-    
+
 
     return (
         showQuestionnaire &&
@@ -148,8 +151,8 @@ const Questionnaire = ({setShowSignUp, setQuestionAnswers}) => {
 					<div className='question-text'>{questionObj[currentQuestion].Question}</div>
 				</div>
 				<div className='answer-section'>
-                    {Object.values(questionObj[currentQuestion].Options).map((answerOptions) => (
-						<button type="button" value={answerOptions} onClick={handleAnswer}>{answerOptions}</button>
+                    {Object.values(questionObj[currentQuestion].Options).map((answerOptions, i) => (
+						<button key={i} type="button" value={answerOptions} onClick={handleAnswer}>{answerOptions}</button>
 					))}
 				</div>
 			</>
@@ -158,5 +161,3 @@ const Questionnaire = ({setShowSignUp, setQuestionAnswers}) => {
 }
 
 export default Questionnaire
-
-
