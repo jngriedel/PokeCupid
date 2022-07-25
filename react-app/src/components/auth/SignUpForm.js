@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
+import Questionnaire from '../Questionnaire';
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
@@ -10,16 +11,23 @@ const SignUpForm = () => {
   const [gender, setGender] = useState('Male');
   const [bio, setBio] = useState('');
   const [pokemonId, setPokemonId] = useState(1);
-
+  const [showSignUp, setShowSignUp] = useState(false);
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
+  const [questionAnswers, setQuestionAnswers] = useState([])
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
+
+
+  useEffect(() => {
+    console.log(questionAnswers)
+  }, [questionAnswers])
+
 
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      const data = await dispatch(signUp(name, email, gender, bio, pokemonId,  password));
+      const data = await dispatch(signUp(name, email, gender, bio, pokemonId,  password, questionAnswers));
 
       if (data) {
         setErrors(data)
@@ -132,7 +140,8 @@ const SignUpForm = () => {
           required={true}
         ></input>
       </div>
-      <button type='submit'>Sign Up</button>
+      <Questionnaire setShowSignUp={setShowSignUp} setQuestionAnswers={setQuestionAnswers} questionAnswers={questionAnswers}/>
+      <button style={{visibility: showSignUp ? "visible" : "hidden" }} type='submit'>Sign Up</button>
     </form>
   );
 };
