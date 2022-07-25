@@ -5,6 +5,7 @@ import {getUserMatches} from '../store/matches'
 
 function Matches() {
   const [users, setUsers] = useState([]);
+  const [isLoaded, setIsLoaded] = useState(false)
   const dispatch = useDispatch()
   const sessionUser = useSelector(state=> state.session.user)
   const matchesState = useSelector(state=> state.matches)
@@ -17,7 +18,8 @@ function Matches() {
     }
     fetchData();
     dispatch(getUserMatches(sessionUser.id))
-    console.log(users)
+    .then((val)=> setIsLoaded(true))
+
 
   }, []);
 
@@ -25,6 +27,8 @@ function Matches() {
 
   return (
     <>
+    {isLoaded &&
+    <div>
       <h1>Matches: </h1>
       {matches.length >= 1 &&  matches.map((match,i)=>(
         <div key ={i}>
@@ -36,6 +40,8 @@ function Matches() {
             </div>
         </div>
       )) }
+      </div>
+      }
     </>
   );
 }
