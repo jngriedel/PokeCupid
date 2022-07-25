@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { Redirect } from 'react-router-dom';
 
 
-const Questionnaire = ({setShowSignUp, setQuestionAnswers, questionAnswers}) => {
+const Questionnaire = ({setShowSignUp, setQuestionAnswers}) => {
     const [currentQuestion, setCurrentQuestion] = useState(1);
     const [showQuestionnaire, setShowQuestionnaire] = useState(true);
     const [answer1, setAnswer1] = useState("")
@@ -52,11 +52,11 @@ const Questionnaire = ({setShowSignUp, setQuestionAnswers, questionAnswers}) => 
     useEffect(()=>{
         if (answer20){
         setQuestionAnswers([answer1, answer2, answer3, answer4, answer5, answer6, answer7, answer8, answer9, answer10, answer11, answer12, answer13, answer14, answer15, answer16, answer17, answer18, answer19, answer20])
-
         setShowSignUp(true)
         setShowQuestionnaire(false)
         }
     },[answer20])
+
     const handleAnswer = async (e) => {
 
         const switchFunction = (currentQ) => {
@@ -122,7 +122,7 @@ const Questionnaire = ({setShowSignUp, setQuestionAnswers, questionAnswers}) => 
                     break;
                 case 20:
                     setAnswer20(e.target.value)
-                    
+
                     break;
                 default:
                     break;
