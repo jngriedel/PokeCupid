@@ -140,7 +140,7 @@ const SignUpForm = () => {
           required={true}
         ></input>
       </div>
-      <Questionnaire setShowSignUp={setShowSignUp} setQuestionAnswers={setQuestionAnswers}/>
+      <Questionnaire setShowSignUp={setShowSignUp} setQuestionAnswers={setQuestionAnswers} questionAnswers={questionAnswers}/>
       <button style={{visibility: showSignUp ? "visible" : "hidden" }} type='submit'>Sign Up</button>
     </form>
   );

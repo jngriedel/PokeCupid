@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect } from 'react-router-dom';
 
 
-const Questionnaire = ({setShowSignUp, setQuestionAnswers}) => {
+const Questionnaire = ({setShowSignUp, setQuestionAnswers, questionAnswers}) => {
     const [currentQuestion, setCurrentQuestion] = useState(1);
     const [showQuestionnaire, setShowQuestionnaire] = useState(true);
     const [answer1, setAnswer1] = useState("")
@@ -49,7 +49,14 @@ const Questionnaire = ({setShowSignUp, setQuestionAnswers}) => {
         19: {Question: "There is a festival going on in Cerulean City, but you're about to challenge the gym in Saffron City. You...", Options: {1: "Stop at the festival. The gym isn't going anywhere!", 2: "The festival might have important items to help me in my battle. Better check it out.", 3: "My Pokemon need a rest. I should take a nap at the PokeCenter.", 4: "The festival can wait! I've got a gym badge to earn!"}},
         20: {Question: "A stray cat appears in front of you. What do you do?", Options: {1: "Close enough to a Pokemon. Let's Battle!", 2: "Scan it with the Pokedex. What even is that?", 3: "Better leave it alone. Could be a dangerous legendary Pokemon.", 4: "Pet it, like I do with all new wild and possibly feral creatures."}},
     }
+    useEffect(()=>{
+        if (answer20){
+        setQuestionAnswers([answer1, answer2, answer3, answer4, answer5, answer6, answer7, answer8, answer9, answer10, answer11, answer12, answer13, answer14, answer15, answer16, answer17, answer18, answer19, answer20])
 
+        setShowSignUp(true)
+        setShowQuestionnaire(false)
+        }
+    },[answer20])
     const handleAnswer = async (e) => {
 
         const switchFunction = (currentQ) => {
@@ -115,27 +122,22 @@ const Questionnaire = ({setShowSignUp, setQuestionAnswers}) => {
                     break;
                 case 20:
                     setAnswer20(e.target.value)
-                    console.log('heyheyhey', e.target.value)
+                    
                     break;
                 default:
                     break;
             }
         }
-        if (currentQuestion <= 20) {
+
             await switchFunction(currentQuestion)
 
             if (currentQuestion !== 20) {
                 setCurrentQuestion(currentQuestion+1)
 
             } else {
-                setQuestionAnswers([answer1, answer2, answer3, answer4, answer5, answer6, answer7, answer8, answer9, answer10, answer11, answer12, answer13, answer14, answer15, answer16, answer17, answer18, answer19, answer20])
-                setShowSignUp(true)
-                setShowQuestionnaire(false)
-                
+                return
             }
-        } else {
-            console.log("20 aint here mannnnnn")
-        }
+
     }
 
 
@@ -152,7 +154,7 @@ const Questionnaire = ({setShowSignUp, setQuestionAnswers}) => {
 				</div>
 				<div className='answer-section'>
                     {Object.values(questionObj[currentQuestion].Options).map((answerOptions, i) => (
-						<button key={i} type="button" value={answerOptions} onClick={handleAnswer}>{answerOptions}</button>
+						<button key={i} type="button" value={i} onClick={handleAnswer}>{answerOptions}</button>
 					))}
 				</div>
 			</>
