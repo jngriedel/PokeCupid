@@ -129,8 +129,8 @@ def seed_answers():
     surge_answer18 = Answer(content='1', userId= 6, questionId= 18)
     surge_answer19 = Answer(content='2', userId= 6, questionId= 19)
     surge_answer20 = Answer(content='1', userId= 6, questionId= 20)
-    
-    
+
+
     db.session.add(officer_jenny_answer1)
     db.session.add(officer_jenny_answer2)
     db.session.add(officer_jenny_answer3)
