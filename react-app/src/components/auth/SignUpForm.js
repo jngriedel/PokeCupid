@@ -27,7 +27,7 @@ const SignUpForm = () => {
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      const data = await dispatch(signUp(name, email, gender, bio, pokemonId,  password));
+      const data = await dispatch(signUp(name, email, gender, bio, pokemonId,  password, questionAnswers));
 
       if (data) {
         setErrors(data)
@@ -140,7 +140,7 @@ const SignUpForm = () => {
           required={true}
         ></input>
       </div>
-      <Questionnaire setShowSignUp={setShowSignUp} setQuestionAnswers={setQuestionAnswers}/>
+      <Questionnaire setShowSignUp={setShowSignUp} setQuestionAnswers={setQuestionAnswers} questionAnswers={questionAnswers}/>
       <button style={{visibility: showSignUp ? "visible" : "hidden" }} type='submit'>Sign Up</button>
     </form>
   );

@@ -70,7 +70,7 @@ export const logout = () => async (dispatch) => {
 };
 
 
-export const signUp = (name, email, gender, bio, pokemonId,  password) => async (dispatch) => {
+export const signUp = (name, email, gender, bio, pokemonId,  password, questionAnswers) => async (dispatch) => {
 
 
   const response = await fetch('/api/auth/signup', {
@@ -86,6 +86,7 @@ export const signUp = (name, email, gender, bio, pokemonId,  password) => async 
         bio,
         pokemonId,
         password,
+        questionAnswers,
       }
 
     )
