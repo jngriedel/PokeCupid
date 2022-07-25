@@ -8,23 +8,31 @@ function Discover() {
   const [users, setUsers] = useState([]);
   const [index, setIndex] = useState(0);
   const [current, setCurrent] = useState(null);
+  const [empty, setEmpty] = useState("");
   const [userGrabbed, setUserGrabbed] = useState(false);
   const sessionUser = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
 
-  console.log(users[index]);
-
   useEffect(() => {
     async function fetchData() {
       const response = await fetch("/api/users/");
-      const responseData = await response
-        .json()
-        .then((res) => setUsers(res.users))
-        .then((res) => setCurrent(users[index]))
-        .then(() => setUserGrabbed(true));
+      const responseData = await response.json();
+      setUsers(responseData?.users);
     }
     fetchData();
+    setUserGrabbed(true);
   }, []);
+
+  useEffect(() => {
+    if (users) {
+      setCurrent(users[index]);
+    } else {
+      setUserGrabbed(false);
+    }
+  });
+
+  console.log(current);
+
   const results = [];
   users?.map((user) => {
     let count = 0;
@@ -36,6 +44,31 @@ function Discover() {
     let result = ((count / 20) * 100).toFixed() + "%";
     results.push(result);
   });
+
+  const handlePass = () => {
+    if (index < users.length - 1) {
+      setIndex(index + 1);
+      setCurrent(users[index]);
+    } else {
+      setUserGrabbed(false);
+      setEmpty(
+        "You've reached the end of all the users at the moment, please check back later!"
+      );
+    }
+  };
+
+  const handleLike = () => {
+    dispatch(newMatch(sessionUser.id, current?.id));
+    if (index < users.length - 1) {
+      setIndex(index + 1);
+      setCurrent(users[index]);
+    } else {
+      setUserGrabbed(false);
+      setEmpty(
+        "You've reached the end of all the users at the moment, please check back later!"
+      );
+    }
+  };
 
   return (
     <>
@@ -54,19 +87,17 @@ function Discover() {
               ></img>
             </NavLink>
             <p>"{current?.bio}"</p>
-            <button
-              className="discover-like"
-              onClick={() => dispatch(newMatch(sessionUser.id, current?.id))}
-            >
+            <button className="discover-like" onClick={handleLike}>
               <i className="fa-solid fa-heart"></i>
               Like
             </button>
-            <button onClick={() => setIndex(index + 1)}>
+            <button onClick={handlePass}>
               <i className="fa-solid fa-x"></i>Pass
             </button>
           </div>
         </li>
       )}
+      <p>{empty}</p>
     </>
   );
 }
