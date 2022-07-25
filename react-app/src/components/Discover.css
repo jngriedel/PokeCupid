@@ -14,6 +14,10 @@ a{
     display:grid;
     margin: 0;
     width: 18%;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 1%;
+    padding: 1%;
 }
 
 .discover-images {
@@ -29,4 +33,9 @@ a{
 .discover-name{
     text-align: left;
     margin-bottom: 3%;
+}
+
+.fa-heart,
+.fa-x {
+    margin-right: 1.5%;
 }
