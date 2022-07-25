@@ -121,7 +121,7 @@ const Questionnaire = ({setShowSignUp, setQuestionAnswers}) => {
         if (currentQuestion <= 20) {
             await switchFunction(currentQuestion)
 
-            if (currentQuestion !== 20) {
+            if (currentQuestion < 20) {
                 setCurrentQuestion(currentQuestion+1)
                 console.log(currentQuestion)
             } else {
