@@ -9,6 +9,7 @@ class Match(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     userId = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     userId2 = db.Column(db.Integer, db.ForeignKey('users.id'))
+    matched = db.Column(db.Boolean, default=False)
     createdAt = db.Column(db.DateTime, default=datetime.datetime.now(), nullable=False)
 
     #relationship
