@@ -8,6 +8,7 @@ function Profile() {
    const dispatch = useDispatch();
    const sessionUser = useSelector(state => state.session.user)
    const userImages = useSelector(state => state.profileImages)
+   
    const userImagesArr = Object.values(userImages)
 
 
@@ -23,6 +24,7 @@ const [image, setImage] = useState(null);
    useEffect(()=>{
     dispatch(getUserImages(sessionUser?.id))
     dispatch(getUserMatches(sessionUser?.id))
+
    },[])
 
 
@@ -113,6 +115,9 @@ const addNewProfImg = async(e) => {
         {!userImagesArr[0] &&
         <><img src='https://www.kindpng.com/picc/m/74-743336_global-link-question-question-mark-unknown-pokemon-hd.png'/></>}
     </div>
+        <div>
+            <img src={sessionUser.pokemon.imgUrl}/>
+        </div>
         <div>
             {sessionUser?.bio}
         </div>
