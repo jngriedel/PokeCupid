@@ -25,4 +25,6 @@ class Match(db.Model):
             'userId': self.userId,
             'userId2': self.userId2,
             'createdAt': self.createdAt,
+            'user': self.user.to_dict(),
+            'user2':self.user2.to_dict()
         }
