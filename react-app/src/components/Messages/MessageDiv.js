@@ -10,26 +10,29 @@ const MessageDivs = ({ message }) => {
 	const [user, setUser] = useState();
 	const [disabled, setDisabled] = useState(true);
 	const [currentMessage, setCurrentMessage] = useState(message.content);
+    const [editMssg, setEditMssg] = useState(false);
 
-	// const editMessage = async (e) => {
-	// 	e.preventDefault();
-	// 	if (message) {
-	// 		const messageData = { 
-    //             id: messageId, 
-    //             message, 
-    //             match_id: matchId };
+	const editMessage = async (e) => {
+		e.preventDefault();
+        return;
+		// if (message) {
+		// 	const messageData = { 
+        //         id: messageId, 
+        //         message, 
+        //         match_id: matchId };
 
-	// 		const res = await dispatch(messageActions.editMessage(messageData));
-	// 	}
-	// 	setDisabled(true);
-	// };
+		// 	const res = await dispatch(messageActions.editMessage(messageData));
+		// }
+		// setDisabled(true);
+	};
 
-    // const deleteMessage = async () => {
-	// 	const res = await dispatch(messageActions.removeMessage(messageId));
-	// 	if (res.id) {
-	// 		await dispatch(matchActions.getAllMatches(res));
-	// 	}
-	// };
+    const deleteMessage = async () => {
+        return;
+		// const res = await dispatch(messageActions.removeMessage(messageId));
+		// if (res.id) {
+		// 	await dispatch(matchActions.getAllMatches(res));
+		// }
+	};
 
 	return (
 		<div className="chat-div-ctrl">
@@ -39,25 +42,33 @@ const MessageDivs = ({ message }) => {
 						{message.user.name}
 					</div>
 				</div>
-
-				<form>
-                    {/* onSubmit={editMessage} */}
-					<input
-						className="chat-div-input"
-						type="text"
-						value={currentMessage}
-						onChange={(e) => setCurrentMessage(e.target.value)}
-						disabled={disabled}
-					/>
-				</form>
-			</div>
-            {/* <button
+                {!editMssg && 
+                <div>
+                    <p>
+                    {message.content}
+                    </p>
+                    <button onClick={()=> setEditMssg(true)}> Edit </button>
+                    <button
 					className="delete-msg"
-					type="submit"
 					onClick={deleteMessage}
-				>
+				    >
 					Delete
-			</button> */}
+			        </button>
+                </div>
+                }
+                {editMssg &&
+                    <form onSubmit={editMessage}>
+                        <input
+                            className="chat-div-input"
+                            type="text"
+                            value={currentMessage}
+                            onChange={(e) => setCurrentMessage(e.target.value)}
+                        />
+                        <button>Save</button>
+                        <button onClick={()=> setEditMssg(false)}> Cancel </button>
+                    </form>}
+				
+			</div>
 		</div>
 	);
 };
