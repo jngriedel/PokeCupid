@@ -42,7 +42,7 @@ def unmatch(id):
 @matches_routes.route('/<int:id>')
 @login_required
 def get_user_matches(id):
-    allmatches = Match.query.all()
+    allmatches = Match.query.order_by(Match.matchTime.asc()).all()
 
 
     return {'userMatches': [match.to_dict() for match in allmatches if match.userId is current_user.id or match.userId2 is current_user.id and match.matched]}

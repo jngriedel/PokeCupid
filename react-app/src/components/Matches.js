@@ -33,7 +33,7 @@ function Matches() {
       {matches.length >= 1 &&  matches.map((match,i)=>(
         <div key ={i}>
             <div>
-                <img src={match.user.id == sessionUser.id ? match.user2.profileImages[0].imgUrl : match.user.profileImages[0].imgUrl } />
+                <img src={match.user.id == sessionUser.id ? match.user2.profileImages[0]?.imgUrl : match.user.profileImages[0]?.imgUrl } />
             </div>
             <div>
                 <h3>{match.user.id == sessionUser.id ? match.user2.name : match.user.name}</h3>
