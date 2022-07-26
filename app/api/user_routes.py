@@ -8,7 +8,7 @@ from app.aws import (upload_file_to_s3, allowed_file, get_unique_filename)
 
 
 user_routes = Blueprint('users', __name__)
- 
+
 
 @user_routes.route('/')
 @login_required
@@ -27,7 +27,7 @@ def users():
 
     set(filteredUsers)
 
-    return [user.to_dict() for user in users if user.id not in filteredUsers]
+    return {"users": [user.to_dict() for user in users if user.id not in filteredUsers] }
 
 
 @user_routes.route('/<int:id>')
