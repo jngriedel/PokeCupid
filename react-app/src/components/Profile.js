@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -10,6 +11,10 @@ import ImageTitle from "./ImageTitle";
 import Bio from "./Bio";
 import Gender from "./Gender";
 import Pokemon from "./Pokemon";
+
+import ProfileAnswers from './ProfileAnswers';
+
+
 
 function Profile() {
   const dispatch = useDispatch();
@@ -125,7 +130,13 @@ function Profile() {
             <Gender />
           </div>
         </div>
-      )}
+
+
+
+        <ProfileAnswers/>
+    </div>
+    )}
+
     </>
   );
 }

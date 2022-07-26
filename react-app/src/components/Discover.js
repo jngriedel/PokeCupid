@@ -37,7 +37,7 @@ function Discover() {
   users?.map((user) => {
     let count = 0;
     for (let i = 0; i <= 19; i++) {
-      if (user?.answers[i].content === sessionUser?.answers[i].content) {
+      if (user?.answers[i]?.content === sessionUser?.answers[i]?.content) {
         count++;
       }
     }
