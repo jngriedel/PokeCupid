@@ -27,7 +27,7 @@ def users():
 
     set(filteredUsers)
 
-    return {'users': [user.to_dict() for user in users if user.id not in filteredUsers]}
+    return [user.to_dict() for user in users if user.id not in filteredUsers]
 
 
 @user_routes.route('/<int:id>')
@@ -41,11 +41,10 @@ def user(id):
 def edit_user_bio(id):
     to_edit = User.query.get(id)
     data = request.json
-    print(data)
     to_edit.bio = data['bio']
     db.session.commit()
 
-    return {'user': to_edit.to_dict()}
+    return to_edit.to_dict()
 
 @user_routes.route('/<int:id>/gender', methods=['PUT'])
 @login_required
@@ -55,7 +54,7 @@ def edit_user_gender(id):
     to_edit.gender = data['gender']
     db.session.commit()
 
-    return {'gender': to_edit.to_dict()}
+    return to_edit.to_dict()
 
 @user_routes.route('/<int:id>/pokemon', methods=['PUT'])
 @login_required
@@ -64,7 +63,7 @@ def edit_user_pokemon(id):
     data = request.json
     to_edit.pokemonId = data['pokemonId']
     db.session.commit()
-    return {'pokemonId': to_edit.to_dict()}
+    return to_edit.to_dict()
 
 @user_routes.route('/<int:id>/images')
 @login_required

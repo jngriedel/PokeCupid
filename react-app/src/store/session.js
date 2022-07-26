@@ -155,9 +155,7 @@ export default function reducer(state = initialState, action) {
     case REMOVE_USER:
       return { user: null };
     case EDIT_USER:
-      const newState = { ...state };
-      newState[action.payload.id] = action.payload;
-      return newState;
+      return { user: action.payload };
     default:
       return state;
   }
