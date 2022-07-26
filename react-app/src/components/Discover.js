@@ -20,12 +20,14 @@ function Discover() {
       setUsers(responseData?.users);
     }
     fetchData();
+
     setUserGrabbed(true);
   }, []);
 
   useEffect(() => {
     if (users) {
       setCurrent(users[index]);
+      console.log(users)
     } else {
       setUserGrabbed(false);
     }
@@ -113,7 +115,7 @@ function Discover() {
             <NavLink to={`/users/${current?.id}`}>
               <img
                 className="discover-images"
-                src={current?.profileImages[0].imgUrl}
+                src={current?.profileImages[0]?.imgUrl}
               ></img>
             </NavLink>
             <p>"{current?.bio}"</p>
