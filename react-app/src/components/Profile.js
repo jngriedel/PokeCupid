@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import {getUserImages, uploadImage, deleteImage} from '../store/profileImages'
 import { getUserMatches } from '../store/matches';
 import ImageTitle from './ImageTitle';
+import ProfileAnswers from './ProfileAnswers';
+
 
 function Profile() {
    const dispatch = useDispatch();
@@ -126,7 +128,7 @@ const addNewProfImg = async(e) => {
             {sessionUser?.gender}
         </div>
 
-
+        <ProfileAnswers/>
     </div>
     }
     </>
