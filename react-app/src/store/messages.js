@@ -29,6 +29,37 @@ export const clearMessages = () => ({
 	type: CLEAR_MESSAGES,
 });
 
+export const getMatchMessages = (matchId) => async (dispatch) => {
+	const res = await fetch(`/api/messages/${matchId}`);
+	if (res.ok) {
+		const data = await res.json();
+		dispatch(getMessages(data.messages));
+		return data.messages;
+	} else {
+		const data = await res.json();
+		if (data.errors) {
+			return data.errors;
+		}
+	}
+};
+
+export const addMessage = (message) => async (dispatch) => {
+	const res = await fetch(`/api/messages/`, {
+		method: "POST",
+		headers: { "Content-Type": "application/json" },
+		body: JSON.stringify({message}),
+	});
+	if (res.ok) {
+		const data = await res.json();
+		dispatch(addEditMessage(data.message));
+		return data.message;
+	} else {
+		const data = await res.json();
+		if (data.errors) {
+			return data.errors;
+		}
+	}
+};
 
 export const editMessage = (message) => async (dispatch) => {
 	const res = await fetch(`/api/messages/${message.id}`, {
@@ -75,7 +106,7 @@ export default function reducer(state = initialState, action) {
 	switch (action.type) {
 
 		case GET_MESSAGES:
-			newState = {...state};
+			newState = {};
 			action.messages.forEach((message) => {
 				newState[message.id] = message;
 			});

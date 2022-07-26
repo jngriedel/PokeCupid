@@ -3,11 +3,13 @@ import thunk from 'redux-thunk';
 import session from './session'
 import profileImages from './profileImages'
 import matches from './matches'
+import messages from './messages'
 
 const rootReducer = combineReducers({
   session,
   profileImages,
-  matches
+  matches,
+  messages
 });
 
 

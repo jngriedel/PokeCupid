@@ -9,6 +9,8 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import Profile from './components/Profile';
 import { authenticate } from './store/session';
+// import Messages from './components/Messages/MessageRoom';
+import MessageInput from './components/Messages/MessageInput';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -46,6 +48,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} >
           <h1>My Home Page</h1>
+        </ProtectedRoute>
+        <ProtectedRoute path='/messages' exact={true} >
+          <MessageInput/>
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
