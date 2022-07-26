@@ -50,20 +50,21 @@ def edit_delete_message(messageId):
 
     if request.method == "PUT":
         form = MessageForm()
+        form['csrf_token'].data = request.cookies['csrf_token']
         if form.validate_on_submit():
-            message = Message.query.get(messageId)
-            message.content = form.data["message"]
+            edit_message = Message.query.get(messageId)
+            edit_message.content = form.data["message"]
             db.session.commit()
-            return { "message": message.to_dict() }
+            return { "message": edit_message.to_dict() }
 
         return {'errors': errors_list(form.errors)}, 401
 
     if request.method == "DELETE":
         message = Message.query.get(messageId)
-        match_id = message.matchId
+
         db.session.delete(message)
         db.session.commit()
 
-        match = Match.query.get(match_id)
 
-        return { "message": match.to_dict() }
+
+        return { "message": "Success" }

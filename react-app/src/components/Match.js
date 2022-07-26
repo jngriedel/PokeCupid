@@ -28,6 +28,7 @@ function Match({match}) {
             </div>
 
     { showChat && <div className='chatBox'>
+      <button onClick={()=>setShowChat(false)}>Exit</button>
       <MessageInput matchId={matchId} />
     </div> }
 

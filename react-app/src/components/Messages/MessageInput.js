@@ -17,7 +17,8 @@ const MessageInput = ({matchId}) => {
 
     const handleSubmitMsg = async (e) => {
 		e.preventDefault();
-        dispatch(messagesActions.addMessage(message, matchId));
+        await dispatch(messagesActions.addMessage(message, matchId))
+        .then((res)=> setMessage(''));
 	};
 
     useEffect(() => {
@@ -25,6 +26,9 @@ const MessageInput = ({matchId}) => {
             dispatch(messagesActions.getMatchMessages(matchId))
         }
     }, [])
+
+
+    
 
 	return (
         messages &&

@@ -14,24 +14,24 @@ const MessageDivs = ({ message }) => {
 
 	const editMessage = async (e) => {
 		e.preventDefault();
-        return;
-		// if (message) {
-		// 	const messageData = {
-        //         id: messageId,
-        //         message,
-        //         match_id: matchId };
 
-		// 	const res = await dispatch(messageActions.editMessage(messageData));
-		// }
-		// setDisabled(true);
+
+			const messageData = {
+                id: message.id,
+                message: currentMessage,
+                 };
+
+			await dispatch(messageActions.editMessage(messageData))
+			.then((res)=> setEditMssg(false))
+
+
+
 	};
 
     const deleteMessage = async () => {
-        return;
-		// const res = await dispatch(messageActions.removeMessage(messageId));
-		// if (res.id) {
-		// 	await dispatch(matchActions.getAllMatches(res));
-		// }
+
+		await dispatch(messageActions.removeMessage(message.id));
+		
 	};
 
 	return (
