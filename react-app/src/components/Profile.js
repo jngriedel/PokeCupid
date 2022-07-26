@@ -129,12 +129,12 @@ function Profile() {
           <div>
             <Gender />
           </div>
+          <ProfileAnswers/>
         </div>
 
 
 
-        <ProfileAnswers/>
-    </div>
+
     )}
 
     </>
