@@ -24,12 +24,12 @@ const EditProfileAnswers = ({question, i, questionObj}) => {
                     edit &&
                     <>
                     <td>
-                        <ul>
+                        <select>
                             {Object.values(question.Options).map((option,i)=>(
-                                    <li  key={i}>{option}</li>
+                                    <option key={i}>{option}</option>
                             ))}
 
-                        </ul>
+                        </select>
                     </td>
                     <td><button onClick={()=>setEdit(false)}>Cancel</button></td>
                     </>
