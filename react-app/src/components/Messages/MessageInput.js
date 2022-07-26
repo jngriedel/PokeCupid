@@ -28,15 +28,15 @@ const MessageInput = ({matchId}) => {
     }, [])
 
 
-    
+
 
 	return (
         messages &&
         <div>
             <div>
-                {messages?.map((message) =>
+                {messages?.map((message, i) =>
 					(
-                        <p>
+                        <p key={i}>
                             <MessageDivs message={message} matchId={matchId}/>
                         </p>
 					)
