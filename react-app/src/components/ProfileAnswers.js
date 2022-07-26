@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import EditProfileAnswers from './EditProfileAnswers';
 
 const ProfileAnswers = () => {
-    const sessionUser = useSelector(state => state.session.user)
+
     const answersArr = useSelector(state => state.session.user.answers)
 
     console.log(answersArr, "yoooooo");
@@ -30,27 +31,23 @@ const ProfileAnswers = () => {
     }
 
 
-    const question = questionObj[1].Question
-    console.log(question, "yo")
+
     return (
         <div className='answer-table'>
             <>
-                { }
+
                 <div className='question'>
-                    {Object.values(questionObj).map((question, i) => {
-                        return (
+
                             <table>
                                 <tr>
                                     <th>Question</th>
                                     <th>Answer: </th>
                                 </tr>
-                                <tr>
-                                    <td>{question.Question}</td>
-                                    <td>{question.Options[+sessionUser?.answers[i]?.content]}</td>
-                                </tr>
+                    {Object.values(questionObj).map((question, i) => (
+                            <EditProfileAnswers question={question} i={i} questionObj={questionObj}/>
+                            ))}
                             </table>
-                        )
-                    })}
+
                 </div>
 			</>
             </div>
