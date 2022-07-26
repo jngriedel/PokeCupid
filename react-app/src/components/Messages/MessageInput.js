@@ -6,7 +6,7 @@ import * as messagesActions from '../../store/messages';
 
 import MessageDivs from "./MessageDiv";
 
-const MessageInput = () => {
+const MessageInput = ({matchId}) => {
 
 	const user = useSelector((state) => state.session?.user);
     const [message, setMessage] = useState('');
@@ -22,7 +22,7 @@ const MessageInput = () => {
 
     useEffect(() => {
         if (user){
-            dispatch(messagesActions.getMatchMessages(1))
+            dispatch(messagesActions.getMatchMessages(matchId))
         }
     }, [])
 
@@ -30,7 +30,7 @@ const MessageInput = () => {
         messages &&
         <div>
             <div>
-                {messages?.map((message) => 
+                {messages?.map((message) =>
 					(
                         <p>
                         <MessageDivs message={message}/>

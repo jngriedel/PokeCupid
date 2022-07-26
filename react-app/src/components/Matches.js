@@ -2,10 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import {getUserMatches} from '../store/matches'
+import Match from './Match'
+import './Matches.css'
 
 function Matches() {
   const [users, setUsers] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false)
+  
   const dispatch = useDispatch()
   const sessionUser = useSelector(state=> state.session.user)
   const matchesState = useSelector(state=> state.matches)
@@ -31,14 +34,9 @@ function Matches() {
     <div>
       <h1>Matches: </h1>
       {matches.length >= 1 &&  matches.map((match,i)=>(
-        <div key ={i}>
-            <div>
-                <img src={match.user.id == sessionUser.id ? match.user2.profileImages[0]?.imgUrl : match.user.profileImages[0]?.imgUrl } />
-            </div>
-            <div>
-                <h3>{match.user.id == sessionUser.id ? match.user2.name : match.user.name}</h3>
-            </div>
-        </div>
+
+            <Match match={match}/>
+
       )) }
       </div>
       }

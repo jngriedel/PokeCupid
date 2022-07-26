@@ -1,0 +1,10 @@
+.matchDiv{
+    height: 200px;
+    width: 200px;
+    border: solid black 2px;
+}
+
+.matchImg{
+    height: 50px;
+    width: 50px;
+}
