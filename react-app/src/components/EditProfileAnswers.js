@@ -7,7 +7,7 @@ const EditProfileAnswers = ({question, i, questionObj}) => {
     const [edit, setEdit] = useState(false)
     const sessionUser = useSelector(state => state.session.user)
 
-
+    const answerId = sessionUser?.answers[i].id
 
     return (
         <>
@@ -26,7 +26,7 @@ const EditProfileAnswers = ({question, i, questionObj}) => {
                     <td>
                         <select>
                             {Object.values(question.Options).map((option,i)=>(
-                                    <option key={i}>{option}</option>
+                                    <option value={i} key={i}>{option}</option>
                             ))}
 
                         </select>
