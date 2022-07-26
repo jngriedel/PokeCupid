@@ -16,8 +16,8 @@ const MessageInput = ({matchId}) => {
     const dispatch = useDispatch();
 
     const handleSubmitMsg = async (e) => {
-        dispatch(messagesActions.addMessage(message));
 		e.preventDefault();
+        dispatch(messagesActions.addMessage(message, matchId));
 	};
 
     useEffect(() => {
@@ -33,7 +33,7 @@ const MessageInput = ({matchId}) => {
                 {messages?.map((message) =>
 					(
                         <p>
-                        <MessageDivs message={message}/>
+                            <MessageDivs message={message} matchId={matchId}/>
                         </p>
 					)
                 )}

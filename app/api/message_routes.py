@@ -30,17 +30,19 @@ def new_message():
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         newMessage = form.data["message"]
+        data = request.json
+        matchId1 = data['matchId']
         add_message = Message(
-            content = newMessage, 
+            content = newMessage,
             userId = current_user.id,
-            matchId = 1,
+            matchId = matchId1,
             createdAt = datetime.datetime.now())
         db.session.add(add_message)
         db.session.commit()
         return{
             "message": add_message.to_dict()
         }
-    return {'loud reeeee'}, 401
+    return {'Failed'}, 401
 
 @message_routes.route("/<int:messageId>", methods=["PUT", "DELETE"])
 @login_required

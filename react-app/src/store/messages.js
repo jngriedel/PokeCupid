@@ -43,11 +43,11 @@ export const getMatchMessages = (matchId) => async (dispatch) => {
 	}
 };
 
-export const addMessage = (message) => async (dispatch) => {
+export const addMessage = (message,matchId) => async (dispatch) => {
 	const res = await fetch(`/api/messages/`, {
 		method: "POST",
 		headers: { "Content-Type": "application/json" },
-		body: JSON.stringify({message}),
+		body: JSON.stringify({message,matchId}),
 	});
 	if (res.ok) {
 		const data = await res.json();
@@ -92,7 +92,7 @@ export const removeMessage = (messageId) => async (dispatch) => {
 		const data = await res.json();
 		if (data.errors) {
 			return data.errors;
-            
+
 		}
 	}
 };
@@ -122,7 +122,7 @@ export default function reducer(state = initialState, action) {
             action.messages.forEach((message) => {
                 delete newState[message.id];
             })
-            return newState;  
+            return newState;
 
 		case CLEAR_MESSAGES:
 			return {};

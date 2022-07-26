@@ -8,7 +8,7 @@ import './Matches.css'
 function Matches() {
   const [users, setUsers] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false)
-  
+
   const dispatch = useDispatch()
   const sessionUser = useSelector(state=> state.session.user)
   const matchesState = useSelector(state=> state.matches)
@@ -34,9 +34,9 @@ function Matches() {
     <div>
       <h1>Matches: </h1>
       {matches.length >= 1 &&  matches.map((match,i)=>(
-
+            <div key={i}>
             <Match match={match}/>
-
+            </div>
       )) }
       </div>
       }

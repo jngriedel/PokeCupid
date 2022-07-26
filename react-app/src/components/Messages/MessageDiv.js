@@ -6,7 +6,7 @@ import * as messageActions from "../../store/messages";
 
 const MessageDivs = ({ message }) => {
 	const dispatch = useDispatch();
-    
+	const sessionUser = useSelector(state => state.session.user)
 	const [user, setUser] = useState();
 	const [disabled, setDisabled] = useState(true);
 	const [currentMessage, setCurrentMessage] = useState(message.content);
@@ -16,9 +16,9 @@ const MessageDivs = ({ message }) => {
 		e.preventDefault();
         return;
 		// if (message) {
-		// 	const messageData = { 
-        //         id: messageId, 
-        //         message, 
+		// 	const messageData = {
+        //         id: messageId,
+        //         message,
         //         match_id: matchId };
 
 		// 	const res = await dispatch(messageActions.editMessage(messageData));
@@ -42,15 +42,16 @@ const MessageDivs = ({ message }) => {
 						{message.user.name}
 					</div>
 				</div>
-                {!editMssg && 
+                {!editMssg &&
                 <div>
                     <p>
                     {message.content}
                     </p>
-                    <button onClick={()=> setEditMssg(true)}> Edit </button>
+                    <button onClick={()=> setEditMssg(true)} style={{visibility: message.userId === sessionUser.id ? 'visible' : 'hidden'}}> Edit </button>
                     <button
 					className="delete-msg"
 					onClick={deleteMessage}
+					style={{visibility: message.userId === sessionUser.id ? 'visible' : 'hidden'}}
 				    >
 					Delete
 			        </button>
@@ -67,7 +68,7 @@ const MessageDivs = ({ message }) => {
                         <button>Save</button>
                         <button onClick={()=> setEditMssg(false)}> Cancel </button>
                     </form>}
-				
+
 			</div>
 		</div>
 	);
