@@ -30,8 +30,7 @@ const ProfileAnswers = () => {
     }
 
 
-    const question = questionObj[1].Question
-    console.log(question, "yo")
+    
     return (
         <div className='answer-table'>
             <>
