@@ -81,10 +81,18 @@ function Discover() {
             </NavLink>
             <p>Match Percentage: {results[index]}</p>
             <NavLink to={`/users/${current?.id}`}>
-              <img
-                className="discover-images"
-                src={current?.profileImages[0].imgUrl}
-              ></img>
+              {!current?.profileImages[0] && (
+                <img
+                  className="discover-images"
+                  src="https://www.kindpng.com/picc/m/74-743336_global-link-question-question-mark-unknown-pokemon-hd.png"
+                ></img>
+              )}
+              {current?.profileImages[0] && (
+                <img
+                  className="discover-images"
+                  src={current?.profileImages[0]?.imgUrl}
+                ></img>
+              )}
             </NavLink>
             <p>"{current?.bio}"</p>
             <button className="discover-like" onClick={handleLike}>

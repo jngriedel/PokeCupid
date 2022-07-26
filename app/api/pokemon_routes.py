@@ -9,7 +9,6 @@ pokemon_routes = Blueprint('pokemon', __name__)
 
 
 @pokemon_routes.route('')
-@login_required
 def allMons():
     allPokemon = Pokemon.query.all()
 
