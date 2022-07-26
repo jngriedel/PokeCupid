@@ -22,5 +22,5 @@ class Message(db.Model):
             'content': self.content,
             'userId': self.userId,
             'matchId': self.matchId,
-            'createdAt' : self.createdAt
+            'createdAt': self.createdAt
         }
