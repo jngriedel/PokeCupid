@@ -1,6 +1,7 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from app.models import User, Match, db
+import datetime
 
 
 
@@ -18,12 +19,38 @@ def add_match():
 
     if possibleLike:
         possibleLike.matched = True
+        possibleLike.matchTime = datetime.datetime.now()
 
         db.session.commit()
         return {'match' : possibleLike.to_dict()}
 
     else:
         new_Match = Match(userId=liker, userId2 = liked)
+        db.session.add(new_Match)
+        db.session.commit()
+        return {'matchId': new_Match.id}
+
+@matches_routes.route('/pass', methods=['POST'])
+@login_required
+def pass_user():
+    data = request.json
+
+    liker = data['liker']
+
+    passedId = data['passedId']
+
+
+    possiblePass = Match.query.filter(Match.userId == passedId, Match.userId2 == liker).scalar()
+
+    if possiblePass:
+        possiblePass.notInterested = True
+
+
+        db.session.commit()
+        return {'message' : 'Not interested!'}
+
+    else:
+        new_Match = Match(userId=liker, userId2 = passedId, notInterested = True)
         db.session.add(new_Match)
         db.session.commit()
         return {'matchId': new_Match.id}

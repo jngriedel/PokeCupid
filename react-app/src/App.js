@@ -11,6 +11,7 @@ import User from './components/User';
 import Profile from './components/Profile';
 import FakeHome from './components/FakeHome';
 import Discover from "./components/Discover";
+import Matches from './components/Matches';
 import { authenticate } from "./store/session";
 
 
@@ -39,12 +40,15 @@ function App() {
         <Route path="/sign-up" exact={true}>
           <SignUpForm />
         </Route>
-        <Route path="/profile" exact={true}>
+        <ProtectedRoute path="/profile" exact={true}>
           <Profile />
-        </Route>
-        <Route path="/discover" exact={true}>
+        </ProtectedRoute>
+        <ProtectedRoute path="/discover" exact={true}>
           <Discover />
-        </Route>
+        </ProtectedRoute>
+        <ProtectedRoute path="/matches" exact={true}>
+          <Matches/>
+        </ProtectedRoute>
         <ProtectedRoute path="/users" exact={true}>
           <UsersList />
         </ProtectedRoute>
@@ -54,7 +58,6 @@ function App() {
 
         <ProtectedRoute path='/' exact={true} >
           <FakeHome/>
-
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
