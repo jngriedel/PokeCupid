@@ -27,7 +27,7 @@ def users():
 
     set(filteredUsers)
 
-    return {'users': [user.to_dict() for user in users if user.id not in filteredUsers]}
+    return [user.to_dict() for user in users if user.id not in filteredUsers]
 
 
 @user_routes.route('/<int:id>')
@@ -35,6 +35,35 @@ def users():
 def user(id):
     user = User.query.get(id)
     return user.to_dict()
+
+@user_routes.route('/<int:id>/bio', methods=['PUT'])
+@login_required
+def edit_user_bio(id):
+    to_edit = User.query.get(id)
+    data = request.json
+    to_edit.bio = data['bio']
+    db.session.commit()
+
+    return to_edit.to_dict()
+
+@user_routes.route('/<int:id>/gender', methods=['PUT'])
+@login_required
+def edit_user_gender(id):
+    to_edit = User.query.get(id)
+    data = request.json
+    to_edit.gender = data['gender']
+    db.session.commit()
+
+    return to_edit.to_dict()
+
+@user_routes.route('/<int:id>/pokemon', methods=['PUT'])
+@login_required
+def edit_user_pokemon(id):
+    to_edit = User.query.get(id)
+    data = request.json
+    to_edit.pokemonId = data['pokemonId']
+    db.session.commit()
+    return to_edit.to_dict()
 
 @user_routes.route('/<int:id>/images')
 @login_required
