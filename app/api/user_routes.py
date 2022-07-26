@@ -1,7 +1,7 @@
 
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
-from app.models import User, ProfileImage, db, Match
+from app.models import User, ProfileImage, db, Match, Answer
 #aws imports
 from app.aws import (upload_file_to_s3, allowed_file, get_unique_filename)
 
@@ -35,6 +35,14 @@ def users():
 def user(id):
     user = User.query.get(id)
     return user.to_dict()
+
+@user_routes.route('/answers/<int:answerId>', methods=["PATCH"])
+@login_required
+def change_answer(answerId):
+    answer = Answer.query.get(answerId)
+    data = request.json
+    answer.content = data["content"]
+    return 
 
 @user_routes.route('/<int:id>/images')
 @login_required
