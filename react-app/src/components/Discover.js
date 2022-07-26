@@ -57,7 +57,14 @@ function Discover() {
     }
   };
 
-  const handleLike = () => {
+  const handleLike = (passedId) => {
+    
+
+
+
+
+
+
     dispatch(newMatch(sessionUser.id, current?.id));
     if (index < users.length - 1) {
       setIndex(index + 1);
@@ -91,7 +98,7 @@ function Discover() {
               <i className="fa-solid fa-heart"></i>
               Like
             </button>
-            <button onClick={handlePass}>
+            <button onClick={handlePass(current.id)}>
               <i className="fa-solid fa-x"></i>Pass
             </button>
           </div>

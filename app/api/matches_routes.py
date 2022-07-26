@@ -30,6 +30,31 @@ def add_match():
         db.session.commit()
         return {'matchId': new_Match.id}
 
+@matches_routes.route('/pass', methods=['POST'])
+@login_required
+def pass_user():
+    data = request.json
+
+    liker = data['liker']
+    liked = int(data['liked'])
+    passedId = data['passedId']
+
+
+    possiblePass = Match.query.filter(Match.userId == liked, Match.userId2 == liker).scalar()
+
+    if possiblePass:
+        possiblePass.notInterested = True
+
+
+        db.session.commit()
+        return {'message' : 'Not interested!'}
+
+    else:
+        new_Match = Match(userId=liker, userId2 = liked, notInterested = True)
+        db.session.add(new_Match)
+        db.session.commit()
+        return {'matchId': new_Match.id}
+
 @matches_routes.route('/<int:id>', methods=['DELETE'])
 @login_required
 def unmatch(id):
@@ -42,7 +67,7 @@ def unmatch(id):
 @matches_routes.route('/<int:id>')
 @login_required
 def get_user_matches(id):
-    allmatches = Match.query.order_by(Match.matchTime.asc()).all()
+    allmatches = Match.query.all()
 
 
     return {'userMatches': [match.to_dict() for match in allmatches if match.userId is current_user.id or match.userId2 is current_user.id and match.matched]}
