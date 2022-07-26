@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
@@ -8,16 +9,20 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
 import Profile from './components/Profile';
-import { authenticate } from './store/session';
 // import Messages from './components/Messages/MessageRoom';
 import MessageInput from './components/Messages/MessageInput';
+import FakeHome from './components/FakeHome';
+import Discover from "./components/Discover";
+import Matches from './components/Matches';
+
+import { authenticate } from './store/session';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    (async() => {
+    (async () => {
       await dispatch(authenticate());
       setLoaded(true);
     })();
@@ -31,23 +36,30 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Switch>
-        <Route path='/login' exact={true}>
+        <Route path="/login" exact={true}>
           <LoginForm />
         </Route>
-        <Route path='/sign-up' exact={true}>
+        <Route path="/sign-up" exact={true}>
           <SignUpForm />
         </Route>
-        <Route path='/profile' exact={true}>
+        <ProtectedRoute path="/profile" exact={true}>
           <Profile />
-        </Route>
-        <ProtectedRoute path='/users' exact={true} >
-          <UsersList/>
         </ProtectedRoute>
-        <ProtectedRoute path='/users/:userId' exact={true} >
+        <ProtectedRoute path="/discover" exact={true}>
+          <Discover />
+        </ProtectedRoute>
+        <ProtectedRoute path="/matches" exact={true}>
+          <Matches/>
+        </ProtectedRoute>
+        <ProtectedRoute path="/users" exact={true}>
+          <UsersList />
+        </ProtectedRoute>
+        <ProtectedRoute path="/users/:userId" exact={true}>
           <User />
         </ProtectedRoute>
+
         <ProtectedRoute path='/' exact={true} >
-          <h1>My Home Page</h1>
+          <FakeHome/>
         </ProtectedRoute>
         <ProtectedRoute path='/messages' exact={true} >
           <MessageInput/>

@@ -3,11 +3,14 @@ import { useSelector, useDispatch } from 'react-redux';
 import {getUserImages, uploadImage, deleteImage} from '../store/profileImages'
 import { getUserMatches } from '../store/matches';
 import ImageTitle from './ImageTitle';
+import ProfileAnswers from './ProfileAnswers';
+
 
 function Profile() {
    const dispatch = useDispatch();
    const sessionUser = useSelector(state => state.session.user)
    const userImages = useSelector(state => state.profileImages)
+   
    const userImagesArr = Object.values(userImages)
 
 
@@ -23,6 +26,7 @@ const [image, setImage] = useState(null);
    useEffect(()=>{
     dispatch(getUserImages(sessionUser?.id))
     dispatch(getUserMatches(sessionUser?.id))
+
    },[])
 
 
@@ -114,6 +118,9 @@ const addNewProfImg = async(e) => {
         <><img src='https://www.kindpng.com/picc/m/74-743336_global-link-question-question-mark-unknown-pokemon-hd.png'/></>}
     </div>
         <div>
+            <img src={sessionUser.pokemon.imgUrl}/>
+        </div>
+        <div>
             {sessionUser?.bio}
         </div>
 
@@ -121,7 +128,7 @@ const addNewProfImg = async(e) => {
             {sessionUser?.gender}
         </div>
 
-
+        <ProfileAnswers/>
     </div>
     }
     </>

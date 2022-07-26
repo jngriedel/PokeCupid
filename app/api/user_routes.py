@@ -1,8 +1,10 @@
+
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
-from app.models import User, ProfileImage, db
+from app.models import User, ProfileImage, db, Match
 #aws imports
 from app.aws import (upload_file_to_s3, allowed_file, get_unique_filename)
+
 
 
 user_routes = Blueprint('users', __name__)
@@ -11,8 +13,21 @@ user_routes = Blueprint('users', __name__)
 @user_routes.route('/')
 @login_required
 def users():
-    users = User.query.all()
-    return {'users': [user.to_dict() for user in users]}
+    users = User.query.filter(User.id != current_user.id)
+
+    allBlocked = Match.query.filter(Match.notInterested == True)
+
+
+    userMatches = [match for match in allBlocked if match.userId is current_user.id or match.userId2 is current_user.id ]
+    filteredUsers = []
+    for match in userMatches:
+        filteredUsers.append(match.userId)
+        filteredUsers.append(match.userId2)
+
+
+    set(filteredUsers)
+
+    return {'users': [user.to_dict() for user in users if user.id not in filteredUsers]}
 
 
 @user_routes.route('/<int:id>')
@@ -52,7 +67,7 @@ def add_profile_image(id):
         # it means that there was an error when we tried to upload
         # so we send back that error message
         return upload, 400
-    
+
     url = upload["url"]
     # flask_login allows us to get the current user from the request
 

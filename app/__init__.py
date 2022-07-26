@@ -11,6 +11,7 @@ from .api.auth_routes import auth_routes
 from .api.images_routes import images_routes
 from .api.matches_routes import matches_routes
 from .api.message_routes import message_routes
+from .api.pokemon_routes import pokemon_routes
 
 from .seeds import seed_commands
 
@@ -37,6 +38,7 @@ app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(images_routes, url_prefix='/api/images')
 app.register_blueprint(matches_routes, url_prefix='/api/matches')
 app.register_blueprint(message_routes, url_prefix='/api/messages')
+app.register_blueprint(pokemon_routes, url_prefix='/api/pokemon')
 db.init_app(app)
 Migrate(app, db)
 

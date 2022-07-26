@@ -1,28 +1,40 @@
-import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux'
-import { Redirect } from 'react-router-dom';
-import { signUp } from '../../store/session';
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { Redirect } from "react-router-dom";
+import { signUp } from "../../store/session";
+import Questionnaire from "../Questionnaire";
+import { getAllPokemon } from "../../store/pokemon";
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [gender, setGender] = useState('Male');
-  const [bio, setBio] = useState('');
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [gender, setGender] = useState("Male");
+  const [bio, setBio] = useState("");
   const [pokemonId, setPokemonId] = useState(1);
-
-  const [password, setPassword] = useState('');
-  const [repeatPassword, setRepeatPassword] = useState('');
-  const user = useSelector(state => state.session.user);
+  const [showSignUp, setShowSignUp] = useState(false);
+  const [password, setPassword] = useState("");
+  const [repeatPassword, setRepeatPassword] = useState("");
+  const [questionAnswers, setQuestionAnswers] = useState([]);
+  const user = useSelector((state) => state.session.user);
+  const pokemon = useSelector((state) => state.pokemon);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getAllPokemon());
+  }, [dispatch]);
+
+  console.log(pokemon);
 
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      const data = await dispatch(signUp(name, email, gender, bio, pokemonId,  password));
+      const data = await dispatch(
+        signUp(name, email, gender, bio, pokemonId, password, questionAnswers)
+      );
 
       if (data) {
-        setErrors(data)
+        setErrors(data);
       }
     }
   };
@@ -44,7 +56,6 @@ const SignUpForm = () => {
     setPokemonId(e.target.value);
   };
 
-
   const updatePassword = (e) => {
     setPassword(e.target.value);
   };
@@ -54,7 +65,7 @@ const SignUpForm = () => {
   };
 
   if (user) {
-    return <Redirect to='/' />;
+    return <Redirect to="/discover" />;
   }
 
   return (
@@ -67,8 +78,8 @@ const SignUpForm = () => {
       <div>
         <label>Name</label>
         <input
-          type='text'
-          name='name'
+          type="text"
+          name="name"
           onChange={updateName}
           value={name}
         ></input>
@@ -76,15 +87,15 @@ const SignUpForm = () => {
       <div>
         <label>Email</label>
         <input
-          type='text'
-          name='email'
+          type="text"
+          name="email"
           onChange={updateEmail}
           value={email}
         ></input>
       </div>
       <div>
         <label>Gender</label>
-        <select name="gender" onChange={updateGender} value={gender} >
+        <select name="gender" onChange={updateGender} value={gender}>
           <option value="Male">Male</option>
           <option value="Female">Female</option>
           <option value="Other">Other</option>
@@ -92,13 +103,11 @@ const SignUpForm = () => {
       </div>
       <div>
         <label>Bio</label>
-        <textarea name="bio" onChange={updateBio} value={bio} >
-
-        </textarea>
+        <textarea name="bio" onChange={updateBio} value={bio}></textarea>
       </div>
       <div>
         <label>Choose a Pokemon!</label>
-        <select name="pokemonId" onChange={updatePokemonId} value={pokemonId} >
+        <select name="pokemonId" onChange={updatePokemonId} value={pokemonId}>
           <option value="1">Bulbasaur</option>
           <option value="2">Ivysaur</option>
           <option value="3">Venusaur</option>
@@ -109,15 +118,14 @@ const SignUpForm = () => {
           <option value="8">Wartortle</option>
           <option value="9">Blastoise</option>
           <option value="10">Caterpie</option>
-
         </select>
       </div>
-      
+
       <div>
         <label>Password</label>
         <input
-          type='password'
-          name='password'
+          type="password"
+          name="password"
           onChange={updatePassword}
           value={password}
         ></input>
@@ -125,14 +133,24 @@ const SignUpForm = () => {
       <div>
         <label>Repeat Password</label>
         <input
-          type='password'
-          name='repeat_password'
+          type="password"
+          name="repeat_password"
           onChange={updateRepeatPassword}
           value={repeatPassword}
           required={true}
         ></input>
       </div>
-      <button type='submit'>Sign Up</button>
+      <Questionnaire
+        setShowSignUp={setShowSignUp}
+        setQuestionAnswers={setQuestionAnswers}
+        questionAnswers={questionAnswers}
+      />
+      <button
+        style={{ visibility: showSignUp ? "visible" : "hidden" }}
+        type="submit"
+      >
+        Sign Up
+      </button>
     </form>
   );
 };
