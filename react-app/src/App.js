@@ -9,11 +9,13 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
 import Profile from './components/Profile';
+// import Messages from './components/Messages/MessageRoom';
+import MessageInput from './components/Messages/MessageInput';
 import FakeHome from './components/FakeHome';
 import Discover from "./components/Discover";
 import Matches from './components/Matches';
-import { authenticate } from "./store/session";
 
+import { authenticate } from './store/session';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -58,6 +60,9 @@ function App() {
 
         <ProtectedRoute path='/' exact={true} >
           <FakeHome/>
+        </ProtectedRoute>
+        <ProtectedRoute path='/messages' exact={true} >
+          <MessageInput/>
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
