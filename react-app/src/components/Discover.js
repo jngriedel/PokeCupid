@@ -31,7 +31,7 @@ function Discover() {
     }
   });
 
-  console.log(current);
+
 
   const results = [];
   users?.map((user) => {
@@ -45,25 +45,48 @@ function Discover() {
     results.push(result);
   });
 
-  const handlePass = () => {
-    if (index < users.length - 1) {
-      setIndex(index + 1);
-      setCurrent(users[index]);
-    } else {
-      setUserGrabbed(false);
-      setEmpty(
-        "You've reached the end of all the users at the moment, please check back later!"
-      );
-    }
+  const handlePass = async(passedId) => {
+
+      const response = await fetch(`/api/matches/pass`, {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              passedId,
+              liker: sessionUser.id
+            })
+          })
+          if (response.ok) {
+          const data = await response.json();
+          if (data.message) {
+            if (index < users.length - 1) {
+              setIndex(index + 1);
+              setCurrent(users[index]);
+            } else {
+              setUserGrabbed(false);
+              setEmpty(
+                "You've reached the end of all the users at the moment, please check back later!"
+              );
+            }
+          }
+          return null;
+        }
+        else {
+          return ['An error occurred. Please try again.']
+        }
+
+
+
+
+
+
+
+
+
   };
 
-  const handleLike = (passedId) => {
-    
-
-
-
-
-
+  const handleLike = () => {
 
     dispatch(newMatch(sessionUser.id, current?.id));
     if (index < users.length - 1) {
@@ -98,7 +121,7 @@ function Discover() {
               <i className="fa-solid fa-heart"></i>
               Like
             </button>
-            <button onClick={handlePass(current.id)}>
+            <button onClick={()=>{handlePass(current?.id)}}>
               <i className="fa-solid fa-x"></i>Pass
             </button>
           </div>

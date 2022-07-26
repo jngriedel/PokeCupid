@@ -36,11 +36,11 @@ def pass_user():
     data = request.json
 
     liker = data['liker']
-    liked = int(data['liked'])
+
     passedId = data['passedId']
 
 
-    possiblePass = Match.query.filter(Match.userId == liked, Match.userId2 == liker).scalar()
+    possiblePass = Match.query.filter(Match.userId == passedId, Match.userId2 == liker).scalar()
 
     if possiblePass:
         possiblePass.notInterested = True
@@ -50,7 +50,7 @@ def pass_user():
         return {'message' : 'Not interested!'}
 
     else:
-        new_Match = Match(userId=liker, userId2 = liked, notInterested = True)
+        new_Match = Match(userId=liker, userId2 = passedId, notInterested = True)
         db.session.add(new_Match)
         db.session.commit()
         return {'matchId': new_Match.id}
