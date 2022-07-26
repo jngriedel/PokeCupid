@@ -1,0 +1,22 @@
+.matchDiv{
+    height: 200px;
+    width: 200px;
+    border: solid black 2px;
+
+}
+
+.matchImg{
+    height: 50px;
+    width: 50px;
+}
+
+
+.chatBox{
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    height: 400px;
+    width: 200px;
+    border: solid black 1px;
+    overflow-y: scroll;
+}
