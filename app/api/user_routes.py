@@ -42,7 +42,10 @@ def change_answer(answerId):
     answer = Answer.query.get(answerId)
     data = request.json
     answer.content = data["content"]
-    return
+    return {'user' : }
+
+
+
 @user_routes.route('/<int:id>/bio', methods=['PUT'])
 @login_required
 def edit_user_bio(id):

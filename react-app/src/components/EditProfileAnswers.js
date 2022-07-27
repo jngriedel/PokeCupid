@@ -6,8 +6,14 @@ const EditProfileAnswers = ({question, i, questionObj}) => {
 
     const [edit, setEdit] = useState(false)
     const sessionUser = useSelector(state => state.session.user)
-
+    const [answer, setAnswer] = useState(question.Options[+sessionUser?.answers[i]?.content])
     const answerId = sessionUser?.answers[i].id
+
+
+    const changeAnswer = async()=>{
+        return
+    }
+
 
     return (
         <>
@@ -24,14 +30,15 @@ const EditProfileAnswers = ({question, i, questionObj}) => {
                     edit &&
                     <>
                     <td>
-                        <select>
+                        <select onChange={(e)=>{setAnswer(e.target.value)}}>
                             {Object.values(question.Options).map((option,i)=>(
                                     <option value={i} key={i}>{option}</option>
                             ))}
 
                         </select>
                     </td>
-                    <td><button onClick={()=>setEdit(false)}>Cancel</button></td>
+                    <td><button onClick={()=>setEdit(false)}>Cancel</button>
+                    <button onClick={changeAnswer}>Save</button></td>
                     </>
                 }
 
