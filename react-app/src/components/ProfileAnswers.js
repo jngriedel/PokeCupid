@@ -1,3 +1,4 @@
+
 import React from 'react';
 // import { useSelector, useDispatch } from 'react-redux';
 import EditProfileAnswers from './EditProfileAnswers';
@@ -55,7 +56,8 @@ const ProfileAnswers = () => {
                 </div>
 			</>
             </div>
-            );
-}
 
-            export default ProfileAnswers
+            );
+          }
+
+export default ProfileAnswers;

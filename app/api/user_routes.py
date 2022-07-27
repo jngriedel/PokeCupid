@@ -1,7 +1,12 @@
 
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
+
 from app.models import User, ProfileImage, db, Match, Answer
+from app.forms import Bio
+from app.api.auth_routes import validation_errors_to_error_messages
+
+
 #aws imports
 from app.aws import (upload_file_to_s3, allowed_file, get_unique_filename)
 
@@ -65,12 +70,16 @@ def change_answer(answerId):
 @user_routes.route('/<int:id>/bio', methods=['PUT'])
 @login_required
 def edit_user_bio(id):
-    to_edit = User.query.get(id)
-    data = request.json
-    to_edit.bio = data['bio']
-    db.session.commit()
+    form = Bio()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        to_edit = User.query.get(id)
+        data = request.json
+        to_edit.bio = data['bio']
+        db.session.commit()
 
-    return to_edit.to_dict()
+        return to_edit.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 @user_routes.route('/<int:id>/gender', methods=['PUT'])
 @login_required
@@ -103,15 +112,17 @@ def user_profile_images(id):
 @user_routes.route('/<int:id>/images', methods=['POST'])
 @login_required
 def add_profile_image(id):
+
+
     if "image" not in request.files:
 
-        return {"errors": "image required"}, 400
+        return {"errors": "Image Required."}, 400
 
     image = request.files["image"]
 
     if not allowed_file(image.filename):
 
-        return {"errors": "file type not permitted"}, 400
+        return {"errors": "File type must be JPG or PNG."}, 400
 
     image.filename = get_unique_filename(image.filename)
 
