@@ -5,7 +5,7 @@ import datetime
 
 
 
-matches_routes = Blueprint('matches', __name__)
+answers_routes = Blueprint('answers', __name__)
 
 
 @matches_routes.route('/', methods=['POST'])
@@ -53,7 +53,7 @@ def pass_user():
         new_Match = Match(userId=liker, userId2 = passedId, notInterested = True)
         db.session.add(new_Match)
         db.session.commit()
-        return {'message' : 'Not interested!'}
+        return {'matchId': new_Match.id}
 
 @matches_routes.route('/<int:id>', methods=['DELETE'])
 @login_required
@@ -67,7 +67,7 @@ def unmatch(id):
 @matches_routes.route('/<int:id>')
 @login_required
 def get_user_matches(id):
-    allmatches = Match.query.filter(Match.matched == True)
+    allmatches = Match.query.all()
 
 
-    return {'userMatches': [match.to_dict() for match in allmatches if match.userId is current_user.id or match.userId2 is current_user.id ]}
+    return {'userMatches': [match.to_dict() for match in allmatches if match.userId is current_user.id or match.userId2 is current_user.id and match.matched]}
