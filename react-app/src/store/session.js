@@ -54,7 +54,6 @@ export const login = (email, password) => async (dispatch) => {
   } else {
     return ['An error occurred. Please try again.']
   }
-
 }
 
 export const logout = () => async (dispatch) => {
@@ -69,9 +68,33 @@ export const logout = () => async (dispatch) => {
   }
 };
 
+export const demoLogin = (email, password) => async (dispatch) => 
+{
+  // const email = "demo@aa.io";
+  // const password = "password";
+  const response = await fetch("/api/auth/login", {
+    method: "POST",
+    body: JSON.stringify({
+      email,
+      password,
+      }),
+  });
+
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(setUser(data))
+    return null;
+  } else if (response.status < 500) {
+    const data = await response.json();
+    if (data.errors) {
+      return data.errors;
+    }
+  } else {
+    return ['An error occurred. Please try again.']
+  }
+}
 
 export const signUp = (name, email, gender, bio, pokemonId,  password, questionAnswers) => async (dispatch) => {
-
 
   const response = await fetch('/api/auth/signup', {
     method: 'POST',

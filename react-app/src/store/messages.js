@@ -119,7 +119,6 @@ export default function reducer(state = initialState, action) {
 
 		case DELETE_MESSAGE:
             newState = { ...state };
-
                 delete newState[action.payload];
 
             return newState;
