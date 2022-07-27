@@ -2,30 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
 
-const Questionnaire = ({ setShowSignUp, setQuestionAnswers }) => {
-  const [currentQuestion, setCurrentQuestion] = useState(1);
-  const [showQuestionnaire, setShowQuestionnaire] = useState(true);
-  const [answer1, setAnswer1] = useState("");
-  const [answer2, setAnswer2] = useState("");
-  const [answer3, setAnswer3] = useState("");
-  const [answer4, setAnswer4] = useState("");
-  const [answer5, setAnswer5] = useState("");
-  const [answer6, setAnswer6] = useState("");
-  const [answer7, setAnswer7] = useState("");
-  const [answer8, setAnswer8] = useState("");
-  const [answer9, setAnswer9] = useState("");
-  const [answer10, setAnswer10] = useState("");
-  const [answer11, setAnswer11] = useState("");
-  const [answer12, setAnswer12] = useState("");
-  const [answer13, setAnswer13] = useState("");
-  const [answer14, setAnswer14] = useState("");
-  const [answer15, setAnswer15] = useState("");
-  const [answer16, setAnswer16] = useState("");
-  const [answer17, setAnswer17] = useState("");
-  const [answer18, setAnswer18] = useState("");
-  const [answer19, setAnswer19] = useState("");
-  const [answer20, setAnswer20] = useState("");
-
 
 const Questionnaire = ({setShowSignUp, setQuestionAnswers}) => {
     const [currentQuestion, setCurrentQuestion] = useState(1);
@@ -81,70 +57,8 @@ const Questionnaire = ({setShowSignUp, setQuestionAnswers}) => {
         }
     },[answer20])
 
-    const handleAnswer = async (e) => {
 
-        const switchFunction = (currentQ) => {
 
-            switch(currentQ) {
-                case 1:
-                    setAnswer1(e.target.value)
-                    break;
-                case 2:
-                    setAnswer2(e.target.value)
-                    break;
-                case 3:
-                    setAnswer3(e.target.value)
-                    break;
-                case 4:
-                    setAnswer4(e.target.value)
-                    break;
-                case 5:
-                    setAnswer5(e.target.value)
-                    break;
-                case 6:
-                    setAnswer6(e.target.value)
-                    break;
-                case 7:
-                    setAnswer7(e.target.value)
-                    break;
-                case 8:
-                    setAnswer8(e.target.value)
-                    break;
-                case 9:
-                    setAnswer9(e.target.value)
-                    break;
-                case 10:
-                    setAnswer10(e.target.value)
-                    break;
-                case 11:
-                    setAnswer11(e.target.value)
-                    break;
-                case 12:
-                    setAnswer12(e.target.value)
-                    break;
-                case 13:
-                    setAnswer13(e.target.value)
-                    break;
-                case 14:
-                    setAnswer14(e.target.value)
-                    break;
-                case 15:
-                    setAnswer15(e.target.value)
-                    break;
-                case 16:
-                    setAnswer16(e.target.value)
-                    break;
-                case 17:
-                    setAnswer17(e.target.value)
-                    break;
-                case 18:
-                    setAnswer18(e.target.value)
-                    break;
-                case 19:
-                    setAnswer19(e.target.value)
-                    break;
-                case 20:
-                    setAnswer20(e.target.value)
 
 
   const handleAnswer = async (e) => {
