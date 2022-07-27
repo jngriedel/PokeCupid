@@ -39,10 +39,13 @@ def user(id):
 @user_routes.route('/answers/<int:answerId>', methods=["PATCH"])
 @login_required
 def change_answer(answerId):
+    print('HELOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO')
     answer = Answer.query.get(answerId)
     data = request.json
-    answer.content = data["content"]
-    return {'user' : }
+    answer.content = str(data["content"])
+    db.session.commit()
+    updated_user = User.query.get(current_user.id)
+    return {'user':updated_user.to_dict()}
 
 
 

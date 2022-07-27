@@ -148,6 +148,10 @@ export const editUserBio = (userId, bio) => async (dispatch) => {
   }
 };
 
+export const rehydrateState = () => async(dispatch) => {
+  
+}
+
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case SET_USER:

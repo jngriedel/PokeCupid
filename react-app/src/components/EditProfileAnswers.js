@@ -8,16 +8,24 @@ const EditProfileAnswers = ({question, i, questionObj}) => {
     const sessionUser = useSelector(state => state.session.user)
     const [answer, setAnswer] = useState(question.Options[+sessionUser?.answers[i]?.content])
     const answerId = sessionUser?.answers[i].id
-
+    const dispatch = useDispatch()
 
     const changeAnswer = async()=>{
-        return
+        await fetch(`/api/users/answers/${answerId}`, {
+            method: "PATCH",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({content:answer}),
+          })
+
+          setEdit(false)
+
+
     }
 
 
     return (
         <>
-
+            <tbody>
             <tr>
                 <td>{question.Question}</td>
                 { !edit &&
@@ -43,6 +51,7 @@ const EditProfileAnswers = ({question, i, questionObj}) => {
                 }
 
             </tr>
+            </tbody>
 
         </>
 

@@ -6,7 +6,7 @@ const ProfileAnswers = () => {
 
     const answersArr = useSelector(state => state.session.user.answers)
 
-    console.log(answersArr, "yoooooo");
+
     const questionObj = {
         1: {Question: "What's the most important part of a Pokemon Battle?", Options: {0: "To have fun!", 1: "To win!", 2: "To Level Up!", 3: "To bond with my Pokémon!"}},
         2: {Question: "You encounter an injured wild Pokemon. What do you do?", Options: {0: "Give it a Potion and ask it to join my team.", 1: "Try to capture it. It can't fight back", 2: "Scan it with my Pokedex. I haven't seen that one yet!", 3: "Take it to the nearest PokeCenter to heal"}},
@@ -39,12 +39,16 @@ const ProfileAnswers = () => {
                 <div className='question'>
 
                             <table>
+                                <thead>
                                 <tr>
                                     <th>Question</th>
                                     <th>Answer: </th>
                                 </tr>
+                                </thead>
                     {Object.values(questionObj).map((question, i) => (
-                            <EditProfileAnswers question={question} i={i} questionObj={questionObj}/>
+
+                            <EditProfileAnswers key={i} question={question} i={i} questionObj={questionObj}/>
+
                             ))}
                             </table>
 
