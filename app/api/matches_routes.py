@@ -53,7 +53,7 @@ def pass_user():
         new_Match = Match(userId=liker, userId2 = passedId, notInterested = True)
         db.session.add(new_Match)
         db.session.commit()
-        return {'matchId': new_Match.id}
+        return {'message' : 'Not interested!'}
 
 @matches_routes.route('/<int:id>', methods=['DELETE'])
 @login_required
