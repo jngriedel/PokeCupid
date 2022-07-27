@@ -31,7 +31,7 @@ function Discover() {
       else{setEmpty(false)}
     } else {
       setUserGrabbed(false);
-
+      setEmpty(true)
     }
   });
 
