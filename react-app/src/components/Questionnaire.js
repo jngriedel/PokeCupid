@@ -33,7 +33,7 @@ const Questionnaire = ({setShowSignUp, setQuestionAnswers}) => {
         3: {Question: "When setting out for the day, your main goal is to...", Options: {0: "Meet new trainers and explore.", 1: "Be the best trainer there is.", 2: "Create a dynamic and effective battling team.", 3: "To bond with my Pokemon!"}},
         4: {Question: "Is it important that your Pokemon is happy?", Options: {0: "It's not as important as becomming League Champion", 1: "My Pokemon's happiness is my highest priority!", 2: "I hope that my pokemon and I are having fun adventuring.", 3: "It's important because a happy pokemon is a better battler"}},
         5: {Question: "Oh no! Officer Jenny has stopped you on the road for speeding on your Bicycle. You...", Options: {0: "Challenge her to a battle to get out of a ticket.", 1: "Pay the fine. I was breaking the rules.", 2: "Apologize immediately. Did I put someone in danger?", 3: "Show her your Mr.Mime in an attempt to distract her. Maybe she'll forget why she even pulled you over"}},
-        6: {Question: "Time to choose a starter. You pick...", Options: {0: "Squirtle. The first gym is rock and I will breeze by.", 1: "Charmander. It will be hard at first but he's the most powerful in the end", 2: "Bulbasaur. There's an overabundance of unchosen Bulba's that need homes.", 3: "Pickachu. Everyone loves him for a reason!"}},
+        6: {Question: "Time to choose a starter. You pick...", Options: {0: "Squirtle. The first gym is rock and I will breeze by.", 1: "Charmander. It will be hard at first but he's the most powerful in the end", 2: "Bulbasaur. There's an overabundance of unchosen Bulba's that need homes.", 3: "Pikachu. Everyone loves him for a reason!"}},
         7: {Question: "Someone offers to trade a high level Lapras with your original starter companion.", Options: {0: "And abandon my friend? I think not.", 1: "Please. I'll be able to train my starter to far exceed that pokemon", 2: "An instant upgrade to my party? Of course!", 3: "Only if it knows surf. I still need to visit the islands!"}},
         8: {Question: "Your Pokemon knocks over your gaming system and breaks it... you", Options: {0: "Forgive your Pokemon and clean it up. Mistakes happen!", 1: "Clean it up, but you are going to have to go out and battle to make that money back! ", 2: "Reprimand them and no treats for a week!", 3: "Who hasn't thrown their Wiimote through the TV? Laugh it off."}},
         9: {Question: "You have a ditto, you make him transform into...", Options: {0: "Another ditto.", 1: "Whatever Pokemon is needed to face my current opponent.", 2: "Mr. Mime, he doesn't get enough representation.", 3: "Mewtwo, the most powerful Pokemon!"}},
@@ -60,7 +60,7 @@ const Questionnaire = ({setShowSignUp, setQuestionAnswers}) => {
     const handleAnswer = async (e) => {
 
         const switchFunction = (currentQ) => {
-         
+
             switch(currentQ) {
                 case 1:
                     setAnswer1(e.target.value)

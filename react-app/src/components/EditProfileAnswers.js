@@ -7,11 +7,13 @@ const EditProfileAnswers = ({question, i, questionObj}) => {
 
     const [edit, setEdit] = useState(false)
     const sessionUser = useSelector(state => state.session.user)
-    const [answer, setAnswer] = useState(question.Options[+sessionUser?.answers[i]?.content])
-    const answersObjunsorted1 = Object.values(sessionUser.answers)
-    const answersObjunsorted  = Object.values(answersObjunsorted1)
-    const answersObj = answersObjunsorted.sort((a, b) => (a.quesitonId < b.questionId) ? 1 : -1)
+    const answersUnsorted = sessionUser.answers
+    const answersObj = answersUnsorted.sort((a, b) => a.questionId - b.questionId)
+
+    // const [answer, setAnswer] = useState(question.Options[+sessionUser?.answers[i]?.content])
+    const [answer, setAnswer] = useState(+answersObj[i].content)
     const answerId = answersObj[i].id
+
     const dispatch = useDispatch()
 
 
@@ -54,7 +56,11 @@ const EditProfileAnswers = ({question, i, questionObj}) => {
                     edit &&
                     <>
                     <td>
-                        <select onChange={(e)=>{setAnswer(e.target.value)}}>
+                        <select
+
+                        value={answer}
+                        onChange={(e)=>{setAnswer(e.target.value);
+                       }}>
                             {Object.values(question.Options).map((option,i)=>(
                                     <option  value={i} key={i}>{option}</option>
                             ))}
