@@ -15,29 +15,23 @@ function Bio({}) {
   const handleCancel = () => {
     setEditContent(false);
     setCurrentBio(sessionUser.bio);
+    setErrors([]);
   };
 
   const handleEdit = () => {
     setEditContent(true);
   };
 
-  const changeBio = (e) => {
+  const changeBio = async (e) => {
     e.preventDefault();
-    setErrors([]);
 
-    dispatch(editUserBio(sessionUser.id, currentBio))
-      .then((res) => {
-        setEditContent(false);
-      })
-      .catch(async (res) => {
-        const data = await res.json();
-
-        if (data && data.errors) {
-          setCurrentBio(sessionUser.bio);
-          setEditContent(false);
-          setErrors(data.errors);
-        }
-      });
+    const data = await dispatch(editUserBio(sessionUser.id, currentBio));
+    if (data === null) {
+      setEditContent(false);
+      setErrors([]);
+    } else {
+      setErrors(data);
+    }
   };
 
   return (
@@ -48,6 +42,8 @@ function Bio({}) {
           <button onClick={handleEdit}>Edit</button>
         </div>
       )}
+
+      {errors && errors.map((error, ind) => <div key={ind}>{error}</div>)}
 
       {editContent && (
         <>

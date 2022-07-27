@@ -7,10 +7,8 @@ function Pokemon({}) {
   const sessionUser = useSelector((state) => state.session.user);
   const [editContent, setEditContent] = useState(false);
   const [currentPokemon, setCurrentPokemon] = useState(sessionUser?.pokemonId);
-  const [selected, setSelected] = useState("");
+  const [selected, setSelected] = useState(sessionUser?.pokemonId);
   const [errors, setErrors] = useState([]);
-
-
 
   const handleCancel = () => {
     setEditContent(false);
