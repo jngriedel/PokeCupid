@@ -67,7 +67,9 @@ export const login = (email, password) => async (dispatch) => {
   } else {
     return ["An error occurred. Please try again."];
   }
-};
+
+}
+
 
 export const logout = () => async (dispatch) => {
   const response = await fetch("/api/auth/logout", {
@@ -80,6 +82,7 @@ export const logout = () => async (dispatch) => {
     dispatch(removeUser());
   }
 };
+
 
 export const signUp =
   (name, email, gender, bio, pokemonId, password, questionAnswers) =>

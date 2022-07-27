@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
 import NavBar from './components/NavBar';
@@ -14,6 +14,7 @@ import MessageInput from './components/Messages/MessageInput';
 import FakeHome from './components/FakeHome';
 import Discover from "./components/Discover";
 import Matches from './components/Matches';
+import Splash from './components/Splash/Splash';
 
 import { authenticate } from './store/session';
 
@@ -31,14 +32,14 @@ function App() {
   if (!loaded) {
     return null;
   }
-
+  
   return (
     <BrowserRouter>
-      <NavBar />
+    <NavBar />
+      <Route path="/" exact={true}>
+          <Splash />
+      </Route> 
       <Switch>
-        <Route path="/login" exact={true}>
-          <LoginForm />
-        </Route>
         <Route path="/sign-up" exact={true}>
           <SignUpForm />
         </Route>
@@ -58,9 +59,9 @@ function App() {
           <User />
         </ProtectedRoute>
 
-        <ProtectedRoute path='/' exact={true} >
+        {/* <ProtectedRoute path='/' exact={true} >
           <FakeHome/>
-        </ProtectedRoute>
+        </ProtectedRoute> */}
         <ProtectedRoute path='/messages' exact={true} >
           <MessageInput/>
         </ProtectedRoute>
