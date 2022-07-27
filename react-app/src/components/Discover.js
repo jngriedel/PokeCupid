@@ -19,9 +19,10 @@ function Discover() {
       const responseData = await response.json();
       setUsers(responseData?.users);
     }
-    fetchData();
+    fetchData()
+    .then((res)=> setUserGrabbed(true));
 
-    setUserGrabbed(true);
+
   }, []);
 
   useEffect(() => {
@@ -127,8 +128,10 @@ function Discover() {
           </div>
         </li>
       )}
-      {<p style={{visibility: users.length == 0 || index == users.length  ? 'visible' : 'hidden'}}>{"You've reached the end of all the users for the moment, please check back later!"}</p>}
-
+      {userGrabbed && <p style={{visibility: users.length == 0 || index == users.length  ? 'visible' : 'hidden'}}>{"You've reached the end of all the users for the moment, please check back later!"}</p>}
+      {!userGrabbed && <div className="loadHold">
+      <div className="loader"></div>
+      </div>}
     </>
   );
 }
