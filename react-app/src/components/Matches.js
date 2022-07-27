@@ -13,12 +13,12 @@ function Matches() {
   const sessionUser = useSelector(state=> state.session.user)
   const matchesState = useSelector(state=> state.matches)
   const matches = Object.values(matchesState)
-  console.log(matches)
+
   matches.sort((a, b) =>{
     var dateA = new Date(a.matchTime), dateB = new Date(b.matchTime)
 	return dateB - dateA
   } )
-  console.log(matches,'Matches Sorted here?')
+
   useEffect(() => {
     async function fetchData() {
       const response = await fetch('/api/users/');

@@ -82,6 +82,7 @@ function Profile() {
       {sessionUser && (
         <div className="profileMain">
           <div>{sessionUser?.name}</div>
+          { userImagesArr.length <=3 &&
           <div>
             <form onSubmit={addNewProfImg}>
               <label>Add new Profile Image:</label>
@@ -96,6 +97,7 @@ function Profile() {
               {imageLoading && <p>Uploading Image...</p>}
             </form>
           </div>
+          }
           <div className="profileImages">
             {userImagesArr[0] && (
               <>
