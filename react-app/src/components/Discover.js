@@ -27,7 +27,6 @@ function Discover() {
   useEffect(() => {
     if (users) {
       setCurrent(users[index]);
-      console.log(users);
     } else {
       setUserGrabbed(false);
     }

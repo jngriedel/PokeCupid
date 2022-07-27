@@ -77,15 +77,17 @@ def user_profile_images(id):
 @user_routes.route('/<int:id>/images', methods=['POST'])
 @login_required
 def add_profile_image(id):
+
+
     if "image" not in request.files:
 
-        return {"errors": "image required"}, 400
+        return {"errors": "Image Required."}, 400
 
     image = request.files["image"]
 
     if not allowed_file(image.filename):
 
-        return {"errors": "file type not permitted"}, 400
+        return {"errors": "File type must be JPG or PNG."}, 400
 
     image.filename = get_unique_filename(image.filename)
 

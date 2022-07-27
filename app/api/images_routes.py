@@ -1,11 +1,21 @@
-from flask import Blueprint, jsonify, request
+from flask import Blueprint, jsonify, request, session
 from flask_login import login_required, current_user
 from app.models import User, ProfileImage, db
+from app.forms import ImageTitleForm
 
 
 
 images_routes = Blueprint('images', __name__)
 
+def validation_errors_to_error_messages(validation_errors):
+    """
+    Simple function that turns the WTForms validation errors into a simple list
+    """
+    errorMessages = []
+    for field in validation_errors:
+        for error in validation_errors[field]:
+            errorMessages.append(f'{field} : {error}')
+    return errorMessages
 
 @images_routes.route('/<int:id>', methods=['DELETE'])
 @login_required
@@ -19,9 +29,12 @@ def remove_Image(id):
 @images_routes.route('/<int:id>', methods=['PATCH'])
 @login_required
 def edit_Image(id):
-    to_edit = ProfileImage.query.get(id)
-    data = request.json
-    to_edit.title = data['title']
-    db.session.commit()
+    form = ImageTitleForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        to_edit = ProfileImage.query.get(id)
+        to_edit.title = form.data['title']
+        db.session.commit()
 
-    return {'image': to_edit.to_dict()}
+        return {'image': to_edit.to_dict()}
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
