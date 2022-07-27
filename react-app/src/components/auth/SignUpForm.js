@@ -24,7 +24,7 @@ const SignUpForm = () => {
     dispatch(getAllPokemon());
   }, [dispatch]);
 
-  console.log(pokemon);
+
 
   const onSignUp = async (e) => {
     e.preventDefault();

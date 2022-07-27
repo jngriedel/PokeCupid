@@ -60,8 +60,7 @@ const Questionnaire = ({setShowSignUp, setQuestionAnswers}) => {
     const handleAnswer = async (e) => {
 
         const switchFunction = (currentQ) => {
-            console.log(currentQ)
-            console.log(e.target.value)
+         
             switch(currentQ) {
                 case 1:
                     setAnswer1(e.target.value)
