@@ -15,19 +15,25 @@ user_routes = Blueprint('users', __name__)
 def users():
     users = User.query.filter(User.id != current_user.id)
 
+    ##filter blocked and passed
     allBlocked = Match.query.filter(Match.notInterested == True)
-
-
-    userMatches = [match for match in allBlocked if match.userId is current_user.id or match.userId2 is current_user.id ]
+    userFilter = [match for match in allBlocked if match.userId is current_user.id or match.userId2 is current_user.id ]
     filteredUsers = []
-    for match in userMatches:
+    for match in userFilter:
         filteredUsers.append(match.userId)
         filteredUsers.append(match.userId2)
-
-
     set(filteredUsers)
+    ## filter already liked
+    userLikes = Match.query.filter(Match.matched == False, Match.userId == current_user.id)
+    likedUsers = []
+    for like in userLikes:
+        likedUsers.append(like.userId2)
+    # filter already matched
+    # userMatches = Match.query.filter(Matc)
 
-    return {"users": [user.to_dict() for user in users if user.id not in filteredUsers] }
+
+
+    return {"users": [user.to_dict() for user in users if user.id not in filteredUsers or user.id not in likedUsers] }
 
 
 @user_routes.route('/<int:id>')
@@ -39,7 +45,7 @@ def user(id):
 @user_routes.route('/answers/<int:answerId>', methods=["PATCH"])
 @login_required
 def change_answer(answerId):
-  
+
     answer = Answer.query.get(answerId)
     data = request.json
     answer.content = str(data["content"])
