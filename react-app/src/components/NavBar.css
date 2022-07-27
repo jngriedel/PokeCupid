@@ -1,4 +1,4 @@
-ul {
+.navbarList {
 list-style-type: none;
 margin: 0;
 padding: 0;
@@ -6,11 +6,9 @@ overflow: hidden;
 background-color: #333;
 }
 
-/* li {
-    float: left;
-} */
 
-li a {
+
+.navbarList > li a {
     display: block;
     color: white;
     text-align: center;
@@ -18,6 +16,6 @@ li a {
     text-decoration: none;
 }
 
-li a:hover {
+.navbarList > li a:hover {
     background-color: #111;
 }

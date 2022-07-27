@@ -8,7 +8,7 @@ function Discover() {
   const [users, setUsers] = useState([]);
   const [index, setIndex] = useState(0);
   const [current, setCurrent] = useState(null);
-  const [empty, setEmpty] = useState("");
+  const [empty, setEmpty] = useState(false);
   const [userGrabbed, setUserGrabbed] = useState(false);
   const sessionUser = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
@@ -27,9 +27,11 @@ function Discover() {
   useEffect(() => {
     if (users) {
       setCurrent(users[index]);
-      console.log(users);
+      if(users.length == 0) setEmpty(true)
+      else{setEmpty(false)}
     } else {
       setUserGrabbed(false);
+      setEmpty(true)
     }
   });
 
@@ -64,9 +66,8 @@ function Discover() {
           setCurrent(users[index]);
         } else {
           setUserGrabbed(false);
-          setEmpty(
-            "You've reached the end of all the users at the moment, please check back later!"
-          );
+          setEmpty(true)
+
         }
       }
       return null;
@@ -82,16 +83,15 @@ function Discover() {
       setCurrent(users[index]);
     } else {
       setUserGrabbed(false);
-      setEmpty(
-        "You've reached the end of all the users at the moment, please check back later!"
-      );
+      setEmpty(true)
+
     }
   };
 
   return (
     <>
       <h1>Discover: </h1>
-      {userGrabbed && (
+      {userGrabbed && users.length>=1 &&(
         <li key={current?.id}>
           <div className="discover-div">
             <NavLink to={`/users/${current?.id}`} className="discover-name">
@@ -127,7 +127,8 @@ function Discover() {
           </div>
         </li>
       )}
-      <p>{empty}</p>
+      {empty &&  <p>{"You've reached the end of all the users at the moment, please check back later!"}</p>}
+
     </>
   );
 }
