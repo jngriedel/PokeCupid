@@ -8,9 +8,16 @@ const EditProfileAnswers = ({question, i, questionObj}) => {
     const [edit, setEdit] = useState(false)
     const sessionUser = useSelector(state => state.session.user)
     const [answer, setAnswer] = useState(question.Options[+sessionUser?.answers[i]?.content])
-    const answersObj = Object.values(sessionUser.answers).sort((a, b) => (a.quesitonId > b.questionId) ? 1 : -1)
+    const answersObjunsorted1 = Object.values(sessionUser.answers)
+    const answersObjunsorted  = Object.values(answersObjunsorted1)
+    const answersObj = answersObjunsorted.sort((a, b) => (a.quesitonId < b.questionId) ? 1 : -1)
     const answerId = answersObj[i].id
     const dispatch = useDispatch()
+
+
+
+
+
 
     const changeAnswer = async()=>{
         await fetch(`/api/users/answers/${answerId}`, {
