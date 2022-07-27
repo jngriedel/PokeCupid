@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React from 'react';
+// import { useSelector, useDispatch } from 'react-redux';
 import EditProfileAnswers from './EditProfileAnswers';
 
 const ProfileAnswers = () => {
 
-    const answersArr = useSelector(state => state.session.user.answers)
+    // const answersArr = useSelector(state => state.session.user.answers)
 
 
     const questionObj = {
