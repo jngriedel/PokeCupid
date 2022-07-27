@@ -58,11 +58,6 @@ const ProfileAnswers = () => {
             </div>
 
             );
-          })}
-        </div>
-      </>
-    </div>
-  );
-};
+          }
 
 export default ProfileAnswers;
