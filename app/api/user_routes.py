@@ -27,7 +27,7 @@ def users():
 
     set(filteredUsers)
 
-    return [user.to_dict() for user in users if user.id not in filteredUsers]
+    return {"users": [user.to_dict() for user in users if user.id not in filteredUsers] }
 
 
 @user_routes.route('/<int:id>')
