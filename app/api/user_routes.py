@@ -31,6 +31,7 @@ def users():
     # filter already matched
     allMatches = Match.query.filter(Match.matched == True)
     userMatches = [match for match in allMatches if match.userId is current_user.id or match.userId2 is current_user.id]
+    
     matchedUsers = []
     for match in userMatches:
         matchedUsers.append(match.userId)
