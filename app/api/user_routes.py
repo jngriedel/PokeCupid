@@ -29,11 +29,17 @@ def users():
     for like in userLikes:
         likedUsers.append(like.userId2)
     # filter already matched
-    # userMatches = Match.query.filter(Matc)
+    allMatches = Match.query.filter(Match.matched == True)
+    userMatches = [match for match in allMatches if match.userId is current_user.id or match.userId2 is current_user.id]
+    matchedUsers = []
+    for match in userMatches:
+        matchedUsers.append(match.userId)
+        matchedUsers.append(match.userId2)
+    set(matchedUsers)
 
 
 
-    return {"users": [user.to_dict() for user in users if user.id not in filteredUsers or user.id not in likedUsers] }
+    return {"users": [user.to_dict() for user in users if user.id not in filteredUsers and user.id not in likedUsers and user.id not in matchedUsers] }
 
 
 @user_routes.route('/<int:id>')
