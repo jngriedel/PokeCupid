@@ -35,12 +35,13 @@ function App() {
   
   return (
     <BrowserRouter>
-    <NavBar />
+    
       <Route path="/" exact={true}>
           <Splash />
       </Route> 
       <Switch>
         <Route path="/sign-up" exact={true}>
+        <NavBar />
           <SignUpForm />
         </Route>
         <ProtectedRoute path="/profile" exact={true}>
@@ -59,9 +60,6 @@ function App() {
           <User />
         </ProtectedRoute>
 
-        {/* <ProtectedRoute path='/' exact={true} >
-          <FakeHome/>
-        </ProtectedRoute> */}
         <ProtectedRoute path='/messages' exact={true} >
           <MessageInput/>
         </ProtectedRoute>

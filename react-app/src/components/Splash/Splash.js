@@ -37,10 +37,10 @@ function Splash() {
             PokéCupid is the only app that matches you on what matters to you. 
             You deserve to find the trainer you’re looking for. A world of
             dreams and adventures awaits! Let's go!
-          </p>
+          </p>        
+          <li><NavLink to="/sign-up" id="splashSignup"> JOIN POKÉCUPID </NavLink></li>
         </div>
       </div>
-      <li><NavLink to="/sign-up" className="splashSignup"> Sign Up With Us</NavLink></li>
     </div>
   );
 }
