@@ -1,9 +1,28 @@
 
 .splashPage {
+    margin: -8px;
+    border: 0px;
     font-family: sans-serif;
     text-align: center;
+    width: 100vw;
+    height: 100vh;
+    animation: morph 25s infinite;
   }
   
+  @keyframes morph {
+    0% { background-color: rgb(255, 174, 176); }
+    18% { background-color: rgb(255, 174, 176); }
+    20% { background-color: rgb(255, 204, 096); }
+    38% { background-color: rgb(255, 204, 096); }
+    40% { background-color: rgb(160, 213, 138); }
+    58% { background-color: rgb(160, 213, 138); }
+    60% { background-color: rgb(036, 219, 255); }
+    78% { background-color: rgb(036, 219, 255); }
+    80% { background-color: rgb(117, 109, 225); }
+    98% { background-color: rgb(117, 109, 225); }
+    100% { background-color: rgb(255, 174, 176); }
+  }
+
   .content{
     width: 80%;
     display: flex;
@@ -103,7 +122,7 @@
     display: inline-block;
     text-decoration: none;
     cursor: pointer;
-    width: 65%;
+    width: 60%;
     margin-top: 10%;
     margin-bottom: 3%;
   }

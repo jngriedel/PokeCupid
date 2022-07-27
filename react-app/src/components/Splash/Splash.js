@@ -12,11 +12,12 @@ function Splash() {
       return <Redirect to={"/discover"} />;
     }
   
-  return (
+  return (    
     <div className="splashPage">
       <style>
       @import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@800&family=Nanum+Gothic&display=swap');
       </style>
+
       <div className = "content">
         <div className = "header">
           <img id="splashLogo" src={logo} alt='poke'/>
