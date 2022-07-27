@@ -1,5 +1,5 @@
 import React from "react";
-import { Navlink, Redirect } from "react-router-dom";
+import { NavLink, Redirect } from "react-router-dom";
 import { useSelector } from "react-redux";
 import LoginFormModal from "../auth/LoginForm/LoginIndex";
 import "./Splash.css";
@@ -40,7 +40,7 @@ function Splash() {
           </p>
         </div>
       </div>
-
+      <li><NavLink to="/sign-up" className="splashSignup"> Sign Up With Us</NavLink></li>
     </div>
   );
 }

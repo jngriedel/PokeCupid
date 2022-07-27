@@ -35,15 +35,12 @@ function App() {
   
   return (
     <BrowserRouter>
-      {/* <NavBar /> */}
-      <Switch>
       <Route path="/" exact={true}>
           <Splash />
-        </Route>
-        {/* <Route path="/login" exact={true}>
-          <LoginForm />
-        </Route> */}
+      </Route> 
+      <Switch>
         <Route path="/sign-up" exact={true}>
+        <NavBar />
           <SignUpForm />
         </Route>
         <ProtectedRoute path="/profile" exact={true}>
