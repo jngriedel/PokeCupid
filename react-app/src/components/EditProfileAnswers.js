@@ -8,10 +8,11 @@ const EditProfileAnswers = ({question, i, questionObj}) => {
     const [edit, setEdit] = useState(false)
     const sessionUser = useSelector(state => state.session.user)
     const [answer, setAnswer] = useState(question.Options[+sessionUser?.answers[i]?.content])
-    const answersObjunsorted1 = Object.values(sessionUser.answers)
-    const answersObjunsorted  = Object.values(answersObjunsorted1)
-    const answersObj = answersObjunsorted.sort((a, b) => (a.quesitonId < b.questionId) ? 1 : -1)
+    const answersUnsorted = sessionUser.answers
+    const answersObj = answersUnsorted.sort((a, b) => a.questionId - b.questionId)
+    console.log(answersObj)
     const answerId = answersObj[i].id
+    console.log(answerId)
     const dispatch = useDispatch()
 
 
