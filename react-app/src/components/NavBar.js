@@ -28,7 +28,7 @@ const NavBar = () => {
     //     </div>
     //   </header>
     <div id="navbar">
-      <ul>
+      <ul className="navbarList">
         <li id="list">
           <NavLink to="/" exact={true} activeClassName="active">
             Home
@@ -52,6 +52,11 @@ const NavBar = () => {
         <li>
           <NavLink to="/matches" exact={true} activeClassName="active">
             Matches
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/profile" exact={true} activeClassName="active">
+            My Profile
           </NavLink>
         </li>
         <li>

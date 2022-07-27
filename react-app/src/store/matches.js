@@ -98,7 +98,9 @@ export default function reducer(state = initialState, action) {
     }
     case GET_MATCHES: {
         const newState = {}
-        action.payload.forEach((match)=>{
+        const matchArr = action.payload
+        matchArr.sort((a,b)=> (a.matchTime < b.matchTime) ? 1: -1)
+        matchArr.forEach((match)=>{
             newState[match.id] = match
         })
         return newState
