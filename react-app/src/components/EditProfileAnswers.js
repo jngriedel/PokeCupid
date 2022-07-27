@@ -49,7 +49,7 @@ const EditProfileAnswers = ({question, i, questionObj}) => {
                     <td>
                         <select onChange={(e)=>{setAnswer(e.target.value)}}>
                             {Object.values(question.Options).map((option,i)=>(
-                                    <option value={i} key={i}>{option}</option>
+                                    <option  value={i} key={i}>{option}</option>
                             ))}
 
                         </select>
