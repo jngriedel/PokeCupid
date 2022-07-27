@@ -127,7 +127,7 @@ function Discover() {
           </div>
         </li>
       )}
-      {empty &&  <p>{"You've reached the end of all the users at the moment, please check back later!"}</p>}
+      {empty &&  <p>{"You've reached the end of all the users for the moment, please check back later!"}</p>}
 
     </>
   );
