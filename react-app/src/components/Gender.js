@@ -10,6 +10,7 @@ function Gender({}) {
   const [selected, setSelected] = useState("");
   const [errors, setErrors] = useState([]);
 
+
   const handleCancel = () => {
     setEditContent(false);
     setCurrentGender(sessionUser.gender);

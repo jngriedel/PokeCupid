@@ -4,9 +4,31 @@ import LogoutButton from "./auth/LogoutButton";
 import "./NavBar.css";
 
 const NavBar = () => {
+  
   return (
+    // <header className="nav-ele">
+    //     <div class="nav-container">
+    //       <div class="logo">
+    //         <img id="splashLogo" src={logo} />
+    //         <h1>Bottlenote</h1>
+    //       </div>
+    //       <nav>
+    //         <ul>
+    //           {/* <li>
+    //           <a href="/about">About</a>
+    //         </li> */}
+    //           <li>
+    //             <LoginFormModal className="button login" />
+    //           </li>
+    //           <li>
+    //             <SignupFormModal className="signup-button" />
+    //           </li>
+    //         </ul>
+    //       </nav>
+    //     </div>
+    //   </header>
     <div id="navbar">
-      <ul>
+      <ul className="navbarList">
         <li id="list">
           <NavLink to="/" exact={true} activeClassName="active">
             Home
@@ -30,6 +52,11 @@ const NavBar = () => {
         <li>
           <NavLink to="/matches" exact={true} activeClassName="active">
             Matches
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/profile" exact={true} activeClassName="active">
+            My Profile
           </NavLink>
         </li>
         <li>

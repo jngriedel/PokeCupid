@@ -24,6 +24,7 @@ const SignUpForm = () => {
     dispatch(getAllPokemon());
   }, [dispatch]);
 
+
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {

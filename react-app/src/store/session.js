@@ -2,7 +2,15 @@
 const SET_USER = "session/SET_USER";
 const REMOVE_USER = "session/REMOVE_USER";
 const EDIT_USER = "sessions/EDIT_USER";
+const HYDRATE_USER ="sessions/HYDRATE_USER"
 
+
+
+
+const hydrateUser = (user) => ({
+  type: HYDRATE_USER,
+  payload: user,
+});
 const setUser = (user) => ({
   type: SET_USER,
   payload: user,
@@ -59,7 +67,9 @@ export const login = (email, password) => async (dispatch) => {
   } else {
     return ["An error occurred. Please try again."];
   }
-};
+
+}
+
 
 export const logout = () => async (dispatch) => {
   const response = await fetch("/api/auth/logout", {
@@ -72,6 +82,7 @@ export const logout = () => async (dispatch) => {
     dispatch(removeUser());
   }
 };
+
 
 export const signUp =
   (name, email, gender, bio, pokemonId, password, questionAnswers) =>
@@ -155,6 +166,15 @@ export const editUserBio = (userId, bio) => async (dispatch) => {
   }
 };
 
+export const rehydrateState = (userId) => async(dispatch) => {
+  const response = await fetch(`/api/users/${userId}`);
+
+  if (response.ok) {
+    const user = await response.json();
+    dispatch(hydrateUser(user))
+  }
+}
+
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case SET_USER:
@@ -163,6 +183,10 @@ export default function reducer(state = initialState, action) {
       return { user: null };
     case EDIT_USER:
       return { user: action.payload };
+    case HYDRATE_USER:
+      const newState = {};
+      newState['user'] = action.payload
+      return newState
     default:
       return state;
   }
