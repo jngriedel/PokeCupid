@@ -8,7 +8,7 @@ function Discover() {
   const [users, setUsers] = useState([]);
   const [index, setIndex] = useState(0);
   const [current, setCurrent] = useState(null);
-  const [empty, setEmpty] = useState(false);
+  // const [empty, setEmpty] = useState(false);
   const [userGrabbed, setUserGrabbed] = useState(false);
   const sessionUser = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
@@ -27,11 +27,11 @@ function Discover() {
   useEffect(() => {
     if (users) {
       setCurrent(users[index]);
-      if(users.length == 0) setEmpty(true)
-      else{setEmpty(false)}
+      // if(users.length == 0) setEmpty(true)
+
     } else {
       setUserGrabbed(false);
-      setEmpty(true)
+      // setEmpty(true)
     }
   });
 
@@ -66,7 +66,7 @@ function Discover() {
           setCurrent(users[index]);
         } else {
           setUserGrabbed(false);
-          setEmpty(true)
+          setIndex(index+1)
 
         }
       }
@@ -83,7 +83,7 @@ function Discover() {
       setCurrent(users[index]);
     } else {
       setUserGrabbed(false);
-      setEmpty(true)
+      setIndex(index+1)
 
     }
   };
@@ -127,7 +127,7 @@ function Discover() {
           </div>
         </li>
       )}
-      {empty &&  <p>{"You've reached the end of all the users for the moment, please check back later!"}</p>}
+      {<p style={{visibility: users.length == 0 || index == users.length  ? 'visible' : 'hidden'}}>{"You've reached the end of all the users for the moment, please check back later!"}</p>}
 
     </>
   );
