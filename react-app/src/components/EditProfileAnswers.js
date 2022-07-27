@@ -1,13 +1,15 @@
 import { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
+import { rehydrateState } from '../store/session';
 
 const EditProfileAnswers = ({question, i, questionObj}) => {
 
     const [edit, setEdit] = useState(false)
     const sessionUser = useSelector(state => state.session.user)
     const [answer, setAnswer] = useState(question.Options[+sessionUser?.answers[i]?.content])
-    const answerId = sessionUser?.answers[i].id
+    const answersObj = Object.values(sessionUser.answers).sort((a, b) => (a.quesitonId > b.questionId) ? 1 : -1)
+    const answerId = answersObj[i].id
     const dispatch = useDispatch()
 
     const changeAnswer = async()=>{
@@ -16,8 +18,15 @@ const EditProfileAnswers = ({question, i, questionObj}) => {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({content:answer}),
           })
+          .then((res)=>{
+            dispatch(rehydrateState(sessionUser.id))
 
-          setEdit(false)
+          })
+          .then((res)=>{
+            setEdit(false)
+          })
+
+
 
 
     }
@@ -30,7 +39,7 @@ const EditProfileAnswers = ({question, i, questionObj}) => {
                 <td>{question.Question}</td>
                 { !edit &&
                 <>
-                <td>{question.Options[+sessionUser?.answers[i]?.content]}</td>
+                <td>{question.Options[+answersObj[i]?.content]}</td>
                 <td><button onClick={()=>setEdit(true)}>Edit</button></td>
                 </>
                 }

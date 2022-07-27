@@ -39,7 +39,7 @@ def user(id):
 @user_routes.route('/answers/<int:answerId>', methods=["PATCH"])
 @login_required
 def change_answer(answerId):
-    print('HELOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO')
+  
     answer = Answer.query.get(answerId)
     data = request.json
     answer.content = str(data["content"])
