@@ -17,7 +17,7 @@ function Discover() {
     async function fetchData() {
       const response = await fetch("/api/users/");
       const responseData = await response.json();
-      setUsers(responseData?.users);
+      setUsers(responseData?.users); 
     }
     fetchData();
 
@@ -90,7 +90,7 @@ function Discover() {
 
     }
   };
-
+  
   return (
     <>
       <h1>Discover: </h1>
