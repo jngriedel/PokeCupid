@@ -13,21 +13,21 @@ const MessageDivs = ({ message }) => {
 	const [currentMessage, setCurrentMessage] = useState(message.content);
     const [editMssg, setEditMssg] = useState(false);
 
-	useEffect(() => {
+	// useEffect(() => {
 
-            socket2 = io();
+    //         socket2 = io();
 
-            //receive
+    //         //receive
 
-            socket2.on('delete', (messageId) =>{
-                dispatch(messagesActions.deleteMessage(messageId))
-            })
-            // when component unmounts, disconnect
-            return (() => {
-                socket2.disconnect()
+    //         socket2.on('delete', (messageId) =>{
+    //             dispatch(messagesActions.deleteMessage(messageId))
+    //         })
+    //         // when component unmounts, disconnect
+    //         return (() => {
+    //             socket2.disconnect()
 
-            })
-        }, [])
+    //         })
+    //     }, [])
 
 
 
@@ -51,7 +51,7 @@ const MessageDivs = ({ message }) => {
     const deleteMessage = async () => {
 
 		const res = await dispatch(messagesActions.removeMessage(message.id));
-		socket.emit("delete", res)
+		// socket.emit("delete", res)
 
 	};
 
