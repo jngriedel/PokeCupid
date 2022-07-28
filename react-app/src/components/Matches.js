@@ -27,7 +27,11 @@ function Matches() {
     }
     fetchData();
     dispatch(getUserMatches(sessionUser.id))
-    .then((val)=> setIsLoaded(true))
+    .then((val)=>{
+      setTimeout(() => {
+        setIsLoaded(true)
+      }, 1000)
+    })
 
 
   }, []);
