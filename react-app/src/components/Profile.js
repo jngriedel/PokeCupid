@@ -22,11 +22,14 @@ function Profile() {
   const userImagesArr = Object.values(userImages);
 
   const [errors, setErrors] = useState([]);
+<<<<<<< Updated upstream
   //    const [name, setName] = useState('');
   //    const [email, setEmail] = useState('');
   //    const [gender, setGender] = useState('Male');
   //    const [bio, setBio] = useState('');
   //    const [pokemonId, setPokemonId] = useState(1);
+=======
+>>>>>>> Stashed changes
   const [loaded, setLoaded] = useState(false);
   const [image, setImage] = useState(null);
   const [imageLoading, setImageLoading] = useState(false);
@@ -83,13 +86,19 @@ function Profile() {
     <>
       {loaded && (
         <div className="profileMain">
+          {userImagesArr[0] && (
+            <img
+              className="profile-picture"
+              src={sessionUser?.profileImages[0]?.imgUrl}
+            ></img>
+          )}
           <div>{sessionUser?.name}</div>
           {userImagesArr.length <= 3 && (
             <div>
               {errors &&
                 errors.map((error, ind) => <div key={ind}>{error}</div>)}
 
-              <form onSubmit={addNewProfImg}>
+              <form className="upload-photo-form" onSubmit={addNewProfImg}>
                 <label>Add new Profile Image:</label>
                 <input
                   id="uploadProfPic"

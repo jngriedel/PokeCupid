@@ -1,0 +1,15 @@
+.profile-picture {
+    border-radius: 100%;
+    width: 5%;
+    height: 5%;
+}
+
+.profileMain {
+    background-color: gray;
+    position: relative;
+    padding: 5%;
+}
+
+* {
+    margin: 0;
+}
