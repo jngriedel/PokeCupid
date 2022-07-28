@@ -10,7 +10,7 @@ let socket;
 
 
 const MessageInput = ({matchId}) => {
-
+    const [characterLimit] = useState(200)
 	const user = useSelector((state) => state.session?.user);
     const [message, setMessage] = useState('');
     const messagesObject = useSelector((state) => state.messages);
@@ -38,7 +38,7 @@ const MessageInput = ({matchId}) => {
             //receive
             socket.on("chat", (chat) => {
                 // setMessages(messages => [...messages, chat])
-                console.log('In socket 1')
+
                 dispatch(messagesActions.addEditMessage(chat))
             })
 
@@ -77,6 +77,7 @@ const MessageInput = ({matchId}) => {
                 )}
             </div>
 			<form className="chat-input-ctrl" onSubmit={handleSubmitMsg}>
+                <div style={{visibility: message.length == 0 ? 'hidden' : 'visible'}}>{message.length} / {characterLimit}</div>
 				<input
 					className="chat-input"
 					type="text"
@@ -84,7 +85,7 @@ const MessageInput = ({matchId}) => {
 					value={message}
 					onChange={(e) => setMessage(e.target.value)}
 				/>
-                <button> Send </button>
+                <button disabled={message.length > 200 || message.length == 0? true : false}> Send </button>
 			</form>
         </div>
 	);
