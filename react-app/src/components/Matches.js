@@ -27,7 +27,11 @@ function Matches() {
     }
     fetchData();
     dispatch(getUserMatches(sessionUser.id))
-    .then((val)=> setIsLoaded(true))
+    .then((val)=>{
+      setTimeout(() => {
+        setIsLoaded(true)
+      }, 1000)
+    })
 
 
   }, []);
@@ -37,14 +41,20 @@ function Matches() {
   return (
     <>
     {isLoaded &&
-    <div>
-      <h1>Matches: </h1>
-      {matches.length >= 1 &&  matches.map((match,i)=>(
-            <div key={i}>
-            <Match match={match}/>
-            </div>
-      )) }
+    <div className='matches-main'>
+      <div className='message-title'>
+        <h2 className='pageTitle'>Matches </h2>
       </div>
+      <div className='all-matches-container'>
+      {matches.length >= 1 &&  matches.map((match,i)=>(
+
+            <Match key={i} match={match}/>
+
+      )) }
+      {matches.length == 0 &&
+      <h2>Looks Empty in Here! Go get matching!</h2>}
+      </div>
+    </div>
       }
       {!isLoaded && <div className="loadHold">
       <div className="loader"></div>
