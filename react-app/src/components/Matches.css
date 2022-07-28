@@ -44,3 +44,10 @@
     border: solid black 1px;
     overflow-y: scroll;
 }
+
+
+.message-title {
+    color: #fff;
+    background-color: #1a1a1a;
+    width: 100%;
+}
