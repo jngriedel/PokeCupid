@@ -21,7 +21,7 @@ function Profile() {
 
   const userImagesArr = Object.values(userImages);
 
-  // const [errors, setErrors] = useState([]);
+  const [errors, setErrors] = useState([]);
   //    const [name, setName] = useState('');
   //    const [email, setEmail] = useState('');
   //    const [gender, setGender] = useState('Male');

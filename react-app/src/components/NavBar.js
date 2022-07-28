@@ -11,7 +11,7 @@ const NavBar = () => {
   const userImages = useSelector((state) => state.profileImages);
   // const userImagesArr = Object.values(userImages);
   // const thumbnail = userImagesArr[0].imgUrl;
-  
+
   return (
     <main className="navigation">
       <style>
@@ -30,10 +30,12 @@ const NavBar = () => {
         </div>
 
               <div className="navigation-right">
-                <p className="nav-name">
+                {sessionUser && <> <p className="nav-name">
                   Welcome back, {sessionUser.name}!
                 </p>
-                <LogoutButton/>    
+                <LogoutButton/>
+                </>}
+
               </div>
       </div>
     </main>
