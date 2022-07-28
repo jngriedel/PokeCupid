@@ -11,10 +11,8 @@ import Bio from "./Bio";
 import Gender from "./Gender";
 import Pokemon from "./Pokemon";
 
-import ProfileAnswers from './ProfileAnswers';
-import './Profile.css'
-
-
+import ProfileAnswers from "./ProfileAnswers";
+import "./Profile.css";
 
 function Profile() {
   const dispatch = useDispatch();
@@ -23,20 +21,19 @@ function Profile() {
 
   const userImagesArr = Object.values(userImages);
 
-  // const [errors, setErrors] = useState([]);
+  const [errors, setErrors] = useState([]);
   //    const [name, setName] = useState('');
   //    const [email, setEmail] = useState('');
   //    const [gender, setGender] = useState('Male');
   //    const [bio, setBio] = useState('');
   //    const [pokemonId, setPokemonId] = useState(1);
-  const [loaded, setLoaded] = useState(false)
+  const [loaded, setLoaded] = useState(false);
   const [image, setImage] = useState(null);
   const [imageLoading, setImageLoading] = useState(false);
 
   useEffect(() => {
     dispatch(getUserImages(sessionUser?.id));
-    dispatch(getUserMatches(sessionUser?.id))
-    .then((res)=> setLoaded(true));
+    dispatch(getUserMatches(sessionUser?.id)).then((res) => setLoaded(true));
   }, []);
 
   const addNewProfImg = async (e) => {
@@ -59,8 +56,11 @@ function Profile() {
 
       await dispatch(uploadImage(data.image));
       document.getElementById("uploadProfPic").value = null;
-    } else {
+    } else if (!res.ok) {
       setImageLoading(false);
+      const data = await res.json();
+      setErrors([data.errors]);
+
       // a real app would probably use more advanced
       // error handling
     }
@@ -86,6 +86,9 @@ function Profile() {
           <div>{sessionUser?.name}</div>
           {userImagesArr.length <= 3 && (
             <div>
+              {errors &&
+                errors.map((error, ind) => <div key={ind}>{error}</div>)}
+
               <form onSubmit={addNewProfImg}>
                 <label>Add new Profile Image:</label>
                 <input
@@ -135,14 +138,12 @@ function Profile() {
           </div>
           <ProfileAnswers />
         </div>
-
-
-
-
-    )}
-    {!loaded && <div className="loadHold">
-      <div className="loader"></div>
-      </div>}
+      )}
+      {!loaded && (
+        <div className="loadHold">
+          <div className="loader"></div>
+        </div>
+      )}
     </>
   );
 }

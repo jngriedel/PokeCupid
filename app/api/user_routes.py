@@ -36,7 +36,7 @@ def users():
     # filter already matched
     allMatches = Match.query.filter(Match.matched == True)
     userMatches = [match for match in allMatches if match.userId is current_user.id or match.userId2 is current_user.id]
-    
+
     matchedUsers = []
     for match in userMatches:
         matchedUsers.append(match.userId)
@@ -122,7 +122,7 @@ def add_profile_image(id):
 
     if not allowed_file(image.filename):
 
-        return {"errors": "File type must be JPG or PNG."}, 400
+        return {"errors": "Could not upload - file type must be JPG or PNG."}, 400
 
     image.filename = get_unique_filename(image.filename)
 
