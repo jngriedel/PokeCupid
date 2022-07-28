@@ -35,48 +35,9 @@ const NavBar = () => {
                 </p>
                 <LogoutButton/>    
               </div>
-        
       </div>
     </main>
   );
-  //   <div id="navbar">
-  //     <ul className="navbarList">
-  //       <li id="list">
-  //         <NavLink to="/" exact={true} activeClassName="active">
-  //           Home
-  //         </NavLink>
-  //       </li>
-  //       <li>
-  //         <NavLink to="/login" exact={true} activeClassName="active">
-  //           Login
-  //         </NavLink>
-  //       </li>
-  //       <li>
-  //         <NavLink to="/sign-up" exact={true} activeClassName="active">
-  //           Sign Up
-  //         </NavLink>
-  //       </li>
-  //       <li>
-  //         <NavLink to="/discover" exact={true} activeClassName="active">
-  //           Discover
-  //         </NavLink>
-  //       </li>
-  //       <li>
-  //         <NavLink to="/matches" exact={true} activeClassName="active">
-  //           Matches
-  //         </NavLink>
-  //       </li>
-  //       <li>
-  //         <NavLink to="/profile" exact={true} activeClassName="active">
-  //           My Profile
-  //         </NavLink>
-  //       </li>
-  //       <li>
-  //         <LogoutButton />
-  //       </li>
-  //     </ul>
-  //   </div>
-  // );
 };
 
 export default NavBar;
