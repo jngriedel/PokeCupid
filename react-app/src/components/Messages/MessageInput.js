@@ -5,6 +5,7 @@ import * as messagesActions from '../../store/messages';
 import MessageDivs from "./MessageDiv";
 let socket;
 
+
 //return the message to dict inside the addMessage, then add it on the socket
 
 
@@ -26,17 +27,24 @@ const MessageInput = ({matchId}) => {
 
             socket = io();
 
+
+            //receive
+
+            socket.on('delete', (messageId) =>{
+                console.log('Connected')
+                dispatch(messagesActions.deleteMessage(messageId))
+            })
+
             //receive
             socket.on("chat", (chat) => {
                 // setMessages(messages => [...messages, chat])
+                console.log('In socket 1')
                 dispatch(messagesActions.addEditMessage(chat))
             })
-            // socket.on('delete', (messageId) =>{
-            //     dispatch(messagesActions.deleteMessage(messageId))
-            // })
-            // when component unmounts, disconnect
+
             return (() => {
                 socket.disconnect()
+
 
             })
         }, [])
@@ -44,14 +52,12 @@ const MessageInput = ({matchId}) => {
         const handleSubmitMsg = async (e) => {
             e.preventDefault();
             const res = await dispatch(messagesActions.addMessage(message, matchId))
-            console.log(res)
+
             //send
 
             socket.emit("chat", res)
+
             setMessage('');
-
-
-
 
         };
 
@@ -64,7 +70,7 @@ const MessageInput = ({matchId}) => {
                 {stateMessages.map((message, i) =>
 					(
                         <div key={i}>
-                            <MessageDivs  message={message} matchId={matchId}/>
+                            <MessageDivs socket={socket}   message={message} matchId={matchId}/>
 
                         </div>
 					)
