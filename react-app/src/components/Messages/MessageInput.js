@@ -14,23 +14,24 @@ const MessageInput = ({matchId}) => {
     const [message, setMessage] = useState('');
     const messagesObject = useSelector((state) => state.messages);
     const stateMessages = Object.values(messagesObject);
-    const [messages, setMessages] = useState([])
+
 
     const dispatch = useDispatch();
 
 
     useEffect(() => {
-        // if (user){
-            //     dispatch(messagesActions.getMatchMessages(matchId))
+        if (user){
+                dispatch(messagesActions.getMatchMessages(matchId))
 
 
 
-            // }
+            }
 
             socket = io();
-
+            //receive
             socket.on("chat", (chat) => {
-                setMessages(messages => [...messages, chat])
+                // setMessages(messages => [...messages, chat])
+                dispatch(messagesActions.addEditMessage(chat))
             })
             // when component unmounts, disconnect
             return (() => {
@@ -40,13 +41,13 @@ const MessageInput = ({matchId}) => {
 
         const handleSubmitMsg = async (e) => {
             e.preventDefault();
-            // const res = await dispatch(messagesActions.addMessage(message, matchId))
+            const res = await dispatch(messagesActions.addMessage(message, matchId))
+            console.log(res)
+            //send
 
-
-            // console.log(res)
-            socket.emit("chat", { user: user.name, msg: message })
+            socket.emit("chat", res)
             setMessage('');
-            console.log(messages)
+
 
 
 
@@ -55,15 +56,14 @@ const MessageInput = ({matchId}) => {
 
 
 	return (
-        messages &&
+        stateMessages &&
         <div>
             <div>
-                {messages.map((message, i) =>
+                {stateMessages.map((message, i) =>
 					(
                         <div key={i}>
-                            {/* <MessageDivs message={message} matchId={matchId}/> */}
-                            {message.content}
-
+                            <MessageDivs message={message} matchId={matchId}/>
+                           
                         </div>
 					)
                 )}
