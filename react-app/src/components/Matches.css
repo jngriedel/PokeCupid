@@ -110,3 +110,8 @@
     font-weight: 200;
     text-overflow: ellipsis;
 }
+
+
+.unmatch-button{
+    width:100px;
+}

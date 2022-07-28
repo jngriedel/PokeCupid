@@ -25,8 +25,41 @@ function Match({match}) {
 //     }
 // }, []);
 
+const handlePass = async (passedId) => {
+
+  let result = window.confirm(
+    "This person will no longer show up in your matches, and you won't be able to match again. Are you sure?"
+  );
+  if (result) {
+  const response = await fetch(`/api/matches/pass`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      passedId,
+      liker: sessionUser.id,
+    }),
+  });
+  if (response.ok) {
+    const data = await response.json();
+    if (data.message) {
+
+    }
+    return null;
+  } else {
+    return ["An error occurred. Please try again."];
+  }
+}
+};
+
   return (
     <>
+    <div className='unmatch-container'>
+      <button onClick={()=>{handlePass(notSessionUser.id)}} type='button' className='unmatch-button'>
+        Unmatch
+        </button>
+    </div>
       <div
       onClick={()=>{ setShowModal(true);
       setMessagesChanged(false)}}  className='matchDiv'  >
@@ -44,8 +77,8 @@ function Match({match}) {
                     <h3 className='matchName'>{match.user.id == sessionUser.id ? match.user2.name : match.user.name}</h3>
                     <h5 className='matchBio'>{match.user.id == sessionUser.id ? match.user2.bio : match.user.bio}</h5>
                 </div>
-                <button className='unmatch-button'>UnMatch</button>
             </div>
+
     {/* { showChat &&  */}
     <div>
       {/* <button onClick={() => setShowModal(true)}

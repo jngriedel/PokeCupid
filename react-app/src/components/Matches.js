@@ -52,7 +52,7 @@ function Matches() {
 
       )) }
       {matches.length == 0 &&
-      <h2>Looks Empty in Here! Go get matching!</h2>}
+      <h2>Looks Empty in Here! PokemonGo get matching!</h2>}
       </div>
     </div>
       }
