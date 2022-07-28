@@ -1,3 +1,7 @@
+body {
+    margin-top: 70px;
+}
+
 .navigation {
     position: fixed;
     top: 0px;
@@ -10,7 +14,7 @@
     align-items: center;
     justify-content: center;
   }
-  
+
   .navigation-top {
     display: flex;
     flex-direction: row;
@@ -23,7 +27,7 @@
     height: 60px;
     z-index: 100;
   }
-  
+
   .navigation-left {
     left: 0;
   }
@@ -51,7 +55,7 @@
     display: block;
     color: white;
     text-align: center;
-    padding: 23px 20px 14.5px 20px; 
+    padding: 23px 20px 14.5px 20px;
     text-decoration: none;
     font-size: 15px;
     min-width: 120px;
@@ -91,5 +95,3 @@
     padding: 8px;
     margin-right: 2%;
   }
-
-
