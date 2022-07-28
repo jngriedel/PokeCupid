@@ -2,8 +2,7 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { io } from 'socket.io-client';
 import * as messagesActions from "../../store/messages";
-let socket2
-
+// let socket2
 
 const MessageDivs = ({ message }) => {
 	const dispatch = useDispatch();
@@ -28,10 +27,6 @@ const MessageDivs = ({ message }) => {
 
     //         })
     //     }, [])
-
-
-
-
 	const editMessage = async (e) => {
 		e.preventDefault();
 
@@ -43,9 +38,6 @@ const MessageDivs = ({ message }) => {
 
 			await dispatch(messagesActions.editMessage(messageData))
 			.then((res)=> setEditMssg(false))
-
-
-
 	};
 
     const deleteMessage = async () => {

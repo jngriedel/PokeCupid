@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Modal } from '../../context/Modal';
-// import MessageIndex from './MessageIndex';
-import "./index.css";
+import { ChatModal } from '../../context/ChatModal';
+import MessageInput from './MessageInput';
+import MessageDivs from './MessageDiv';
+// import "./index.css";
 
 function MessagingModal() {
 
@@ -9,14 +10,15 @@ function MessagingModal() {
 
   return (
     <>
-      <button onClick={() => setShowModal(true)}
+      {/* <button onClick={() => setShowModal(true)}
         className='messagebutton'>
         Chat with this trainer!
-      </button>
+      </button> */}
           {showModal && (
-            <Modal onClose={() => setShowModal(false)}>
-              <MessageIndex />
-            </Modal>
+            <ChatModal onClose={() => setShowModal(false)}>
+              <MessageDivs />
+              <MessageInput />
+            </ChatModal>
           )}
     </>
   );

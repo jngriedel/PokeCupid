@@ -7,7 +7,6 @@ let socket;
 
 //return the message to dict inside the addMessage, then add it on the socket
 
-
 const MessageInput = ({matchId}) => {
 
 	const user = useSelector((state) => state.session?.user);
@@ -49,23 +48,17 @@ const MessageInput = ({matchId}) => {
 
             socket.emit("chat", res)
             setMessage('');
-
-
-
-
         };
-
-
 
 	return (
         stateMessages &&
         <div>
-            <div>
+            <div className="messages-listed">
+                {/* needs scroll */}
                 {stateMessages.map((message, i) =>
 					(
                         <div key={i}>
                             <MessageDivs  message={message} matchId={matchId}/>
-
                         </div>
 					)
                 )}
