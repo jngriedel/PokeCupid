@@ -1,17 +1,19 @@
 
   .loader {
-    border: 16px solid #f3f3f3; /* Light grey */
-    border-top: 16px solid #3498db; /* Blue */
-    border-radius: 50%;
-    width: 120px;
-    height: 120px;
-    animation: spin 2s linear infinite;
+    /* border: 16px solid #f3f3f3; /* Light grey */
+    /* border-top: 16px solid #3498db; Blue */
+    /* border-radius: 50%; */
+    width: 450px;
+    height: 320px;
+    background-image: url("https://c.tenor.com/fSsxftCb8w0AAAAd/pikachu-running.gif");
+    /* background-size: contain; */
+    /* animation: spin 2s linear infinite; */
   }
 
-  @keyframes spin {
+  /* @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
-  }
+  } */
 .loadHold{
     width: 100%;
     height: 100%;
@@ -21,15 +23,26 @@
 }
 
 .matchDiv{
-    height: 200px;
-    width: 200px;
-    border: solid black 2px;
+    box-sizing: border-box;
+    height: 120px;
+    width: 580px;
+    background-color: #fff;
+    box-shadow: 0 1px 0 0 #ebedf2, 0 -1px 0 0 #ebedf2;
+    padding: 17px 20px;
+    margin-bottom: 10px;
+    display: flex;
+    /* justify-content: space-between; */
+}
+.matchDiv:hover{
+    cursor: pointer;
 
 }
 
 .matchImg{
-    height: 50px;
-    width: 50px;
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+    border: 1px solid grey;
 }
 
 
@@ -56,3 +69,44 @@
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
   }
+
+.message-title {
+    box-sizing: border-box;
+    color: #fff;
+    background-color: #1a1a1a;
+    width: 100%;
+    padding-top: 30px;
+    height: 100px;
+    margin-bottom: 30px;
+}
+
+.pageTitle {
+    margin: 0px 140px;
+    font-size: 32px;
+    padding-left: 60px;
+    font-family: "GT America",Helvetica Neue,Helvetica,Arial,sans-serif;
+
+}
+
+
+.all-matches-container {
+    display: flex;
+    flex-direction: column;
+    margin: 0px 140px ;
+    padding: 0px 60px;
+}
+
+.matches-main{
+    background-color: #f0f2f6;
+}
+
+.matchName {
+    margin-left: 24px;
+    margin-top: 4px;
+}
+
+.matchBio{
+    margin-left: 24px;
+    font-weight: 200;
+    text-overflow: ellipsis;
+}

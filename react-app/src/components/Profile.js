@@ -33,7 +33,11 @@ function Profile() {
 
   useEffect(() => {
     dispatch(getUserImages(sessionUser?.id));
-    dispatch(getUserMatches(sessionUser?.id)).then((res) => setLoaded(true));
+    dispatch(getUserMatches(sessionUser?.id)).then((res) =>{
+      setTimeout(() => {
+        setLoaded(true)
+      }, 1000)
+      });
   }, []);
 
   const addNewProfImg = async (e) => {

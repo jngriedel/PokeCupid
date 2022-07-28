@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import {getUserMatches} from '../store/matches'
@@ -8,13 +8,22 @@ import MessageInput from './Messages/MessageInput';
 import { ChatModal } from '../context/ChatModal';
 
 function Match({match}) {
-
+  // const focusRef = useRef()
   const dispatch = useDispatch()
   const sessionUser = useSelector(state=> state.session.user)
   const [showModal, setShowModal] = useState(false)
   const [messagesChanged, setMessagesChanged] = useState(false)
   const matchId = match.id
   const notSessionUser =  match.user.id == sessionUser.id ? match.user2 : match.user
+
+//   useEffect(() => {
+//     if (focusRef) {
+//         focusRef.current.addEventListener("DOMNodeInserted", (e) => {
+//             const { currentTarget: target } = e;
+//             target.scroll({ top: target.scrollHeight, behavior: "smooth" });
+//         });
+//     }
+// }, []);
 
   return (
     <>
@@ -32,9 +41,10 @@ function Match({match}) {
                 </div>
                 }
                 <div>
-                    <h3>{match.user.id == sessionUser.id ? match.user2.name : match.user.name}</h3>
+                    <h3 className='matchName'>{match.user.id == sessionUser.id ? match.user2.name : match.user.name}</h3>
+                    <h5 className='matchBio'>{match.user.id == sessionUser.id ? match.user2.bio : match.user.bio}</h5>
                 </div>
-                <button></button>
+                <button className='unmatch-button'>UnMatch</button>
             </div>
     {/* { showChat &&  */}
     <div>

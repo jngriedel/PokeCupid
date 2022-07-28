@@ -5,10 +5,12 @@ import * as messagesActions from '../../store/messages';
 import MessageDivs from "./MessageDiv";
 let socket;
 
+
 //return the message to dict inside the addMessage, then add it on the socket
 
-const MessageInput = ({matchId, messagesChanged, setMessagesChanged}) => {
 
+const MessageInput = ({matchId, messagesChanged, setMessagesChanged}) => {
+    const [characterLimit] = useState(200)
 	const user = useSelector((state) => state.session?.user);
     const [message, setMessage] = useState('');
 
@@ -31,17 +33,24 @@ const MessageInput = ({matchId, messagesChanged, setMessagesChanged}) => {
 
             socket = io();
 
+
+            //receive
+
+            socket.on('delete', (messageId) =>{
+                console.log('Connected')
+                dispatch(messagesActions.deleteMessage(messageId))
+            })
+
             //receive
             socket.on("chat", (chat) => {
                 // setMessages(messages => [...messages, chat])
+
                 dispatch(messagesActions.addEditMessage(chat))
             })
-            // socket.on('delete', (messageId) =>{
-            //     dispatch(messagesActions.deleteMessage(messageId))
-            // })
-            // when component unmounts, disconnect
+
             return (() => {
                 socket.disconnect()
+
 
             })
         }, [])
@@ -49,7 +58,7 @@ const MessageInput = ({matchId, messagesChanged, setMessagesChanged}) => {
         const handleSubmitMsg = async (e) => {
             e.preventDefault();
             const res = await dispatch(messagesActions.addMessage(message, matchId))
-            console.log(res)
+
             //send
 
             socket.emit("chat", res)
@@ -65,12 +74,14 @@ const MessageInput = ({matchId, messagesChanged, setMessagesChanged}) => {
                 {messagesChanged && stateMessages.map((message, i) =>
 					(
                         <div key={i}>
-                            <MessageDivs  message={message} matchId={matchId}/>
+                            <MessageDivs socket={socket}   message={message} matchId={matchId}/>
+
                         </div>
 					)
                 )}
             </div>
 			<form className="chat-input-ctrl" onSubmit={handleSubmitMsg}>
+                <div style={{visibility: message.length == 0 ? 'hidden' : 'visible'}}>{message.length} / {characterLimit}</div>
 				<input
 					className="chat-input"
 					type="text"
@@ -78,7 +89,7 @@ const MessageInput = ({matchId, messagesChanged, setMessagesChanged}) => {
 					value={message}
 					onChange={(e) => setMessage(e.target.value)}
 				/>
-                <button> Send </button>
+                <button disabled={message.length > 200 || message.length == 0? true : false}> Send </button>
 			</form>
         </div>
 	);
