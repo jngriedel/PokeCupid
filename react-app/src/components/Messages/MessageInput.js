@@ -7,10 +7,11 @@ let socket;
 
 //return the message to dict inside the addMessage, then add it on the socket
 
-const MessageInput = ({matchId}) => {
+const MessageInput = ({matchId, messagesChanged, setMessagesChanged}) => {
 
 	const user = useSelector((state) => state.session?.user);
     const [message, setMessage] = useState('');
+
     const messagesObject = useSelector((state) => state.messages);
     const stateMessages = Object.values(messagesObject);
 
@@ -21,6 +22,11 @@ const MessageInput = ({matchId}) => {
     useEffect(() => {
         if (user){
                 dispatch(messagesActions.getMatchMessages(matchId))
+                .then((res)=>{
+                    setTimeout(() => {
+                        setMessagesChanged(true)
+                      }, 500)
+                })
             }
 
             socket = io();
@@ -55,7 +61,8 @@ const MessageInput = ({matchId}) => {
         <div>
             <div className="messages-listed">
                 {/* needs scroll */}
-                {stateMessages.map((message, i) =>
+                {!messagesChanged && <div className="chat-loading"></div>}
+                {messagesChanged && stateMessages.map((message, i) =>
 					(
                         <div key={i}>
                             <MessageDivs  message={message} matchId={matchId}/>
