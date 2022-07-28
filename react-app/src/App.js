@@ -39,7 +39,10 @@ function App() {
     
       <Route path="/" exact={true}>
           <Splash />
-      </Route>
+
+      </Route> 
+
+
       <Switch>
         <Route path="/sign-up" exact={true}>
         <NavBar />
