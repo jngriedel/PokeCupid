@@ -1,32 +1,56 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
-
+import { io } from 'socket.io-client';
 import * as messagesActions from '../../store/messages';
-
 import MessageDivs from "./MessageDiv";
+let socket;
+
+//return the message to dict inside the addMessage, then add it on the socket
+
 
 const MessageInput = ({matchId}) => {
 
 	const user = useSelector((state) => state.session?.user);
     const [message, setMessage] = useState('');
     const messagesObject = useSelector((state) => state.messages);
-    const messages = Object.values(messagesObject);
+    const stateMessages = Object.values(messagesObject);
+    const [messages, setMessages] = useState([])
 
     const dispatch = useDispatch();
 
-    const handleSubmitMsg = async (e) => {
-		e.preventDefault();
-        await dispatch(messagesActions.addMessage(message, matchId))
-        .then((res)=> setMessage(''));
-	};
 
     useEffect(() => {
-        if (user){
-            dispatch(messagesActions.getMatchMessages(matchId))
-        }
-    }, [])
+        // if (user){
+            //     dispatch(messagesActions.getMatchMessages(matchId))
 
+
+
+            // }
+
+            socket = io();
+
+            socket.on("chat", (chat) => {
+                setMessages(messages => [...messages, chat])
+            })
+            // when component unmounts, disconnect
+            return (() => {
+                socket.disconnect()
+            })
+        }, [])
+
+        const handleSubmitMsg = async (e) => {
+            e.preventDefault();
+            // const res = await dispatch(messagesActions.addMessage(message, matchId))
+
+
+            // console.log(res)
+            socket.emit("chat", { user: user.name, msg: message })
+            setMessage('');
+            console.log(messages)
+
+
+
+        };
 
 
 
@@ -34,11 +58,13 @@ const MessageInput = ({matchId}) => {
         messages &&
         <div>
             <div>
-                {messages?.map((message, i) =>
+                {messages.map((message, i) =>
 					(
-                        <p key={i}>
-                            <MessageDivs message={message} matchId={matchId}/>
-                        </p>
+                        <div key={i}>
+                            {/* <MessageDivs message={message} matchId={matchId}/> */}
+                            {message.content}
+
+                        </div>
 					)
                 )}
             </div>

@@ -15,6 +15,7 @@ import FakeHome from './components/FakeHome';
 import Discover from "./components/Discover";
 import Matches from './components/Matches';
 import Splash from './components/Splash/Splash';
+import Chat from './components/Messages/TestChat';
 
 import { authenticate } from './store/session';
 
@@ -32,13 +33,13 @@ function App() {
   if (!loaded) {
     return null;
   }
-  
+
   return (
     <BrowserRouter>
     <NavBar />
       <Route path="/" exact={true}>
           <Splash />
-      </Route> 
+      </Route>
       <Switch>
         <Route path="/sign-up" exact={true}>
           <SignUpForm />
@@ -57,6 +58,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path="/users/:userId" exact={true}>
           <User />
+        </ProtectedRoute>
+        <ProtectedRoute path="/testroom" exact={true}>
+          <Chat />
         </ProtectedRoute>
 
         {/* <ProtectedRoute path='/' exact={true} >
