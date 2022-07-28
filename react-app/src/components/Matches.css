@@ -23,15 +23,24 @@
 }
 
 .matchDiv{
-    height: 200px;
-    width: 200px;
-    border: solid black 2px;
+    height: 120px;
+    width: 580px;
+    background-color: #fff;
+    box-shadow: 0 1px 0 0 #ebedf2, 0 -1px 0 0 #ebedf2;
+    padding: 17px 20px;
+    margin-bottom: 10px;
+
+}
+.matchDiv:hover{
+    cursor: pointer;
 
 }
 
 .matchImg{
-    height: 50px;
-    width: 50px;
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+    border: 1px solid grey;
 }
 
 
@@ -47,7 +56,31 @@
 
 
 .message-title {
+    box-sizing: border-box;
     color: #fff;
     background-color: #1a1a1a;
     width: 100%;
+    padding-top: 30px;
+    height: 100px;
+    margin-bottom: 30px;
+}
+
+.pageTitle {
+    margin: 0px 140px;
+    font-size: 32px;
+    padding-left: 60px;
+    font-family: "GT America",Helvetica Neue,Helvetica,Arial,sans-serif;
+
+}
+
+
+.all-matches-container {
+    display: flex;
+    flex-direction: column;
+    margin: 0px 140px ;
+    padding: 0px 60px;
+}
+
+.matches-main{
+    background-color: #f0f2f6;
 }

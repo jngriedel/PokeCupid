@@ -39,7 +39,7 @@ function Match({match}) {
                 </div>
                 }
                 <div>
-                    <h3>{match.user.id == sessionUser.id ? match.user2.name : match.user.name}</h3>
+                    <h3 className='matchName'>{match.user.id == sessionUser.id ? match.user2.name : match.user.name}</h3>
                 </div>
             </div>
 

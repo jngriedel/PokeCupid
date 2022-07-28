@@ -43,16 +43,18 @@ function Matches() {
     {isLoaded &&
     <div className='matches-main'>
       <div className='message-title'>
-        <h1>Matches: </h1>
+        <h2 className='pageTitle'>Matches </h2>
       </div>
+      <div className='all-matches-container'>
       {matches.length >= 1 &&  matches.map((match,i)=>(
-            <div key={i}>
-            <Match match={match}/>
-            </div>
+
+            <Match key={i} match={match}/>
+
       )) }
       {matches.length == 0 &&
       <h2>Looks Empty in Here! Go get matching!</h2>}
       </div>
+    </div>
       }
       {!isLoaded && <div className="loadHold">
       <div className="loader"></div>
