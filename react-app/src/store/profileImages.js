@@ -74,7 +74,9 @@ export const editImage = (imageId, title) => async (dispatch) => {
   });
   if (response.ok) {
     const data = await response.json();
+
     dispatch(changeImage(data));
+
     return null;
   } else if (response.status < 500) {
     const data = await response.json();
