@@ -36,16 +36,16 @@ function App() {
 
   return (
     <BrowserRouter>
-    
+
       <Route path="/" exact={true}>
           <Splash />
 
-      </Route> 
+      </Route>
 
 
       <Switch>
         <Route path="/sign-up" exact={true}>
-        <NavBar />
+        {/* <NavBar /> */}
           <SignUpForm />
         </Route>
         <ProtectedRoute path="/profile" exact={true}>
