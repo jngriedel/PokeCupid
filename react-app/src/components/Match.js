@@ -34,6 +34,7 @@ function Match({match}) {
                 <div>
                     <h3>{match.user.id == sessionUser.id ? match.user2.name : match.user.name}</h3>
                 </div>
+                <button></button>
             </div>
     {/* { showChat &&  */}
     <div>
