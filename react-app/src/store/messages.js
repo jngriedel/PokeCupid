@@ -52,7 +52,8 @@ export const addMessage = (message,matchId) => async (dispatch) => {
 	if (res.ok) {
 		const data = await res.json();
 		dispatch(addEditMessage(data.message));
-		return data.message;
+		console.log(data.message)
+		return data.message
 	} else {
 		const data = await res.json();
 		if (data.errors) {

@@ -12,11 +12,12 @@ function Splash() {
       return <Redirect to={"/discover"} />;
     }
   
-  return (
+  return (    
     <div className="splashPage">
       <style>
       @import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@800&family=Nanum+Gothic&display=swap');
       </style>
+
       <div className = "content">
         <div className = "header">
           <img id="splashLogo" src={logo} alt='poke'/>
@@ -37,10 +38,10 @@ function Splash() {
             PokéCupid is the only app that matches you on what matters to you. 
             You deserve to find the trainer you’re looking for. A world of
             dreams and adventures awaits! Let's go!
-          </p>
+          </p>        
+          <li><NavLink to="/sign-up" id="splashSignup"> JOIN POKÉCUPID </NavLink></li>
         </div>
       </div>
-      <li><NavLink to="/sign-up" className="splashSignup"> Sign Up With Us</NavLink></li>
     </div>
   );
 }
