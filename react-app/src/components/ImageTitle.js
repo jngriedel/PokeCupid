@@ -15,6 +15,7 @@ function ImageTitle({ image }) {
   const handleCancel = () => {
     setEditContent(false);
     setCurrentTitle(image.title);
+    setErrors([]);
   };
 
   const handleEdit = () => {
@@ -27,6 +28,7 @@ function ImageTitle({ image }) {
     const data = await dispatch(editImage(image.id, currentTitle));
     if (data === null) {
       setEditContent(false);
+      setErrors([]);
     } else {
       setErrors(data);
     }
