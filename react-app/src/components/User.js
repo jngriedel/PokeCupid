@@ -11,6 +11,7 @@ function User() {
   const [user, setUser] = useState({});
   const { userId } = useParams();
   const dispatch = useDispatch();
+
   useEffect(() => {
     if (!userId) {
       return;
@@ -19,6 +20,7 @@ function User() {
       const response = await fetch(`/api/users/${userId}`);
       const user = await response.json();
       setUser(user);
+
       dispatch(getUserImages(user.id));
     })();
   }, [userId]);

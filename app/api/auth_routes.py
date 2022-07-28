@@ -61,9 +61,11 @@ def sign_up():
     """
     Creates a new user and logs them in
     """
+    pokemon = db.session.query(Pokemon)
+    pokemon_list = [(p.id, p.name) for p in pokemon]
     form = SignUpForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-
+    form.pokemonId.choices = pokemon_list
 
     if form.validate_on_submit():
 

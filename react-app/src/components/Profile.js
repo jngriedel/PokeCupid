@@ -11,7 +11,10 @@ import Bio from "./Bio";
 import Gender from "./Gender";
 import Pokemon from "./Pokemon";
 
-import ProfileAnswers from "./ProfileAnswers";
+import ProfileAnswers from './ProfileAnswers';
+import './Profile.css'
+
+
 
 function Profile() {
   const dispatch = useDispatch();
@@ -20,18 +23,20 @@ function Profile() {
 
   const userImagesArr = Object.values(userImages);
 
-  const [errors, setErrors] = useState([]);
+  // const [errors, setErrors] = useState([]);
   //    const [name, setName] = useState('');
   //    const [email, setEmail] = useState('');
   //    const [gender, setGender] = useState('Male');
   //    const [bio, setBio] = useState('');
   //    const [pokemonId, setPokemonId] = useState(1);
+  const [loaded, setLoaded] = useState(false)
   const [image, setImage] = useState(null);
   const [imageLoading, setImageLoading] = useState(false);
 
   useEffect(() => {
     dispatch(getUserImages(sessionUser?.id));
-    dispatch(getUserMatches(sessionUser?.id));
+    dispatch(getUserMatches(sessionUser?.id))
+    .then((res)=> setLoaded(true));
   }, []);
 
   const addNewProfImg = async (e) => {
@@ -76,7 +81,7 @@ function Profile() {
 
   return (
     <>
-      {sessionUser && (
+      {loaded && (
         <div className="profileMain">
           <div>{sessionUser?.name}</div>
           {userImagesArr.length <= 3 && (
@@ -130,7 +135,14 @@ function Profile() {
           </div>
           <ProfileAnswers />
         </div>
-      )}
+
+
+
+
+    )}
+    {!loaded && <div className="loadHold">
+      <div className="loader"></div>
+      </div>}
     </>
   );
 }

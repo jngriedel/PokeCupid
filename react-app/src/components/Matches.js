@@ -46,6 +46,9 @@ function Matches() {
       )) }
       </div>
       }
+      {!isLoaded && <div className="loadHold">
+      <div className="loader"></div>
+      </div>}
     </>
   );
 }
