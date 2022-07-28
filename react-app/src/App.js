@@ -59,13 +59,7 @@ function App() {
         <ProtectedRoute path="/users/:userId" exact={true}>
           <User />
         </ProtectedRoute>
-        <ProtectedRoute path="/testroom" exact={true}>
-          <Chat />
-        </ProtectedRoute>
 
-        {/* <ProtectedRoute path='/' exact={true} >
-          <FakeHome/>
-        </ProtectedRoute> */}
         <ProtectedRoute path='/messages' exact={true} >
           <MessageInput/>
         </ProtectedRoute>

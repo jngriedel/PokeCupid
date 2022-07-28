@@ -22,20 +22,22 @@ const MessageInput = ({matchId}) => {
     useEffect(() => {
         if (user){
                 dispatch(messagesActions.getMatchMessages(matchId))
-
-
-
             }
 
             socket = io();
+
             //receive
             socket.on("chat", (chat) => {
                 // setMessages(messages => [...messages, chat])
                 dispatch(messagesActions.addEditMessage(chat))
             })
+            // socket.on('delete', (messageId) =>{
+            //     dispatch(messagesActions.deleteMessage(messageId))
+            // })
             // when component unmounts, disconnect
             return (() => {
                 socket.disconnect()
+
             })
         }, [])
 
@@ -62,8 +64,8 @@ const MessageInput = ({matchId}) => {
                 {stateMessages.map((message, i) =>
 					(
                         <div key={i}>
-                            <MessageDivs message={message} matchId={matchId}/>
-                           
+                            <MessageDivs  message={message} matchId={matchId}/>
+
                         </div>
 					)
                 )}

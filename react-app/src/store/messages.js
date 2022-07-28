@@ -52,7 +52,7 @@ export const addMessage = (message,matchId) => async (dispatch) => {
 	if (res.ok) {
 		const data = await res.json();
 		dispatch(addEditMessage(data.message));
-		console.log(data.message)
+
 		return data.message
 	} else {
 		const data = await res.json();
@@ -87,7 +87,7 @@ export const removeMessage = (messageId) => async (dispatch) => {
 	if (res.ok) {
 		const data = await res.json();
 		dispatch(deleteMessage(messageId));
-		return
+		return messageId
 
 	} else {
 		const data = await res.json();

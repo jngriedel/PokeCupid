@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
+import { io } from 'socket.io-client';
+import * as messagesActions from "../../store/messages";
+let socket2
 
-import * as messageActions from "../../store/messages";
 
 const MessageDivs = ({ message }) => {
 	const dispatch = useDispatch();
@@ -11,6 +12,25 @@ const MessageDivs = ({ message }) => {
 	const [disabled, setDisabled] = useState(true);
 	const [currentMessage, setCurrentMessage] = useState(message.content);
     const [editMssg, setEditMssg] = useState(false);
+
+	useEffect(() => {
+
+            socket2 = io();
+
+            //receive
+
+            socket2.on('delete', (messageId) =>{
+                dispatch(messagesActions.deleteMessage(messageId))
+            })
+            // when component unmounts, disconnect
+            return (() => {
+                socket2.disconnect()
+
+            })
+        }, [])
+
+
+
 
 	const editMessage = async (e) => {
 		e.preventDefault();
@@ -21,7 +41,7 @@ const MessageDivs = ({ message }) => {
                 message: currentMessage,
                  };
 
-			await dispatch(messageActions.editMessage(messageData))
+			await dispatch(messagesActions.editMessage(messageData))
 			.then((res)=> setEditMssg(false))
 
 
@@ -30,8 +50,9 @@ const MessageDivs = ({ message }) => {
 
     const deleteMessage = async () => {
 
-		await dispatch(messageActions.removeMessage(message.id));
-		
+		const res = await dispatch(messagesActions.removeMessage(message.id));
+		socket.emit("delete", res)
+
 	};
 
 	return (
