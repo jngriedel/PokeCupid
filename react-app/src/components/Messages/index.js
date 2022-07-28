@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
-import MessageIndex from './MessageIndex';
+// import MessageIndex from './MessageIndex';
 import "./index.css";
 
 function MessagingModal() {
