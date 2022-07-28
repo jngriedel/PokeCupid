@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
@@ -38,8 +39,9 @@ function Match({match}) {
       <MessageInput matchId={matchId} />
     </div> }
 
+
     </>
   );
 }
 
-export default Match
+export default Match;

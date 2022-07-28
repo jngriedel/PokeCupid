@@ -28,6 +28,7 @@ function Discover() {
   useEffect(() => {
     if (users) {
       setCurrent(users[index]);
+
       // if(users.length == 0) setEmpty(true)
 
     } else {
