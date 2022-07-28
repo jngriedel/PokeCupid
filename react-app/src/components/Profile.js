@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -12,9 +11,7 @@ import Bio from "./Bio";
 import Gender from "./Gender";
 import Pokemon from "./Pokemon";
 
-import ProfileAnswers from './ProfileAnswers';
-
-
+import ProfileAnswers from "./ProfileAnswers";
 
 function Profile() {
   const dispatch = useDispatch();
@@ -82,22 +79,22 @@ function Profile() {
       {sessionUser && (
         <div className="profileMain">
           <div>{sessionUser?.name}</div>
-          { userImagesArr.length <=3 &&
-          <div>
-            <form onSubmit={addNewProfImg}>
-              <label>Add new Profile Image:</label>
-              <input
-                id="uploadProfPic"
-                name="image"
-                type="file"
-                accept="image/*"
-                onChange={updateImage}
-              ></input>
-              <button type="submit">Upload</button>
-              {imageLoading && <p>Uploading Image...</p>}
-            </form>
-          </div>
-          }
+          {userImagesArr.length <= 3 && (
+            <div>
+              <form onSubmit={addNewProfImg}>
+                <label>Add new Profile Image:</label>
+                <input
+                  id="uploadProfPic"
+                  name="image"
+                  type="file"
+                  accept="image/*"
+                  onChange={updateImage}
+                ></input>
+                <button type="submit">Upload</button>
+                {imageLoading && <p>Uploading Image...</p>}
+              </form>
+            </div>
+          )}
           <div className="profileImages">
             {userImagesArr[0] && (
               <>
@@ -131,14 +128,9 @@ function Profile() {
           <div>
             <Gender />
           </div>
-          <ProfileAnswers/>
+          <ProfileAnswers />
         </div>
-
-
-
-
-    )}
-
+      )}
     </>
   );
 }
