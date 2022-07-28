@@ -12,12 +12,12 @@ def user_exists(form, field):
         raise ValidationError('Email address is already in use.')
 
 
-def pokemon_choices(form, field):
-    # Getting the pokemon choices
-    pokemon = field.data
-    user = User.query.filter(User.username == username).first()
-    if user:
-        raise ValidationError('Username is already in use.')
+# def pokemon_choices(form, field):
+#     # Getting the pokemon choices
+#     pokemon = field.data
+#     user = User.query.filter(User.username == username).first()
+#     if user:
+#         raise ValidationError('Username is already in use.')
 
 
 class SignUpForm(FlaskForm):
