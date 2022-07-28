@@ -89,10 +89,11 @@
 
 .matchName {
     margin-left: 24px;
+    margin-top: 4px;
 }
 
 .matchBio{
     margin-left: 24px;
-    font-weight: none;
-    
+    font-weight: 200;
+    text-overflow: ellipsis;
 }
