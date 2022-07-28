@@ -1,9 +1,28 @@
 
 .splashPage {
+    margin: -8px;
+    border: 0px;
     font-family: sans-serif;
     text-align: center;
+    width: 100vw;
+    height: 100vh;
+    animation: morph 25s infinite;
   }
   
+  @keyframes morph {
+    0% { background-color: rgb(255, 174, 176); }
+    18% { background-color: rgb(255, 174, 176); }
+    20% { background-color: rgb(255, 204, 096); }
+    38% { background-color: rgb(255, 204, 096); }
+    40% { background-color: rgb(160, 213, 138); }
+    58% { background-color: rgb(160, 213, 138); }
+    60% { background-color: rgb(036, 219, 255); }
+    78% { background-color: rgb(036, 219, 255); }
+    80% { background-color: rgb(117, 109, 225); }
+    98% { background-color: rgb(117, 109, 225); }
+    100% { background-color: rgb(255, 174, 176); }
+  }
+
   .content{
     width: 80%;
     display: flex;
@@ -66,6 +85,7 @@
     width: 65%;
     font-size: 1.9rem;
     text-align: left;
+    align-items: left;
     font-weight: 900;
     letter-spacing: 1px;
     font-family: 'Libre Franklin', sans-serif;
@@ -87,4 +107,23 @@
     color: black;
     padding-left: 70px;
     /* border: 1px solid red; */
+  }
+
+  #splashSignup{
+    background-color: black;
+    text-align: center;
+    border-radius: 3px;
+    border: 3px solid black;
+    color: white;
+    padding: 12px 16px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: 0.3s;
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+    width: 60%;
+    margin-top: 10%;
+    margin-bottom: 3%;
   }

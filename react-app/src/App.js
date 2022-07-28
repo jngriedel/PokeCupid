@@ -36,37 +36,43 @@ function App() {
 
   return (
     <BrowserRouter>
-    <NavBar />
+    
       <Route path="/" exact={true}>
           <Splash />
-      </Route>
+
+      </Route> 
+
+
       <Switch>
         <Route path="/sign-up" exact={true}>
+        <NavBar />
           <SignUpForm />
         </Route>
         <ProtectedRoute path="/profile" exact={true}>
+        <NavBar />
           <Profile />
         </ProtectedRoute>
         <ProtectedRoute path="/discover" exact={true}>
+        <NavBar />
           <Discover />
         </ProtectedRoute>
         <ProtectedRoute path="/matches" exact={true}>
+        <NavBar />
           <Matches/>
         </ProtectedRoute>
         <ProtectedRoute path="/users" exact={true}>
           <UsersList />
         </ProtectedRoute>
         <ProtectedRoute path="/users/:userId" exact={true}>
+        <NavBar />
           <User />
         </ProtectedRoute>
         <ProtectedRoute path="/testroom" exact={true}>
           <Chat />
         </ProtectedRoute>
 
-        {/* <ProtectedRoute path='/' exact={true} >
-          <FakeHome/>
-        </ProtectedRoute> */}
         <ProtectedRoute path='/messages' exact={true} >
+        <NavBar />
           <MessageInput/>
         </ProtectedRoute>
       </Switch>

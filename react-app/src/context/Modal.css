@@ -18,11 +18,11 @@ body{
     right: 0;
     left: 0;
     bottom: 0;
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(0, 0, 0, .5);
   }
   
   #modal-content {
     position: absolute;
-    background-color:white;
+    /* background-color:white; */
     /* border: solid black .5px; */
   }
