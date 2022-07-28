@@ -12,7 +12,10 @@ const SignUpForm = () => {
   const [gender, setGender] = useState("Male");
   const [bio, setBio] = useState("");
   const [pokemonId, setPokemonId] = useState(1);
-  const [showSignUp, setShowSignUp] = useState(false);
+  const [showSignUp, setShowSignUp] = useState(true);
+  const [showQuestionnaire, setShowQuestionnaire] = useState(false);
+  const [next, setNext] = useState(true);
+  const [submit, setSubmit] = useState(false);
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
   const [questionAnswers, setQuestionAnswers] = useState([]);
@@ -24,6 +27,11 @@ const SignUpForm = () => {
     dispatch(getAllPokemon());
   }, [dispatch]);
 
+  const handleClick = () => {
+    setShowSignUp(false)
+    setShowQuestionnaire(true)
+    setNext(false)
+  }
 
   const onSignUp = async (e) => {
     e.preventDefault();
@@ -67,7 +75,11 @@ const SignUpForm = () => {
     return <Redirect to="/discover" />;
   }
 
+
+
   return (
+    <>
+    {showSignUp && !showQuestionnaire &&
     <form onSubmit={onSignUp}>
       <div>
         {errors.map((error, ind) => (
@@ -279,18 +291,29 @@ const SignUpForm = () => {
           required={true}
         ></input>
       </div>
+      {next && submit &&
+      <button onSubmit={onSignUp} type="submit">
+        Submit
+      </button>}
+      </form>}
+      {next && !submit &&
+      <button
+        onClick={handleClick}
+        type="button"
+        >
+        Next
+      </button>}
+      {!showSignUp && showQuestionnaire &&
       <Questionnaire
+        setSubmit={setSubmit}
         setShowSignUp={setShowSignUp}
+        setShowQuestionnaire={setShowQuestionnaire}
+        showQuestionnaire={showQuestionnaire}
+        setNext={setNext}
         setQuestionAnswers={setQuestionAnswers}
         questionAnswers={questionAnswers}
-      />
-      <button
-        style={{ visibility: showSignUp ? "visible" : "hidden" }}
-        type="submit"
-      >
-        Sign Up
-      </button>
-    </form>
+      />}
+    </>
   );
 };
 
