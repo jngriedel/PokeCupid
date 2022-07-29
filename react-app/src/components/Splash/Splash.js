@@ -15,7 +15,7 @@ function Splash() {
   return (    
     <div className="splashPage">
       <style>
-      @import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@800&family=Nanum+Gothic&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Gothic+A1:wght@600&family=Libre+Franklin:wght@800&family=Nanum+Gothic&display=swap');
       </style>
 
       <div className = "content">
