@@ -1,18 +1,20 @@
 .questions-form {
-    background-color: #000000;
-    width: 450px;
-    min-height: 200px;
-    height: min-content;
-    border-radius: 15px;
+    background-color: #ffffff;
+    width: 100vw;
+    height: 100vh;
     padding: 20px;
     box-shadow: 10px 10px 42px 0px rgba(0, 0, 0, 0.75);
     display: flex;
+    flex-direction: column;
     justify-content: space-evenly;
 }
 
 .question-section {
     width: 100%;
     position: relative;
+    margin-bottom: 100px;
+    text-align: center;
+    background-color: black;
 }
 
 .question-number {
@@ -27,24 +29,33 @@
 
 .answer-section {
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    max-width: calc(480px + 4vw * 2);
+    max-height: 100%;
+    padding: 16px 4vw 4px;
+    overflow: scroll;
+    position: relative;
+    min-height: 288px;
+    background-color: white;
 }
 
 #question-button {
     width: 100%;
     font-size: 16px;
-    color: #ffffff;
-    background-color: #000000;
-    border-radius: 15px;
-    display: flex;
-    padding: 5px;
-    justify-content: flex-start;
-    align-items: center;
+    color: #000000;
+    background-color: #ffffff;
+    border-radius: 40px;
+    padding: 20px;
+    padding-left: 33px;
+    font-weight: bold;
     border: 5px solid #fda137;
-    cursor: pointer;
     margin: 10px;
+    position: relative;
+    text-align: left;
+    min-height: 20px;
+    min-width: 20px;
+    font-size: 1.2625rem;
+    line-height: 20px;
+    cursor: pointer;
 }
 
 #question-button:hover {
