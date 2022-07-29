@@ -2,11 +2,10 @@
 
 **Created using:** 
 - ***Python***
-
+- ***Flask***
 - ***Javascript***
 - ***React***
 - ***Redux***
-- ***Flask***
 - ***PostgreSQL***
 - ***CSS***
 
@@ -33,7 +32,6 @@ Upon logging in or completing your sign up, you will be taken to the Discover pa
 
 ![host](UPLOAD DISCOVER PAGE)
 
-![addimage](https://user-images.githubusercontent.com/97005259/177265368-7867ffc0-ad01-47c5-9794-3b2ed759e613.PNG)
 
 ## **My Profile** ##
 While you're logged in, you will see a "My Profile" button on the top of the website. Click this to take you to your profile, where you may view and edit your information, and even change your Pokémon. You are also given the choice to upload a picture of yourself, which you can edit later if you wish. If you want to edit any details, you can click the edit buttons respectively to do so.
