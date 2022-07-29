@@ -37,9 +37,11 @@ function Bio({}) {
   return (
     <>
       {!editContent && (
-        <div>
-          <h1>{currentBio}</h1>
-          <button onClick={handleEdit}>Edit</button>
+        <div className="current-bio-div">
+          <p className="current-bio">"{currentBio}"</p>
+          <button className="edit-bio" onClick={handleEdit}>
+            <i className="fa-solid fa-pencil"></i>
+          </button>
         </div>
       )}
 
@@ -49,6 +51,7 @@ function Bio({}) {
         <>
           <form onSubmit={changeBio}>
             <textarea
+              className="edit-bio-textarea"
               name="currentBio"
               onChange={(e) => {
                 setCurrentBio(e.target.value);
@@ -58,15 +61,19 @@ function Bio({}) {
               {currentBio}
             </textarea>
             <div className="add-comment-bttn-box">
-              <button id="edit-comment-bttn" className="bttn" type="submit">
-                Save
+              <button
+                id="edit-comment-bttn"
+                className="edit-bio-save"
+                type="submit"
+              >
+                <i className="fa-solid fa-check"></i>
               </button>
               <button
                 id="edit-comment-bttn"
-                className="bttn"
+                className="edit-bio-cancel"
                 onClick={handleCancel}
               >
-                Cancel
+                <i className="fa-solid fa-x"></i>
               </button>
             </div>
           </form>

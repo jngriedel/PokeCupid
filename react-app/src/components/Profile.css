@@ -1,0 +1,463 @@
+.profile-picture {
+    border-radius: 50%;
+    object-fit: cover;
+    width: 8%;
+    height: 16vh;
+    position: relative;
+    left: 30%;
+}
+
+.profileMain {
+    position: relative;
+    padding-top: 2.5%;
+    background-color: #f0f2f6
+}
+
+.profile-nameplate{
+    background-color: #1a1a1a;
+    width: 100%;
+    padding-top: 3%;
+    transition: .1s background-color
+}
+
+.profile-nameplate:hover {
+    background-color:rgb(20, 20, 20);
+}
+
+.profile-name {
+    color: white;
+    position: absolute;
+    left: 39%;
+    width: fit-content;
+
+    top: 5%;
+    letter-spacing: 1.5px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 35px;
+    font-weight: bolder;
+
+}
+
+.profile-title {
+    color: white;
+    background-color: #333;
+    letter-spacing: 1.5px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 25px;
+    font-weight: 900;
+    position: relative;
+    width: 100%;
+    border: 1px solid #666;
+    text-align: center;
+    margin-top: 2.5%;
+    padding: .5%;
+
+}
+
+.biography-title {
+    background-color: #1a1a1a;
+    color: white;
+    padding: 1.2%;
+    width: 100%;
+    text-transform: uppercase;
+    text-indent: 3%;
+    font-weight: bolder;
+    font-size: 15px;
+    border-top-left-radius: 4px;
+}
+
+.question-title {
+    background-color: #1a1a1a;
+    color: white;
+    padding: 1.2%;
+    width: 18vw;
+    text-transform: uppercase;
+    text-indent: 3%;
+    font-weight: bolder;
+    font-size: 15px;
+    border-top-left-radius: 4px;
+    text-align: left;
+}
+
+.answer-title {
+    background-color: #1a1a1a;
+    color: white;
+    padding: 1.2%;
+    width: 30vw;
+    text-transform: uppercase;
+    text-indent: 3%;
+    font-weight: bolder;
+    font-size: 15px;
+    border-top-right-radius: 4px;
+    text-align: left;
+}
+
+.answer-submit {
+    color: green;
+    border: transparent;
+}
+
+.answer-cancel {
+    color: red;
+    border: transparent;
+}
+
+.profile-question {
+    font-family: 'Roboto', sans-serif;
+    font-weight: bolder;
+    font-size: 20px;
+    text-shadow: .8px 0 black;
+    background-color: white;
+    padding: 2%;
+
+}
+
+.profile-answers {
+    font-family: 'Roboto', sans-serif;
+    font-weight: bolder;
+    font-size: 15px;
+    background-color: white;
+    text-indent: 10px;
+    /* text-align: center; */
+    margin-left: 1%;
+    text-transform: uppercase;
+    /* text-shadow: .5px 0 black; */
+}
+
+.profile-picture-title {
+    background-color: #1a1a1a;
+    color: white;
+    padding: 1.2%;
+    width: 97.6%;
+    text-transform: uppercase;
+    text-indent: 1.5%;
+    font-weight: bolder;
+    font-size: 15px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    margin-bottom: 2%;
+}
+
+.edit-answers {
+    /* border: 1px solid #ccc;
+    background-color: white; */
+    border: transparent
+}
+
+.pokemon-title {
+    background-color: #1a1a1a;
+    color: white;
+    padding: 1.2%;
+    width: 100%;
+    text-transform: uppercase;
+    text-indent: 3%;
+    font-weight: bolder;
+    font-size: 15px;
+    border-top-right-radius: 4px;
+}
+
+* {
+    margin: 0;
+}
+
+.pokemon-img {
+    width: fit-content;
+    object-fit: cover;
+    position: relative;
+    left: 2%;
+}
+
+.pokemon-number {
+    font-weight: bolder;
+    font-size: 30px;
+    position: absolute;
+    left: 50%;
+    height: 25vh;
+    border-left: 1px solid #ccc;
+    padding-left: 3%;
+}
+
+.current-bio {
+    width: 23vw;
+}
+
+.edit-pokemon {
+position: absolute;
+bottom: 5%;
+right: 4%;
+border-radius: 50%;
+width: 2vw;
+height: 4vh;
+font-size: 20px;
+background-color: #34f;
+border: transparent;
+color: whitesmoke;
+transition: .3s background-color
+}
+
+.edit-bio {
+position: absolute;
+bottom: 5%;
+left: 43%;
+border-radius: 50%;
+width: 2vw;
+height: 4vh;
+font-size: 20px;
+background-color: #34f;
+border: transparent;
+color: whitesmoke;
+transition: .3s background-color
+}
+
+.edit-bio-textarea{
+width: 20vw;
+resize: none;
+height: 20vh;
+position: relative;
+left: 5%;
+top: 5%;
+padding-right: 5%;
+
+}
+
+.edit-pokemon:hover {
+
+background-color: rgb(0, 21, 255);
+
+}
+
+.edit-pokemon-select {
+position: absolute;
+bottom: 17%;
+right: 1%;
+list-style: none;
+}
+
+.edit-pokemon-cancel {
+    position: absolute;
+    bottom: 6%;
+    right: 3%;
+    background-color: transparent;
+    border: none;
+    font-size: 21px;
+    color: red;
+    }
+
+
+.edit-pokemon-save {
+    position: absolute;
+    font-size: 25px;
+    color: green;
+    bottom: 5%;
+    right: 6.3%;
+    background-color: transparent;
+    border: none;
+    }
+
+.edit-bio-cancel {
+        position: absolute;
+        background-color: transparent;
+        border: none;
+        font-size: 21px;
+        color: red;
+        left: 45%;
+        bottom: 5%;
+        }
+
+
+.edit-bio-save {
+        position: absolute;
+        font-size: 26px;
+        color: green;
+        left: 41%;
+        bottom: 4%;
+        background-color: transparent;
+        border: none;
+        }
+
+.profile-pictures-title-container {
+    display: inline-flex;
+}
+
+.edit-photo {
+    border: none;
+    background-color: transparent;
+}
+
+.profile-info-container {
+    width: 50%;
+    position: relative;
+    left: 25%;
+    margin-top: 5%;
+}
+.titles-container{
+    width: 100%;
+    position: relative;
+    margin-top: 5%;
+    display: inline-flex;
+}
+
+.bio-and-pokemon {
+    display: inline-flex;
+    width: 47.4vw;
+    height: 25vh;
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+    border: 1px solid rgba(100, 100, 111, 0.2);
+    position: relative;
+    justify-content: space-between;
+    padding: 2%;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    background-color: white;
+}
+
+.current-bio {
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    font-size: large;
+    width: 70%;
+    position: relative;
+    left: 12%;
+    padding-top: 5%;
+}
+
+.current-bio-div {
+    width: 50%;
+}
+
+.upload-text {
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    font-size: large;
+    width: 70%;
+    position: relative;
+}
+
+.profile-pictures {
+    width: 13vw;
+    height: 25vh;
+    border: solid 1px #ccc;
+    /* margin-top: 3%; */
+}
+
+.profile-pictures-div {
+    width: 80%;
+    padding: 2%;
+}
+
+.profile-pictures-title {
+    font-family: 'Roboto', sans-serif;
+    font-weight: bolder;
+    font-size: large;
+    text-shadow: .8px 0 black;
+    width: 95%;
+    margin-bottom: 3%;
+}
+
+.profile-images{
+    display: inline-flex;
+    width: 100%;
+}
+
+.image-title-textarea {
+    width: 12.8vw;
+    resize: none;
+    height: 2vh;
+    border: 1px solid #ccc;
+}
+
+.edit-title-container {
+    /* position: relative;
+    left: 26%;
+    bottom: 28px; */
+}
+
+.profile-images-container {
+    border: 1px solid #ccc;
+    margin-top: 3%;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-radius: 4px;
+    margin-bottom: 3%;
+    background-color: white;
+}
+
+.profile-picture-delete {
+    border: none;
+    background: transparent;
+}
+
+.upload-container {
+    text-align: right;
+    position: relative;
+    right: 10%;
+    padding-top: 1%;
+    padding-bottom: 3%;
+}
+
+.images-errors {
+    color: red;
+    font-size: small;
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+    position: relative;
+    left: 5%;
+    top: 25px;
+}
+
+.gender-container {
+    position: absolute;
+    top: -9.3%;
+    left: 28%;
+}
+
+.gender-button {
+position: absolute;
+left: 110%;
+bottom: 3%;
+border-radius: 50%;
+width: 1.1vw;
+height: 2vh;
+font-size: 10px;
+background-color: #34f;
+border: transparent;
+color: whitesmoke;
+transition: .3s background-color
+}
+
+.gender-text {
+    color: white;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.gender-button-cancel{
+    position: absolute;
+    top: -9.3%;
+    left: 38%;
+    width: 1vw;
+    height: 2vh;
+    font-size: 10px;
+    background-color: transparent;
+    border: transparent;
+    color: red;
+    transition: .3s background-color
+}
+
+.gender-button-submit {
+    position: absolute;
+    top: -9.3%;
+    left: 36%;
+    width: 1vw;
+    height: 2vh;
+    font-size: 10px;
+    background-color: transparent;
+    border: transparent;
+    color: green;
+    transition: .3s background-color
+}
+
+table {
+    border: 1px solid #ccc;
+    margin-bottom: 3%;
+    border-radius: 4px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
