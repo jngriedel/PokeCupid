@@ -7,15 +7,13 @@ let socket;
 
 //return the message to dict inside the addMessage, then add it on the socket
 
-const MessageInput = ({ matchId }) => {
-  const [characterLimit] = useState(200);
-  const user = useSelector((state) => state.session?.user);
-  const [message, setMessage] = useState("");
-  const messagesObject = useSelector((state) => state.messages);
-  const stateMessages = Object.values(messagesObject);
-  const focusRef = useRef();
+const MessageInput = ({matchId, messagesChanged, setMessagesChanged}) => {
 
-  const dispatch = useDispatch();
+	const user = useSelector((state) => state.session?.user);
+    const [message, setMessage] = useState('');
+
+    const messagesObject = useSelector((state) => state.messages);
+    const stateMessages = Object.values(messagesObject);
 
   useEffect(() => {
     if (focusRef) {
