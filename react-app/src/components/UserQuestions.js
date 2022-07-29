@@ -1,13 +1,12 @@
 import React from "react";
-// import { useSelector, useDispatch } from 'react-redux';
-import EditProfileAnswers from "./EditProfileAnswers";
+import UserAnswers from "./UserAnswers";
 
-const ProfileAnswers = () => {
+const UsersAnswers = ({ user }) => {
   // const answersArr = useSelector(state => state.session.user.answers)
 
   const questionObj = {
     1: {
-      Question: "What's the most important part of a Pokémon Battle?",
+      Question: "What's the most important part of a Pokemon Battle?",
       Options: {
         0: "To have fun!",
         1: "To win!",
@@ -16,7 +15,7 @@ const ProfileAnswers = () => {
       },
     },
     2: {
-      Question: "You encounter an injured wild Pokémon. What do you do?",
+      Question: "You encounter an injured wild Pokemon. What do you do?",
       Options: {
         0: "Give it a Potion and ask it to join my team.",
         1: "Try to capture it. It can't fight back",
@@ -30,16 +29,16 @@ const ProfileAnswers = () => {
         0: "Meet new trainers and explore.",
         1: "Be the best trainer there is.",
         2: "Create a dynamic and effective battling team.",
-        3: "To bond with my Pokémon!",
+        3: "To bond with my Pokemon!",
       },
     },
     4: {
-      Question: "Is it important that your Pokémon is happy?",
+      Question: "Is it important that your Pokemon is happy?",
       Options: {
         0: "It's not as important as becomming League Champion",
-        1: "My Pokémon's happiness is my highest priority!",
-        2: "I hope that my pokémon and I are having fun adventuring.",
-        3: "It's important because a happy pokémon is a better battler",
+        1: "My Pokemon's happiness is my highest priority!",
+        2: "I hope that my pokemon and I are having fun adventuring.",
+        3: "It's important because a happy pokemon is a better battler",
       },
     },
     5: {
@@ -66,16 +65,16 @@ const ProfileAnswers = () => {
         "Someone offers to trade a high level Lapras with your original starter companion.",
       Options: {
         0: "And abandon my friend? I think not.",
-        1: "Please. I'll be able to train my starter to far exceed that pokémon",
+        1: "Please. I'll be able to train my starter to far exceed that pokemon",
         2: "An instant upgrade to my party? Of course!",
         3: "Only if it knows surf. I still need to visit the islands!",
       },
     },
     8: {
       Question:
-        "Your Pokémon knocks over your gaming system and breaks it... you",
+        "Your Pokemon knocks over your gaming system and breaks it... you",
       Options: {
-        0: "Forgive your Pokémon and clean it up. Mistakes happen!",
+        0: "Forgive your Pokemon and clean it up. Mistakes happen!",
         1: "Clean it up, but you are going to have to go out and battle to make that money back! ",
         2: "Reprimand them and no treats for a week!",
         3: "Who hasn't thrown their Wiimote through the TV? Laugh it off.",
@@ -85,13 +84,13 @@ const ProfileAnswers = () => {
       Question: "You have a ditto, you make him transform into...",
       Options: {
         0: "Another ditto.",
-        1: "Whatever Pokémon is needed to face my current opponent.",
+        1: "Whatever Pokemon is needed to face my current opponent.",
         2: "Mr. Mime, he doesn't get enough representation.",
-        3: "Mewtwo, the most powerful Pokémon!",
+        3: "Mewtwo, the most powerful Pokemon!",
       },
     },
     10: {
-      Question: "What do you look for in Pokémon?",
+      Question: "What do you look for in Pokemon?",
       Options: {
         0: "The strongest ones.",
         1: "The ones I feel like I connect with.",
@@ -104,13 +103,13 @@ const ProfileAnswers = () => {
       Options: {
         0: "Take a bike ride and enjoy the day!",
         1: "Defeat more gym leaders!",
-        2: "Level up my Pokémon, stock up on items and prepare for my next adventure.",
+        2: "Level up my Pokemon, stock up on items and prepare for my next adventure.",
         3: "Spend time with family and friends!",
       },
     },
     12: {
       Question:
-        "A legendary Pokémon appears, but your party is injured. You...",
+        "A legendary Pokemon appears, but your party is injured. You...",
       Options: {
         0: "Run Away! Can't risk my party getting defeated.",
         1: "Tough it out. Who knows when I'll get another chance to catch it?",
@@ -123,13 +122,13 @@ const ProfileAnswers = () => {
       Options: {
         0: "Cut it ! Burn it! Nothing stops me!",
         1: "Carefully dig it up and replant it on the side of the road.",
-        2: "Fly over it. My Pokémon literally have wings...",
+        2: "Fly over it. My Pokemon literally have wings...",
         3: "There must be a way around it. I'd start looking.",
       },
     },
     14: {
       Question:
-        "You team up with a trainer for a double Pokémon battle. You want a trainer who...",
+        "You team up with a trainer for a double Pokemon battle. You want a trainer who...",
       Options: {
         0: "Is here to have fun!",
         1: "Will fight to the end and never give up!",
@@ -158,20 +157,20 @@ const ProfileAnswers = () => {
     },
     17: {
       Question:
-        "Is it important for you and your Pokémon to get quality sleep?",
+        "Is it important for you and your Pokemon to get quality sleep?",
       Options: {
         0: "No, we can't waste time! We have to get ahead!",
         1: "If sleep will help us battle better, then I'm all for it.",
         2: "Quality sleep? We sleep all day!",
-        3: "Whatever is best for my Pokémon and I!",
+        3: "Whatever is best for my Pokemon and I!",
       },
     },
     18: {
       Question: "What is your real test? What is your cause?",
       Options: {
-        0: "To become close with all my Pokémon! I love my Pokémon!",
-        1: "To have fun and go on adventures with my Pokémon! There's so much to explore with them!",
-        2: "To find the best possible ways to make my Pokémon the most powerful. Superior planning and intelligence will win our fights.",
+        0: "To become close with all my Pokemon! I love my Pokemon!",
+        1: "To have fun and go on adventures with my Pokemon! There's so much to explore with them!",
+        2: "To find the best possible ways to make my Pokemon the most powerful. Superior planning and intelligence will win our fights.",
         3: "To catch them is my real test, to train them is my cause.",
       },
     },
@@ -181,16 +180,16 @@ const ProfileAnswers = () => {
       Options: {
         0: "Stop at the festival. The gym isn't going anywhere!",
         1: "The festival might have important items to help me in my battle. Better check it out.",
-        2: "My Pokémon need a rest. I should take a nap at the PokeCenter.",
+        2: "My Pokemon need a rest. I should take a nap at the PokeCenter.",
         3: "The festival can wait! I've got a gym badge to earn!",
       },
     },
     20: {
       Question: "A stray cat appears in front of you. What do you do?",
       Options: {
-        0: "Close enough to a Pokémon. Let's Battle!",
+        0: "Close enough to a Pokemon. Let's Battle!",
         1: "Scan it with the Pokedex. What even is that?",
-        2: "Better leave it alone. Could be a dangerous legendary Pokémon.",
+        2: "Better leave it alone. Could be a dangerous legendary Pokemon.",
         3: "Pet it, like I do with all new wild and possibly feral creatures.",
       },
     },
@@ -208,7 +207,8 @@ const ProfileAnswers = () => {
               </tr>
             </thead>
             {Object.values(questionObj).map((question, i) => (
-              <EditProfileAnswers
+              <UserAnswers
+                user={user}
                 key={i}
                 question={question}
                 i={i}
@@ -222,4 +222,4 @@ const ProfileAnswers = () => {
   );
 };
 
-export default ProfileAnswers;
+export default UsersAnswers;

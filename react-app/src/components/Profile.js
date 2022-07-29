@@ -28,11 +28,11 @@ function Profile() {
 
   useEffect(() => {
     dispatch(getUserImages(sessionUser?.id));
-    dispatch(getUserMatches(sessionUser?.id)).then((res) =>{
+    dispatch(getUserMatches(sessionUser?.id)).then((res) => {
       setTimeout(() => {
-        setLoaded(true)
-      }, 1000)
-      });
+        setLoaded(true);
+      }, 1000);
+    });
   }, []);
 
   const addNewProfImg = async (e) => {
@@ -54,7 +54,7 @@ function Profile() {
       setImageLoading(false);
 
       await dispatch(uploadImage(data.image));
-      document.getElementById("uploadProfPic").value = null;
+
     } else if (!res.ok) {
       setImageLoading(false);
       const data = await res.json();
@@ -89,18 +89,26 @@ function Profile() {
                 className="profile-picture"
                 src={sessionUser?.profileImages[0]?.imgUrl}
               ></img>
+
+              )}
+              {!sessionUser?.profileImages[0]?.imgUrl && (
+              <img
+                className="profile-picture"
+                src="https://www.kindpng.com/picc/m/74-743336_global-link-question-question-mark-unknown-pokemon-hd.png"
+              ></img>
               )}
               <div className= 'profile-name-gender'>
                 <p className="profile-name">{sessionUser?.name}</p>
                 <Gender />
               </div>
             </div>
+
             <p className="profile-title">Profile</p>
           </div>
           <div className="profile-info-container">
             <div className="titles-container">
               <p className="biography-title">Biography</p>
-              <p className="pokemon-title">Your Pokemon</p>
+              <p className="pokemon-title">Your Pokémon</p>
             </div>
             <div className="bio-and-pokemon">
               <Bio />
@@ -110,11 +118,11 @@ function Profile() {
             </div>
             <div>
               <div className="profile-images-container">
-                {userImagesArr.length <= 3 && (
+                {/* {userImagesArr.length <= 3 && ( */}
                   <div>
                     <p className="profile-picture-title">Profile Pictures</p>
                   </div>
-                )}
+                {/* )} */}
                 <div className="profile-images">
                   {userImagesArr[0] && (
                     <>
@@ -148,13 +156,13 @@ function Profile() {
                     </>
                   )}
                 </div>
-
                 {errors &&
                   errors.map((error, ind) => (
                     <div key={ind} className="images-errors">
                       {error}
                     </div>
                   ))}
+                {userImagesArr.length <=2 &&
                 <form className="upload-photo-form" onSubmit={addNewProfImg}>
                   <div className="upload-container">
                     <label className="upload-text">
@@ -167,10 +175,10 @@ function Profile() {
                       accept="image/*"
                       onChange={updateImage}
                     ></input>
-                    <button type="submit">Upload</button>
+                    <button id="upload-button" type="submit">Upload</button>
                   </div>
                   {imageLoading && <p>Uploading Image...</p>}
-                </form>
+                </form> }
               </div>
               <ProfileAnswers />
             </div>

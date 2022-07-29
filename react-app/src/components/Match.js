@@ -11,6 +11,7 @@ function Match({ match }) {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const [showModal, setShowModal] = useState(false);
+  const [messagesChanged, setMessagesChanged] = useState(false)
   const matchId = match.id;
   const notSessionUser =
     match.user.id == sessionUser.id ? match.user2 : match.user;
@@ -26,7 +27,9 @@ function Match({ match }) {
 
   return (
     <>
-      <div onClick={() => setShowModal(true)} className="matchDiv">
+      <div onClick={() =>{
+         setShowModal(true);
+         setMessagesChanged(false)}} className="matchDiv">
         {notSessionUser.profileImages[0] && (
           <div>
             <img
@@ -61,7 +64,7 @@ function Match({ match }) {
       <div></div>
       {showModal && (
         <ChatModal onClose={() => setShowModal(false)}>
-          <MessageInput matchId={matchId} />
+          <MessageInput matchId={matchId} messagesChanged={messagesChanged} setMessagesChanged={setMessagesChanged} setShowModal={setShowModal} notSessionUser={notSessionUser} />
         </ChatModal>
       )}
     </>
