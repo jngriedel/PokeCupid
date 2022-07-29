@@ -92,8 +92,11 @@ function Discover() {
 
   return (
     <>
+
+      {userGrabbed && loaded && users.length>=1 &&(
+        <div>
       <h1>Discover: </h1>
-      {userGrabbed && loaded && users.length >= 1 && (
+
         <li key={current?.id}>
           <div className="discover-div">
             <NavLink to={`/users/${current?.id}`} className="discover-name">
@@ -128,24 +131,14 @@ function Discover() {
             </button>
           </div>
         </li>
-      )}
-      {userGrabbed && (
-        <p
-          style={{
-            visibility:
-              users.length == 0 || index == users.length ? "visible" : "hidden",
-          }}
-        >
-          {
-            "You've reached the end of all the users for the moment, please check back later!"
-          }
-        </p>
-      )}
-      {!loaded && (
-        <div className="loadHold">
-          <div className="loader"></div>
         </div>
       )}
+
+      {userGrabbed && loaded && <p style={{visibility: users.length == 0 || index == users.length  ? 'visible' : 'hidden'}}>{"You've reached the end of all the users for the moment, please check back later!"}</p>}
+      { !loaded && <div className="loadHold">
+      <div className="loader"></div>
+      </div>}
+
     </>
   );
 }

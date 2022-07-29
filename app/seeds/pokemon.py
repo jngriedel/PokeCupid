@@ -312,7 +312,7 @@ def seed_pokemon():
         type='normal',
         personality='ambitious',
         description= '',
-        imgUrl= 'https://www.giantbomb.com/a/uploads/scale_small/2/26507/948297-meowth.jpg')
+        imgUrl= 'http://assets.stickpng.com/images/5859661d4f6ae202fedf2877.png')
     Persian = Pokemon(
         name='Persian',
         type='normal',
@@ -559,7 +559,7 @@ def seed_pokemon():
         type='poison',
         personality='playful',
         description= '',
-        imgUrl= 'https://www.giantbomb.com/a/uploads/scale_small/13/135472/1892137-090shellder.png')
+        imgUrl= 'https://www.giantbomb.com/a/uploads/scale_small/13/135472/1891840-093haunter.png')
     Gengar = Pokemon(
         name='Gengar',
         type='poison',

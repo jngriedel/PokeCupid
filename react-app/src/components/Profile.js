@@ -54,7 +54,7 @@ function Profile() {
       setImageLoading(false);
 
       await dispatch(uploadImage(data.image));
-      
+
     } else if (!res.ok) {
       setImageLoading(false);
       const data = await res.json();
@@ -101,7 +101,7 @@ function Profile() {
           <div className="profile-info-container">
             <div className="titles-container">
               <p className="biography-title">Biography</p>
-              <p className="pokemon-title">Your Pokemon</p>
+              <p className="pokemon-title">Your Pokémon</p>
             </div>
             <div className="bio-and-pokemon">
               <Bio />
@@ -168,7 +168,7 @@ function Profile() {
                       accept="image/*"
                       onChange={updateImage}
                     ></input>
-                    <button type="submit">Upload</button>
+                    <button id="upload-button" type="submit">Upload</button>
                   </div>
                   {imageLoading && <p>Uploading Image...</p>}
                 </form> }

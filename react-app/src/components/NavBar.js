@@ -16,27 +16,17 @@ const NavBar = () => {
         url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Roboto:wght@100&display=swap');
       </style>
       <div className="navigation-top">
-        <div className="navigation-left">
-          <img id="navLogo" src={logo} alt="poke" />
-        </div>
+
+        <NavLink className="navigation-left" to="/discover">
+          <img id="navLogo" src={logo} alt='poke'/>
+        </NavLink>
         <div className="navigation-items">
-          <li>
-            <NavLink to="/profile" exact={true} className="navitem">
-              <i className="fas fa-user"></i> My Profile
-            </NavLink>
-          </li>
+              <li><NavLink to="/profile" exact={true}className="navitem"><i className="fas fa-user"></i> My Profile</NavLink></li>
 
-          <li>
-            <NavLink to="/discover" exact={true} className="navitem">
-              <i className="fas fa-search"></i> Discover
-            </NavLink>
-          </li>
+              <li><NavLink to="/discover" exact={true}className="navitem"><i className="fas fa-search"></i> Discover</NavLink></li>
 
-          <li>
-            <NavLink to="/matches" exact={true} className="navitem">
-              <i className="fas fa-heart"></i> My Matches
-            </NavLink>
-          </li>
+              <li><NavLink to="/matches" exact={true}className="navitem"><i className="fas fa-heart"></i> Matches</NavLink></li>
+
         </div>
 
         <div className="navigation-right">

@@ -32,45 +32,53 @@ function App() {
   }
 
   return (
-    <>
-      <BrowserRouter>
-        <Switch>
-          <Route path="/" exact={true}>
-            <Splash />
-          </Route>
-          <Route path="/sign-up" exact={true}>
-            {/* <NavBar /> */}
-            <SignUpForm />
-          </Route>
-          <ProtectedRoute path="/profile" exact={true}>
-            <NavBar />
-            <Profile />
-          </ProtectedRoute>
-          <ProtectedRoute path="/discover" exact={true}>
-            <NavBar />
-            <Discover />
-          </ProtectedRoute>
-          <ProtectedRoute path="/matches" exact={true}>
-            <NavBar />
-            <Matches />
-          </ProtectedRoute>
-          <ProtectedRoute path="/users" exact={true}>
-            <UsersList />
-          </ProtectedRoute>
-          <ProtectedRoute path="/users/:userId" exact={true}>
-            <NavBar />
-            <User />
-          </ProtectedRoute>
+
+<>
+    <div id='content-wrap'>
+    <BrowserRouter>
+
+      <Route path="/" exact={true}>
+          <Splash />
+
+      </Route>
+
+
+      <Switch>
+        <Route path="/sign-up" exact={true}>
+        {/* <NavBar /> */}
+          <SignUpForm />
+        </Route>
+        <ProtectedRoute path="/profile" exact={true}>
+        <NavBar />
+          <Profile />
+        </ProtectedRoute>
+        <ProtectedRoute path="/discover" exact={true}>
+        <NavBar />
+          <Discover />
+        </ProtectedRoute>
+        <ProtectedRoute path="/matches" exact={true}>
+        <NavBar />
+          <Matches/>
+        </ProtectedRoute>
+        <ProtectedRoute path="/users" exact={true}>
+          <UsersList />
+        </ProtectedRoute>
+        <ProtectedRoute path="/users/:userId" exact={true}>
+        <NavBar />
+          <User />
+        </ProtectedRoute>
           <Route>
             <NotFound path="*" exact={true} />
           </Route>
-          <ProtectedRoute path="/messages" exact={true}>
-            <NavBar />
-            <MessageInput />
-          </ProtectedRoute>
-        </Switch>
-      </BrowserRouter>
-      <Footer />
+        <ProtectedRoute path='/messages' exact={true} >
+        <NavBar />
+          <MessageInput/>
+        </ProtectedRoute>
+      </Switch>
+    </BrowserRouter>
+    </div>
+    <Footer />
+
     </>
   );
 }
