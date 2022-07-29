@@ -33,7 +33,7 @@ const MessageInput = ({ matchId, messagesChanged, setMessagesChanged }) => {
       .then((res)=>{
         setTimeout(() => {
             setMessagesChanged(true)
-          }, 500)
+          }, 300)
     });
     }
 
