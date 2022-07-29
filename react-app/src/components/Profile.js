@@ -95,7 +95,7 @@ function Profile() {
           <div className="profile-info-container">
             <div className="titles-container">
               <p className="biography-title">Biography</p>
-              <p className="pokemon-title">Your Pokemon</p>
+              <p className="pokemon-title">Your Pokémon</p>
             </div>
             <div className="bio-and-pokemon">
               <Bio />

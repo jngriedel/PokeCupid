@@ -118,7 +118,7 @@ const SignUpForm = () => {
         <textarea id="typebio" name="bio" onChange={updateBio} value={bio}></textarea>
       </div>
       <div>
-        <label>Choose a Pokemon!</label>
+        <label>Choose a Pokémon!</label>
         <select name="pokemonId" id="selectoption" onChange={updatePokemonId} value={pokemonId}>
           <option value="1">Bulbasaur</option>
           <option value="2">Ivysaur</option>
