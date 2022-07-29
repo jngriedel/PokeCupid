@@ -75,8 +75,7 @@ const MessageInput = ({ matchId, messagesChanged, setMessagesChanged, setShowMod
 
       <div className="messages-container">
         <div className="chat-head">
-            <div>
-                <h3>{notSessionUser.name}</h3>
+            <div className="otheruser-head">
                 <NavLink to={`/users/${notSessionUser.id}`}>
                 {!notSessionUser.profileImages[0] && (
                 <img
@@ -91,8 +90,9 @@ const MessageInput = ({ matchId, messagesChanged, setMessagesChanged, setShowMod
                 ></img>
               )}
                 </NavLink>
+                <h3>{notSessionUser.name}</h3>
             </div>
-            <button onClick={()=>setShowModal(false)} type="button"><i class="fa-solid fa-x"></i> </button>
+           <i onClick={()=>setShowModal(false)} class="fa-solid fa-x"></i> 
         </div>
         <div className="messages-listed" ref={focusRef}>
         {!messagesChanged && <div className="chat-loading"></div>}

@@ -13,12 +13,13 @@
     align-items: center;
     background-color: white;
     /* border: 1px solid blue */
+    box-sizing: border-box;
 }
 
 .messages-listed{
     width: 100%;
     height: 78%;
-    margin-top: 40px;
+
     background-size: contain;
     background-image: url('../../images/pikabkg.jpeg');
     overflow-y: scroll;
@@ -115,6 +116,7 @@
 
 .chat-head {
     width: 100%;
+    height: 70px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -127,4 +129,18 @@
     height: 50px;
     width: 50px;
     border-radius: 50%;
+    margin-right: 5px;
+
+}
+
+.otheruser-head{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+}
+
+.fa-x:hover{
+cursor: pointer;
+color: #ff0051;
 }
