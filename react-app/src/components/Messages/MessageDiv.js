@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { getUserImages } from "../../store/profileImages";
 import { io } from "socket.io-client";
 import * as messagesActions from "../../store/messages";
 // let socketD;
@@ -7,10 +8,15 @@ import * as messagesActions from "../../store/messages";
 const MessageDivs = ({ message, socket }) => {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
+  const userImages = useSelector((state) => state.profileImages);
+  const userImagesAll = Object.values(userImages);
+  const userAvatar = userImagesAll[0];
+
   const [user, setUser] = useState();
   const [disabled, setDisabled] = useState(true);
   const [currentMessage, setCurrentMessage] = useState(message.content);
   const [editMssg, setEditMssg] = useState(false);
+
 
 //   useEffect(() => {
 
@@ -50,6 +56,7 @@ const MessageDivs = ({ message, socket }) => {
       <div className="chat-message-ctrl">
         <div className="chat-user-wrap">
           <div className="chat-username">{message.user.name}</div>
+          {/* <div className="chat-avatar"><img src={userImagesAll[0].imgUrl}/></div> */}
         </div>
         {!editMssg && (
           <div>
@@ -61,8 +68,7 @@ const MessageDivs = ({ message, socket }) => {
                   message.userId === sessionUser.id ? "visible" : "hidden",
               }}
             >
-              {" "}
-              Edit{" "}
+              {" "}<i class="fas fa-edit"></i>{" "}
             </button>
             <button
               className="delete-msg"
@@ -72,7 +78,7 @@ const MessageDivs = ({ message, socket }) => {
                   message.userId === sessionUser.id ? "visible" : "hidden",
               }}
             >
-              Delete
+              <i class="fas fa-trash"></i>
             </button>
           </div>
         )}

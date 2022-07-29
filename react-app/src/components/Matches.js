@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 import { getUserMatches } from "../store/matches";
 import Match from "./Match";
 import "./Matches.css";
+import "./Messages/Messages.css";
 
 function Matches() {
   const [users, setUsers] = useState([]);
@@ -38,8 +39,11 @@ function Matches() {
     <>
       {isLoaded && (
         <div className="matches-main">
-          <div className="message-title">
-            <h2 className="pageTitle">Matches </h2>
+          <style>
+            @import url('https://fonts.googleapis.com/css2?family=Gothic+A1:wght@600&family=Nanum+Gothic&display=swap');
+          </style>
+          <div className="message-titlebar">
+            <h2 className="pageTitle">Your Matches </h2>
           </div>
           <div className="all-matches-container">
             {matches.length >= 1 &&

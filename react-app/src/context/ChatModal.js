@@ -1,6 +1,6 @@
 import React, { useContext, useRef, useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
-import './Modal.css';
+import './ChatModal.css';
 
 const ChatModalContext = React.createContext();
 
@@ -27,9 +27,9 @@ export function ChatModal({ onClose, children }) {
   if (!modalNode) return null;
 
   return ReactDOM.createPortal(
-    <div id="modal">
-      <div id="modal-background" onClick={onClose} />
-      <div id="modal-content">{children}</div>
+    <div id="chatmodal">
+      <div id="chatmodal-background" onClick={onClose} />
+      <div id="chatmodal-content">{children}</div>
     </div>,
     modalNode
   );

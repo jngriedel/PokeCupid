@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { io } from "socket.io-client";
 import * as messagesActions from "../../store/messages";
@@ -13,8 +13,18 @@ const MessageInput = ({ matchId }) => {
   const [message, setMessage] = useState("");
   const messagesObject = useSelector((state) => state.messages);
   const stateMessages = Object.values(messagesObject);
+  const focusRef = useRef();
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (focusRef) {
+      focusRef.current.addEventListener("DOMNodeInserted", (e) => {
+        const { currentTarget: target } = e;
+        target.scroll({ top: target.scrollHeight, behavior: "smooth" });
+      });
+    }
+  }, []);
 
   useEffect(() => {
     if (user) {
@@ -55,9 +65,8 @@ const MessageInput = ({ matchId }) => {
 
   return (
     stateMessages && (
-      <div>
-        <div className="messages-listed">
-          {/* needs scroll */}
+      <div className="messages-container">
+        <div className="messages-listed" ref={focusRef}>
           {stateMessages.map((message, i) => (
             <div key={i}>
               <MessageDivs
@@ -70,6 +79,7 @@ const MessageInput = ({ matchId }) => {
         </div>
         <form className="chat-input-ctrl" onSubmit={handleSubmitMsg}>
           <div
+            className="chat-countdown"
             style={{ visibility: message.length == 0 ? "hidden" : "visible" }}
           >
             {message.length} / {characterLimit}
@@ -81,13 +91,12 @@ const MessageInput = ({ matchId }) => {
             value={message}
             onChange={(e) => setMessage(e.target.value)}
           />
-          <button
+          <button className='chat-submit'
             disabled={
               message.length > 200 || message.length == 0 ? true : false
             }
           >
-            {" "}
-            Send{" "}
+            {" "}<i class="fas fa-paper-plane"></i>{" "}
           </button>
         </form>
       </div>
