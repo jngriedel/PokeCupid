@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
+import './Questionnaire.css'
 
 
 const Questionnaire = ({setShowSignUp, setQuestionAnswers, setNext, setShowQuestionnaire, setSubmit, showQuestionnaire}) => {
@@ -146,21 +147,27 @@ const Questionnaire = ({setShowSignUp, setQuestionAnswers, setNext, setShowQuest
         <>
           {}
           <div className="question-section">
-            <div className="question-count">
-              <span>Question {currentQuestion}</span>/20
+            <div className="question-number">
+              <span>Question {currentQuestion} </span>/ 20
             </div>
-            <div className="question-text">
+            <div className="progressbar">
+              <span></span>
+            </div>
+            <div className="question-title-a">
               {questionObj[currentQuestion].Question}
             </div>
           </div>
           <div className="answer-section">
             {Object.values(questionObj[currentQuestion].Options).map(
               (answerOptions, i) => (
-                <button key={i} type="button" value={i} onClick={handleAnswer}>
+                <button key={i} type="button" id="question-button" value={i} onClick={handleAnswer}>
                   {answerOptions}
                 </button>
               )
             )}
+          </div>
+          <div>
+            Select One
           </div>
         </>
       </div>
