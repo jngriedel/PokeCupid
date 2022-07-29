@@ -15,7 +15,8 @@ import FakeHome from './components/FakeHome';
 import Discover from "./components/Discover";
 import Matches from './components/Matches';
 import Splash from './components/Splash/Splash';
-import Chat from './components/Messages/TestChat';
+import Footer from './components/Footer';
+
 
 import { authenticate } from './store/session';
 
@@ -35,6 +36,7 @@ function App() {
   }
 
   return (
+<>
     <BrowserRouter>
 
       <Route path="/" exact={true}>
@@ -74,6 +76,8 @@ function App() {
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
+    <Footer />
+    </>
   );
 }
 
