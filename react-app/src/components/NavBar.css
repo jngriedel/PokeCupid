@@ -96,4 +96,23 @@
     font-weight: 500;
     padding: 8px;
     margin-right: 2%;
+    width: fit-content;
+    position: absolute;
+    bottom: 20%;
+    right: 3.5%;
+  }
+
+  .logout-button {
+    background-color: transparent;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 3px solid whitesmoke;
+    width: 100px;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    color: whitesmoke;
+    font-weight: bold;
+    position: relative;
+    left: 10%;
+    cursor: pointer;
   }

@@ -8,7 +8,7 @@ function Discover() {
   const [users, setUsers] = useState([]);
   const [index, setIndex] = useState(0);
   const [current, setCurrent] = useState(null);
-  const [loaded, setLoaded] = useState(false)
+  const [loaded, setLoaded] = useState(false);
   // const [empty, setEmpty] = useState(false);
   const [userGrabbed, setUserGrabbed] = useState(true);
   const sessionUser = useSelector((state) => state.session.user);
@@ -20,15 +20,11 @@ function Discover() {
       const responseData = await response.json();
       setUsers(responseData?.users);
     }
-    fetchData()
-    .then((res)=>{
+    fetchData().then((res) => {
       setTimeout(() => {
-        setLoaded(true)
-      }, 1000)
-
-      });
-
-
+        setLoaded(true);
+      }, 1000);
+    });
   }, []);
 
   useEffect(() => {
@@ -36,12 +32,11 @@ function Discover() {
       setCurrent(users[index]);
 
       // if(users.length == 0) setEmpty(true)
-
     } else {
       setUserGrabbed(false);
       // setEmpty(true)
     }
-  });
+  }, [users, index]);
 
   const results = [];
   users?.map((user) => {
@@ -53,6 +48,7 @@ function Discover() {
     }
     let result = ((count / 20) * 100).toFixed() + "%";
     results.push(result);
+    return result;
   });
 
   const handlePass = async (passedId) => {
@@ -74,8 +70,7 @@ function Discover() {
           setCurrent(users[index]);
         } else {
           setUserGrabbed(false);
-          setIndex(index+1)
-
+          setIndex(index + 1);
         }
       }
       return null;
@@ -91,15 +86,14 @@ function Discover() {
       setCurrent(users[index]);
     } else {
       setUserGrabbed(false);
-      setIndex(index+1)
-
+      setIndex(index + 1);
     }
   };
 
   return (
     <>
       <h1>Discover: </h1>
-      {userGrabbed && loaded && users.length>=1 &&(
+      {userGrabbed && loaded && users.length >= 1 && (
         <li key={current?.id}>
           <div className="discover-div">
             <NavLink to={`/users/${current?.id}`} className="discover-name">
@@ -135,10 +129,23 @@ function Discover() {
           </div>
         </li>
       )}
-      {userGrabbed && <p style={{visibility: users.length == 0 || index == users.length  ? 'visible' : 'hidden'}}>{"You've reached the end of all the users for the moment, please check back later!"}</p>}
-      { !loaded && <div className="loadHold">
-      <div className="loader"></div>
-      </div>}
+      {userGrabbed && (
+        <p
+          style={{
+            visibility:
+              users.length == 0 || index == users.length ? "visible" : "hidden",
+          }}
+        >
+          {
+            "You've reached the end of all the users for the moment, please check back later!"
+          }
+        </p>
+      )}
+      {!loaded && (
+        <div className="loadHold">
+          <div className="loader"></div>
+        </div>
+      )}
     </>
   );
 }

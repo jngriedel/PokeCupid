@@ -1,6 +1,5 @@
 
 .splashPage {
-    margin: -8px;
     border: 0px;
     font-family: sans-serif;
     text-align: center;
@@ -8,7 +7,7 @@
     height: 100vh;
     animation: morph 25s infinite;
   }
-  
+
   @keyframes morph {
     0% { background-color: rgb(255, 174, 176); }
     18% { background-color: rgb(255, 174, 176); }
@@ -31,7 +30,7 @@
     flex-direction: column;
     /* border: 1px solid red; */
   }
-  
+
   .header{
     padding-top: 20px;
     padding-bottom: 30px;
@@ -47,13 +46,13 @@
     margin-left: auto;
     margin-right: auto;
     /* border: 1px solid red; */
-  
+
   }
-  
+
   #splashLogo{
     width: 150px;
   }
-  
+
   .loginbox{
     display: flex;
     align-items: center;
@@ -61,7 +60,7 @@
     width: 250px;
     /* border: 1px solid red; */
   }
-  
+
   #loginbtn{
     background-color: transparent;
     border-radius: 5px;
@@ -80,7 +79,7 @@
     margin-top: 3%;
     margin-bottom: 3%;
   }
-  
+
   .splashText{
     width: 65%;
     font-size: 1.9rem;
@@ -95,7 +94,7 @@
     -webkit-text-stroke: 3px black;
     /* border: 1px solid red; */
   }
-  
+
   .splashSub{
     width: 35%;
     min-width: 300px;

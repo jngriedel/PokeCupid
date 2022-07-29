@@ -2,14 +2,13 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { editUserBio } from "../store/session";
 
-function Bio({}) {
+function Bio() {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const [editContent, setEditContent] = useState(false);
   const [currentBio, setCurrentBio] = useState(
     sessionUser.bio ? sessionUser.bio : ""
   );
-  const [showModal, setShowModal] = useState(false);
   const [errors, setErrors] = useState([]);
 
   const handleCancel = () => {

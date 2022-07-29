@@ -28,11 +28,11 @@ function Profile() {
 
   useEffect(() => {
     dispatch(getUserImages(sessionUser?.id));
-    dispatch(getUserMatches(sessionUser?.id)).then((res) =>{
+    dispatch(getUserMatches(sessionUser?.id)).then((res) => {
       setTimeout(() => {
-        setLoaded(true)
-      }, 1000)
-      });
+        setLoaded(true);
+      }, 1000);
+    });
   }, []);
 
   const addNewProfImg = async (e) => {
@@ -87,6 +87,12 @@ function Profile() {
               <img
                 className="profile-picture"
                 src={sessionUser?.profileImages[0]?.imgUrl}
+              ></img>
+            )}
+            {!sessionUser?.profileImages[0]?.imgUrl && (
+              <img
+                className="profile-picture"
+                src="https://www.kindpng.com/picc/m/74-743336_global-link-question-question-mark-unknown-pokemon-hd.png"
               ></img>
             )}
             <p className="profile-name">{sessionUser?.name}</p>
