@@ -2,10 +2,14 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { io } from 'socket.io-client';
 import * as messagesActions from "../../store/messages";
-let socket2
+// let socketD;
 
 
-const MessageDivs = ({ message }) => {
+const MessageDivs = ({ message, socket }) => {
+
+
+
+
 	const dispatch = useDispatch();
 	const sessionUser = useSelector(state => state.session.user)
 	const [user, setUser] = useState();
@@ -13,24 +17,25 @@ const MessageDivs = ({ message }) => {
 	const [currentMessage, setCurrentMessage] = useState(message.content);
     const [editMssg, setEditMssg] = useState(false);
 
-	// useEffect(() => {
-
-    //         socket2 = io();
-
-    //         //receive
-
-    //         socket2.on('delete', (messageId) =>{
-    //             dispatch(messagesActions.deleteMessage(messageId))
-    //         })
-    //         // when component unmounts, disconnect
-    //         return (() => {
-    //             socket2.disconnect()
-
-    //         })
-    //     }, [])
+// useEffect(() => {
 
 
+//             socketD = io();
 
+
+//             //receive
+
+//             // socketD.on('delete', (messageId) =>{
+//             //     console.log('Connected')
+//             //     dispatch(messagesActions.deleteMessage(messageId))
+//             // })
+
+//             return (() => {
+//                 socketD.disconnect()
+
+
+//             })
+//         }, [])
 
 	const editMessage = async (e) => {
 		e.preventDefault();
@@ -51,7 +56,8 @@ const MessageDivs = ({ message }) => {
     const deleteMessage = async () => {
 
 		const res = await dispatch(messagesActions.removeMessage(message.id));
-		// socket.emit("delete", res)
+		socket.emit("delete", res)
+		
 
 	};
 
@@ -71,7 +77,7 @@ const MessageDivs = ({ message }) => {
                     <button onClick={()=> setEditMssg(true)} style={{visibility: message.userId === sessionUser.id ? 'visible' : 'hidden'}}> Edit </button>
                     <button
 					className="delete-msg"
-					onClick={deleteMessage}
+					onClick={()=>deleteMessage(message.id)}
 					style={{visibility: message.userId === sessionUser.id ? 'visible' : 'hidden'}}
 				    >
 					Delete
