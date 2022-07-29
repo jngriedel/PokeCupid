@@ -1,8 +1,8 @@
 .profile-picture {
     border-radius: 50%;
     object-fit: cover;
-    width: 8%;
-    height: 16vh;
+    width: 150px;
+    height: 150px;
     position: relative;
     left: 30%;
 }
@@ -16,7 +16,7 @@
 .profile-nameplate{
     background-color: #1a1a1a;
     width: 100%;
-    padding-top: 3%;
+    padding-top: 60px;
     transition: .1s background-color
 }
 
@@ -24,18 +24,23 @@
     background-color:rgb(20, 20, 20);
 }
 
+.profile-items{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.profile-name-gender {
+    margin-left: 32%;
+}
+
 .profile-name {
     color: white;
-    position: absolute;
-    left: 39%;
-    width: fit-content;
-
-    top: 5%;
     letter-spacing: 1.5px;
     font-family: 'Roboto', sans-serif;
     font-size: 35px;
     font-weight: bolder;
-
+    margin-bottom: 5px;
 }
 
 .profile-title {
@@ -334,8 +339,9 @@ list-style: none;
 }
 
 .profile-pictures {
-    width: 13vw;
-    height: 25vh;
+    width: 14vw;
+    height: 30vh;
+    object-fit: cover;
     border: solid 1px #ccc;
     /* margin-top: 3%; */
 }
@@ -379,6 +385,7 @@ list-style: none;
     border-radius: 4px;
     margin-bottom: 3%;
     background-color: white;
+    overflow-x: scroll;
 }
 
 .profile-picture-delete {
@@ -405,53 +412,46 @@ list-style: none;
 }
 
 .gender-container {
-    position: absolute;
-    top: -9.3%;
-    left: 28%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .gender-button {
-position: absolute;
-left: 110%;
-bottom: 3%;
-border-radius: 50%;
-width: 1.1vw;
-height: 2vh;
-font-size: 10px;
-background-color: #34f;
-border: transparent;
-color: whitesmoke;
-transition: .3s background-color
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-size: 10px;
+    background-color: #34f;
+    border: transparent;
+    color: whitesmoke;
+    transition: .3s background-color
+}
+
+.gender-button:hover{
+    cursor: pointer;
 }
 
 .gender-text {
     color: white;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
-
-.gender-button-cancel{
-    position: absolute;
-    top: -9.3%;
-    left: 38%;
-    width: 1vw;
-    height: 2vh;
-    font-size: 10px;
-    background-color: transparent;
-    border: transparent;
-    color: red;
-    transition: .3s background-color
+    margin: 5px;
+    letter-spacing: 1px;
+    font-family: 'Roboto', sans-serif;
 }
 
 .gender-button-submit {
-    position: absolute;
-    top: -9.3%;
-    left: 36%;
-    width: 1vw;
-    height: 2vh;
-    font-size: 10px;
+    font-size: 18px;
     background-color: transparent;
     border: transparent;
     color: green;
+    transition: .3s background-color
+}
+
+.gender-button-cancel{
+    font-size: 15px;
+    background-color: transparent;
+    border: transparent;
+    color: red;
     transition: .3s background-color
 }
 

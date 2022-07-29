@@ -4,6 +4,7 @@ import { Redirect } from "react-router-dom";
 import { signUp } from "../../store/session";
 import Questionnaire from "../Questionnaire";
 import { getAllPokemon } from "../../store/pokemon";
+import './Signup.css';
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
@@ -75,20 +76,28 @@ const SignUpForm = () => {
     return <Redirect to="/discover" />;
   }
 
-
-
   return (
     <>
-    {showSignUp && !showQuestionnaire &&
+    <div className="signup-form">
+    <div className="signup-header">
+        <div className="signup-header-text">
+          Get started with us!
+        </div>
+      </div>
+   {showSignUp && !showQuestionnaire &&
     <form onSubmit={onSignUp}>
       <div>
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>
         ))}
       </div>
+      
+      <div className="signup-form-primary">
       <div>
-        <label>Name</label>
+        {/* <label>Name</label> */}
         <input
+          className="signup-name"
+          placeholder="Name"
           type="text"
           name="name"
           onChange={updateName}
@@ -96,8 +105,10 @@ const SignUpForm = () => {
         ></input>
       </div>
       <div>
-        <label>Email</label>
+        {/* <label>Email</label> */}
         <input
+          className="signup-email"
+          placeholder="Email"
           type="text"
           name="email"
           onChange={updateEmail}
@@ -113,8 +124,13 @@ const SignUpForm = () => {
         </select>
       </div>
       <div>
-        <label>Bio</label>
-        <textarea name="bio" onChange={updateBio} value={bio}></textarea>
+        {/* <label>Bio</label> */}
+        <textarea 
+          placeholder="Write a short bio for yourself!"
+          name="bio" 
+          onChange={updateBio} 
+          value={bio}>
+        </textarea>
       </div>
       <div>
         <label>Choose a Pokemon!</label>
@@ -271,6 +287,7 @@ const SignUpForm = () => {
           <option value="150">Mewtwo</option>
         </select>
       </div>
+      </div>
 
       <div>
         <label>Password</label>
@@ -313,6 +330,7 @@ const SignUpForm = () => {
         setQuestionAnswers={setQuestionAnswers}
         questionAnswers={questionAnswers}
       />}
+      </div>
     </>
   );
 };
