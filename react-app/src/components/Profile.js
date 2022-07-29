@@ -88,7 +88,7 @@ function Profile() {
       {loaded && (
         <div className="profileMain">
           <div>{sessionUser?.name}</div>
-          {userImagesArr.length <= 3 && (
+          {userImagesArr.length <= 2 && (
             <div>
               {errors &&
                 errors.map((error, ind) => <div key={ind}>{error}</div>)}
