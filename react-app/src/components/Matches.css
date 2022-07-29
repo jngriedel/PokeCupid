@@ -22,11 +22,11 @@
 }
 
 .matches-main{
-    margin-top: 60px;
+    /* margin-top: 60px; */
     background-color: #f0f2f6;
-    min-width: 100vw;
+    min-width: 100%;
     overflow-x: hidden;
-    min-height: 92vh;
+    height: 100%;
     margin-left: -8px;
     margin-bottom: -8px;
 }

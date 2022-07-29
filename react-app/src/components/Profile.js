@@ -54,7 +54,7 @@ function Profile() {
       setImageLoading(false);
 
       await dispatch(uploadImage(data.image));
-      
+
     } else if (!res.ok) {
       setImageLoading(false);
       const data = await res.json();
@@ -162,7 +162,7 @@ function Profile() {
                       accept="image/*"
                       onChange={updateImage}
                     ></input>
-                    <button type="submit">Upload</button>
+                    <button id="upload-button" type="submit">Upload</button>
                   </div>
                   {imageLoading && <p>Uploading Image...</p>}
                 </form> }
