@@ -96,11 +96,13 @@
 .answer-submit {
     color: green;
     border: transparent;
+    cursor:pointer;
 }
 
 .answer-cancel {
     color: red;
     border: transparent;
+    cursor:pointer;
 }
 
 .profile-question {
@@ -142,7 +144,8 @@
 .edit-answers {
     /* border: 1px solid #ccc;
     background-color: white; */
-    border: transparent
+    border: transparent;
+    cursor:pointer;
 }
 
 .pokemon-title {
@@ -193,6 +196,7 @@ font-size: 20px;
 background-color: #34f;
 border: transparent;
 color: whitesmoke;
+cursor:pointer;
 transition: .3s background-color
 }
 
@@ -207,6 +211,7 @@ font-size: 20px;
 background-color: #34f;
 border: transparent;
 color: whitesmoke;
+cursor:pointer;
 transition: .3s background-color
 }
 
@@ -221,7 +226,8 @@ padding-right: 5%;
 
 }
 
-.edit-pokemon:hover {
+.edit-pokemon:hover,
+.edit-bio:hover {
 
 background-color: rgb(0, 21, 255);
 
@@ -242,6 +248,7 @@ list-style: none;
     border: none;
     font-size: 21px;
     color: red;
+    cursor:pointer;
     }
 
 
@@ -253,6 +260,7 @@ list-style: none;
     right: 6.3%;
     background-color: transparent;
     border: none;
+    cursor:pointer;
     }
 
 .edit-bio-cancel {
@@ -263,6 +271,7 @@ list-style: none;
         color: red;
         left: 45%;
         bottom: 5%;
+        cursor:pointer;
         }
 
 
@@ -274,6 +283,7 @@ list-style: none;
         bottom: 4%;
         background-color: transparent;
         border: none;
+        cursor:pointer;
         }
 
 .profile-pictures-title-container {
@@ -367,12 +377,6 @@ list-style: none;
     border: 1px solid #ccc;
 }
 
-.edit-title-container {
-    /* position: relative;
-    left: 26%;
-    bottom: 28px; */
-}
-
 .profile-images-container {
     border: 1px solid #ccc;
     margin-top: 3%;
@@ -420,6 +424,7 @@ width: 1.1vw;
 height: 2vh;
 font-size: 10px;
 background-color: #34f;
+cursor:pointer;
 border: transparent;
 color: whitesmoke;
 transition: .3s background-color
@@ -440,7 +445,8 @@ transition: .3s background-color
     background-color: transparent;
     border: transparent;
     color: red;
-    transition: .3s background-color
+    transition: .3s background-color;
+    cursor:pointer;
 }
 
 .gender-button-submit {
@@ -453,6 +459,7 @@ transition: .3s background-color
     background-color: transparent;
     border: transparent;
     color: green;
+    cursor:pointer;
     transition: .3s background-color
 }
 

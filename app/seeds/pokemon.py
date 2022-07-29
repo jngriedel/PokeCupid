@@ -312,7 +312,7 @@ def seed_pokemon():
         type='normal',
         personality='ambitious',
         description= '',
-        imgUrl= 'https://w7.pngwing.com/pngs/411/696/png-transparent-meowth-s-party-pokemon-x-and-y-pikachu-pikachu.png')
+        imgUrl= 'http://assets.stickpng.com/images/5859661d4f6ae202fedf2877.png')
     Persian = Pokemon(
         name='Persian',
         type='normal',

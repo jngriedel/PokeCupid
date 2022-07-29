@@ -1,0 +1,47 @@
+.not-found{
+    font-size: 1.9rem;
+    position: absolute;
+    top: 15%;
+    left: 15%;
+    text-align: left;
+    align-items: left;
+    font-weight: 900;
+    letter-spacing: 1px;
+    font-family: 'Libre Franklin', sans-serif;
+    color: white;
+    font-size: 100px;
+    padding-left: 70px;
+    text-shadow: -1px 1px #000, -2px 2px #000, -3px 3px #000, -4px 4px #000, -5px 5px #000, -6px 6px #000, -7px 7px #000, -8px 8px #000;
+    -webkit-text-stroke: 3px black;
+    /* border: 1px solid red; */
+  }
+
+  .not-found-p {
+    font-size: 1.9rem;
+    position: absolute;
+    top: 33%;
+    left: 20%;
+    text-align: left;
+    align-items: left;
+    letter-spacing: 1px;
+    font-family: 'Nanum Gothic', sans-serif;
+    font-size: 30px;
+    width: 30vw;
+  }
+
+  .missingno{
+    position: absolute;
+    top: 35%;
+    right: 32%;
+    width: 25vw;
+    height: 50vh;
+    object-fit:fill;
+  }
+
+  .missingno-text{
+    position: absolute;
+    top: 35%;
+    right: 8%;
+    width: 30%;
+    object-fit:fill;
+  }
