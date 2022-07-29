@@ -54,7 +54,7 @@ function Profile() {
       setImageLoading(false);
 
       await dispatch(uploadImage(data.image));
-      document.getElementById("uploadProfPic").value = null;
+      
     } else if (!res.ok) {
       setImageLoading(false);
       const data = await res.json();
@@ -105,11 +105,11 @@ function Profile() {
             </div>
             <div>
               <div className="profile-images-container">
-                {userImagesArr.length <= 3 && (
+                {/* {userImagesArr.length <= 3 && ( */}
                   <div>
                     <p className="profile-picture-title">Profile Pictures</p>
                   </div>
-                )}
+                {/* )} */}
                 <div className="profile-images">
                   {userImagesArr[0] && (
                     <>
@@ -143,13 +143,13 @@ function Profile() {
                     </>
                   )}
                 </div>
-
                 {errors &&
                   errors.map((error, ind) => (
                     <div key={ind} className="images-errors">
                       {error}
                     </div>
                   ))}
+                {userImagesArr.length <=2 &&
                 <form className="upload-photo-form" onSubmit={addNewProfImg}>
                   <div className="upload-container">
                     <label className="upload-text">
@@ -165,7 +165,7 @@ function Profile() {
                     <button type="submit">Upload</button>
                   </div>
                   {imageLoading && <p>Uploading Image...</p>}
-                </form>
+                </form> }
               </div>
               <div>
                 <Gender />

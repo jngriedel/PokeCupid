@@ -8,8 +8,9 @@ function Discover() {
   const [users, setUsers] = useState([]);
   const [index, setIndex] = useState(0);
   const [current, setCurrent] = useState(null);
+  const [loaded, setLoaded] = useState(false)
   // const [empty, setEmpty] = useState(false);
-  const [userGrabbed, setUserGrabbed] = useState(false);
+  const [userGrabbed, setUserGrabbed] = useState(true);
   const sessionUser = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
 
@@ -22,7 +23,7 @@ function Discover() {
     fetchData()
     .then((res)=>{
       setTimeout(() => {
-        setUserGrabbed(true)
+        setLoaded(true)
       }, 1000)
 
       });
@@ -98,7 +99,7 @@ function Discover() {
   return (
     <>
       <h1>Discover: </h1>
-      {userGrabbed && users.length>=1 &&(
+      {userGrabbed && loaded && users.length>=1 &&(
         <li key={current?.id}>
           <div className="discover-div">
             <NavLink to={`/users/${current?.id}`} className="discover-name">
@@ -135,7 +136,7 @@ function Discover() {
         </li>
       )}
       {userGrabbed && <p style={{visibility: users.length == 0 || index == users.length  ? 'visible' : 'hidden'}}>{"You've reached the end of all the users for the moment, please check back later!"}</p>}
-      {!userGrabbed && <div className="loadHold">
+      { !loaded && <div className="loadHold">
       <div className="loader"></div>
       </div>}
     </>
