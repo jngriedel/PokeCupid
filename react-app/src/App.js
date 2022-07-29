@@ -37,13 +37,13 @@ function App() {
     <div id='content-wrap'>
     <BrowserRouter>
 
+
+
+      <Switch>
       <Route path="/" exact={true}>
           <Splash />
 
       </Route>
-
-
-      <Switch>
         <Route path="/sign-up" exact={true}>
         {/* <NavBar /> */}
           <SignUpForm />
@@ -67,13 +67,13 @@ function App() {
         <NavBar />
           <User />
         </ProtectedRoute>
-          <Route>
-            <NotFound path="*" exact={true} />
-          </Route>
         <ProtectedRoute path='/messages' exact={true} >
         <NavBar />
           <MessageInput/>
         </ProtectedRoute>
+          <Route>
+            <NotFound  />
+          </Route>
       </Switch>
     </BrowserRouter>
     </div>
