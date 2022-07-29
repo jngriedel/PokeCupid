@@ -1,92 +1,98 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { io } from 'socket.io-client';
-import * as messagesActions from '../../store/messages';
+import { io } from "socket.io-client";
+import * as messagesActions from "../../store/messages";
 import MessageDivs from "./MessageDiv";
 let socket;
 
-
 //return the message to dict inside the addMessage, then add it on the socket
 
-const MessageInput = ({matchId}) => {
-    const [characterLimit] = useState(200)
-	const user = useSelector((state) => state.session?.user);
-    const [message, setMessage] = useState('');
-    const messagesObject = useSelector((state) => state.messages);
-    const stateMessages = Object.values(messagesObject);
+const MessageInput = ({ matchId }) => {
+  const [characterLimit] = useState(200);
+  const user = useSelector((state) => state.session?.user);
+  const [message, setMessage] = useState("");
+  const messagesObject = useSelector((state) => state.messages);
+  const stateMessages = Object.values(messagesObject);
 
+  const dispatch = useDispatch();
 
-    const dispatch = useDispatch();
+  useEffect(() => {
+    if (user) {
+      dispatch(messagesActions.getMatchMessages(matchId));
+    }
 
+    socket = io();
 
-    useEffect(() => {
-        if (user){
-                dispatch(messagesActions.getMatchMessages(matchId))
-            }
+    //receive
 
-            socket = io();
+    socket.on("delete", (messageId) => {
+      console.log("Connected");
+      dispatch(messagesActions.deleteMessage(messageId));
+    });
 
+    //receive
+    socket.on("chat", (chat) => {
+      // setMessages(messages => [...messages, chat])
 
-            //receive
+      dispatch(messagesActions.addEditMessage(chat));
+    });
 
-            socket.on('delete', (messageId) =>{
-                console.log('Connected')
-                dispatch(messagesActions.deleteMessage(messageId))
-            })
+    return () => {
+      socket.disconnect();
+    };
+  }, []);
 
-            //receive
-            socket.on("chat", (chat) => {
-                // setMessages(messages => [...messages, chat])
+  const handleSubmitMsg = async (e) => {
+    e.preventDefault();
+    const res = await dispatch(messagesActions.addMessage(message, matchId));
 
-                dispatch(messagesActions.addEditMessage(chat))
-            })
+    //send
 
-            return (() => {
-                socket.disconnect()
+    socket.emit("chat", res);
 
+    setMessage("");
+  };
 
-            })
-        }, [])
-
-        const handleSubmitMsg = async (e) => {
-            e.preventDefault();
-            const res = await dispatch(messagesActions.addMessage(message, matchId))
-
-            //send
-
-            socket.emit("chat", res)
-
-            setMessage('');
-
-        };
-
-	return (
-        stateMessages &&
-        <div>
-            <div className="messages-listed">
-                {/* needs scroll */}
-                {stateMessages.map((message, i) =>
-					(
-                        <div key={i}>
-                            <MessageDivs socket={socket}   message={message} matchId={matchId}/>
-
-                        </div>
-					)
-                )}
+  return (
+    stateMessages && (
+      <div>
+        <div className="messages-listed">
+          {/* needs scroll */}
+          {stateMessages.map((message, i) => (
+            <div key={i}>
+              <MessageDivs
+                socket={socket}
+                message={message}
+                matchId={matchId}
+              />
             </div>
-			<form className="chat-input-ctrl" onSubmit={handleSubmitMsg}>
-                <div style={{visibility: message.length == 0 ? 'hidden' : 'visible'}}>{message.length} / {characterLimit}</div>
-				<input
-					className="chat-input"
-					type="text"
-					required
-					value={message}
-					onChange={(e) => setMessage(e.target.value)}
-				/>
-                <button disabled={message.length > 200 || message.length == 0? true : false}> Send </button>
-			</form>
+          ))}
         </div>
-	);
+        <form className="chat-input-ctrl" onSubmit={handleSubmitMsg}>
+          <div
+            style={{ visibility: message.length == 0 ? "hidden" : "visible" }}
+          >
+            {message.length} / {characterLimit}
+          </div>
+          <input
+            className="chat-input"
+            type="text"
+            required
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+          />
+          <button
+            disabled={
+              message.length > 200 || message.length == 0 ? true : false
+            }
+          >
+            {" "}
+            Send{" "}
+          </button>
+        </form>
+      </div>
+    )
+  );
 };
 
 export default MessageInput;
