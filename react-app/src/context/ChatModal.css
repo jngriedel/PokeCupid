@@ -1,0 +1,32 @@
+body{
+    z-index: 101;
+}
+#chatmodal {
+    position: fixed;
+    top: 160px;
+    left: 52%;
+    display: flex;
+    border-radius: 10px;
+    min-width: 400px;
+    min-height: 500px;
+    width: 30%;
+    height: 70%;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    box-shadow:         3px 3px 10px 8px rgb(141, 140, 140);
+  }
+  
+  #chatmodal-background {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: white;
+    opacity: 50%;
+  }
+  
+  #chatmodal-content {
+    position: absolute;
+  }
