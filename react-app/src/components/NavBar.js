@@ -18,9 +18,9 @@ const NavBar = () => {
       @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Roboto:wght@100&display=swap');
       </style>
       <div className="navigation-top">
-        <div className="navigation-left">
+        <NavLink className="navigation-left" to="/discover">
           <img id="navLogo" src={logo} alt='poke'/>
-        </div>
+        </NavLink>
         <div className="navigation-items">
               <li><NavLink to="/profile" exact={true}className="navitem"><i className="fas fa-user"></i> My Profile</NavLink></li>
 
