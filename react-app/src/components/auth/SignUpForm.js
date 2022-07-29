@@ -11,6 +11,7 @@ import './Signup.css';
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
   const [name, setName] = useState("");
+  const [questionsComplete, setQuestionsComplete] = useState(false)
   const [email, setEmail] = useState("");
   const [gender, setGender] = useState("Male");
   const [bio, setBio] = useState("");
@@ -96,7 +97,7 @@ const SignUpForm = () => {
         ))}
       </div>
 
-      
+
       <div className="signup-form-primary">
       <div>
         {/* <label>Name</label> */}
@@ -134,11 +135,11 @@ const SignUpForm = () => {
       <div>
 
         {/* <label>Bio</label> */}
-        <textarea 
+        <textarea
           className="signup-bio"
           placeholder="Write a short bio for yourself!"
-          name="bio" 
-          onChange={updateBio} 
+          name="bio"
+          onChange={updateBio}
           value={bio}>
         </textarea>
       </div>
@@ -323,6 +324,8 @@ const SignUpForm = () => {
           required={true}
         ></input>
       </div>
+      {questionsComplete &&
+      <h3>Questionnaire Complete! <i class="fa-solid fa-check"></i></h3>}
       {next && submit &&
       <button onSubmit={onSignUp} type="submit">
         Submit
@@ -345,6 +348,7 @@ const SignUpForm = () => {
         setNext={setNext}
         setQuestionAnswers={setQuestionAnswers}
         questionAnswers={questionAnswers}
+        setQuestionsComplete={setQuestionsComplete}
       />}
       </div>
     </>
