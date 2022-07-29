@@ -67,7 +67,7 @@ function Discover() {
     });
     if (response.ok) {
       const data = await response.json();
-      if (data.message) {
+      if (data.matchId) {
         if (index < users.length - 1) {
           setIndex(index + 1);
           setCurrent(users[index]);

@@ -47,13 +47,44 @@ def pass_user():
 
 
         db.session.commit()
-        return {'message' : 'Not interested!'}
+        return {'matchId' : possiblePass.id}
 
     else:
         new_Match = Match(userId=liker, userId2 = passedId, notInterested = True)
         db.session.add(new_Match)
         db.session.commit()
-        return {'message' : 'Not interested!'}
+        return {'matchId' : new_Match.id}
+
+@matches_routes.route('/unmatch', methods=['POST'])
+@login_required
+def unmatch_user():
+    data = request.json
+
+    liker = data['liker']
+
+    passedId = data['passedId']
+
+
+    to_unmatch = Match.query.filter(Match.userId == passedId, Match.userId2 == liker).scalar()
+    to_unmatch2 = Match.query.filter(Match.userId2 == passedId, Match.userId == liker).scalar()
+
+
+    if to_unmatch:
+        to_unmatch.notInterested = True
+        print('UNMATCH1 *****************')
+
+        db.session.commit()
+        return {'matchId' : to_unmatch.id}
+    elif to_unmatch2:
+        to_unmatch2.notInterested = True
+        print('UNMATCH2 *****************')
+
+        db.session.commit()
+        return {'matchId' : to_unmatch2.id}
+
+    else:
+
+        return {'errors' : 'Match not found, or already unmatched.'}
 
 @matches_routes.route('/<int:id>', methods=['DELETE'])
 @login_required

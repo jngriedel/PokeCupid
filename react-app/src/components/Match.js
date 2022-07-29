@@ -6,6 +6,7 @@ import {getUserMatches} from '../store/matches'
 import './Matches.css'
 import MessageInput from './Messages/MessageInput';
 import { ChatModal } from '../context/ChatModal';
+import { removeMatch } from '../store/matches'
 
 function Match({match}) {
   // const focusRef = useRef()
@@ -30,8 +31,10 @@ const handlePass = async (passedId) => {
   let result = window.confirm(
     "This person will no longer show up in your matches, and you won't be able to match again. Are you sure?"
   );
+
   if (result) {
-  const response = await fetch(`/api/matches/pass`, {
+
+  const response = await fetch(`/api/matches/unmatch`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -43,10 +46,10 @@ const handlePass = async (passedId) => {
   });
   if (response.ok) {
     const data = await response.json();
-    if (data.message) {
-
+    if (data.matchId) {
+      dispatch(removeMatch(data.matchId))
     }
-    return null;
+    return ;
   } else {
     return ["An error occurred. Please try again."];
   }

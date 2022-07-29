@@ -9,7 +9,7 @@ const addMatch = (match) => ({
   payload: match
 });
 
-const removeMatch = (matchId) => ({
+export const removeMatch = (matchId) => ({
   type: REMOVE_MATCH,
   payload: matchId
 })
