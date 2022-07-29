@@ -12,6 +12,7 @@
     /* padding-top: 2.5%; */
     background-color: #f0f2f6;
     width: 100%;
+    height: 100%;
 }
 
 .profile-nameplate{
@@ -478,12 +479,12 @@ input[type=file]::file-selector-button {
     padding-top: 0.5rem;
     padding-left: 1.5rem;
     padding-right: 1.5rem;
-    width: 150px;   /*will fill up div when created */
+       /*will fill up div when created */
     cursor: pointer;
     border-style: none;
     border-radius: 0.20rem;
     transition: background-color .2s;
-
+    border: none;
     font-weight: bold;
     margin-left: 5px;
 }
@@ -503,4 +504,9 @@ input[type=file]::file-selector-button {
     transition: background-color .2s;
 
     font-weight: bold
+}
+
+#uploadProfPic {
+    width: auto;
+    border: none;
 }
