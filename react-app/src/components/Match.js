@@ -58,11 +58,11 @@ const handlePass = async (passedId) => {
 
   return (
     <>
-    <div className='unmatch-container'>
+    {/* <div className='unmatch-container'>
       <button onClick={()=>{handlePass(notSessionUser.id)}} type='button' className='unmatch-button'>
         Unmatch
         </button>
-    </div>
+    </div> */}
       <div
       onClick={()=>{ setShowModal(true);
       setMessagesChanged(false)}}  className='matchDiv'  >

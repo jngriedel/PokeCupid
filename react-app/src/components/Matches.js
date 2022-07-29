@@ -14,10 +14,12 @@ function Matches() {
   const matchesState = useSelector(state=> state.matches)
   const matches = Object.values(matchesState)
 
+  if(matches){
   matches.sort((a, b) =>{
     var dateA = new Date(a.matchTime), dateB = new Date(b.matchTime)
 	return dateB - dateA
   } )
+}
 
   useEffect(() => {
     async function fetchData() {
