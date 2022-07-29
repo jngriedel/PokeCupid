@@ -10,7 +10,8 @@
 .profileMain {
     position: relative;
     /* padding-top: 2.5%; */
-    background-color: #f0f2f6
+    background-color: #f0f2f6;
+    width: 100%;
 }
 
 .profile-nameplate{
