@@ -406,7 +406,7 @@ list-style: none;
 
 .gender-container {
     position: absolute;
-    top: -20.5%;
+    top: -9.3%;
     left: 28%;
 }
 
@@ -431,7 +431,7 @@ transition: .3s background-color
 
 .gender-button-cancel{
     position: absolute;
-    top: -20.5%;
+    top: -9.3%;
     left: 38%;
     width: 1vw;
     height: 2vh;
@@ -444,7 +444,7 @@ transition: .3s background-color
 
 .gender-button-submit {
     position: absolute;
-    top: -20.5%;
+    top: -9.3%;
     left: 36%;
     width: 1vw;
     height: 2vh;
