@@ -26,7 +26,7 @@ const NavBar = () => {
 
               <li><NavLink to="/discover" exact={true}className="navitem"><i className="fas fa-search"></i> Discover</NavLink></li>
 
-              <li><NavLink to="/matches" exact={true}className="navitem"><i className="fas fa-heart"></i> My Matches</NavLink></li>
+              <li><NavLink to="/matches" exact={true}className="navitem"><i className="fas fa-heart"></i> Matches</NavLink></li>
         </div>
 
               <div className="navigation-right">
