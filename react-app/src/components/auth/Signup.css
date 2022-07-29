@@ -1,4 +1,4 @@
-.questions-form {
+.signup-form {
     background-color: #ffffff;
     width: 101vw;
     height: 98vh;
@@ -8,11 +8,11 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    z-index: 2;
 }
 
-.question-section {
+.signup-header{
     width: 101vw;
+    height: 21.5vh;
     margin-bottom: 100px;
     text-align: center;
     background-color: rgb(29, 29, 29);
@@ -20,21 +20,42 @@
     flex-direction: column;
     justify-content: center;
     font-size: 16px;
+    z-index: 0;
+    position: absolute;
 }
 
-.question-number {
-    margin-top: 20px;
-    width: 100%;
-    margin-bottom: 70px;
-    color: white;
-}
-
-.question-title-a {
+.signup-header-text {
     margin-left: 0%;
     margin-bottom: 30px;
     min-width: 100%;
     color: white;
     font-size: 26px;
+}
+
+.signup-form-primary {
+    margin-top: 28vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.signup-name,.signup-email,.signup-bio,.signup-password,.signup-repeat-password{
+    width: 150%;
+    height: 40px;
+    margin-bottom: 6%;
+    margin-left: -25%;
+    border-radius: 10px;
+    padding-left: 5px;
+    border: solid grey .5px;
+    font-size: 15px;
+}
+
+.signup-bio{
+    resize: none;
+    height: 80px;
+}
+
+.signup-gender,.signup-pokemon{
+    margin-bottom: 6%;
 }
 
 .answer-section {
@@ -76,31 +97,3 @@
     outline: none;
 }
 
-*, *::before, *::after {
-	box-sizing: border-box;
-}
-
-.progress-bar {
-	position: relative;
-	width: 500px;
-	height: 3em;
-	background-color: #111;
-	border-radius: 1.5em;
-	color: white;
-}
-
-.progress-bar::before {
-	content: attr(data-label);
-	display: flex;
-	align-items: center;
-	position: absolute;
-	left: .5em;
-	top: .5em;
-	bottom: .5em;
-	width: calc(var(--width, 0) * 1%);
-	min-width: 2rem;
-	max-width: calc(100% - 1em);
-	background-color: #ff2c70;
-	border-radius: 1em;
-	padding: 1em;
-}

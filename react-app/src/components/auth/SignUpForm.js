@@ -4,7 +4,9 @@ import { Redirect } from "react-router-dom";
 import { signUp } from "../../store/session";
 import Questionnaire from "../Questionnaire";
 import { getAllPokemon } from "../../store/pokemon";
-import './SignUpForm.css'
+
+import './Signup.css';
+
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
@@ -76,20 +78,32 @@ const SignUpForm = () => {
     return <Redirect to="/discover" />;
   }
 
-
-
   return (
     <>
-    {showSignUp && !showQuestionnaire &&
-    <form className="signupform" onSubmit={onSignUp}>
+
+    <div className="signup-form">
+    <div className="signup-header">
+        <div className="signup-header-text">
+          Get started with us!
+        </div>
+      </div>
+   {showSignUp && !showQuestionnaire &&
+    <form onSubmit={onSignUp}>
+
       <div>
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>
         ))}
       </div>
-      <div className>
-        <label>Name</label>
+
+      
+      <div className="signup-form-primary">
+      <div>
+        {/* <label>Name</label> */}
+
         <input
+          className="signup-name"
+          placeholder="Name"
           type="text"
           name="name"
           onChange={updateName}
@@ -97,15 +111,19 @@ const SignUpForm = () => {
         ></input>
       </div>
       <div>
-        <label>Email</label>
+        {/* <label>Email</label> */}
         <input
+          className="signup-email"
+          placeholder="Email"
           type="text"
           name="email"
           onChange={updateEmail}
           value={email}
         ></input>
       </div>
-      <div id="genderselect">
+
+      <div className="signup-gender">
+
         <label>Gender</label>
         <select name="gender" id="selectoption" onChange={updateGender} value={gender}>
           <option value="Male">Male</option>
@@ -114,12 +132,20 @@ const SignUpForm = () => {
         </select>
       </div>
       <div>
-        <label>Bio</label>
-        <textarea id="typebio" name="bio" onChange={updateBio} value={bio}></textarea>
+
+        {/* <label>Bio</label> */}
+        <textarea 
+          className="signup-bio"
+          placeholder="Write a short bio for yourself!"
+          name="bio" 
+          onChange={updateBio} 
+          value={bio}>
+        </textarea>
       </div>
-      <div>
-        <label>Choose a Pokémon!</label>
-        <select name="pokemonId" id="selectoption" onChange={updatePokemonId} value={pokemonId}>
+      <div className="signup-pokemon">
+        <label>Choose your Favorite Pokemon!</label>
+        <select name="pokemonId" onChange={updatePokemonId} value={pokemonId}>
+
           <option value="1">Bulbasaur</option>
           <option value="2">Ivysaur</option>
           <option value="3">Venasaur</option>
@@ -272,10 +298,13 @@ const SignUpForm = () => {
           <option value="150">Mewtwo</option>
         </select>
       </div>
+      </div>
 
       <div>
-        <label>Password</label>
+        {/* <label>Password</label> */}
         <input
+          className="signup-password"
+          placeholder="Password"
           type="password"
           name="password"
           onChange={updatePassword}
@@ -283,8 +312,10 @@ const SignUpForm = () => {
         ></input>
       </div>
       <div>
-        <label>Repeat Password</label>
+        {/* <label>Repeat Password</label> */}
         <input
+          className="signup-repeat-password"
+          placeholder="Repeat Password"
           type="password"
           name="repeat_password"
           onChange={updateRepeatPassword}
@@ -315,6 +346,7 @@ const SignUpForm = () => {
         setQuestionAnswers={setQuestionAnswers}
         questionAnswers={questionAnswers}
       />}
+      </div>
     </>
   );
 };

@@ -83,19 +83,26 @@ function Profile() {
       {loaded && (
         <div className="profileMain">
           <div className="profile-nameplate">
+            <div className='profile-items'>
             {userImagesArr[0] && (
               <img
                 className="profile-picture"
                 src={sessionUser?.profileImages[0]?.imgUrl}
               ></img>
-            )}
-            {!sessionUser?.profileImages[0]?.imgUrl && (
+
+              )}
+              {!sessionUser?.profileImages[0]?.imgUrl && (
               <img
                 className="profile-picture"
                 src="https://www.kindpng.com/picc/m/74-743336_global-link-question-question-mark-unknown-pokemon-hd.png"
               ></img>
-            )}
-            <p className="profile-name">{sessionUser?.name}</p>
+              )}
+              <div className= 'profile-name-gender'>
+                <p className="profile-name">{sessionUser?.name}</p>
+                <Gender />
+              </div>
+            </div>
+
             <p className="profile-title">Profile</p>
           </div>
           <div className="profile-info-container">
@@ -172,9 +179,6 @@ function Profile() {
                   </div>
                   {imageLoading && <p>Uploading Image...</p>}
                 </form> }
-              </div>
-              <div>
-                <Gender />
               </div>
               <ProfileAnswers />
             </div>

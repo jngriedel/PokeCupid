@@ -84,6 +84,7 @@
     width: 60%;
     right: 0px;
     flex-wrap: nowrap;
+    align-items: center;
   }
 
   .nav-name{
