@@ -1,7 +1,15 @@
-/* TODO Add site wide styles */
+
+
+/* body,
+html {
+margin: 0px;
+padding: 0px;
+} */
 #content-wrap {
-    padding-bottom: 50px;
+    padding-bottom: 60px;
     height: 100%;
+    margin-top: 50px;
+
 }
 
 #root {
