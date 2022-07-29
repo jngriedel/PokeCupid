@@ -17,10 +17,15 @@ function Discover() {
     async function fetchData() {
       const response = await fetch("/api/users/");
       const responseData = await response.json();
-      setUsers(responseData?.users); 
+      setUsers(responseData?.users);
     }
     fetchData()
-    .then((res)=> setUserGrabbed(true));
+    .then((res)=>{
+      setTimeout(() => {
+        setUserGrabbed(true)
+      }, 1000)
+
+      });
 
 
   }, []);
@@ -89,7 +94,7 @@ function Discover() {
 
     }
   };
-  
+
   return (
     <>
       <h1>Discover: </h1>

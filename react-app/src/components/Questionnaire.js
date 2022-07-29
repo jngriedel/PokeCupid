@@ -3,9 +3,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
 
 
-const Questionnaire = ({setShowSignUp, setQuestionAnswers}) => {
+const Questionnaire = ({setShowSignUp, setQuestionAnswers, setNext, setShowQuestionnaire, setSubmit, showQuestionnaire}) => {
     const [currentQuestion, setCurrentQuestion] = useState(1);
-    const [showQuestionnaire, setShowQuestionnaire] = useState(true);
     const [answer1, setAnswer1] = useState("")
     const [answer2, setAnswer2] = useState("")
     const [answer3, setAnswer3] = useState("")
@@ -54,6 +53,8 @@ const Questionnaire = ({setShowSignUp, setQuestionAnswers}) => {
         setQuestionAnswers([answer1, answer2, answer3, answer4, answer5, answer6, answer7, answer8, answer9, answer10, answer11, answer12, answer13, answer14, answer15, answer16, answer17, answer18, answer19, answer20])
         setShowSignUp(true)
         setShowQuestionnaire(false)
+        setNext(true)
+        setSubmit(true)
         }
     },[answer20])
 
