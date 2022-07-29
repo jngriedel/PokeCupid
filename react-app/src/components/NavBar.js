@@ -6,18 +6,17 @@ import LogoutButton from "./auth/LogoutButton";
 import "./NavBar.css";
 
 const NavBar = () => {
-
   const sessionUser = useSelector((state) => state.session.user);
   const userImages = useSelector((state) => state.profileImages);
-  // const userImagesArr = Object.values(userImages);
-  // const thumbnail = userImagesArr[0].imgUrl;
 
   return (
     <main className="navigation">
       <style>
-      @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Roboto:wght@100&display=swap');
+        @import
+        url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Roboto:wght@100&display=swap');
       </style>
       <div className="navigation-top">
+
         <NavLink className="navigation-left" to="/discover">
           <img id="navLogo" src={logo} alt='poke'/>
         </NavLink>
@@ -27,16 +26,17 @@ const NavBar = () => {
               <li><NavLink to="/discover" exact={true}className="navitem"><i className="fas fa-search"></i> Discover</NavLink></li>
 
               <li><NavLink to="/matches" exact={true}className="navitem"><i className="fas fa-heart"></i> Matches</NavLink></li>
+
         </div>
 
-              <div className="navigation-right">
-                {sessionUser && <> <p className="nav-name">
-                  Welcome back, {sessionUser.name}!
-                </p>
-                <LogoutButton/>
-                </>}
-
-              </div>
+        <div className="navigation-right">
+          {sessionUser && (
+            <>
+              <p className="nav-name">Welcome back, {sessionUser.name}!</p>
+              <LogoutButton />
+            </>
+          )}
+        </div>
       </div>
     </main>
   );
