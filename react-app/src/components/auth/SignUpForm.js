@@ -4,6 +4,7 @@ import { Redirect } from "react-router-dom";
 import { signUp } from "../../store/session";
 import Questionnaire from "../Questionnaire";
 import { getAllPokemon } from "../../store/pokemon";
+import './SignUpForm.css'
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
@@ -80,13 +81,13 @@ const SignUpForm = () => {
   return (
     <>
     {showSignUp && !showQuestionnaire &&
-    <form onSubmit={onSignUp}>
+    <form className="signupform" onSubmit={onSignUp}>
       <div>
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>
         ))}
       </div>
-      <div>
+      <div className>
         <label>Name</label>
         <input
           type="text"
@@ -104,9 +105,9 @@ const SignUpForm = () => {
           value={email}
         ></input>
       </div>
-      <div>
+      <div id="genderselect">
         <label>Gender</label>
-        <select name="gender" onChange={updateGender} value={gender}>
+        <select name="gender" id="selectoption" onChange={updateGender} value={gender}>
           <option value="Male">Male</option>
           <option value="Female">Female</option>
           <option value="Other">Other</option>
@@ -114,11 +115,11 @@ const SignUpForm = () => {
       </div>
       <div>
         <label>Bio</label>
-        <textarea name="bio" onChange={updateBio} value={bio}></textarea>
+        <textarea id="typebio" name="bio" onChange={updateBio} value={bio}></textarea>
       </div>
       <div>
         <label>Choose a Pokemon!</label>
-        <select name="pokemonId" onChange={updatePokemonId} value={pokemonId}>
+        <select name="pokemonId" id="selectoption" onChange={updatePokemonId} value={pokemonId}>
           <option value="1">Bulbasaur</option>
           <option value="2">Ivysaur</option>
           <option value="3">Venasaur</option>
@@ -300,8 +301,9 @@ const SignUpForm = () => {
       <button
         onClick={handleClick}
         type="button"
+        id="nextbutton"
         >
-        Next
+        Fill Out Questionnaire
       </button>}
       {!showSignUp && showQuestionnaire &&
       <Questionnaire

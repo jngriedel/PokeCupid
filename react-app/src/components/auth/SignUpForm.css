@@ -1,0 +1,64 @@
+.signupform {
+    width: 330px;
+    background: rgb(255, 255, 255);
+    border-radius: 1px;
+    padding: 20px;
+    margin: auto;
+    margin-top:40px;
+    margin-bottom:20px;
+    text-align: center;
+}
+
+
+input {
+    border-radius: 3px;
+    padding: 10px;
+    margin: 5px 0;
+    width: 100%;
+    border: 1px solid #999;
+    outline: none;
+}
+
+#selectoption {
+    border-radius: 8px;
+    padding: 10px;
+    margin: 5px 0;
+    width: 100%;
+    border: 1px solid #999;
+    outline: none;
+}
+
+#typebio {
+    border-radius: 8px;
+    padding: 10px;
+    margin: 5px 0;
+    width: 100%;
+    border: 1px solid #999;
+    outline: none;
+}
+
+#nextbutton {
+    color: rgb(255, 255, 255);
+    background-color: #ff9ae6;
+    font-weight: bolder;
+    width: 100px;
+    height: 34px;
+    border-radius: 8px;
+    font-size: 15px;
+    margin: 10px 0;
+    border:transparent 2px;
+    cursor: pointer;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
+}
+
+#nextbutton:hover {
+  color:#fac017;
+  box-sizing:border-box;
+  background-color:rgba(0, 128, 160);
+  border: solid 2px #fac017;
+}
+
+#nextbutton:active {
+  transform: translate(3px, 3px);
+  box-shadow:none;
+}
