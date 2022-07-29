@@ -37,6 +37,7 @@ function App() {
 
   return (
 <>
+    <div id='content-wrap'>
     <BrowserRouter>
 
       <Route path="/" exact={true}>
@@ -76,6 +77,7 @@ function App() {
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
+    </div>
     <Footer />
     </>
   );

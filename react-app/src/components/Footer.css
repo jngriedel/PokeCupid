@@ -18,19 +18,36 @@
     text-align: center;
     line-height: 1.5;
     margin-top: 0;
-
+    margin-left: 20px;
     font-size: 14px;
     color: hsla(0,0%,100%,.6);
 
   }
+.creatorDetails {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
 .creatorDetails > a {
     color: hsla(0,0%,100%,.6);
     transition: .2s;
     margin-left: 10px;
 
+
+
 }
 
 .creatorDetails >a:hover {
     color: white
+}
+
+.message-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.createdMessage {
+    color: aquamarine;
 }

@@ -1,1 +1,15 @@
 /* TODO Add site wide styles */
+#content-wrap {
+    padding-bottom: 50px;
+    height: 100%;
+}
+
+#root {
+    position: relative;
+    min-height: 100vh;
+    /* display: flex;
+    flex-direction: column;
+    justify-content: space-between; */
+
+
+  }
