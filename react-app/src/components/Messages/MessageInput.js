@@ -1,13 +1,14 @@
 import { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { io } from "socket.io-client";
+import { NavLink } from "react-router-dom";
 import * as messagesActions from "../../store/messages";
 import MessageDivs from "./MessageDiv";
 let socket;
 
 //return the message to dict inside the addMessage, then add it on the socket
 
-const MessageInput = ({ matchId, messagesChanged, setMessagesChanged }) => {
+const MessageInput = ({ matchId, messagesChanged, setMessagesChanged, setShowModal, notSessionUser }) => {
   const [characterLimit] = useState(200);
   const user = useSelector((state) => state.session?.user);
   const [message, setMessage] = useState("");
@@ -73,7 +74,26 @@ const MessageInput = ({ matchId, messagesChanged, setMessagesChanged }) => {
     stateMessages &&  (
 
       <div className="messages-container">
-
+        <div className="chat-head">
+            <div>
+                <h3>{notSessionUser.name}</h3>
+                <NavLink to={`/users/${notSessionUser.id}`}>
+                {!notSessionUser.profileImages[0] && (
+                <img
+                  className="chat-images"
+                  src="https://www.kindpng.com/picc/m/74-743336_global-link-question-question-mark-unknown-pokemon-hd.png"
+                ></img>
+              )}
+              {notSessionUser.profileImages[0] && (
+                <img
+                  className="chat-images"
+                  src={notSessionUser.profileImages[0]?.imgUrl}
+                ></img>
+              )}
+                </NavLink>
+            </div>
+            <button onClick={()=>setShowModal(false)} type="button"><i class="fa-solid fa-x"></i> </button>
+        </div>
         <div className="messages-listed" ref={focusRef}>
         {!messagesChanged && <div className="chat-loading"></div>}
           {messagesChanged && stateMessages.map((message, i) => (
