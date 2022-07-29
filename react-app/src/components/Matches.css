@@ -102,3 +102,13 @@
     font-weight: 200;
     text-overflow: ellipsis;
 }
+
+
+
+
+
+.chat-loading {
+    width: 450px;
+    height: 320px;
+    background-image: url("https://c.tenor.com/fSsxftCb8w0AAAAd/pikachu-running.gif");
+}
