@@ -59,9 +59,10 @@ const MessageDivs = ({ message, socket }) => {
           {/* <div className="chat-avatar"><img src={userImagesAll[0].imgUrl}/></div> */}
         </div>
         {!editMssg && (
-          <div>
+          <div className= "chat-content-options">
             <p>{message.content}</p>
             <button
+            className="edit-msg"
               onClick={() => setEditMssg(true)}
               style={{
                 visibility:
@@ -77,8 +78,7 @@ const MessageDivs = ({ message, socket }) => {
                 visibility:
                   message.userId === sessionUser.id ? "visible" : "hidden",
               }}
-            >
-              <i class="fas fa-trash"></i>
+            ><i class="fas fa-trash"></i>
             </button>
           </div>
         )}
