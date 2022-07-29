@@ -27,7 +27,7 @@ const Questionnaire = ({setShowSignUp, setQuestionAnswers, setNext, setShowQuest
     const [answer19, setAnswer19] = useState("")
     const [answer20, setAnswer20] = useState("")
 
-    const questionObj = { Poké
+    const questionObj = {
         1: {Question: "What's the most important part of a Pokémon Battle?", Options: {0: "To have fun!", 1: "To win!", 2: "To Level Up!", 3: "To bond with my Pokémon!"}},
         2: {Question: "You encounter an injured wild Pokémon. What do you do?", Options: {0: "Give it a Potion and ask it to join my team.", 1: "Try to capture it. It can't fight back", 2: "Scan it with my Pokédex. I haven't seen that one yet!", 3: "Take it to the nearest PokéCenter to heal"}},
         3: {Question: "When setting out for the day, your main goal is to...", Options: {0: "Meet new trainers and explore.", 1: "Be the best trainer there is.", 2: "Create a dynamic and effective battling team.", 3: "To bond with my Pokémon!"}},
