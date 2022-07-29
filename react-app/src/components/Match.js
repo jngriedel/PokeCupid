@@ -64,7 +64,7 @@ function Match({ match }) {
       <div></div>
       {showModal && (
         <ChatModal onClose={() => setShowModal(false)}>
-          <MessageInput matchId={matchId} messagesChanged={messagesChanged} setMessagesChanged={setMessagesChanged} />
+          <MessageInput matchId={matchId} messagesChanged={messagesChanged} setMessagesChanged={setMessagesChanged} setShowModal={setShowModal} notSessionUser={notSessionUser} />
         </ChatModal>
       )}
     </>
