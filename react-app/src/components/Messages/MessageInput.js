@@ -7,10 +7,11 @@ let socket;
 
 //return the message to dict inside the addMessage, then add it on the socket
 
-const MessageInput = ({ matchId }) => {
+const MessageInput = ({ matchId, messagesChanged, setMessagesChanged }) => {
   const [characterLimit] = useState(200);
   const user = useSelector((state) => state.session?.user);
   const [message, setMessage] = useState("");
+
   const messagesObject = useSelector((state) => state.messages);
   const stateMessages = Object.values(messagesObject);
   const focusRef = useRef();
@@ -28,7 +29,12 @@ const MessageInput = ({ matchId }) => {
 
   useEffect(() => {
     if (user) {
-      dispatch(messagesActions.getMatchMessages(matchId));
+      dispatch(messagesActions.getMatchMessages(matchId))
+      .then((res)=>{
+        setTimeout(() => {
+            setMessagesChanged(true)
+          }, 300)
+    });
     }
 
     socket = io();
@@ -64,10 +70,13 @@ const MessageInput = ({ matchId }) => {
   };
 
   return (
-    stateMessages && (
+    stateMessages &&  (
+
       <div className="messages-container">
+
         <div className="messages-listed" ref={focusRef}>
-          {stateMessages.map((message, i) => (
+        {!messagesChanged && <div className="chat-loading"></div>}
+          {messagesChanged && stateMessages.map((message, i) => (
             <div key={i}>
               <MessageDivs
                 socket={socket}
@@ -77,6 +86,7 @@ const MessageInput = ({ matchId }) => {
             </div>
           ))}
         </div>
+
         <form className="chat-input-ctrl" onSubmit={handleSubmitMsg}>
           <div
             className="chat-countdown"
