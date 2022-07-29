@@ -37,9 +37,11 @@ function ImageTitle({ image }) {
   return (
     <>
       {!editContent && (
-        <div>
-          <h1>{currentTitle}</h1>
-          <button onClick={handleEdit}>Edit</button>
+        <div className="profile-pictures-title-container">
+          <p className="profile-pictures-title">{currentTitle}</p>
+          <button className="edit-photo" onClick={handleEdit}>
+            <i className="fa-solid fa-pencil"></i>
+          </button>
         </div>
       )}
 
@@ -49,6 +51,7 @@ function ImageTitle({ image }) {
         <>
           <form onSubmit={changeTitle}>
             <textarea
+              className="image-title-textarea"
               name="currentTitle"
               onChange={(e) => {
                 setCurrentTitle(e.target.value);
@@ -57,16 +60,20 @@ function ImageTitle({ image }) {
             >
               {currentTitle}
             </textarea>
-            <div className="add-comment-bttn-box">
-              <button id="edit-comment-bttn" className="bttn" type="submit">
-                Save
+            <div className="edit-title-container">
+              <button
+                id="edit-comment-bttn"
+                className="edit-profile-title-submit"
+                type="submit"
+              >
+                <i className="fa-solid fa-check"></i>
               </button>
               <button
                 id="edit-comment-bttn"
-                className="bttn"
+                className="edit-profile-title-cancel"
                 onClick={handleCancel}
               >
-                Cancel
+                <i className="fa-solid fa-x"></i>
               </button>
             </div>
           </form>

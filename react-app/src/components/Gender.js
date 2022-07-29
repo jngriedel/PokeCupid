@@ -10,7 +10,6 @@ function Gender({}) {
   const [selected, setSelected] = useState("");
   const [errors, setErrors] = useState([]);
 
-
   const handleCancel = () => {
     setEditContent(false);
     setCurrentGender(sessionUser.gender);
@@ -42,9 +41,11 @@ function Gender({}) {
   return (
     <>
       {!editContent && (
-        <div>
-          <h1>{currentGender}</h1>
-          <button onClick={handleEdit}>Edit</button>
+        <div className="gender-container">
+          <h3 className="gender-text">{currentGender}</h3>
+          <button className="gender-button" onClick={handleEdit}>
+            <i className="fa-solid fa-pencil"></i>
+          </button>
         </div>
       )}
 
@@ -52,6 +53,7 @@ function Gender({}) {
         <>
           <form onSubmit={changeGender}>
             <select
+              className="gender-container"
               name="currentGender"
               onClick={(e) => {
                 setCurrentGender(e.target.value);
@@ -65,15 +67,19 @@ function Gender({}) {
               <option value="Other">Other</option>
             </select>
             <div className="add-comment-bttn-box">
-              <button id="edit-comment-bttn" className="bttn" type="submit">
-                Save
+              <button
+                id="edit-comment-bttn"
+                className="gender-button-submit"
+                type="submit"
+              >
+                <i className="fa-solid fa-check"></i>
               </button>
               <button
                 id="edit-comment-bttn"
-                className="bttn"
+                className="gender-button-cancel"
                 onClick={handleCancel}
               >
-                Cancel
+                <i className="fa-solid fa-x"></i>
               </button>
             </div>
           </form>
