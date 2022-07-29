@@ -22,14 +22,6 @@ function Profile() {
   const userImagesArr = Object.values(userImages);
 
   const [errors, setErrors] = useState([]);
-<<<<<<< Updated upstream
-  //    const [name, setName] = useState('');
-  //    const [email, setEmail] = useState('');
-  //    const [gender, setGender] = useState('Male');
-  //    const [bio, setBio] = useState('');
-  //    const [pokemonId, setPokemonId] = useState(1);
-=======
->>>>>>> Stashed changes
   const [loaded, setLoaded] = useState(false);
   const [image, setImage] = useState(null);
   const [imageLoading, setImageLoading] = useState(false);
@@ -86,66 +78,97 @@ function Profile() {
     <>
       {loaded && (
         <div className="profileMain">
-          {userImagesArr[0] && (
-            <img
-              className="profile-picture"
-              src={sessionUser?.profileImages[0]?.imgUrl}
-            ></img>
-          )}
-          <div>{sessionUser?.name}</div>
-          {userImagesArr.length <= 3 && (
-            <div>
-              {errors &&
-                errors.map((error, ind) => <div key={ind}>{error}</div>)}
-
-              <form className="upload-photo-form" onSubmit={addNewProfImg}>
-                <label>Add new Profile Image:</label>
-                <input
-                  id="uploadProfPic"
-                  name="image"
-                  type="file"
-                  accept="image/*"
-                  onChange={updateImage}
-                ></input>
-                <button type="submit">Upload</button>
-                {imageLoading && <p>Uploading Image...</p>}
-              </form>
-            </div>
-          )}
-          <div className="profileImages">
+          <div className="profile-nameplate">
             {userImagesArr[0] && (
-              <>
-                {userImagesArr.map((image, i) => (
-                  <div key={i}>
-                    <div>
-                      <ImageTitle image={image} />
-                    </div>
-                    <img src={image.imgUrl} />
-                    <button onClick={() => handleDelete(image.id)}>
-                      Delete
-                    </button>
+              <img
+                className="profile-picture"
+                src={sessionUser?.profileImages[0]?.imgUrl}
+              ></img>
+            )}
+            <p className="profile-name">{sessionUser?.name}</p>
+            <p className="profile-title">Profile</p>
+          </div>
+          <div className="profile-info-container">
+            <div className="titles-container">
+              <p className="biography-title">Biography</p>
+              <p className="pokemon-title">Your Pokemon</p>
+            </div>
+            <div className="bio-and-pokemon">
+              <Bio />
+              <p className="pokemon-number"># {sessionUser.pokemonId}.</p>
+              <img className="pokemon-img" src={sessionUser?.pokemon?.imgUrl} />
+              <Pokemon />
+            </div>
+            <div>
+              <div className="profile-images-container">
+                {userImagesArr.length <= 3 && (
+                  <div>
+                    <p className="profile-picture-title">Profile Pictures</p>
                   </div>
-                ))}
-              </>
-            )}
-            {!userImagesArr[0] && (
-              <>
-                <img src="https://www.kindpng.com/picc/m/74-743336_global-link-question-question-mark-unknown-pokemon-hd.png" />
-              </>
-            )}
-          </div>
-          <div>
-            <img src={sessionUser?.pokemon?.imgUrl} />
-            <Pokemon />
-          </div>
-          <div>
-            <Bio />
-          </div>
+                )}
+                <div className="profile-images">
+                  {userImagesArr[0] && (
+                    <>
+                      {userImagesArr.map((image, i) => (
+                        <div className="profile-pictures-div" key={i}>
+                          <div>
+                            <ImageTitle image={image} />
+                          </div>
+                          <div className="profile-pictures-container">
+                            <img
+                              className="profile-pictures"
+                              src={image.imgUrl}
+                            />
+                            <button
+                              className="profile-picture-delete"
+                              onClick={() => handleDelete(image.id)}
+                            >
+                              <i className="fa-solid fa-x"></i>
+                            </button>
+                          </div>
+                        </div>
+                      ))}
+                    </>
+                  )}
+                  {!userImagesArr[0] && (
+                    <>
+                      <img
+                        className="profile-pictures"
+                        src="https://www.kindpng.com/picc/m/74-743336_global-link-question-question-mark-unknown-pokemon-hd.png"
+                      />
+                    </>
+                  )}
+                </div>
 
-          <div>
-            <Gender />
+                {errors &&
+                  errors.map((error, ind) => (
+                    <div key={ind} className="images-errors">
+                      {error}
+                    </div>
+                  ))}
+                <form className="upload-photo-form" onSubmit={addNewProfImg}>
+                  <div className="upload-container">
+                    <label className="upload-text">
+                      Add new Profile Image:
+                    </label>
+                    <input
+                      id="uploadProfPic"
+                      name="image"
+                      type="file"
+                      accept="image/*"
+                      onChange={updateImage}
+                    ></input>
+                    <button type="submit">Upload</button>
+                  </div>
+                  {imageLoading && <p>Uploading Image...</p>}
+                </form>
+              </div>
+              <div>
+                <Gender />
+              </div>
+              <ProfileAnswers />
+            </div>
           </div>
-          <ProfileAnswers />
         </div>
       )}
       {!loaded && (

@@ -42,8 +42,9 @@ function Pokemon({}) {
     <>
       {!editContent && (
         <div>
-          <button onClick={handleEdit}>Edit</button>
-          <p>{sessionUser?.pokemonId}</p>
+          <button className="edit-pokemon" onClick={handleEdit}>
+            <i className="fa-solid fa-pencil"></i>
+          </button>
         </div>
       )}
 
@@ -51,6 +52,7 @@ function Pokemon({}) {
         <>
           <form onSubmit={changePokemon}>
             <select
+              className="edit-pokemon-select"
               name="currentPokemon"
               onClick={(e) => {
                 setCurrentPokemon(e.target.value);
@@ -210,15 +212,19 @@ function Pokemon({}) {
               <option value="150">Mewtwo</option>
             </select>
             <div className="add-comment-bttn-box">
-              <button id="edit-comment-bttn" className="bttn" type="submit">
-                Save
+              <button
+                className="edit-pokemon-save"
+                id="edit-comment-bttn"
+                type="submit"
+              >
+                <i className="fa-solid fa-check"></i>
               </button>
               <button
+                className="edit-pokemon-cancel"
                 id="edit-comment-bttn"
-                className="bttn"
                 onClick={handleCancel}
               >
-                Cancel
+                <i className="fa-solid fa-x"></i>
               </button>
             </div>
           </form>
