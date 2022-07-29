@@ -367,10 +367,9 @@ list-style: none;
 }
 
 .edit-title-container {
-    position: relative;
-    top: 32%;
-    left: 66%;
-    bottom: 28px;
+    /* position: relative;
+    left: 26%;
+    bottom: 28px; */
 }
 
 .profile-images-container {
