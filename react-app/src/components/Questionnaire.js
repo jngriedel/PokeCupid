@@ -148,9 +148,12 @@ const Questionnaire = ({setShowSignUp, setQuestionAnswers, setNext, setShowQuest
           {}
           <div className="question-section">
             <div className="question-number">
-              <span>Question {currentQuestion}</span>/20
+              <span>Question {currentQuestion} </span>/ 20
             </div>
-            <div className="question-title">
+            <div className="progressbar">
+              <span></span>
+            </div>
+            <div className="question-title-a">
               {questionObj[currentQuestion].Question}
             </div>
           </div>
@@ -162,6 +165,9 @@ const Questionnaire = ({setShowSignUp, setQuestionAnswers, setNext, setShowQuest
                 </button>
               )
             )}
+          </div>
+          <div>
+            Select One
           </div>
         </>
       </div>
