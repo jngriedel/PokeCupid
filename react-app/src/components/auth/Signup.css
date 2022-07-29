@@ -33,20 +33,30 @@
 }
 
 .signup-form-primary {
-    margin-top: 30vh;
+    margin-top: 28vh;
     display: flex;
     flex-direction: column;
 }
 
-.signup-name,.signup-email,.password,.repeat_password,.birthday{
-    width: 100%;
+.signup-name,.signup-email,.signup-bio,.signup-password,.signup-repeat-password{
+    width: 150%;
     height: 40px;
     margin-bottom: 6%;
+    margin-left: -25%;
     border-radius: 10px;
     padding-left: 5px;
     border: solid grey .5px;
-    font-size: 20px;
-  }
+    font-size: 15px;
+}
+
+.signup-bio{
+    resize: none;
+    height: 80px;
+}
+
+.signup-gender,.signup-pokemon{
+    margin-bottom: 6%;
+}
 
 .answer-section {
     width: 100%;

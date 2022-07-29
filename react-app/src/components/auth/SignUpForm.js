@@ -115,7 +115,7 @@ const SignUpForm = () => {
           value={email}
         ></input>
       </div>
-      <div>
+      <div className="signup-gender">
         <label>Gender</label>
         <select name="gender" onChange={updateGender} value={gender}>
           <option value="Male">Male</option>
@@ -126,14 +126,15 @@ const SignUpForm = () => {
       <div>
         {/* <label>Bio</label> */}
         <textarea 
+          className="signup-bio"
           placeholder="Write a short bio for yourself!"
           name="bio" 
           onChange={updateBio} 
           value={bio}>
         </textarea>
       </div>
-      <div>
-        <label>Choose a Pokemon!</label>
+      <div className="signup-pokemon">
+        <label>Choose your Favorite Pokemon!</label>
         <select name="pokemonId" onChange={updatePokemonId} value={pokemonId}>
           <option value="1">Bulbasaur</option>
           <option value="2">Ivysaur</option>
@@ -290,8 +291,10 @@ const SignUpForm = () => {
       </div>
 
       <div>
-        <label>Password</label>
+        {/* <label>Password</label> */}
         <input
+          className="signup-password"
+          placeholder="Password"
           type="password"
           name="password"
           onChange={updatePassword}
@@ -299,8 +302,10 @@ const SignUpForm = () => {
         ></input>
       </div>
       <div>
-        <label>Repeat Password</label>
+        {/* <label>Repeat Password</label> */}
         <input
+          className="signup-repeat-password"
+          placeholder="Repeat Password"
           type="password"
           name="repeat_password"
           onChange={updateRepeatPassword}
