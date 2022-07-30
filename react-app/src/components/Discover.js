@@ -89,8 +89,9 @@ function Discover() {
     const res = await dispatch(newMatch(sessionUser.id, current?.id));
     if (res) {
       console.log(res)
+
+      await setMatchModalMatch(res)
       setShowMatchModal(true)
-      setMatchModalMatch(res)
     }
 
 

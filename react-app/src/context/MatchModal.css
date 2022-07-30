@@ -1,0 +1,16 @@
+
+#matchmodal {
+    position: fixed;
+    top: 20%;
+    left: 35%;
+    display: flex;
+    border-radius: 10px;
+    min-width: 400px;
+    min-height: 500px;
+    width: 30%;
+    height: 70%;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    box-shadow: 3px 3px 10px 8px rgb(141, 140, 140);
+  }
