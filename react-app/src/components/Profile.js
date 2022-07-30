@@ -118,7 +118,7 @@ function Profile() {
               <Pokemon />
               </div>
             </div>
-            <div>
+            <div className="profile-bottom">
               <div className="profile-images-container">
                 {/* {userImagesArr.length <= 3 && ( */}
                   <div>
@@ -177,9 +177,10 @@ function Profile() {
                       accept="image/*"
                       onChange={updateImage}
                     ></input>
-                    <button id="upload-button" type="submit">Upload</button>
+                    <button id="upload-button" type="submit"><i class="fas fa-file-upload"></i></button>
                   </div>
-                  {imageLoading && <p>Uploading Image...</p>}
+                  {imageLoading && 
+                    <div className="uploading-image-text">Uploading Image...</div>}
                 </form> }
               </div>
               <ProfileAnswers />
