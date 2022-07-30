@@ -15,7 +15,7 @@ function Matches() {
   const matchesState = useSelector((state) => state.matches);
   const matches = Object.values(matchesState);
 
-  if(matches) {
+  if(matches.length !== 0) {
   matches.sort((a, b) => {
     var dateA = new Date(a.matchTime),
       dateB = new Date(b.matchTime);
@@ -31,6 +31,7 @@ function Matches() {
     }
     fetchData();
     dispatch(getUserMatches(sessionUser.id)).then((val) => {
+
       setTimeout(() => {
         setIsLoaded(true);
       }, 1000);
