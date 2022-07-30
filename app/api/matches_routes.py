@@ -28,7 +28,7 @@ def add_match():
         new_Match = Match(userId=liker, userId2 = liked)
         db.session.add(new_Match)
         db.session.commit()
-        return {'matchId': new_Match.to_dict()}
+        return {'matchId': new_Match.id}
 
 @matches_routes.route('/pass', methods=['POST'])
 @login_required
