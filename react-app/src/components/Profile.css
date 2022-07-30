@@ -220,7 +220,7 @@
 .edit-bio:hover {
     background-color: #34f;
     cursor: pointer;
-    opacity: 100%;
+    /* opacity: 100%; */
     transition: .2s;
 }
 
