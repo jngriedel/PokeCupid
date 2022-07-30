@@ -30,14 +30,13 @@ Upon landing on the home page, you may sign up (or log in if you already have an
 
 ## **Sign Up & Questionnaire** ##
 If you click the "Join PokéCupid" Button on the Home Page, you are taken to a form where you will be prompt to enter your account details. You may also choose a starter Pokémon, select any of the original 150 Pokémon! You will also be asked to fill out a questionnaire, which is a 20-question survey to assess your match type!
-(INCLUDE SIGN UP) 
+![signup](https://user-images.githubusercontent.com/97005259/182003794-57233731-1426-4179-9242-bbf5fa112786.PNG)
 ![questionnaire](https://user-images.githubusercontent.com/97005259/181859776-0ac8b82e-1a8f-49ec-a955-571f6f18255a.PNG)
 
 
 ## **Discover** ##
 Upon logging in or completing your sign up, you will be taken to the Discover page. Here, you can view all the other users and choose to "Like" or "Pass" them. If you like the user, and the user chooses to like you back, this user will be pushed to the "Matches" (explained below) page which shows you all of the people you matched with. If you passed on the person, you will not be shown this person again. 
-
-![host](UPLOAD DISCOVER PAGE)
+![discover](https://user-images.githubusercontent.com/97005259/182003820-91951b8b-bffd-4c5a-b0b6-12434227e39c.PNG)
 
 
 ## **My Profile** ##
@@ -50,3 +49,37 @@ If you've matched with anyone, you can click the "Matches" tab in the navigation
 
 
 ## **Code Snippet** ##
+```
+return (
+    showQuestionnaire && (
+      <div className="questions-form">
+        <>
+          {}
+          <div className="question-section">
+            <div className="question-number">
+              <span>Question {currentQuestion} </span>/ 20
+            </div>
+            <div className="progressbar">
+              <span></span>
+            </div>
+            <div className="question-title-a">
+              {questionObj[currentQuestion].Question}
+            </div>
+          </div>
+          <div className="answer-section">
+            {Object.values(questionObj[currentQuestion].Options).map(
+              (answerOptions, i) => (
+                <button key={i} type="button" id="question-button" value={i} onClick={handleAnswer}>
+                  {answerOptions}
+                </button>
+              )
+            )}
+          </div>
+          <div>
+            Select One
+          </div>
+        </>
+      </div>
+    )
+  );
+  ```
