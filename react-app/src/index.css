@@ -6,8 +6,8 @@ margin: 0px;
 padding: 0px;
 } */
 #content-wrap {
-    padding-bottom: 60px;
-    height: 100%;
+    padding-bottom: 50px;
+
     margin-top: 50px;
 
 }
@@ -15,7 +15,7 @@ padding: 0px;
 #root {
     position: relative;
     min-height: 100vh;
-   
+
     /* display: flex;
     flex-direction: column;
     justify-content: space-between; */

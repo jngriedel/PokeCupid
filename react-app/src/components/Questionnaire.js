@@ -4,7 +4,7 @@ import { Redirect } from "react-router-dom";
 import './Questionnaire.css'
 
 
-const Questionnaire = ({setShowSignUp, setQuestionAnswers, setNext, setShowQuestionnaire, setSubmit, showQuestionnaire}) => {
+const Questionnaire = ({setShowSignUp, setQuestionAnswers, setNext, setShowQuestionnaire, setSubmit, showQuestionnaire, setQuestionsComplete}) => {
     const [currentQuestion, setCurrentQuestion] = useState(1);
     const [answer1, setAnswer1] = useState("")
     const [answer2, setAnswer2] = useState("")
@@ -56,6 +56,7 @@ const Questionnaire = ({setShowSignUp, setQuestionAnswers, setNext, setShowQuest
         setShowQuestionnaire(false)
         setNext(true)
         setSubmit(true)
+        setQuestionsComplete(true)
         }
     },[answer20])
 

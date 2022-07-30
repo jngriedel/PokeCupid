@@ -13,7 +13,7 @@ a{
 .discover-div{
     display:grid;
     margin: 0;
-    width: 18%;
+    width: 400px;
     border: 1px solid black;
     border-radius: 5px;
     margin: 1%;
@@ -38,4 +38,15 @@ a{
 .fa-heart,
 .fa-x {
     margin-right: 1.5%;
+}
+
+.discover-main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 100%;
+    height: 100%;
+    padding-top: 200px;
+
 }

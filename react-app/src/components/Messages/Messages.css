@@ -40,6 +40,9 @@
 
 .chat-username{
     padding: 2%;
+    font-weight: bold;
+    align-self: flex-end;
+    
 }
 
 .chat-content-options{
@@ -143,4 +146,18 @@
 .fa-x:hover{
 cursor: pointer;
 color: #ff0051;
+}
+
+
+.chatMessageUser{
+    background-color: #cce1ff;
+    border-radius: 24px 24px 24px 4px;
+    padding: 15px;
+    margin: 10px 0px;
+}
+.chatMessageOther{
+    background-color: #d8dfe9;
+    border-radius: 24px 24px 24px 4px;
+    padding: 15px;
+    margin: 10px 0px;
 }
