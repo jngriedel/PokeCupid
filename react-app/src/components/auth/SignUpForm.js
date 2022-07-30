@@ -45,8 +45,12 @@ const SignUpForm = () => {
       );
 
       if (data) {
+        console.log(data)
         setErrors(data);
       }
+    }
+    else{
+      setErrors(['Passwords must match'])
     }
   };
 
@@ -322,7 +326,7 @@ const SignUpForm = () => {
       {questionsComplete &&
       <h3>Questionnaire Complete! <i class="fa-solid fa-check"></i></h3>}
       {next && submit &&
-      <button onSubmit={onSignUp} type="submit">
+      <button  type="submit">
         Submit
       </button>}
       </form>}

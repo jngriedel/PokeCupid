@@ -26,4 +26,4 @@ class SignUpForm(FlaskForm):
     gender = SelectField('Gender', validators=[DataRequired()], choices=['Male', 'Female', 'Other'])
     bio = TextAreaField('Bio', validators=[DataRequired(), Length(min=5), Length(max=300)])
     pokemonId = SelectField('pokemonId', validators=[DataRequired()])
-    password = StringField('Password', validators=[DataRequired()])
+    password = StringField('Password', validators=[DataRequired(),  Length(min=8)])
