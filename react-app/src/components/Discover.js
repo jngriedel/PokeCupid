@@ -137,7 +137,7 @@ function Discover() {
         </div>
       )}
 
-      {!userGrabbed  && loaded && <><p style={{visibility: users.length == 0 || index == users.length  ? 'visible' : 'hidden'}}>{"You've reached the end of all the users for the moment, please check back later!"}</p>
+      {loaded && <><p style={{visibility: users.length == 0 || index == users.length  ? 'visible' : 'hidden'}}>{"You've reached the end of all the users for the moment, please check back later!"}</p>
     </>}
 
       { !loaded && <div className="loadHoldDiscover">
