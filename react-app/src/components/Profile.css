@@ -493,15 +493,13 @@ input[type=file]::file-selector-button {
     color: #fff;
     width: 30px;
     height: 30px;
-    padding-bottom: 0.5rem;
-    padding-top: 0.5rem;
+    padding: 0.5rem;
     /*width: 150px;   will fill up div when created */
     cursor: pointer;
     border-style: none;
     border-radius: 0.20rem;
     transition: background-color .2s;
 
-    font-weight: bold
 }
 
 #uploadProfPic {
