@@ -112,9 +112,11 @@ function Profile() {
             </div>
             <div className="bio-and-pokemon">
               <Bio />
-              <p className="pokemon-number"># {sessionUser.pokemonId}.</p>
-              <img className="pokemon-img" src={sessionUser?.pokemon?.imgUrl} />
+              <div className="profile-pokemon">
+                <p className="pokemon-number"># {sessionUser.pokemonId}.</p>
+                <img className="pokemon-img" src={sessionUser?.pokemon?.imgUrl} />
               <Pokemon />
+              </div>
             </div>
             <div>
               <div className="profile-images-container">
