@@ -10,34 +10,196 @@ a{
     font-size: large;
 }
 
+.discover-title-div{
+    background-color: #1a1a1a;
+    width: 100%;
+    height: 200px;
+    transition: .1s background-color
+
+}
+
+.discover-title-div:hover {
+    background-color:rgb(20, 20, 20);
+}
+
+.discover-title {
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    position: relative;
+    top: 35%;
+    right: 5%;
+    font-size: 40px;
+
+}
+
+.discover-like {
+    background-color: #e00095;
+    border: 2px solid #e00095;
+    color: white;
+    padding: 2%;
+    padding-top: 2.5%;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 25px;
+    width: 30%;
+    margin-left: 2%;
+    cursor: pointer;
+}
+
+.discover-buttons {
+width: 50%;
+position: absolute;
+left: 61%;
+bottom: 420px;
+display: inline-flex;
+}
+
+.discover-like:hover {
+    color: rgb(24, 24, 24);
+    background-color: rgba(255, 161, 235, 0.562);
+    border: rgba(255, 161, 235, 0.562);
+}
+
+.discover-pass {
+    background-color: white;
+    border: 2px solid black;
+    color: black;
+    padding: 2%;
+    padding-top: 2.5%;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: left;
+    text-indent: 16.5px;
+    border-radius: 25px;
+    width: 30%;
+    cursor: pointer;
+}
+
+.discover-pass:hover {
+    color: white;
+    background-color: black;
+}
+
+.discover-title-footer {
+    color: white;
+    background-color: #333;
+    letter-spacing: 1.5px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 25px;
+    font-weight: 900;
+    position: relative;
+    width: 100%;
+    height: 50px;
+    border: 1px solid #666;
+    text-align: center;
+
+}
+
 .discover-div{
+    border: 1px solid rgba(100, 100, 111, 0.2);
     display:grid;
     margin: 0;
-    width: 400px;
-    border: 1px solid black;
+    width: 50%;
+    height: 500px;
     border-radius: 5px;
     margin: 1%;
     padding: 1%;
+    position: relative;
+    left: 25%;
+    top: 10px;
+    justify-content: space-between;
+    padding: 2%;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    background-color: white;
 }
 
 .discover-images {
-    width:100%;
-    height:30vh;
-    object-fit:cover;
-    border: 1px solid gray;
-    object-position:50% 00%;
-    border-radius: 5px;
-    margin-bottom: 3%;
+    width:fit-content;
+    height:300px;
+    width: 400px;
+    object-fit:fill;
+    /* object-position:50% 00%; */
+    margin-bottom: 4%;
+    border: 1px solid #ccc;
+
 }
 
 .discover-name{
     text-align: left;
-    margin-bottom: 3%;
+    margin-bottom: 1%;
+    width:fit-content;
+    font-size: 20px;
 }
 
-.fa-heart,
-.fa-x {
-    margin-right: 1.5%;
+.discover-gender{
+    color: gray;
+    font-size: 14px;
+    width: fit-content;
+}
+
+.discover-heart,
+.discover-x {
+    margin-right: 3.5%;
+}
+
+
+
+.fa-magnifying-glass{
+    margin-right: 1%
+}
+
+.match-percentage{
+    border: 2px solid #0000bf;
+    width: 50px;
+    border-radius: 50%;
+    height: 50px;
+    color: #0000bf;
+    font-size: 15px;
+    font-weight: bolder;
+    background-color: white;
+    position: relative;
+    margin-left: 350px;
+    bottom: 50px;
+
+}
+
+.bio-discover-title-div{
+    background-color:#1a1a1a;
+    padding: 2%;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    position: relative;
+    left: 110%;
+    bottom: 840%;
+}
+
+.bio-discover-title{
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    text-indent: 15px;
+    font-size: large;
+}
+
+.bio-discover {
+    border: 1px solid rgba(100, 100, 111, 0.2);
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    position: relative;
+    left: 110%;
+    bottom: 123%;
+    height: 260px;
+    padding: 5%;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bolder;
+}
+
+img-bio-wrapper{
+    display: inline-flex;
+}
+
+.discover-navlink{
+    width:fit-content;
 }
 
 .discover-main{
