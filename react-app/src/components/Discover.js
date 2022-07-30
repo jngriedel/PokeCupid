@@ -9,6 +9,7 @@ function Discover() {
   const [index, setIndex] = useState(0);
   const [current, setCurrent] = useState(null);
   const [loaded, setLoaded] = useState(false);
+
   // const [empty, setEmpty] = useState(false);
   const [userGrabbed, setUserGrabbed] = useState(true);
   const sessionUser = useSelector((state) => state.session.user);
@@ -19,6 +20,7 @@ function Discover() {
       const response = await fetch("/api/users/");
       const responseData = await response.json();
       setUsers(responseData?.users);
+
     }
     fetchData().then((res) => {
       setTimeout(() => {
@@ -31,10 +33,11 @@ function Discover() {
     if (users) {
       setCurrent(users[index]);
 
+
       // if(users.length == 0) setEmpty(true)
     } else {
       setUserGrabbed(false);
-      // setEmpty(true)
+
     }
   }, [users, index]);
 
@@ -91,7 +94,7 @@ function Discover() {
   };
 
   return (
-    <>
+    <div className="discover-main">
 
       {userGrabbed && loaded && users.length>=1 &&(
         <div>
@@ -134,12 +137,13 @@ function Discover() {
         </div>
       )}
 
-      {userGrabbed && loaded && <p style={{visibility: users.length == 0 || index == users.length  ? 'visible' : 'hidden'}}>{"You've reached the end of all the users for the moment, please check back later!"}</p>}
-      { !loaded && <div className="loadHold">
+      {loaded && <><p style={{visibility: users.length == 0 || index == users.length  ? 'visible' : 'hidden'}}>{"You've reached the end of all the users for the moment, please check back later!"}</p>
+    </>}
+
+      { !loaded && <div className="loadHoldDiscover">
       <div className="loader"></div>
       </div>}
-
-    </>
+    </div>
   );
 }
 

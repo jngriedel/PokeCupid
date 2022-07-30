@@ -60,7 +60,8 @@ const MessageDivs = ({ message, socket }) => {
         </div>
         {!editMssg && (
           <div className= "chat-content-options">
-            <p>{message.content}</p>
+            <p className={message.user.id === sessionUser.id ? 'chatMessageUser' : 'chatMessageOther'}>{message.content}</p>
+			
             <button
             className="edit-msg"
               onClick={() => setEditMssg(true)}
