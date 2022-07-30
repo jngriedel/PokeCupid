@@ -111,28 +111,31 @@ function Discover() {
               </NavLink>
               <p className="discover-gender">{current?.gender}</p>
               <button className="match-percentage">{results[index]}</button>
-              <NavLink
-                to={`/users/${current?.id}`}
-                className="discover-navlink"
-              >
-                {!current?.profileImages[0] && (
-                  <img
-                    className="discover-images"
-                    src="https://www.kindpng.com/picc/m/74-743336_global-link-question-question-mark-unknown-pokemon-hd.png"
-                  ></img>
-                )}
-                {current?.profileImages[0] && (
-                  <img
-                    className="discover-images"
-                    src={current?.profileImages[0]?.imgUrl}
-                  ></img>
-                )}
-              </NavLink>
-              <div className="bio-discover-title-div">
-                <p className="bio-discover-title">Biography</p>
+              <div className="img-bio-wrapper">
+                <NavLink
+                  to={`/users/${current?.id}`}
+                  className="discover-navlink"
+                >
+                  {!current?.profileImages[0] && (
+                    <img
+                      className="discover-images"
+                      src="https://www.kindpng.com/picc/m/74-743336_global-link-question-question-mark-unknown-pokemon-hd.png"
+                    ></img>
+                  )}
+                  {current?.profileImages[0] && (
+                    <img
+                      className="discover-images"
+                      src={current?.profileImages[0]?.imgUrl}
+                    ></img>
+                  )}
+                </NavLink>
+                <div className="bio-discover-wrapper">
+                  <div className="bio-discover-title-div">
+                    <p className="bio-discover-title">Biography</p>
+                  </div>
+                  <p className="bio-discover">"{current?.bio}"</p>
+                </div>
               </div>
-              <p className="bio-discover">"{current?.bio}"</p>
-
               <div className="discover-buttons">
                 <button
                   className="discover-pass"
@@ -152,20 +155,26 @@ function Discover() {
         </div>
       )}
 
-      {userGrabbed && loaded && (
-        <p
-          style={{
-            visibility:
-              users.length == 0 || index == users.length ? "visible" : "hidden",
-          }}
-        >
-          {
-            "You've reached the end of all the users for the moment, please check back later!"
-          }
-        </p>
+      {loaded && (
+        <>
+          <p
+            className="out-of-matches"
+            style={{
+              visibility:
+                users.length == 0 || index == users.length
+                  ? "visible"
+                  : "hidden",
+            }}
+          >
+            {
+              "You've reached the end of all the users for the moment, please check back later!"
+            }
+          </p>
+        </>
       )}
+
       {!loaded && (
-        <div className="loadHold">
+        <div className="loadHoldDiscover">
           <div className="loader"></div>
         </div>
       )}

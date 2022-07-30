@@ -170,8 +170,8 @@ display: inline-flex;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     position: relative;
-    left: 110%;
-    bottom: 840%;
+    margin-left: 10%;
+    width: 400px;
 }
 
 .bio-discover-title{
@@ -186,12 +186,12 @@ display: inline-flex;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     position: relative;
-    left: 110%;
-    bottom: 123%;
     height: 260px;
     padding: 5%;
     font-family: 'Roboto', sans-serif;
     font-weight: bolder;
+    margin-left: 10%;
+    width: 400px;
 }
 
 img-bio-wrapper{
@@ -211,4 +211,15 @@ img-bio-wrapper{
     height: 100%;
     padding-top: 200px;
 
+
+}
+
+.bio-discover-wrapper{
+    display: inline-flex;
+    flex-direction:column;
+    width: 400px;
+}
+
+.img-bio-wrapper{
+    display: inline-flex
 }
