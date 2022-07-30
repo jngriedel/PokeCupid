@@ -426,7 +426,7 @@ list-style: none;
     background-color: #34f;
     border: transparent;
     color: whitesmoke;
-    opacity: 50%;
+    opacity: 80%;
     transition: .3s background-color
 }
 
