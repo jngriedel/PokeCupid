@@ -12,8 +12,8 @@
 
 .signup-header{
     width: 101vw;
-    height: 21.5vh;
-    margin-bottom: 100px;
+    height: 22vh;
+    margin-bottom: 60px;
     text-align: center;
     background-color: rgb(29, 29, 29);
     display: flex;
@@ -42,6 +42,8 @@
     margin-top: 28vh;
     display: flex;
     flex-direction: column;
+    text-align: center;
+    width: 110%;
 }
 
 .signup-name,.signup-email,.signup-bio,.signup-password,.signup-repeat-password{
@@ -62,6 +64,18 @@
 
 .signup-gender,.signup-pokemon{
     margin-bottom: 6%;
+    font-size: 14px;
+}
+
+.signup-gender-label,.signup-pokemon-label{
+    margin-right: 1%;
+    transition: height .4s ease;
+}
+
+.gender-select-options,.pokemon-select-options{
+    padding: 2px;
+    text-align: center;
+
 }
 
 .answer-section {
@@ -105,4 +119,25 @@
 
 .fa-check{
     color: green;
+}
+
+#nextbutton{
+    font-family: 'Roboto', sans-serif;
+    padding: 12px 16px 12px 16px;
+    border-radius: 30px;
+    background-color: black;
+    color: white;
+    font-weight: 600;
+}
+
+#nextbutton:hover{
+    color: black;
+    background-color: white;
+    cursor: pointer;
+}
+
+.signup-tip{
+    font-size: 10px;
+    opacity: 70%;
+    margin: 20px;
 }
