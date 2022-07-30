@@ -21,6 +21,14 @@
     align-items: center;
     margin-top: 300px;
 }
+.loadHoldDiscover{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+}
 
 .matches-main{
     /* margin-top: 60px; */

@@ -324,7 +324,7 @@ const SignUpForm = () => {
         ></input>
       </div>
       {questionsComplete &&
-      <h3>Questionnaire Complete! <i class="fa-solid fa-check"></i></h3>}
+      <h3>Questionnaire Complete! <i className="fa-solid fa-check"></i></h3>}
       {next && submit &&
       <button  type="submit">
         Submit
