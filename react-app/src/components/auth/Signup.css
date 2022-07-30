@@ -21,15 +21,21 @@
     justify-content: center;
     font-size: 16px;
     z-index: 0;
+    margin-top: -50px;
     position: absolute;
 }
 
 .signup-header-text {
     margin-left: 0%;
-    margin-bottom: 30px;
+    margin-bottom: 0px;
     min-width: 100%;
     color: white;
     font-size: 26px;
+}
+
+.errorsList {
+  color: red;
+  padding-top: 20px;
 }
 
 .signup-form-primary {

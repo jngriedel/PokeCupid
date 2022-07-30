@@ -91,11 +91,6 @@ const SignUpForm = () => {
    {showSignUp && !showQuestionnaire &&
     <form onSubmit={onSignUp}>
 
-      <div>
-        {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
-        ))}
-      </div>
 
 
       <div className="signup-form-primary">
@@ -331,6 +326,11 @@ const SignUpForm = () => {
         Submit
       </button>}
       </form>}
+      <div className="errorsList">
+        {errors.map((error, ind) => (
+          <div key={ind}>{error}</div>
+        ))}
+      </div>
       {next && !submit &&
       <button
         onClick={handleClick}
