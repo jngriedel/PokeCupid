@@ -24,12 +24,6 @@ function Matches() {
   }
 
   useEffect(() => {
-    // async function fetchData() {
-    //   const response = await fetch("/api/users/");
-    //   const responseData = await response.json();
-    //   setUsers(responseData.users);
-    // }
-    // fetchData();
     dispatch(getUserMatches(sessionUser.id)).then((val) => {
       setTimeout(() => {
         setIsLoaded(true);
