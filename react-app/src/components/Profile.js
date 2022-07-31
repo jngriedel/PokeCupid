@@ -54,7 +54,6 @@ function Profile() {
       setImageLoading(false);
 
       await dispatch(uploadImage(data.image));
-
     } else if (!res.ok) {
       setImageLoading(false);
       const data = await res.json();
@@ -83,6 +82,7 @@ function Profile() {
       {loaded && (
         <div className="profileMain">
           <div className="profile-nameplate">
+
             <div className='profile-items'>
             {userImagesArr[0] && (
               <img
@@ -96,15 +96,16 @@ function Profile() {
                 className="profile-picture"
                 src="https://www.kindpng.com/picc/m/74-743336_global-link-question-question-mark-unknown-pokemon-hd.png"
               ></img>
+
               )}
-              <div className= 'profile-name-gender'>
+              <div className="profile-name-gender">
                 <p className="profile-name">{sessionUser?.name}</p>
                 <Gender />
               </div>
             </div>
-
             <p className="profile-title">Profile</p>
           </div>
+
           <div className="profile-info-container">
             <div className="titles-container">
               <p className="biography-title">Biography</p>
@@ -114,16 +115,16 @@ function Profile() {
               <Bio />
               <div className="profile-pokemon">
                 <p className="pokemon-number"># {sessionUser.pokemonId}.</p>
-                <img className="pokemon-img" src={sessionUser?.pokemon?.imgUrl} />
-              <Pokemon />
+                <img className="pokemon-img" src={sessionUser?.pokemon?.imgUrl}/>
+                <Pokemon />
               </div>
             </div>
             <div className="profile-bottom">
               <div className="profile-images-container">
                 {/* {userImagesArr.length <= 3 && ( */}
-                  <div>
-                    <p className="profile-picture-title">Profile Pictures</p>
-                  </div>
+                <div>
+                  <p className="profile-picture-title">Profile Pictures</p>
+                </div>
                 {/* )} */}
                 <div className="profile-images">
                   {userImagesArr[0] && (
@@ -164,24 +165,32 @@ function Profile() {
                       {error}
                     </div>
                   ))}
-                {userImagesArr.length <=2 &&
-                <form className="upload-photo-form" onSubmit={addNewProfImg}>
-                  <div className="upload-container">
-                    <label className="upload-text">
-                      Add new Profile Image:
-                    </label>
-                    <input
-                      id="uploadProfPic"
-                      name="image"
-                      type="file"
-                      accept="image/*"
-                      onChange={updateImage}
-                    ></input>
-                    <button id="upload-button" type="submit"><i class="fas fa-file-upload"></i></button>
-                  </div>
-                  {imageLoading &&
-                    <div className="uploading-image-text">Uploading Image...</div>}
-                </form> }
+
+                {userImagesArr.length <= 2 && (
+                  <form className="upload-photo-form" onSubmit={addNewProfImg}>
+                    <div className="upload-container">
+                      <label className="upload-text">
+                        Add new Profile Image:
+                      </label>
+                      <input
+                        id="uploadProfPic"
+                        name="image"
+                        type="file"
+                        accept="image/*"
+                        onChange={updateImage}
+                      ></input>
+                      <button id="upload-button" type="submit">
+                        <i class="fas fa-file-upload"></i>
+                      </button>
+                    </div>
+                    {imageLoading && (
+                      <div className="uploading-image-text">
+                        Uploading Image...
+                      </div>
+                    )}
+                  </form>
+                )}
+
               </div>
               <ProfileAnswers />
             </div>

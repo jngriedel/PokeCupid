@@ -60,6 +60,7 @@
     height: 70px;
     width: 70px;
     border-radius: 50%;
+    object-fit: cover;
     border: 1px solid grey;
 }
 
@@ -81,7 +82,7 @@
     background-color: #1a1a1a;
     width: 110vw;
     margin-left: -10px;
-    height: 70px;
+    height: 100px;
     margin-bottom: 30px;
 }
 
@@ -98,6 +99,7 @@
     display: flex;
     flex-direction: column;
     margin-left: 18%;
+    margin-top: 3%;
     width: 42%;
 }
 
@@ -111,10 +113,6 @@
     font-weight: 200;
     text-overflow: ellipsis;
 }
-
-
-
-
 
 .chat-loading {
     width: 450px;

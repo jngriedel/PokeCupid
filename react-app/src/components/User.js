@@ -54,33 +54,40 @@ function User() {
       {loaded && (
         <div className="profileMain">
           <div className="profile-nameplate">
-            {userImagesArr[0] && (
-              <img
-                className="profile-picture"
-                src={user?.profileImages[0]?.imgUrl}
-              ></img>
-            )}
-            {!user?.profileImages[0]?.imgUrl && (
-              <img
-                className="profile-picture"
-                src="https://www.kindpng.com/picc/m/74-743336_global-link-question-question-mark-unknown-pokemon-hd.png"
-              ></img>
-            )}
-            <p className="profile-name">{user?.name}</p>
+            <div className="profile-items">
+              {userImagesArr[0] && (
+                <img
+                  className="profile-picture"
+                  src={user?.profileImages[0]?.imgUrl}
+                ></img>
+              )}
+              {!user?.profileImages[0]?.imgUrl && (
+                <img
+                  className="profile-picture"
+                  src="https://www.kindpng.com/picc/m/74-743336_global-link-question-question-mark-unknown-pokemon-hd.png"
+                ></img>
+              )}
+              <div className="profile-name-gender">
+                <p className="profile-name">{user?.name}</p>
+                <p className="gender-text">{user?.gender}</p>
+              </div>
+            </div>
             <p className="profile-title">{user.name}'s Profile</p>
           </div>
+
           <div className="profile-info-container">
             <div className="titles-container">
               <p className="biography-title">Biography</p>
-
               <p className="pokemon-title">{user.name}'s Pokemon</p>
             </div>
             <div className="bio-and-pokemon">
-              <p>"{user.bio}"</p>
-              <p className="pokemon-number"># {user.pokemonId}.</p>
-              <img className="pokemon-img" src={user?.pokemon?.imgUrl} />
+              <div className="current-bio-div">"{user.bio}"</div>
+              <div className="profile-pokemon">
+                <p className="pokemon-number"># {user.pokemonId}.</p>
+                <img className="pokemon-img" src={user?.pokemon?.imgUrl} />
+              </div>
             </div>
-            <div>
+            <div className="profile-bottom">
               <div className="profile-images-container">
                 {/* {userImagesArr.length <= 3 && ( */}
                 <div>
