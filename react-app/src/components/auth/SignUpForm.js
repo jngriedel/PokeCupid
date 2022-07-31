@@ -127,16 +127,6 @@ const SignUpForm = () => {
                   <option value="Other">Other</option>
                 </select>
               </div>
-              <div>
-                {/* <label>Bio</label> */}
-                <textarea
-                  className="signup-bio"
-                  placeholder="Write a short bio for yourself!"
-                  name="bio"
-                  onChange={updateBio}
-                  value={bio}
-                ></textarea>
-              </div>
               <div className="signup-pokemon">
                 <label className = "signup-pokemon-label">Choose your Favorite Pokemon!</label>
                 <select
@@ -298,7 +288,16 @@ const SignUpForm = () => {
                 </select>
               </div>
             </div>
-
+            <div>
+              {/* <label>Bio</label> */}
+              <textarea
+                className="signup-bio"
+                placeholder="Write a short bio for yourself!"
+                name="bio"
+                onChange={updateBio}
+                value={bio}
+              ></textarea>
+            </div>
             <div>
               {/* <label>Password</label> */}
               <input

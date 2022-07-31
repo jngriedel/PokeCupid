@@ -217,10 +217,10 @@
 .gender-button:hover,
 .edit-pokemon:hover,
 .edit-bio:hover {
-  background-color: #34f;
-  cursor: pointer;
-  opacity: 100%;
-  transition: 0.2s;
+    background-color: #34f;
+    cursor: pointer;
+    /* opacity: 100%; */
+    transition: .2s;
 }
 
 .edit-pokemon-select {
@@ -415,23 +415,22 @@
   align-items: center;
 }
 
-.gender-button,
-.edit-bio,
-.edit-pokemon {
-  border-radius: 50%;
-  width: 20px;
-  height: 20px;
-  font-size: 10px;
-  background-color: #34f;
-  border: transparent;
-  color: whitesmoke;
-  opacity: 50%;
-  transition: 0.3s background-color;
+.gender-button,.edit-bio,.edit-pokemon {
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-size: 10px;
+    background-color: #34f;
+    border: transparent;
+    color: whitesmoke;
+    /* opacity: 80%; */
+    transition: .3s background-color
 }
 
-.gender-button:hover {
-  cursor: pointer;
-}
+/* .gender-button:hover{
+    cursor: pointer;
+
+} */
 
 .gender-text {
   color: white;
