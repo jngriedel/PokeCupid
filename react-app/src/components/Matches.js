@@ -15,13 +15,13 @@ function Matches() {
   const matchesState = useSelector((state) => state.matches);
   const matches = Object.values(matchesState);
 
-  if (matches.length !== 0) {
-    matches.sort((a, b) => {
-      var dateA = new Date(a.matchTime),
-        dateB = new Date(b.matchTime);
-      return dateB - dateA;
-    });
-  }
+  if(matches.length !== 0) {
+  matches.sort((a, b) => {
+    var dateA = new Date(a.matchTime),
+      dateB = new Date(b.matchTime);
+    return dateB - dateA;
+  });
+}
 
   useEffect(() => {
     async function fetchData() {
@@ -31,6 +31,7 @@ function Matches() {
     }
     fetchData();
     dispatch(getUserMatches(sessionUser.id)).then((val) => {
+
       setTimeout(() => {
         setIsLoaded(true);
       }, 1000);
@@ -42,8 +43,7 @@ function Matches() {
       {isLoaded && (
         <div className="matches-main">
           <style>
-            @import
-            url('https://fonts.googleapis.com/css2?family=Gothic+A1:wght@600&family=Nanum+Gothic&display=swap');
+            @import url('https://fonts.googleapis.com/css2?family=Gothic+A1:wght@600&family=Nanum+Gothic&display=swap');
           </style>
           <div className="matches-title-div">
             <h1 className="matches-title">
@@ -56,23 +56,7 @@ function Matches() {
             {matches.length >= 1 &&
               matches.map((match, i) => <Match key={i} match={match} />)}
             {matches.length == 0 && (
-              <>
-                <h2
-                  className={
-                    matches.length === 0 ? "no-matches" : "no-matches-hidden"
-                  }
-                >
-                  Looks empty in here! Go get matching!
-                </h2>
-                <img
-                  className={
-                    matches.length === 0
-                      ? "no-matches-img"
-                      : "no-matches-img-hidden"
-                  }
-                  src="https://i.pinimg.com/originals/38/a6/cd/38a6cdd99f2715d94104a2643a884dc9.png"
-                ></img>
-              </>
+              <h2>Looks Empty in Here! Go get matching!</h2>
             )}
           </div>
         </div>
