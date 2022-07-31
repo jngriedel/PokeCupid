@@ -49,6 +49,8 @@ function Gender() {
         </div>
       )}
 
+      {errors && errors.map((error, ind) => <div key={ind}>{error}</div>)}
+
       {editContent && (
         <>
           <form onSubmit={changeGender}>

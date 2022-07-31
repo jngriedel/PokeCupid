@@ -8,7 +8,7 @@ import * as messagesActions from "../../store/messages";
 const MessageDivs = ({ message, socket }) => {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
-  const userImages = useSelector((state) => state.profileImages);
+  // const userImages = useSelector((state) => state.profileImages);
   // const userImagesAll = Object.values(userImages);
   // const userAvatar = userImagesAll[0];
 

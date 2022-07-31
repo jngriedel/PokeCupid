@@ -33,7 +33,7 @@ function Profile() {
         setLoaded(true);
       }, 1000);
     });
-  }, []);
+  }, [dispatch, sessionUser]);
 
   const addNewProfImg = async (e) => {
     e.preventDefault();
@@ -92,7 +92,7 @@ function Profile() {
               ></img>
 
               )}
-              {userImagesArr.length == 0 && (
+              {userImagesArr.length === 0 && (
               <img
                 alt="unknown"
                 className="profile-picture"

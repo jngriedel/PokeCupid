@@ -43,7 +43,7 @@ const MessageInput = ({ matchId, messagesChanged, setMessagesChanged, setShowMod
     //receive
 
     socket.on("delete", (messageId) => {
-      console.log("Connected");
+      // console.log("Connected");
       dispatch(messagesActions.deleteMessage(messageId));
     });
 
@@ -57,7 +57,7 @@ const MessageInput = ({ matchId, messagesChanged, setMessagesChanged, setShowMod
     return () => {
       socket.disconnect();
     };
-  }, []);
+  }, [dispatch, matchId, setMessagesChanged, user]);
 
   const handleSubmitMsg = async (e) => {
     e.preventDefault();

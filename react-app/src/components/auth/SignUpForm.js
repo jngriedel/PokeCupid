@@ -23,7 +23,7 @@ const SignUpForm = () => {
   const [repeatPassword, setRepeatPassword] = useState("");
   const [questionAnswers, setQuestionAnswers] = useState([]);
   const user = useSelector((state) => state.session.user);
-  const pokemon = useSelector((state) => state.pokemon);
+  // const pokemon = useSelector((state) => state.pokemon);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -44,7 +44,7 @@ const SignUpForm = () => {
       );
 
       if (data) {
-        console.log(data);
+        // console.log(data);
         setErrors(data);
       }
     } else {

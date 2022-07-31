@@ -7,7 +7,7 @@ import "./Matches.css";
 import "./Messages/Messages.css";
 
 function Matches() {
-  const [users, setUsers] = useState([]);
+  // const [users, setUsers] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
 
   const dispatch = useDispatch();
@@ -24,19 +24,19 @@ function Matches() {
 }
 
   useEffect(() => {
-    async function fetchData() {
-      const response = await fetch("/api/users/");
-      const responseData = await response.json();
-      setUsers(responseData.users);
-    }
-    fetchData();
+    // async function fetchData() {
+    //   const response = await fetch("/api/users/");
+    //   const responseData = await response.json();
+    //   setUsers(responseData.users);
+    // }
+    // fetchData();
     dispatch(getUserMatches(sessionUser.id)).then((val) => {
 
       setTimeout(() => {
         setIsLoaded(true);
       }, 1000);
     });
-  }, []);
+  }, [dispatch, sessionUser]);
 
   return (
     <>

@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import { newMatch } from "../store/matches";
+// import { newMatch } from "../store/matches";
 import { getUserImages } from "../store/profileImages";
 import UserQuestions from "./UserQuestions";
 
 function User() {
-  const sessionUser = useSelector((state) => state.session.user);
+  // const sessionUser = useSelector((state) => state.session.user);
   const userImages = useSelector((state) => state.profileImages);
   const userImagesArr = Object.values(userImages);
   const [user, setUser] = useState({});
@@ -28,20 +28,20 @@ function User() {
 
       dispatch(getUserImages(user.id));
     })();
-  }, [userId]);
+  }, [userId, dispatch]);
 
-  const handleLike = () => {
-    dispatch(newMatch(sessionUser.id, userId));
-  };
+  // const handleLike = () => {
+  //   dispatch(newMatch(sessionUser.id, userId));
+  // };
 
-  const [errors, setErrors] = useState([]);
+  // const [errors, setErrors] = useState([]);
   const [loaded, setLoaded] = useState(false);
   // const [image, setImage] = useState(null);
   // const [imageLoading, setImageLoading] = useState(false);
 
   useEffect(() => {
     dispatch(getUserImages(user?.id));
-  }, []);
+  }, [dispatch, user]);
 
   if (!loaded) {
     setTimeout(() => {
@@ -123,12 +123,12 @@ function User() {
                     </>
                   )}
                 </div>
-                {errors &&
+                {/* {errors &&
                   errors.map((error, ind) => (
                     <div key={ind} className="images-errors">
                       {error}
                     </div>
-                  ))}
+                  ))} */}
               </div>
               <div>
                 <UserQuestions user={user} />

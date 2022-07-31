@@ -48,6 +48,8 @@ function Pokemon() {
         </div>
       )}
 
+      {errors && errors.map((error, ind) => <div key={ind}>{error}</div>)}
+
       {editContent && (
         <>
           <form onSubmit={changePokemon}>
