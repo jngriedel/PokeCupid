@@ -22,6 +22,7 @@ function Profile() {
   const userImagesArr = Object.values(userImages);
 
   const [errors, setErrors] = useState([]);
+
   const [loaded, setLoaded] = useState(false);
   const [image, setImage] = useState(null);
   const [imageLoading, setImageLoading] = useState(false);
@@ -52,6 +53,8 @@ function Profile() {
     if (res.ok) {
       const data = await res.json();
       setImageLoading(false);
+
+      document.getElementById('uploadProfPic').value = ""
 
       await dispatch(uploadImage(data.image));
     } else if (!res.ok) {
@@ -182,8 +185,9 @@ function Profile() {
                         type="file"
                         accept="image/*"
                         onChange={updateImage}
+
                       ></input>
-                      <button id="upload-button" type="submit">
+                      <button  id="upload-button" type="submit">
                         <i class="fas fa-file-upload"></i>
                       </button>
                     </div>
