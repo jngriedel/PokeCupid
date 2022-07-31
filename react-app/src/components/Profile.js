@@ -33,7 +33,7 @@ function Profile() {
         setLoaded(true);
       }, 1000);
     });
-  }, []);
+  }, [dispatch, sessionUser]);
 
   const addNewProfImg = async (e) => {
     e.preventDefault();
@@ -86,13 +86,15 @@ function Profile() {
             <div className='profile-items'>
             {userImagesArr[0] && (
               <img
+                alt="profile"
                 className="profile-picture"
                 src={userImagesArr[0].imgUrl}
               ></img>
 
               )}
-              {userImagesArr.length == 0 && (
+              {userImagesArr.length === 0 && (
               <img
+                alt="unknown"
                 className="profile-picture"
                 src="https://www.kindpng.com/picc/m/74-743336_global-link-question-question-mark-unknown-pokemon-hd.png"
               ></img>
@@ -115,7 +117,7 @@ function Profile() {
               <Bio />
               <div className="profile-pokemon">
                 <p className="pokemon-number"># {sessionUser.pokemonId}.</p>
-                <img className="pokemon-img" src={sessionUser?.pokemon?.imgUrl}/>
+                <img className="pokemon-img" alt={sessionUser?.pokemon?.name} src={sessionUser?.pokemon?.imgUrl}/>
                 <Pokemon />
               </div>
             </div>
@@ -136,6 +138,7 @@ function Profile() {
                           </div>
                           <div className="profile-pictures-container">
                             <img
+                              alt="profile"
                               className="profile-pictures"
                               src={image.imgUrl}
                             />
@@ -153,6 +156,7 @@ function Profile() {
                   {!userImagesArr[0] && (
                     <>
                       <img
+                        alt="unknown"
                         className="profile-pictures"
                         src="https://www.kindpng.com/picc/m/74-743336_global-link-question-question-mark-unknown-pokemon-hd.png"
                       />

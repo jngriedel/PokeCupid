@@ -1,19 +1,19 @@
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getUserImages } from "../../store/profileImages";
-import { io } from "socket.io-client";
+// import { getUserImages } from "../../store/profileImages";
+// import { io } from "socket.io-client";
 import * as messagesActions from "../../store/messages";
 // let socketD;
 
 const MessageDivs = ({ message, socket }) => {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
-  const userImages = useSelector((state) => state.profileImages);
-  const userImagesAll = Object.values(userImages);
-  const userAvatar = userImagesAll[0];
+  // const userImages = useSelector((state) => state.profileImages);
+  // const userImagesAll = Object.values(userImages);
+  // const userAvatar = userImagesAll[0];
 
-  const [user, setUser] = useState();
-  const [disabled, setDisabled] = useState(true);
+  // const [user, setUser] = useState();
+  // const [disabled, setDisabled] = useState(true);
   const [currentMessage, setCurrentMessage] = useState(message.content);
   const [editMssg, setEditMssg] = useState(false);
 
@@ -61,7 +61,7 @@ const MessageDivs = ({ message, socket }) => {
         {!editMssg && (
           <div className= "chat-content-options">
             <p className={message.user.id === sessionUser.id ? 'chatMessageUser' : 'chatMessageOther'}>{message.content}</p>
-			
+
             <button
             className="edit-msg"
               onClick={() => setEditMssg(true)}

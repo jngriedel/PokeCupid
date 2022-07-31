@@ -87,8 +87,8 @@ function Discover() {
   };
 
 
-  
-    
+
+
 
 
 
@@ -97,7 +97,7 @@ function Discover() {
       setSnorlax(
         "https://i.pinimg.com/originals/12/8d/e8/128de8ce51ee0c498a4dfa67610f5843.jpg"
       );
-  });
+  },[users?.length]);
 
   const handleLike = async() => {
     const res = await dispatch(newMatch(sessionUser.id, current?.id));
@@ -132,7 +132,7 @@ function Discover() {
                 <div className="discover-top-left">
                   <NavLink
                     to={`/users/${current?.id}`}
-                    className="discover-navlink"  
+                    className="discover-navlink"
                   >
                     <p className="discover-name">{current?.name}</p>
                   </NavLink>
@@ -163,12 +163,14 @@ function Discover() {
                   {!current?.profileImages[0] && (
                     <img
                       className="discover-images"
+                      alt="unknown"
                       src="https://www.kindpng.com/picc/m/74-743336_global-link-question-question-mark-unknown-pokemon-hd.png"
                     ></img>
                   )}
                   {current?.profileImages[0] && (
                     <img
                       className="discover-images"
+                      alt='profile'
                       src={current?.profileImages[0]?.imgUrl}
                     ></img>
                   )}
@@ -189,7 +191,7 @@ function Discover() {
         <>
           <p
             className={
-              users.length == 0 || index == users.length
+              users.length === 0 || index === users.length
                 ? "out-of-matches"
                 : "out-of-matches-hidden"
             }
@@ -199,8 +201,10 @@ function Discover() {
             }
           </p>
           <img
+            alt='snorlax'
             className={
-              users.length == 0 || index == users.length
+
+              users.length === 0 || index === users.length
                 ? "snorlax"
                 : "snorlax-hidden"
             }
