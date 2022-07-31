@@ -79,7 +79,7 @@ const MessageDivs = ({ message, socket }) => {
                 visibility:
                   message.userId === sessionUser.id ? "visible" : "hidden",
               }}
-            ><i class="fas fa-trash"></i>
+            ><i class="fas fa-trash-alt"></i>
             </button>
           </div>
         )}
@@ -91,8 +91,8 @@ const MessageDivs = ({ message, socket }) => {
               value={currentMessage}
               onChange={(e) => setCurrentMessage(e.target.value)}
             />
-            <button>Save</button>
-            <button onClick={() => setEditMssg(false)}> Cancel </button>
+            <button className="save-msg"><i class="fas fa-save"></i></button>
+            <button className="cancel-save-msg" onClick={() => setEditMssg(false)}><i class="fas fa-ban"></i></button>
           </form>
         )}
       </div>
