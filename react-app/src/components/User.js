@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 // import { newMatch } from "../store/matches";
 import { getUserImages } from "../store/profileImages";
 import UserQuestions from "./UserQuestions";
@@ -12,42 +12,46 @@ function User() {
   const [user, setUser] = useState({});
   const { userId } = useParams();
   const dispatch = useDispatch();
-  // const history = useHistory();
+  const history = useHistory()
+  const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    if (!userId) {
-      return;
+
+    if (!userId || isNaN(+userId) ) {
+      history.push("/404");
     }
+
     (async () => {
       const response = await fetch(`/api/users/${userId}`);
+      if (!response.ok){
+        history.push('/404')
+      }
       const user = await response.json();
-      // if (Object.keys(user).length === 0) {
-      //   history.push("/404");
-      // }
+
+      dispatch(getUserImages(user?.id))
+      .then((res)=>{ setTimeout(() => {
+        setLoaded(true);
+      }, 1000)});
+
+      if (!user) {
+        console.log('Here is a thing here')
+        history.push("/404");
+      }
       setUser(user);
 
-      dispatch(getUserImages(user.id));
     })();
-  }, [userId, dispatch]);
+  }, [userId, dispatch, history]);
 
-  // const handleLike = () => {
-  //   dispatch(newMatch(sessionUser.id, userId));
-  // };
 
-  // const [errors, setErrors] = useState([]);
-  const [loaded, setLoaded] = useState(false);
-  // const [image, setImage] = useState(null);
-  // const [imageLoading, setImageLoading] = useState(false);
 
-  useEffect(() => {
-    dispatch(getUserImages(user?.id));
-  }, [dispatch, user]);
 
-  if (!loaded) {
-    setTimeout(() => {
-      setLoaded(true);
-    }, 1000);
-  }
+  // useEffect(() => {
+  //   dispatch(getUserImages(user?.id));
+  // }, [dispatch, user]);
+
+
+
+
 
   return (
     <>

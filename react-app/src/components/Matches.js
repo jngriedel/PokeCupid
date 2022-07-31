@@ -60,6 +60,7 @@ function Matches() {
                   Looks empty in here! Go get matching!
                 </h2>
                 <img
+                  alt="pikachu"
                   className={
                     matches.length === 0
                       ? "no-matches-img"

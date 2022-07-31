@@ -35,7 +35,8 @@
     background-color: #f0f2f6;
     min-width: 100%;
     overflow-x: hidden;
-    height: 100vh;
+
+    min-height: 100vh;
     margin-left: -8px;
     margin-bottom: -8px;
 }
