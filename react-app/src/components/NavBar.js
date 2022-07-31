@@ -7,7 +7,7 @@ import "./NavBar.css";
 
 const NavBar = () => {
   const sessionUser = useSelector((state) => state.session.user);
-  const userImages = useSelector((state) => state.profileImages);
+  // const userImages = useSelector((state) => state.profileImages);
 
   return (
     <main className="navigation">

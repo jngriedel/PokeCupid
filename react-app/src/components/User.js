@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams, useHistory } from "react-router-dom";
-import { newMatch } from "../store/matches";
+import { useParams } from "react-router-dom";
+// import { newMatch } from "../store/matches";
 import { getUserImages } from "../store/profileImages";
 import UserQuestions from "./UserQuestions";
 
 function User() {
-  const sessionUser = useSelector((state) => state.session.user);
+  // const sessionUser = useSelector((state) => state.session.user);
   const userImages = useSelector((state) => state.profileImages);
   const userImagesArr = Object.values(userImages);
   const [user, setUser] = useState({});
   const { userId } = useParams();
   const dispatch = useDispatch();
-  const history = useHistory();
+  // const history = useHistory();
 
   useEffect(() => {
     if (!userId) {
@@ -28,20 +28,20 @@ function User() {
 
       dispatch(getUserImages(user.id));
     })();
-  }, [userId]);
+  }, [userId, dispatch]);
 
-  const handleLike = () => {
-    dispatch(newMatch(sessionUser.id, userId));
-  };
+  // const handleLike = () => {
+  //   dispatch(newMatch(sessionUser.id, userId));
+  // };
 
-  const [errors, setErrors] = useState([]);
+  // const [errors, setErrors] = useState([]);
   const [loaded, setLoaded] = useState(false);
-  const [image, setImage] = useState(null);
-  const [imageLoading, setImageLoading] = useState(false);
+  // const [image, setImage] = useState(null);
+  // const [imageLoading, setImageLoading] = useState(false);
 
   useEffect(() => {
     dispatch(getUserImages(user?.id));
-  }, []);
+  }, [dispatch, user]);
 
   if (!loaded) {
     setTimeout(() => {
@@ -57,12 +57,14 @@ function User() {
             <div className="profile-items">
               {userImagesArr[0] && (
                 <img
+                  alt="profile"
                   className="profile-picture"
                   src={user?.profileImages[0]?.imgUrl}
                 ></img>
               )}
               {!user?.profileImages[0]?.imgUrl && (
                 <img
+                  alt="unknown"
                   className="profile-picture"
                   src="https://www.kindpng.com/picc/m/74-743336_global-link-question-question-mark-unknown-pokemon-hd.png"
                 ></img>
@@ -84,7 +86,7 @@ function User() {
               <div className="current-bio-div">"{user.bio}"</div>
               <div className="profile-pokemon">
                 <p className="pokemon-number"># {user.pokemonId}.</p>
-                <img className="pokemon-img" src={user?.pokemon?.imgUrl} />
+                <img className="pokemon-img" alt={user?.pokemon?.name} src={user?.pokemon?.imgUrl} />
               </div>
             </div>
             <div className="profile-bottom">
@@ -102,6 +104,7 @@ function User() {
                           <div></div>
                           <div className="profile-pictures-container">
                             <img
+                              alt="profile"
                               className="profile-pictures"
                               src={image.imgUrl}
                             />
@@ -113,18 +116,19 @@ function User() {
                   {!userImagesArr[0] && (
                     <>
                       <img
+                        alt="unknown"
                         className="profile-pictures"
                         src="https://www.kindpng.com/picc/m/74-743336_global-link-question-question-mark-unknown-pokemon-hd.png"
                       />
                     </>
                   )}
                 </div>
-                {errors &&
+                {/* {errors &&
                   errors.map((error, ind) => (
                     <div key={ind} className="images-errors">
                       {error}
                     </div>
-                  ))}
+                  ))} */}
               </div>
               <div>
                 <UserQuestions user={user} />

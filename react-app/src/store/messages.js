@@ -85,7 +85,7 @@ export const removeMessage = (messageId) => async (dispatch) => {
 		method: "DELETE",
 	});
 	if (res.ok) {
-		const data = await res.json();
+		// const data = await res.json();
 		dispatch(deleteMessage(messageId));
 		return messageId
 
