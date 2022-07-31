@@ -24,12 +24,6 @@ function Matches() {
   }
 
   useEffect(() => {
-    // async function fetchData() {
-    //   const response = await fetch("/api/users/");
-    //   const responseData = await response.json();
-    //   setUsers(responseData.users);
-    // }
-    // fetchData();
     dispatch(getUserMatches(sessionUser.id)).then((val) => {
       setTimeout(() => {
         setIsLoaded(true);
@@ -66,6 +60,7 @@ function Matches() {
                   Looks empty in here! Go get matching!
                 </h2>
                 <img
+                  alt="pikachu"
                   className={
                     matches.length === 0
                       ? "no-matches-img"

@@ -51,12 +51,21 @@
     align-items: center;
 }
 
-.edit-msg,.delete-msg{
+.save-msg,.cancel-save-msg,.edit-msg,.delete-msg{
     width: 22px;
     height: 22px;
-    margin: 2px;
-    font-size: 12px;
     text-align: center;
+    margin-right: 5px;
+    border: 1px solid rgb(108, 191, 255);
+    background: white;
+    border-radius: 5px;
+    color: rgb(108, 191, 255);
+    padding: 5px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: 0.3s;
+    display: inline-block;
+    text-decoration: none;
 }
 
 .chat-input-ctrl{
@@ -76,9 +85,11 @@
 }
 
 .chat-input,.chat-div-input{
+    border: 1px solid grey;
+    margin-top: 10px;
     border-radius: 20px;
     width: 75%;
-    height: 50%;
+    height: 60%;
 }
 
 .chat-avatar {
