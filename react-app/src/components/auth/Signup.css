@@ -13,7 +13,7 @@
 .signup-header{
     width: 101vw;
     height: 22vh;
-    margin-bottom: 60px;
+    /* margin-bottom: 60px; */
     text-align: center;
     background-color: rgb(29, 29, 29);
     display: flex;
@@ -35,22 +35,33 @@
 
 .errorsList {
   color: red;
-  padding-top: 20px;
+  padding-top: 10px;
 }
 
 .signup-form-primary {
-    margin-top: 28vh;
+    margin-top: 22vh;
     display: flex;
     flex-direction: column;
     text-align: center;
     width: 110%;
 }
 
-.signup-name,.signup-email,.signup-bio,.signup-password,.signup-repeat-password{
-    width: 130%;
+.signup-name,.signup-email{
+    width: 125%;
     height: 40px;
     margin-bottom: 6%;
-    margin-left: -25%;
+    margin-left: -18%;
+    border-radius: 10px;
+    padding-left: 5px;
+    border: solid grey .5px;
+    font-size: 15px;
+}
+
+.signup-bio,.signup-password,.signup-repeat-password{
+    width: 134%;
+    height: 40px;
+    margin-bottom: 6%;
+    margin-left: -18%;
     border-radius: 10px;
     padding-left: 5px;
     border: solid grey .5px;
