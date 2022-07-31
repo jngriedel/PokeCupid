@@ -34,7 +34,6 @@ function User() {
       }, 1000)});
 
       if (!user) {
-        console.log('Here is a thing here')
         history.push("/404");
       }
       setUser(user);
