@@ -114,7 +114,7 @@ function Discover() {
                 <div className="discover-top-left">
                   <NavLink
                     to={`/users/${current?.id}`}
-                    className="discover-navlink"
+                    className="discover-navlink"  
                   >
                     <p className="discover-name">{current?.name}</p>
                   </NavLink>
