@@ -119,3 +119,21 @@
     height: 320px;
     background-image: url("https://c.tenor.com/fSsxftCb8w0AAAAd/pikachu-running.gif");
 }
+
+.no-matches{
+    font-family: 'Roboto', sans-serif;
+    position: relative;
+    left: 50%;
+}
+
+.no-matches-img{
+    position: relative;
+    left: 55%;
+    top: 100px;
+    width: 70%;
+}
+
+.no-matches-hidden,
+.no-matches-img-hidden {
+    display: none;
+}
