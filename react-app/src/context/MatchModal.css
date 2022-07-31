@@ -1,22 +1,77 @@
+body{
+  z-index: 101;
+}
 
 #matchmodal {
     position: fixed;
-    top: 20%;
+    top: 15%;
     left: 35%;
     display: flex;
     border-radius: 10px;
-    min-width: 300px;
-    min-height: 400px;
-    width: 30%;
-    height: 70%;
-    justify-content: space-between;
+    width: 500px;
+    height: 500px;
     flex-direction: column;
     align-items: center;
     background-color: #fff;
     box-shadow: 3px 3px 10px 8px rgb(141, 140, 140);
-    padding: 200px 0px;
+    padding: 80px;
+  }
+
+  #matchmodal-background {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: white;
+    opacity: 50%;
+    z-index: -1;
+  }
+
+  #matchmodal-content {
+    position: absolute;
   }
 
   #matchMessage{
+    top: 5%;
     color: green;
+  }
+
+  .matchmodal-img{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  .match-title{
+    width: 70%;
+    margin-top: -5%;
+  }
+
+  .match-loveball{
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    left: 223px;
+  }
+
+  .match-user1,.match-user2{
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    margin-top: 10%;
+    margin-bottom: 10%;
+  }
+
+  .match-user1{
+    margin-right: 2%;
+  }
+
+  .match-user2{
+    margin-left: 2%;
+  }
+
+  .matchmodal-p{
+    font-size: 12.5px;
   }

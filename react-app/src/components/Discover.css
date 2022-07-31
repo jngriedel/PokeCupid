@@ -48,14 +48,13 @@ a{
 .discover-div{
     border: 1px solid rgba(100, 100, 111, 0.2);
     /* display:grid; */
-    margin: 0;
     width: 50%;
     min-width: 700px;
-    height: 70%;
+    height: 65%;
     min-height: 500px;
     max-height: 300px;
     border-radius: 5px;
-    margin: 1%;
+    margin: 2% 2% 3% 2%;
     padding: 1%;
     position: relative;
     left: 25%;
