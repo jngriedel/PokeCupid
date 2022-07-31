@@ -199,7 +199,7 @@ const UsersAnswers = ({ user }) => {
     <div className="answer-table">
       <>
         <div className="question">
-          <table>
+          <table className="user-q-table">
             <thead>
               <tr>
                 <th className="question-title">Question</th>
