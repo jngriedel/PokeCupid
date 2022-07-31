@@ -87,11 +87,11 @@ function Profile() {
             {userImagesArr[0] && (
               <img
                 className="profile-picture"
-                src={sessionUser?.profileImages[0]?.imgUrl}
+                src={userImagesArr[0].imgUrl}
               ></img>
 
               )}
-              {!sessionUser?.profileImages[0]?.imgUrl && (
+              {userImagesArr.length == 0 && (
               <img
                 className="profile-picture"
                 src="https://www.kindpng.com/picc/m/74-743336_global-link-question-question-mark-unknown-pokemon-hd.png"
@@ -179,7 +179,7 @@ function Profile() {
                     ></input>
                     <button id="upload-button" type="submit"><i class="fas fa-file-upload"></i></button>
                   </div>
-                  {imageLoading && 
+                  {imageLoading &&
                     <div className="uploading-image-text">Uploading Image...</div>}
                 </form> }
               </div>
