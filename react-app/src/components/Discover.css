@@ -119,10 +119,14 @@ display: inline-flex;
     height:300px;
     width: 400px;
     object-fit:fill;
-    /* object-position:50% 00%; */
     margin-bottom: 4%;
     border: 1px solid #ccc;
 
+}
+
+.discover-images:hover{
+    box-shadow: rgba(100, 100, 111, 0.527) 0px 7px 29px 0px;
+    border-radius: 5px;
 }
 
 .discover-name{
@@ -141,6 +145,7 @@ display: inline-flex;
 .discover-heart,
 .discover-x {
     margin-right: 3.5%;
+    margin-left: -5.5%;
 }
 
 
@@ -222,4 +227,43 @@ img-bio-wrapper{
 
 .img-bio-wrapper{
     display: inline-flex
+}
+
+.view-profile {
+    font-family: 'Roboto', sans-serif;
+    font-weight: bolder;
+    position: relative;
+    left: 87%;
+    color:#0000bf;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.view-profile:hover{
+    text-decoration: underline;
+}
+
+.out-of-matches{
+    font-family: 'Roboto', sans-serif;
+    position: relative;
+    top: 200px;
+    left: 30%;
+    font-size: 30px;
+    width: 20%;
+    font-weight: bolder;
+}
+
+.snorlax{
+    position:relative;
+    left: 50%;
+    bottom: 30px;
+    width: 30%;
+}
+
+.snorlax-hidden {
+    display: none;
+}
+
+.out-of-matches-hidden{
+    display: none;
 }

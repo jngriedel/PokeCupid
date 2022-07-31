@@ -9,7 +9,7 @@ function Discover() {
   const [index, setIndex] = useState(0);
   const [current, setCurrent] = useState(null);
   const [loaded, setLoaded] = useState(false);
-
+  const [snorlax, setSnorlax] = useState("");
   // const [empty, setEmpty] = useState(false);
   const [userGrabbed, setUserGrabbed] = useState(true);
   const sessionUser = useSelector((state) => state.session.user);
@@ -78,6 +78,13 @@ function Discover() {
       return ["An error occurred. Please try again."];
     }
   };
+
+  useEffect(() => {
+    if (users.length === 0)
+      setSnorlax(
+        "https://i.pinimg.com/originals/12/8d/e8/128de8ce51ee0c498a4dfa67610f5843.jpg"
+      );
+  });
 
   const handleLike = () => {
     dispatch(newMatch(sessionUser.id, current?.id));
@@ -158,18 +165,24 @@ function Discover() {
       {loaded && (
         <>
           <p
-            className="out-of-matches"
-            style={{
-              visibility:
-                users.length == 0 || index == users.length
-                  ? "visible"
-                  : "hidden",
-            }}
+            className={
+              users.length == 0 || index == users.length
+                ? "out-of-matches"
+                : "out-of-matches-hidden"
+            }
           >
             {
               "You've reached the end of all the users for the moment, please check back later!"
             }
           </p>
+          <img
+            className={
+              users.length == 0 || index == users.length
+                ? "snorlax"
+                : "snorlax-hidden"
+            }
+            src={snorlax}
+          ></img>
         </>
       )}
 
