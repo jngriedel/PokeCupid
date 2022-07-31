@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { newMatch } from "../store/matches";
+import { MatchModal } from "../context/MatchModal";
 import "./Discover.css";
 
 function Discover() {
@@ -9,7 +10,13 @@ function Discover() {
   const [index, setIndex] = useState(0);
   const [current, setCurrent] = useState(null);
   const [loaded, setLoaded] = useState(false);
+
+  const [showMatchModal, setShowMatchModal] = useState(false)
+  const [matchModalMatch, setMatchModalMatch] = useState(null)
+
+
   const [snorlax, setSnorlax] = useState("");
+
   // const [empty, setEmpty] = useState(false);
   const [userGrabbed, setUserGrabbed] = useState(true);
   const sessionUser = useSelector((state) => state.session.user);
@@ -79,6 +86,12 @@ function Discover() {
     }
   };
 
+
+  
+    
+
+
+
   useEffect(() => {
     if (users.length === 0)
       setSnorlax(
@@ -86,8 +99,13 @@ function Discover() {
       );
   });
 
-  const handleLike = () => {
-    dispatch(newMatch(sessionUser.id, current?.id));
+  const handleLike = async() => {
+    const res = await dispatch(newMatch(sessionUser.id, current?.id));
+    if (res) {
+      await setMatchModalMatch(res)
+      setShowMatchModal(true)
+    }
+
     if (index < users.length - 1) {
       setIndex(index + 1);
       setCurrent(users[index]);
@@ -196,7 +214,11 @@ function Discover() {
           <div className="loader"></div>
         </div>
       )}
+       {showMatchModal && (
+        <MatchModal onClose={() => setShowMatchModal(false)} matchModalMatch={matchModalMatch} />
+      )}
     </>
+
   );
 }
 

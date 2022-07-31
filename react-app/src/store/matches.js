@@ -58,7 +58,8 @@ export const newMatch = (liker, liked) => async (dispatch) => {
         })
         if (response.ok) {
         const data = await response.json();
-        if (data.match) dispatch(addMatch(data.match))
+        if (data.match){ dispatch(addMatch(data.match));
+        return data.match}
         return null;
       }
       else {
@@ -99,7 +100,7 @@ export default function reducer(state = initialState, action) {
     case GET_MATCHES: {
         const newState = {}
         const matchArr = action.payload
-        
+
         matchArr.forEach((match)=>{
             newState[match.id] = match
         })

@@ -82,18 +82,21 @@ function Profile() {
       {loaded && (
         <div className="profileMain">
           <div className="profile-nameplate">
-            <div className="profile-items">
-              {userImagesArr[0] && (
-                <img
-                  className="profile-picture"
-                  src={sessionUser?.profileImages[0]?.imgUrl}
-                ></img>
+
+            <div className='profile-items'>
+            {userImagesArr[0] && (
+              <img
+                className="profile-picture"
+                src={userImagesArr[0].imgUrl}
+              ></img>
+
               )}
-              {!sessionUser?.profileImages[0]?.imgUrl && (
-                <img
-                  className="profile-picture"
-                  src="https://www.kindpng.com/picc/m/74-743336_global-link-question-question-mark-unknown-pokemon-hd.png"
-                ></img>
+              {userImagesArr.length == 0 && (
+              <img
+                className="profile-picture"
+                src="https://www.kindpng.com/picc/m/74-743336_global-link-question-question-mark-unknown-pokemon-hd.png"
+              ></img>
+
               )}
               <div className="profile-name-gender">
                 <p className="profile-name">{sessionUser?.name}</p>
@@ -162,6 +165,7 @@ function Profile() {
                       {error}
                     </div>
                   ))}
+
                 {userImagesArr.length <= 2 && (
                   <form className="upload-photo-form" onSubmit={addNewProfImg}>
                     <div className="upload-container">
@@ -186,6 +190,7 @@ function Profile() {
                     )}
                   </form>
                 )}
+
               </div>
               <ProfileAnswers />
             </div>
