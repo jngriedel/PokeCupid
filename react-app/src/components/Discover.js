@@ -20,6 +20,7 @@ function Discover() {
       const response = await fetch("/api/users/");
       const responseData = await response.json();
       setUsers(responseData?.users);
+
     }
     fetchData().then((res) => {
       setTimeout(() => {
@@ -32,9 +33,11 @@ function Discover() {
     if (users) {
       setCurrent(users[index]);
 
+
       // if(users.length == 0) setEmpty(true)
     } else {
       setUserGrabbed(false);
+
     }
   }, [users, index]);
 
@@ -91,94 +94,56 @@ function Discover() {
   };
 
   return (
-    <>
-      {userGrabbed && loaded && users.length >= 1 && (
+    <div className="discover-main">
+
+      {userGrabbed && loaded && users.length>=1 &&(
         <div>
-          <div className="discover-title-div">
-            <h1 className="discover-title">
-              <i className="fa-solid fa-magnifying-glass"></i>Discover
-            </h1>
+      <h1>Discover: </h1>
+
+        <li key={current?.id}>
+          <div className="discover-div">
+            <NavLink to={`/users/${current?.id}`} className="discover-name">
+              {current?.name}
+            </NavLink>
+            <p>Match Percentage: {results[index]}</p>
+            <NavLink to={`/users/${current?.id}`}>
+              {!current?.profileImages[0] && (
+                <img
+                  className="discover-images"
+                  src="https://www.kindpng.com/picc/m/74-743336_global-link-question-question-mark-unknown-pokemon-hd.png"
+                ></img>
+              )}
+              {current?.profileImages[0] && (
+                <img
+                  className="discover-images"
+                  src={current?.profileImages[0]?.imgUrl}
+                ></img>
+              )}
+            </NavLink>
+            <p>"{current?.bio}"</p>
+            <button className="discover-like" onClick={handleLike}>
+              <i className="fa-solid fa-heart"></i>
+              Like
+            </button>
+            <button
+              onClick={() => {
+                handlePass(current?.id);
+              }}
+            >
+              <i className="fa-solid fa-x"></i>Pass
+            </button>
           </div>
-          <div className="discover-title-footer"></div>
-
-          <li key={current?.id}>
-            <div className="discover-div">
-              <NavLink
-                to={`/users/${current?.id}`}
-                className="discover-navlink"
-              >
-                <p className="discover-name">{current?.name}</p>
-              </NavLink>
-              <p className="discover-gender">{current?.gender}</p>
-              <button className="match-percentage">{results[index]}</button>
-              <div className="img-bio-wrapper">
-                <NavLink
-                  to={`/users/${current?.id}`}
-                  className="discover-navlink"
-                >
-                  {!current?.profileImages[0] && (
-                    <img
-                      className="discover-images"
-                      src="https://www.kindpng.com/picc/m/74-743336_global-link-question-question-mark-unknown-pokemon-hd.png"
-                    ></img>
-                  )}
-                  {current?.profileImages[0] && (
-                    <img
-                      className="discover-images"
-                      src={current?.profileImages[0]?.imgUrl}
-                    ></img>
-                  )}
-                </NavLink>
-                <div className="bio-discover-wrapper">
-                  <div className="bio-discover-title-div">
-                    <p className="bio-discover-title">Biography</p>
-                  </div>
-                  <p className="bio-discover">"{current?.bio}"</p>
-                </div>
-              </div>
-              <div className="discover-buttons">
-                <button
-                  className="discover-pass"
-                  onClick={() => {
-                    handlePass(current?.id);
-                  }}
-                >
-                  <i className="fa-solid fa-x discover-x"></i>PASS
-                </button>
-                <button className="discover-like" onClick={handleLike}>
-                  <i className="fa-solid fa-heart discover-heart"></i>
-                  LIKE
-                </button>
-              </div>
-            </div>
-          </li>
+        </li>
         </div>
       )}
 
-      {loaded && (
-        <>
-          <p
-            className="out-of-matches"
-            style={{
-              visibility:
-                users.length == 0 || index == users.length
-                  ? "visible"
-                  : "hidden",
-            }}
-          >
-            {
-              "You've reached the end of all the users for the moment, please check back later!"
-            }
-          </p>
-        </>
-      )}
+      {loaded && <><p style={{visibility: users.length == 0 || index == users.length  ? 'visible' : 'hidden'}}>{"You've reached the end of all the users for the moment, please check back later!"}</p>
+    </>}
 
-      {!loaded && (
-        <div className="loadHoldDiscover">
-          <div className="loader"></div>
-        </div>
-      )}
-    </>
+      { !loaded && <div className="loadHoldDiscover">
+      <div className="loader"></div>
+      </div>}
+    </div>
   );
 }
 
