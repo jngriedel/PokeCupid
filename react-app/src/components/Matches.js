@@ -45,9 +45,13 @@ function Matches() {
           <style>
             @import url('https://fonts.googleapis.com/css2?family=Gothic+A1:wght@600&family=Nanum+Gothic&display=swap');
           </style>
-          <div className="message-titlebar">
-            <h2 className="pageTitle">Your Matches </h2>
+          <div className="matches-title-div">
+            <h1 className="matches-title">
+              <i class="fas fa-comments"></i> Chat with your Matches!
+            </h1>
           </div>
+          <div className="matches-title-footer"></div>
+
           <div className="all-matches-container">
             {matches.length >= 1 &&
               matches.map((match, i) => <Match key={i} match={match} />)}

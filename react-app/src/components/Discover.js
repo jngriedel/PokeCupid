@@ -110,14 +110,33 @@ function Discover() {
 
           <li key={current?.id}>
             <div className="discover-div">
-              <NavLink
-                to={`/users/${current?.id}`}
-                className="discover-navlink"
-              >
-                <p className="discover-name">{current?.name}</p>
-              </NavLink>
-              <p className="discover-gender">{current?.gender}</p>
-              <button className="match-percentage">{results[index]}</button>
+              <div className="discover-top">
+                <div className="discover-top-left">
+                  <NavLink
+                    to={`/users/${current?.id}`}
+                    className="discover-navlink"
+                  >
+                    <p className="discover-name">{current?.name}</p>
+                  </NavLink>
+                  <p className="discover-gender">{current?.gender}</p>
+                  <button className="match-percentage">{results[index]}</button>
+                </div>
+                <div className="discover-buttons">
+                  <button
+                    className="discover-pass"
+                    onClick={() => {
+                      handlePass(current?.id);
+                    }}
+                  >
+                    <i className="fa-solid fa-x discover-x"></i>PASS
+                  </button>
+                  <button className="discover-like" onClick={handleLike}>
+                    <i className="fa-solid fa-heart discover-heart"></i>
+                    LIKE
+                  </button>
+                </div>
+              </div>
+
               <div className="img-bio-wrapper">
                 <NavLink
                   to={`/users/${current?.id}`}
@@ -142,20 +161,6 @@ function Discover() {
                   </div>
                   <p className="bio-discover">"{current?.bio}"</p>
                 </div>
-              </div>
-              <div className="discover-buttons">
-                <button
-                  className="discover-pass"
-                  onClick={() => {
-                    handlePass(current?.id);
-                  }}
-                >
-                  <i className="fa-solid fa-x discover-x"></i>PASS
-                </button>
-                <button className="discover-like" onClick={handleLike}>
-                  <i className="fa-solid fa-heart discover-heart"></i>
-                  LIKE
-                </button>
               </div>
             </div>
           </li>
