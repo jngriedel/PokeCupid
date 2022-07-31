@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { editUserPokemon } from "../store/session";
 
-function Pokemon({}) {
+function Pokemon() {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const [editContent, setEditContent] = useState(false);

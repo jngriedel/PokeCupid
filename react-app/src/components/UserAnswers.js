@@ -1,6 +1,6 @@
-import { useState } from "react";
+// import { useState } from "react";
 
-import { useDispatch } from "react-redux";
+// import { useDispatch } from "react-redux";
 
 const UserAnswers = ({ question, i, user }) => {
   const answersUnsorted = user.answers;
@@ -8,9 +8,9 @@ const UserAnswers = ({ question, i, user }) => {
     (a, b) => a.questionId - b.questionId
   );
 
-  console.log(user);
 
-  const dispatch = useDispatch();
+
+  // const dispatch = useDispatch();
 
   return (
     <>

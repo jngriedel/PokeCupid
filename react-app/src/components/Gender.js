@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { editUserGender } from "../store/session";
 
-function Gender({}) {
+function Gender() {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const [editContent, setEditContent] = useState(false);

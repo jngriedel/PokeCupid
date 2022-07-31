@@ -15,7 +15,7 @@ const NotFound = () => {
         history.push("/");
       }
     }, 7000);
-  }, []);
+  }, [history, sessionUser]);
 
   return (
     <div className="splashPage">
@@ -26,9 +26,11 @@ const NotFound = () => {
       </p>
       <img
         className="missingno"
+        alt="missing number sprite"
         src="https://wiki.p-insurgence.com/images/0/09/722.png"
       ></img>
       <img
+        alt="missing number text"
         className="missingno-text"
         src="https://i.imgur.com/RvMthWV.png"
       ></img>

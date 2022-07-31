@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
+// import { NavLink } from "react-router-dom";
 import { getUserMatches } from "../store/matches";
 import Match from "./Match";
 import "./Matches.css";
@@ -55,7 +55,7 @@ function Matches() {
           <div className="all-matches-container">
             {matches.length >= 1 &&
               matches.map((match, i) => <Match key={i} match={match} />)}
-            {matches.length == 0 && (
+            {matches.length === 0 && (
               <h2>Looks Empty in Here! Go get matching!</h2>
             )}
           </div>
