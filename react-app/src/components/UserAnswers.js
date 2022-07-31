@@ -7,9 +7,7 @@ const UserAnswers = ({ question, i, user }) => {
   const answersObj = answersUnsorted.sort(
     (a, b) => a.questionId - b.questionId
   );
-
-  console.log(user);
-
+  
   const dispatch = useDispatch();
 
   return (
