@@ -43,14 +43,14 @@ const MessageInput = ({ matchId, messagesChanged, setMessagesChanged, setShowMod
     //receive
 
     socket.on("delete", (messageId) => {
-      console.log("I'm in deleted");
+      // console.log("I'm in deleted");
       dispatch(messagesActions.deleteMessage(messageId));
     });
 
-    socket.on("edit", (chat) => {
-      console.log("I'm in edit");
-      dispatch(messagesActions.addEditMessage(chat));
-    });
+    // socket.on("edit", (chat) => {
+    //   console.log("I'm in edit");
+    //   dispatch(messagesActions.addEditMessage(chat));
+    // });
 
     //receive
     socket.on("chat", (chat) => {
