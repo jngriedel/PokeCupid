@@ -38,7 +38,7 @@ function Profile() {
 
   const addNewProfImg = async (e) => {
     e.preventDefault();
-
+    setErrors([])
     const formData = new FormData();
     formData.append("image", image);
 
