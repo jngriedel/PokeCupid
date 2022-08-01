@@ -364,7 +364,7 @@
 .image-title-textarea {
   width: 12.8vw;
   resize: none;
-  
+
   border: 1px solid #ccc;
 }
 
@@ -501,4 +501,21 @@ input[type="file"]::file-selector-button {
 
 .user-q-table{
   width: 100%
+}
+
+.errors-bio{
+  position: absolute;
+  color: red;
+  top: 1%;
+  left: 10%;
+}
+
+.errors-title{
+  color: red;
+}
+
+.edit-profile-title-submit,
+.edit-profile-title-cancel {
+  border: transparent;
+  background: transparent;
 }
