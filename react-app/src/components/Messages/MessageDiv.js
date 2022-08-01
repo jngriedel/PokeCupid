@@ -46,8 +46,10 @@ const MessageDivs = ({ message, socket }) => {
       message: currentMessage,
     };
 
-    await dispatch(messagesActions.editMessage(messageData)).then((res) =>
+    await dispatch(messagesActions.editMessage(messageData)).then((res) =>{
+
       setEditMssg(false)
+      socket.emit('edit', res)}
     );
   };
 
