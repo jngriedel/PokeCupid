@@ -19,9 +19,9 @@ const MessageDivs = ({ message, socket }) => {
   const [currentMessage, setCurrentMessage] = useState(message.content);
   const [editMssg, setEditMssg] = useState(false);
 
-  useEffect(() => {
-    dispatch(getUserImages(sessionUser?.id));
-  }, []);
+  // useEffect(() => {
+  //   dispatch(getUserImages(sessionUser?.id));
+  // }, []);
 
   //   useEffect(() => {
 
