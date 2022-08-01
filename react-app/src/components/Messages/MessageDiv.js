@@ -17,6 +17,10 @@ const MessageDivs = ({ message, socket }) => {
   const [currentMessage, setCurrentMessage] = useState(message.content);
   const [editMssg, setEditMssg] = useState(false);
 
+  useEffect(() => {
+    dispatch(getUserImages(sessionUser?.id));
+  }, []);
+
   //   useEffect(() => {
 
   //    socketD = io();
@@ -54,13 +58,17 @@ const MessageDivs = ({ message, socket }) => {
     <div className="chat-div-ctrl">
       <div className="chat-message-ctrl">
         <div className="chat-user-wrap">
-          <div className="chat-username">{message.user.name}</div>
-          {/* <div className="chat-avatar">
-            {userImagesArr[0] && <img src={userImagesArr[0].imgUrl}></img>}
-            {userImagesArr.length == 0 && (
-              <img src="https://www.kindpng.com/picc/m/74-743336_global-link-question-question-mark-unknown-pokemon-hd.png"></img>
-            )}
-          </div> */}
+          {/* <div className="chat-username">{message.user.name}</div> */}
+            <div className="chat-avatars">
+              {message.user.profileImages[0] && <img className="chat-avatar" src={message.user.profileImages[0].imgUrl}></img>}
+              {message.user.profileImages.length === 0 && (
+                <img className="chat-avatar" src="https://www.kindpng.com/picc/m/74-743336_global-link-question-question-mark-unknown-pokemon-hd.png"></img>
+              )}
+              {/* {userImagesArr[0] && <img className="chat-avatar" src={userImagesArr[0].imgUrl}></img>}
+              {userImagesArr.length === 0 && (
+                <img className="chat-avatar" src="https://www.kindpng.com/picc/m/74-743336_global-link-question-question-mark-unknown-pokemon-hd.png"></img>
+              )} */}
+            </div>
         </div>
         {!editMssg && (
           <div className="chat-content-options">
