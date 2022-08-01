@@ -32,7 +32,7 @@ Upon landing on the home page, you may sign up (or log in if you already have an
 ## **Sign Up & Questionnaire** ##
 If you click the "Join PokéCupid" Button on the Home Page, you are taken to a form where you will be prompt to enter your account details. You may also choose a starter Pokémon, select any of the original 150 Pokémon! You will also be asked to fill out a questionnaire, which is a 20-question survey to assess your match type!
 
-![signup](https://user-images.githubusercontent.com/97005259/182003794-57233731-1426-4179-9242-bbf5fa112786.PNG)
+![signup]![image](https://user-images.githubusercontent.com/99449721/182056404-cad9fe77-12fa-454e-8230-7fee10042f08.png)
 
 ![questionnaire](https://user-images.githubusercontent.com/97005259/181859776-0ac8b82e-1a8f-49ec-a955-571f6f18255a.PNG)
 
@@ -46,12 +46,13 @@ Upon logging in or completing your sign up, you will be taken to the Discover pa
 ## **My Profile** ##
 While you're logged in, you will see a "My Profile" button on the top of the website. Click this to take you to your profile, where you may view and edit your information, and even change your Pokémon. You are also given the choice to upload a picture of yourself, which you can edit later if you wish. If you want to edit any details, you can click the edit buttons respectively to do so.
 
-![pokecupid-aa herokuapp com_profile (1)](https://user-images.githubusercontent.com/97005259/181860864-49fc4eff-60ad-427b-8ba3-40b68878953e.png)
+![pokecupid-aa herokuapp com_profile (1)]![image](https://user-images.githubusercontent.com/99449721/182057528-691aff4b-ffff-488b-ab17-043adb084383.png)
+![image](https://user-images.githubusercontent.com/99449721/182057784-5f340e0e-0f5b-4d3f-a9fe-7dec02d25f49.png)
 
 ## **Matches & Messaging** ##
 If you've matched with anyone, you can click the "Matches" tab in the navigation bar. This will take you to your matches, where you will see a list of users you've liked that have liked you back. From here, you can click on a user and message them! Clicking on the user's profile picture will take you to their profile. Oops...did you message something you wish you hadn't? Not to worry! Simply click the respective buttons next to your message to edit or delete. We have you covered!
 
-![AAAA](https://user-images.githubusercontent.com/97005259/181860457-2905a418-b3c4-4dc3-8cf4-e49f44d4ca83.PNG)
+![image](https://user-images.githubusercontent.com/99449721/182057935-a5dfbab6-7076-4c80-8459-dd87522ab5cd.png)
 
 
 ## **Code Snippet** ##

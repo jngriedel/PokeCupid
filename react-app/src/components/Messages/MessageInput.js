@@ -43,9 +43,14 @@ const MessageInput = ({ matchId, messagesChanged, setMessagesChanged, setShowMod
     //receive
 
     socket.on("delete", (messageId) => {
-      // console.log("Connected");
+      // console.log("I'm in deleted");
       dispatch(messagesActions.deleteMessage(messageId));
     });
+
+    // socket.on("edit", (chat) => {
+    //   console.log("I'm in edit");
+    //   dispatch(messagesActions.addEditMessage(chat));
+    // });
 
     //receive
     socket.on("chat", (chat) => {
@@ -92,7 +97,7 @@ const MessageInput = ({ matchId, messagesChanged, setMessagesChanged, setShowMod
                 ></img>
               )}
                 </NavLink>
-                <h3>{notSessionUser.name}</h3>
+                <h3 className="matchName">{notSessionUser.name}</h3>
             </div>
            <i onClick={()=>setShowModal(false)} class="fa-solid fa-x"></i>
         </div>
@@ -117,6 +122,7 @@ const MessageInput = ({ matchId, messagesChanged, setMessagesChanged, setShowMod
             {message.length} / {characterLimit}
           </div>
           <input
+            placeholder="Write something here!"
             className="chat-input"
             type="text"
             required
