@@ -23,7 +23,7 @@ const SignUpForm = () => {
   const [repeatPassword, setRepeatPassword] = useState("");
   const [questionAnswers, setQuestionAnswers] = useState([]);
   const user = useSelector((state) => state.session.user);
-  const pokemon = useSelector((state) => state.pokemon);
+  // const pokemon = useSelector((state) => state.pokemon);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -44,7 +44,7 @@ const SignUpForm = () => {
       );
 
       if (data) {
-        console.log(data);
+        // console.log(data);
         setErrors(data);
       }
     } else {
@@ -326,7 +326,7 @@ const SignUpForm = () => {
                 Questionnaire Complete! <i className="fa-solid fa-check"></i>
               </h3>
             )}
-            {next && submit && <button type="submit">Submit</button>}
+            {next && submit && <button id="signup-submit" type="submit">Submit</button>}
           </form>
         )}
         <div className="errorsList">
@@ -339,9 +339,9 @@ const SignUpForm = () => {
             Fill Out Questionnaire
           </button>
         )}
-        <p className="signup-tip">
+        {!submit && <p className="signup-tip">
           (Don't worry, you can come back and finish this later!)
-        </p>
+        </p>}
         {!showSignUp && showQuestionnaire && (
           <Questionnaire
             setSubmit={setSubmit}
