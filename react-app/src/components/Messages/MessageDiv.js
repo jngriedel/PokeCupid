@@ -9,8 +9,8 @@ const MessageDivs = ({ message, socket }) => {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const userImages = useSelector((state) => state.profileImages);
-  const userImagesAll = Object.values(userImages);
-  const userAvatar = userImagesAll[0];
+  const userImagesArr = Object.values(userImages);
+  // const userAvatar = userImagesAll[0];
 
   const [user, setUser] = useState();
   const [disabled, setDisabled] = useState(true);
@@ -55,7 +55,12 @@ const MessageDivs = ({ message, socket }) => {
       <div className="chat-message-ctrl">
         <div className="chat-user-wrap">
           <div className="chat-username">{message.user.name}</div>
-          {/* <div className="chat-avatar"><img src={userImagesAll[0].imgUrl}/></div> */}
+          {/* <div className="chat-avatar">
+            {userImagesArr[0] && <img src={userImagesArr[0].imgUrl}></img>}
+            {userImagesArr.length == 0 && (
+              <img src="https://www.kindpng.com/picc/m/74-743336_global-link-question-question-mark-unknown-pokemon-hd.png"></img>
+            )}
+          </div> */}
         </div>
         {!editMssg && (
           <div className="chat-content-options">
@@ -92,15 +97,23 @@ const MessageDivs = ({ message, socket }) => {
             </button>
           </div>
         )}
-        {editMssg && (
-          <form onSubmit={editMessage}>
+
+        {editMssg && ( 
+          <>
+            <div
+              className="chat-countdown"
+              style={{ visibility: currentMessage.length === 0 ? "hidden" : "visible" }}
+            >
+              {currentMessage.length} / 200
+            </div>
+          <form className="chat-edit-div" onSubmit={editMessage}>
             <input
               className="chat-div-input"
               type="text"
               value={currentMessage}
               onChange={(e) => setCurrentMessage(e.target.value)}
             />
-            {currentMessage && (
+            {currentMessage && currentMessage.length <= 200 && (
               <button className="save-msg">
                 <i class="fas fa-save"></i>
               </button>
@@ -112,6 +125,7 @@ const MessageDivs = ({ message, socket }) => {
               <i class="fas fa-ban"></i>
             </button>
           </form>
+          </>
         )}
       </div>
     </div>
