@@ -340,7 +340,7 @@ const SignUpForm = () => {
           </button>
         )}
         {!submit && <p className="signup-tip">
-          (Don't worry, you can come back and finish this later!)
+          (Don't worry, you'll come back and finish this after the questionnaire!)
         </p>}
         {!showSignUp && showQuestionnaire && (
           <Questionnaire

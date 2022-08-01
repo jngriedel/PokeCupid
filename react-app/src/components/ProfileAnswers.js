@@ -134,7 +134,7 @@ const ProfileAnswers = () => {
         0: "Is here to have fun!",
         1: "Will fight to the end and never give up!",
         2: "Works together with me to defeat our opponents!",
-        3: "Let's us equally contribute to the battle.",
+        3: "Lets us equally contribute to the battle.",
       },
     },
     15: {

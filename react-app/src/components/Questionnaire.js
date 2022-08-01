@@ -41,7 +41,7 @@ const Questionnaire = ({setShowSignUp, setQuestionAnswers, setNext, setShowQuest
         11: {Question: "It's a lovely day in Kanto, you...", Options: {0: "Take a bike ride and enjoy the day!", 1: "Defeat more gym leaders!", 2: "Level up my Pokémon, stock up on items and prepare for my next adventure.", 3: "Spend time with family and friends!"}},
         12: {Question: "A legendary Pokémon appears, but your party is injured. You...", Options: {0: "Run Away! Can't risk my party getting defeated.", 1: "Tough it out. Who knows when I'll get another chance to catch it?", 2: "Use my Masterball. Perfect opportuinty!", 3: "Oh Please. My Magikarp knows flail."}},
         13: {Question: "You encounter a large tree blocking your path.", Options: {0: "Cut it ! Burn it! Nothing stops me!", 1: "Carefully dig it up and replant it on the side of the road.", 2: "Fly over it. My Pokémon literally have wings...", 3: "There must be a way around it. I'd start looking."}},
-        14: {Question: "You team up with a trainer for a double Pokémon battle. You want a trainer who...", Options: {0: "Is here to have fun!", 1: "Will fight to the end and never give up!", 2: "Works together with me to defeat our opponents!", 3: "Let's us equally contribute to the battle."}},
+        14: {Question: "You team up with a trainer for a double Pokémon battle. You want a trainer who...", Options: {0: "Is here to have fun!", 1: "Will fight to the end and never give up!", 2: "Works together with me to defeat our opponents!", 3: "Lets us equally contribute to the battle."}},
         15: {Question: "You've just defeated a Gym Trainer. You...", Options: {0: "Get the badge and go. I've got a championship to win!", 1: "Shake their hand and congratulate them on a battle well fought. ", 2: "Taunt them. They used like 4 potions in the middle of the fight!", 3: "Ask them for a rematch. Gotta make sure my win wasn't a fluke."}},
         16: {Question: "You send a postcard to a friend. What exciting news do you have to share?", Options: {0: "I won a contest!", 1: "I visited a Museum!", 2: "I made a new friend!", 3: "I took a spa day!"}},
         17: {Question: "Is it important for you and your Pokémon to get quality sleep?", Options: {0: "No, we can't waste time! We have to get ahead!", 1: "If sleep will help us battle better, then I'm all for it.", 2: "Quality sleep? We sleep all day!", 3: "Whatever is best for my Pokémon and I!"}},
@@ -168,7 +168,10 @@ const Questionnaire = ({setShowSignUp, setQuestionAnswers, setNext, setShowQuest
             )}
           </div>
           <div>
-            Select One
+
+            <div className="question-number-bottom">
+              <span>Question {currentQuestion} </span>/ 20
+            </div>
           </div>
         </>
       </div>
