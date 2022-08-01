@@ -44,7 +44,12 @@ function Bio() {
         </div>
       )}
 
-      {errors && errors.map((error, ind) => <div key={ind}>{error}</div>)}
+      {errors &&
+        errors.map((error, ind) => (
+          <div key={ind}>
+            <p className="errors-bio">{error}</p>
+          </div>
+        ))}
 
       {editContent && (
         <>

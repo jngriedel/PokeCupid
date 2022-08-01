@@ -45,7 +45,12 @@ function ImageTitle({ image }) {
         </div>
       )}
 
-      {errors && errors.map((error, ind) => <div key={ind}>{error}</div>)}
+      {errors &&
+        errors.map((error, ind) => (
+          <div key={ind}>
+            <p className="errors-title">{error}</p>
+          </div>
+        ))}
 
       {editContent && (
         <>
