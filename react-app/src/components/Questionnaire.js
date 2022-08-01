@@ -168,7 +168,10 @@ const Questionnaire = ({setShowSignUp, setQuestionAnswers, setNext, setShowQuest
             )}
           </div>
           <div>
-            Select One
+            
+            <div className="question-number-bottom">
+              <span>Question {currentQuestion} </span>/ 20
+            </div>
           </div>
         </>
       </div>
