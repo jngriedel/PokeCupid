@@ -34,7 +34,7 @@ export function MatchModal({ onClose, children, matchModalMatch }) {
 
   useEffect(() => {
     dispatch(getUserImages(sessionUser?.id));
-  }, []);
+  }, [dispatch, sessionUser]);
 
   const modalNode = useContext(MatchModalContext);
   if (!modalNode) return null;
@@ -42,27 +42,30 @@ export function MatchModal({ onClose, children, matchModalMatch }) {
   return ReactDOM.createPortal(
     <div id="matchmodal">
       {/* <h1 id="matchMessage">It's a Match! </h1> */}
-      <img className="match-title" src={matchtext}></img>
+      <img alt="it's a match" className="match-title" src={matchtext}></img>
       <div className="matchmodal-img">
         {userImagesArr[0] && (
-          <img className="match-user1" src={userImagesArr[0].imgUrl}></img>
+          <img alt="you" className="match-user1" src={userImagesArr[0].imgUrl}></img>
         )}
-        {userImagesArr.length == 0 && (
+        {userImagesArr.length === 0 && (
           <img
             className="match-user1"
+            alt="unknown"
             src="https://www.kindpng.com/picc/m/74-743336_global-link-question-question-mark-unknown-pokemon-hd.png"
           ></img>
         )}
 
-        <img className="match-loveball" src={loveball}></img>
+        <img alt='heart pokeball'className="match-loveball" src={loveball}></img>
 
         {matchModalMatch.user.profileImages[0].imgUrl ? (
           <img
+            alt="match"
             className="match-user2"
             src={matchModalMatch.user.profileImages[0].imgUrl}
           />
         ) : (
           <img
+            alt="unknown"
             className="match-user2"
             src="https://www.kindpng.com/picc/m/74-743336_global-link-question-question-mark-unknown-pokemon-hd.png"
           />

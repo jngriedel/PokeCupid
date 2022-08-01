@@ -22,6 +22,7 @@ function Profile() {
   const userImagesArr = Object.values(userImages);
 
   const [errors, setErrors] = useState([]);
+
   const [loaded, setLoaded] = useState(false);
   const [image, setImage] = useState(null);
   const [imageLoading, setImageLoading] = useState(false);
@@ -33,7 +34,7 @@ function Profile() {
         setLoaded(true);
       }, 1000);
     });
-  }, []);
+  }, [dispatch, sessionUser]);
 
   const addNewProfImg = async (e) => {
     e.preventDefault();
@@ -52,6 +53,8 @@ function Profile() {
     if (res.ok) {
       const data = await res.json();
       setImageLoading(false);
+
+      document.getElementById('uploadProfPic').value = ""
 
       await dispatch(uploadImage(data.image));
     } else if (!res.ok) {
@@ -86,13 +89,15 @@ function Profile() {
             <div className='profile-items'>
             {userImagesArr[0] && (
               <img
+                alt="profile"
                 className="profile-picture"
                 src={userImagesArr[0].imgUrl}
               ></img>
 
               )}
-              {userImagesArr.length == 0 && (
+              {userImagesArr.length === 0 && (
               <img
+                alt="unknown"
                 className="profile-picture"
                 src="https://www.kindpng.com/picc/m/74-743336_global-link-question-question-mark-unknown-pokemon-hd.png"
               ></img>
@@ -115,7 +120,7 @@ function Profile() {
               <Bio />
               <div className="profile-pokemon">
                 <p className="pokemon-number"># {sessionUser.pokemonId}.</p>
-                <img className="pokemon-img" src={sessionUser?.pokemon?.imgUrl}/>
+                <img className="pokemon-img" alt={sessionUser?.pokemon?.name} src={sessionUser?.pokemon?.imgUrl}/>
                 <Pokemon />
               </div>
             </div>
@@ -136,6 +141,7 @@ function Profile() {
                           </div>
                           <div className="profile-pictures-container">
                             <img
+                              alt="profile"
                               className="profile-pictures"
                               src={image.imgUrl}
                             />
@@ -153,6 +159,7 @@ function Profile() {
                   {!userImagesArr[0] && (
                     <>
                       <img
+                        alt="unknown"
                         className="profile-pictures"
                         src="https://www.kindpng.com/picc/m/74-743336_global-link-question-question-mark-unknown-pokemon-hd.png"
                       />
@@ -178,8 +185,9 @@ function Profile() {
                         type="file"
                         accept="image/*"
                         onChange={updateImage}
+
                       ></input>
-                      <button id="upload-button" type="submit">
+                      <button  id="upload-button" type="submit">
                         <i class="fas fa-file-upload"></i>
                       </button>
                     </div>

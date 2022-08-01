@@ -1,14 +1,18 @@
-import { useState } from "react";
+// import { useState } from "react";
 
-import { useDispatch } from "react-redux";
+// import { useDispatch } from "react-redux";
 
 const UserAnswers = ({ question, i, user }) => {
   const answersUnsorted = user.answers;
   const answersObj = answersUnsorted.sort(
     (a, b) => a.questionId - b.questionId
   );
-  
-  const dispatch = useDispatch();
+
+
+
+
+  // const dispatch = useDispatch();
+
 
   return (
     <>

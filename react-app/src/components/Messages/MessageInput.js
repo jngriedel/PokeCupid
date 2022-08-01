@@ -43,7 +43,7 @@ const MessageInput = ({ matchId, messagesChanged, setMessagesChanged, setShowMod
     //receive
 
     socket.on("delete", (messageId) => {
-      console.log("Connected");
+      // console.log("Connected");
       dispatch(messagesActions.deleteMessage(messageId));
     });
 
@@ -57,7 +57,7 @@ const MessageInput = ({ matchId, messagesChanged, setMessagesChanged, setShowMod
     return () => {
       socket.disconnect();
     };
-  }, []);
+  }, [dispatch, matchId, setMessagesChanged, user]);
 
   const handleSubmitMsg = async (e) => {
     e.preventDefault();
@@ -79,12 +79,14 @@ const MessageInput = ({ matchId, messagesChanged, setMessagesChanged, setShowMod
                 <NavLink to={`/users/${notSessionUser.id}`}>
                 {!notSessionUser.profileImages[0] && (
                 <img
+                  alt="unknown"
                   className="chat-images"
                   src="https://www.kindpng.com/picc/m/74-743336_global-link-question-question-mark-unknown-pokemon-hd.png"
                 ></img>
               )}
               {notSessionUser.profileImages[0] && (
                 <img
+                  alt="match profile"
                   className="chat-images"
                   src={notSessionUser.profileImages[0]?.imgUrl}
                 ></img>
@@ -92,7 +94,7 @@ const MessageInput = ({ matchId, messagesChanged, setMessagesChanged, setShowMod
                 </NavLink>
                 <h3>{notSessionUser.name}</h3>
             </div>
-           <i onClick={()=>setShowModal(false)} class="fa-solid fa-x"></i> 
+           <i onClick={()=>setShowModal(false)} class="fa-solid fa-x"></i>
         </div>
         <div className="messages-listed" ref={focusRef}>
         {!messagesChanged && <div className="chat-loading"></div>}
@@ -110,7 +112,7 @@ const MessageInput = ({ matchId, messagesChanged, setMessagesChanged, setShowMod
         <form className="chat-input-ctrl" onSubmit={handleSubmitMsg}>
           <div
             className="chat-countdown"
-            style={{ visibility: message.length == 0 ? "hidden" : "visible" }}
+            style={{ visibility: message.length === 0 ? "hidden" : "visible" }}
           >
             {message.length} / {characterLimit}
           </div>
@@ -123,7 +125,7 @@ const MessageInput = ({ matchId, messagesChanged, setMessagesChanged, setShowMod
           />
           <button className='chat-submit'
             disabled={
-              message.length > 200 || message.length == 0 ? true : false
+              message.length > 200 || message.length === 0 ? true : false
             }
           >
             {" "}<i class="fas fa-paper-plane"></i>{" "}

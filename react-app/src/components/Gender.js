@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { editUserGender } from "../store/session";
 
-function Gender({}) {
+function Gender() {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const [editContent, setEditContent] = useState(false);
   const [currentGender, setCurrentGender] = useState(sessionUser.gender);
-  const [selected, setSelected] = useState("");
+  const [selected, setSelected] = useState(sessionUser.gender);
   const [errors, setErrors] = useState([]);
 
   const handleCancel = () => {
@@ -48,6 +48,8 @@ function Gender({}) {
           </button>
         </div>
       )}
+
+      {errors && errors.map((error, ind) => <div key={ind}>{error}</div>)}
 
       {editContent && (
         <>

@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { editImage } from "../store/profileImages";
 
 function ImageTitle({ image }) {
   const dispatch = useDispatch();
-  const sessionUser = useSelector((state) => state.session.user);
+  // const sessionUser = useSelector((state) => state.session.user);
   const [editContent, setEditContent] = useState(false);
   const [currentTitle, setCurrentTitle] = useState(
     image.title ? image.title : ""
   );
-  const [showModal, setShowModal] = useState(false);
+  // const [showModal, setShowModal] = useState(false);
   const [errors, setErrors] = useState([]);
 
   const handleCancel = () => {

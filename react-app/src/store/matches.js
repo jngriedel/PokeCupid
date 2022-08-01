@@ -22,7 +22,7 @@ const getMatches = (matches) => ({
 
 
 
-const initialState = { matches: null };
+const initialState = { };
 
 
 

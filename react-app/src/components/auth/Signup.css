@@ -132,7 +132,7 @@
     color: green;
 }
 
-#nextbutton{
+#nextbutton,#signup-submit{
     font-family: 'Roboto', sans-serif;
     padding: 12px 16px 12px 16px;
     border-radius: 30px;
@@ -141,7 +141,7 @@
     font-weight: 600;
 }
 
-#nextbutton:hover{
+#nextbutton:hover,#signup-submit:hover{
     color: black;
     background-color: white;
     cursor: pointer;
