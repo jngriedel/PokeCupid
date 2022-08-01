@@ -31,6 +31,7 @@ Upon landing on the home page, you may sign up (or log in if you already have an
 
 ## **Sign Up & Questionnaire** ##
 If you click the "Join PokéCupid" Button on the Home Page, you are taken to a form where you will be prompt to enter your account details. You may also choose a starter Pokémon, select any of the original 150 Pokémon! You will also be asked to fill out a questionnaire, which is a 20-question survey to assess your match type!
+Upon completing the questionnaire, you will be shown your profile information one last time before submission.
 
 ![signup]![image](https://user-images.githubusercontent.com/99449721/182056404-cad9fe77-12fa-454e-8230-7fee10042f08.png)
 
