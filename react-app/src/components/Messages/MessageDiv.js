@@ -62,9 +62,9 @@ const MessageDivs = ({ message, socket }) => {
         <div className="chat-user-wrap">
           {/* <div className="chat-username">{message.user.name}</div> */}
             <div className="chat-avatars">
-              {message.user.profileImages[0] && <img className="chat-avatar" src={message.user.profileImages[0].imgUrl}></img>}
+              {message.user.profileImages[0] && <img alt='profile' className="chat-avatar" src={message.user.profileImages[0].imgUrl}></img>}
               {message.user.profileImages.length === 0 && (
-                <img className="chat-avatar" src="https://www.kindpng.com/picc/m/74-743336_global-link-question-question-mark-unknown-pokemon-hd.png"></img>
+                <img alt="unknown" className="chat-avatar" src="https://www.kindpng.com/picc/m/74-743336_global-link-question-question-mark-unknown-pokemon-hd.png"></img>
               )}
               {/* {userImagesArr[0] && <img className="chat-avatar" src={userImagesArr[0].imgUrl}></img>}
               {userImagesArr.length === 0 && (
@@ -110,7 +110,7 @@ const MessageDivs = ({ message, socket }) => {
           </div>
         )}
 
-        {editMssg && ( 
+        {editMssg && (
           <>
             <div
               className="chat-countdown"
