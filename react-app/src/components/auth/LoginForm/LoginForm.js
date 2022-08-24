@@ -81,7 +81,7 @@ const LoginForm = () => {
           <div className='login-or-txt'>or</div>
           <div className="after-or"></div>
         </div>
-        <button type='button' onClick={demoUser}className="button" id="demoBtn" type="submit">
+        <button type='button' onClick={demoUser}className="button" id="demoBtn" >
           Log In As A Guest
         </button>
 
