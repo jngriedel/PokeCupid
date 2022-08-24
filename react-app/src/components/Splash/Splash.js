@@ -10,6 +10,7 @@ import splash3 from "../../images/splash3.png";
 import splash4 from "../../images/splash4.png";
 import splash5 from "../../images/splash5.png";
 
+
 function Splash() {
     const sessionUser = useSelector((state) => state.session.user);
 
