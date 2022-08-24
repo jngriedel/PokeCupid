@@ -20,6 +20,10 @@ const LoginForm = () => {
     }
   };
 
+  const demoUser = () => {
+    dispatch(login('demo@aa.io', 'password'))
+  }
+
   const updateEmail = (e) => {
     setEmail(e.target.value);
   };
@@ -77,10 +81,7 @@ const LoginForm = () => {
           <div className='login-or-txt'>or</div>
           <div className="after-or"></div>
         </div>
-        <button onClick={()=> {
-            setEmail("demo@aa.io");
-            setPassword("password");
-        }}className="button" id="demoBtn" type="submit">
+        <button onClick={demoUser}className="button" id="demoBtn" type="submit">
           Log In As A Guest
         </button>
 
