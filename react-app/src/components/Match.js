@@ -5,6 +5,7 @@ import {  useSelector } from "react-redux";
 import "./Matches.css";
 import MessageInput from "./Messages/MessageInput";
 import { ChatModal } from "../context/ChatModal";
+import unown_pic from "../images/unown.png";
 
 function Match({ match }) {
 
@@ -41,7 +42,7 @@ function Match({ match }) {
             <img
               alt="unknown"
               className="matchImg"
-              src="https://www.kindpng.com/picc/m/74-743336_global-link-question-question-mark-unknown-pokemon-hd.png"
+              src={unown_pic}
             />
           </div>
         )}

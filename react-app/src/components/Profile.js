@@ -10,6 +10,7 @@ import ImageTitle from "./ImageTitle";
 import Bio from "./Bio";
 import Gender from "./Gender";
 import Pokemon from "./Pokemon";
+import unown_pic from "../images/unown.png";
 
 import ProfileAnswers from "./ProfileAnswers";
 import "./Profile.css";
@@ -99,7 +100,7 @@ function Profile() {
               <img
                 alt="unknown"
                 className="profile-picture"
-                src="https://www.kindpng.com/picc/m/74-743336_global-link-question-question-mark-unknown-pokemon-hd.png"
+                src={unown_pic}
               ></img>
 
               )}
@@ -161,7 +162,7 @@ function Profile() {
                       <img
                         alt="unknown"
                         className="profile-pictures"
-                        src="https://www.kindpng.com/picc/m/74-743336_global-link-question-question-mark-unknown-pokemon-hd.png"
+                        src={unown_pic}
                       />
                     </>
                   )}

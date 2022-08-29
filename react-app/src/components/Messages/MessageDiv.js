@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 // import { getUserImages } from "../../store/profileImages";
 // import { io } from "socket.io-client";
 import * as messagesActions from "../../store/messages";
+import unown_pic from "../../images/unown.png";
 // let socketD;
 
 const MessageDivs = ({ message, socket }) => {
@@ -67,7 +68,7 @@ const MessageDivs = ({ message, socket }) => {
             <div className="chat-avatars">
               {message.user.profileImages[0] && <img alt='profile' className="chat-avatar" src={message.user.profileImages[0].imgUrl}></img>}
               {message.user.profileImages.length === 0 && (
-                <img alt="unknown" className="chat-avatar" src="https://www.kindpng.com/picc/m/74-743336_global-link-question-question-mark-unknown-pokemon-hd.png"></img>
+                <img alt="unknown" className="chat-avatar" src={unown_pic}></img>
               )}
               {/* {userImagesArr[0] && <img className="chat-avatar" src={userImagesArr[0].imgUrl}></img>}
               {userImagesArr.length === 0 && (

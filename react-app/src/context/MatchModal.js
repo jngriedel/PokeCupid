@@ -4,6 +4,7 @@ import ReactDOM from "react-dom";
 import loveball from "../images/loveball.png";
 import matchtext from "../images/matchtext.png";
 import { getUserImages } from "../store/profileImages";
+import unown_pic from "../images/unown.png";
 import "./MatchModal.css";
 
 const MatchModalContext = React.createContext();
@@ -51,7 +52,7 @@ export function MatchModal({ onClose, children, matchModalMatch }) {
           <img
             className="match-user1"
             alt="unknown"
-            src="https://www.kindpng.com/picc/m/74-743336_global-link-question-question-mark-unknown-pokemon-hd.png"
+            src={unown_pic}
           ></img>
         )}
 
@@ -67,7 +68,7 @@ export function MatchModal({ onClose, children, matchModalMatch }) {
           <img
             alt="unknown"
             className="match-user2"
-            src="https://www.kindpng.com/picc/m/74-743336_global-link-question-question-mark-unknown-pokemon-hd.png"
+            src={unown_pic}
           />
         )}
       </div>
