@@ -4,6 +4,7 @@ import { useHistory, useParams } from "react-router-dom";
 // import { newMatch } from "../store/matches";
 import { getUserImages } from "../store/profileImages";
 import UserQuestions from "./UserQuestions";
+import unown_pic from "../images/unown.png";
 
 function User() {
   // const sessionUser = useSelector((state) => state.session.user);
@@ -69,7 +70,7 @@ function User() {
                 <img
                   alt="unknown"
                   className="profile-picture"
-                  src="https://www.kindpng.com/picc/m/74-743336_global-link-question-question-mark-unknown-pokemon-hd.png"
+                  src={unown_pic}
                 ></img>
               )}
               <div className="profile-name-gender">
@@ -121,7 +122,7 @@ function User() {
                       <img
                         alt="unknown"
                         className="profile-pictures"
-                        src="https://www.kindpng.com/picc/m/74-743336_global-link-question-question-mark-unknown-pokemon-hd.png"
+                        src={unown_pic}
                       />
                     </>
                   )}

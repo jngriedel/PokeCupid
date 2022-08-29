@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { newMatch } from "../store/matches";
 import { MatchModal } from "../context/MatchModal";
+import unown_pic from "../images/unown.png";
 import "./Discover.css";
 
 function Discover() {
@@ -164,7 +165,7 @@ function Discover() {
                     <img
                       className="discover-images"
                       alt="unknown"
-                      src="https://www.kindpng.com/picc/m/74-743336_global-link-question-question-mark-unknown-pokemon-hd.png"
+                      src= {unown_pic}
                     ></img>
                   )}
                   {current?.profileImages[0] && (

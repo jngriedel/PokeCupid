@@ -4,6 +4,7 @@ import { io } from "socket.io-client";
 import { NavLink } from "react-router-dom";
 import * as messagesActions from "../../store/messages";
 import MessageDivs from "./MessageDiv";
+import unown_pic from "../../images/unown.png";
 let socket;
 
 //return the message to dict inside the addMessage, then add it on the socket
@@ -86,7 +87,7 @@ const MessageInput = ({ matchId, messagesChanged, setMessagesChanged, setShowMod
                 <img
                   alt="unknown"
                   className="chat-images"
-                  src="https://www.kindpng.com/picc/m/74-743336_global-link-question-question-mark-unknown-pokemon-hd.png"
+                  src={unown_pic}
                 ></img>
               )}
               {notSessionUser.profileImages[0] && (
