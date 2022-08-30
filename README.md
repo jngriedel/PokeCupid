@@ -95,15 +95,14 @@ useEffect(() => {
 
 
 
-# Flask React Project
+# Set up Locally
 
-This is the starter for the Flask React project.
 
 ## Getting started
-1. Clone this repository (only this branch)
+1. Clone this repository 
 
    ```bash
-   git clone https://github.com/appacademy-starters/python-project-starter.git
+   git clone https://github.com/jngriedel/PokeCupid.git
    ```
 
 2. Install dependencies
@@ -114,7 +113,8 @@ This is the starter for the Flask React project.
 
 3. Create a **.env** file based on the example with proper settings for your
    development environment
-4. Setup your PostgreSQL user, password and database and make sure it matches your **.env** file
+   
+4. Setup your PostgreSQL user, password and database and make sure it matches the **.env** file
 
 5. Get into your pipenv, migrate your database, seed your database, and run your flask app
 
@@ -134,14 +134,12 @@ This is the starter for the Flask React project.
    flask run
    ```
 
-6. To run the React App in development, checkout the [README](./react-app/README.md) inside the `react-app` directory.
-
 ***
 
 
 *IMPORTANT!*
    psycopg2-binary MUST remain a dev dependency because you can't install it on alpine-linux.
-   There is a layer in the Dockerfile that will install psycopg2 (not binary) for us.
+   There is a layer in the Dockerfile that will install psycopg2.
 ***
 
 ### Dev Containers (OPTIONAL for M1 Users)
@@ -151,7 +149,7 @@ The following instructions detail an *optional* development setup for M1 Mac use
 2. Make sure you have [Docker](https://www.docker.com/products/docker-desktop/) installed on your computer. 
 3. Clone the repository (only this branch)
    ```bash
-   git clone https://github.com/appacademy-starters/python-project-starter.git
+   git clone https://github.com/jngriedel/PokeCupid.git
    ```
 4. Open the repo in VS Code. 
 5. Click "Open in Container" when VS Code prompts to open container in the bottom right hand corner. 
@@ -179,7 +177,7 @@ The following instructions detail an *optional* development setup for M1 Mac use
    flask run
    ```
 
-9. To run the React App in development, checkout the [README](./react-app/README.md) inside the `react-app` directory.
+
 
 
 
