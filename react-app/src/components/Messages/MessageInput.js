@@ -56,8 +56,9 @@ const MessageInput = ({ matchId, messagesChanged, setMessagesChanged, setShowMod
     //receive
     socket.on("chat", (chat) => {
       // setMessages(messages => [...messages, chat])
-
+      if (chat.matchId === matchId) {
       dispatch(messagesActions.addEditMessage(chat));
+      }
     });
 
     return () => {
