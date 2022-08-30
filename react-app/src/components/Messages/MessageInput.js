@@ -9,7 +9,13 @@ let socket;
 
 //return the message to dict inside the addMessage, then add it on the socket
 
-const MessageInput = ({ matchId, messagesChanged, setMessagesChanged, setShowModal, notSessionUser }) => {
+const MessageInput = ({
+  matchId,
+  messagesChanged,
+  setMessagesChanged,
+  setShowModal,
+  notSessionUser,
+}) => {
   const [characterLimit] = useState(200);
   const user = useSelector((state) => state.session?.user);
   const [message, setMessage] = useState("");
@@ -31,12 +37,11 @@ const MessageInput = ({ matchId, messagesChanged, setMessagesChanged, setShowMod
 
   useEffect(() => {
     if (user) {
-      dispatch(messagesActions.getMatchMessages(matchId))
-      .then((res)=>{
+      dispatch(messagesActions.getMatchMessages(matchId)).then((res) => {
         setTimeout(() => {
-            setMessagesChanged(true)
-          }, 300)
-    });
+          setMessagesChanged(true);
+        }, 300);
+      });
     }
 
     socket = io();
@@ -70,20 +75,21 @@ const MessageInput = ({ matchId, messagesChanged, setMessagesChanged, setShowMod
     const res = await dispatch(messagesActions.addMessage(message, matchId));
 
     //send
-
-    socket.emit("chat", res);
-
+    if (user.id === notSessionUser.id) {
+      socket.emit("chat", res);
+    } else {
+      return;
+    }
     setMessage("");
   };
 
   return (
-    stateMessages &&  (
-
+    stateMessages && (
       <div className="messages-container">
         <div className="chat-head">
-            <div className="otheruser-head">
-                <NavLink to={`/users/${notSessionUser.id}`}>
-                {!notSessionUser.profileImages[0] && (
+          <div className="otheruser-head">
+            <NavLink to={`/users/${notSessionUser.id}`}>
+              {!notSessionUser.profileImages[0] && (
                 <img
                   alt="unknown"
                   className="chat-images"
@@ -97,22 +103,23 @@ const MessageInput = ({ matchId, messagesChanged, setMessagesChanged, setShowMod
                   src={notSessionUser.profileImages[0]?.imgUrl}
                 ></img>
               )}
-                </NavLink>
-                <h3 className="matchName">{notSessionUser.name}</h3>
-            </div>
-           <i onClick={()=>setShowModal(false)} class="fa-solid fa-x"></i>
+            </NavLink>
+            <h3 className="matchName">{notSessionUser.name}</h3>
+          </div>
+          <i onClick={() => setShowModal(false)} class="fa-solid fa-x"></i>
         </div>
         <div className="messages-listed" ref={focusRef}>
-        {!messagesChanged && <div className="chat-loading"></div>}
-          {messagesChanged && stateMessages.map((message, i) => (
-            <div key={i}>
-              <MessageDivs
-                socket={socket}
-                message={message}
-                matchId={matchId}
-              />
-            </div>
-          ))}
+          {!messagesChanged && <div className="chat-loading"></div>}
+          {messagesChanged &&
+            stateMessages.map((message, i) => (
+              <div key={i}>
+                <MessageDivs
+                  socket={socket}
+                  message={message}
+                  matchId={matchId}
+                />
+              </div>
+            ))}
         </div>
 
         <form className="chat-input-ctrl" onSubmit={handleSubmitMsg}>
@@ -130,12 +137,14 @@ const MessageInput = ({ matchId, messagesChanged, setMessagesChanged, setShowMod
             value={message}
             onChange={(e) => setMessage(e.target.value)}
           />
-          <button className='chat-submit'
+          <button
+            className="chat-submit"
             disabled={
               message.length > 200 || message.length === 0 ? true : false
             }
           >
-            {" "}<i class="fas fa-paper-plane"></i>{" "}
+            {" "}
+            <i class="fas fa-paper-plane"></i>{" "}
           </button>
         </form>
       </div>
