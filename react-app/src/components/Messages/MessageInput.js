@@ -15,7 +15,7 @@ const MessageInput = ({ matchId, messagesChanged, setMessagesChanged, setShowMod
   const [message, setMessage] = useState("");
 
   const messagesObject = useSelector((state) => state.messages);
-  const stateMessages = Object.values(messagesObject);
+  // const stateMessages = Object.values(messagesObject);
   const focusRef = useRef();
 
   const dispatch = useDispatch();
@@ -57,7 +57,7 @@ const MessageInput = ({ matchId, messagesChanged, setMessagesChanged, setShowMod
     socket.on("chat", (chat) => {
       // setMessages(messages => [...messages, chat])
       if (chat.matchId === matchId) {
-      dispatch(messagesActions.addEditMessage(chat));
+        dispatch(messagesActions.addEditMessage(chat));
       }
     });
 
@@ -78,7 +78,7 @@ const MessageInput = ({ matchId, messagesChanged, setMessagesChanged, setShowMod
   };
 
   return (
-    stateMessages &&  (
+    messagesObject &&  (
 
       <div className="messages-container">
         <div className="chat-head">
@@ -105,7 +105,7 @@ const MessageInput = ({ matchId, messagesChanged, setMessagesChanged, setShowMod
         </div>
         <div className="messages-listed" ref={focusRef}>
         {!messagesChanged && <div className="chat-loading"></div>}
-          {messagesChanged && stateMessages.map((message, i) => (
+          {messagesChanged && Object.values(messagesObject).map((message, i) => (
             <div key={i}>
               <MessageDivs
                 socket={socket}

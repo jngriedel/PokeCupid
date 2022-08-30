@@ -1,4 +1,4 @@
-import {  useState } from "react";
+import {  useState , useEffect} from "react";
 import { useSelector, useDispatch } from "react-redux";
 // import { getUserImages } from "../../store/profileImages";
 // import { io } from "socket.io-client";
@@ -20,9 +20,9 @@ const MessageDivs = ({ message, socket }) => {
   const [currentMessage, setCurrentMessage] = useState(message.content);
   const [editMssg, setEditMssg] = useState(false);
 
-  // useEffect(() => {
-  //   dispatch(getUserImages(sessionUser?.id));
-  // }, []);
+  useEffect(() => {
+    setCurrentMessage(message.content);
+  }, [message]);
 
   //   useEffect(() => {
 
