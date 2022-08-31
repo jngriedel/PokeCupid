@@ -46,9 +46,9 @@ const MessageDivs = ({ message, socket }) => {
       id: message.id,
       message: currentMessage,
     };
-    console.log("to edit:", message.id)
+   
     await dispatch(messagesActions.editMessage(messageData)).then((res) =>{
-    console.log("edited:", message.id)
+   
       setEditMssg(false)
       // socket.emit('edit', res)}
     }
@@ -56,10 +56,8 @@ const MessageDivs = ({ message, socket }) => {
   };
 
   const deleteMessage = async () => {
-    await dispatch(messagesActions.removeMessage(message.id)).then((res) =>{
-    console.log("deleted:", message.id)
+    const res = await dispatch(messagesActions.removeMessage(message.id));
     socket.emit("delete", res);
-    });
   };
 
   return (
