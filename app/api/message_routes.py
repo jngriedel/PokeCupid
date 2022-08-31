@@ -65,6 +65,4 @@ def edit_delete_message(messageId):
         db.session.delete(message)
         db.session.commit()
 
-
-
         return { "message": "Success" }
