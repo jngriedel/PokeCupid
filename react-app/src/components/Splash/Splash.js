@@ -45,7 +45,11 @@ function Splash() {
               You deserve to find the trainer you’re looking for. A world of
               dreams and adventures awaits! Let's go!
             </p>
-            <li><NavLink to="/sign-up" id="splashSignup"> JOIN POKÉCUPID </NavLink></li>
+            <li><NavLink to="/sign-up" 
+            onClick={() => {
+              window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+            }}
+            id="splashSignup"> JOIN POKÉCUPID </NavLink></li>
           </div>
         </div>
           <div id = "splash-slides">

@@ -12,7 +12,9 @@ const LogoutButton = () => {
   };
 
   return (
-    <button className="logout-button" onClick={onLogout}>
+    <button className="logout-button" 
+    onClick={onLogout}>
+      {() => {window.scrollTo({top: 0, left: 0, behavior: 'smooth'})}}
       <i className="fas fa-sign-out"></i>Logout
     </button>
   );
