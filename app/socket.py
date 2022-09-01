@@ -26,3 +26,7 @@ def handle_chat(data):
 @socketio.on("delete")
 def handle_delete(data):
     emit("delete", data, broadcast=True)
+
+@socketio.on("typing")
+def handle_typing(data):
+    emit("typing", data, broadcast=True)

@@ -13,7 +13,7 @@ const MessageInput = ({ matchId, messagesChanged, setMessagesChanged, setShowMod
   const [characterLimit] = useState(200);
   const user = useSelector((state) => state.session?.user);
   const [message, setMessage] = useState("");
-
+  const [isTyping, setIsTyping] = useState(false)
   const messagesObject = useSelector((state) => state.messages);
   // const stateMessages = Object.values(messagesObject);
   const focusRef = useRef();
@@ -60,6 +60,15 @@ const MessageInput = ({ matchId, messagesChanged, setMessagesChanged, setShowMod
         dispatch(messagesActions.addEditMessage(chat));
       }
     });
+
+
+    //is typing
+
+    socket.on('typing', (arr)=>{
+      console.log(arr)
+      setIsTyping(true)
+      setTimeout((setIsTyping(false)), 500)
+    })
 
     return () => {
       socket.disconnect();
@@ -128,8 +137,13 @@ const MessageInput = ({ matchId, messagesChanged, setMessagesChanged, setShowMod
             className="chat-input"
             type="text"
             required
+            maxLength="200"
             value={message}
-            onChange={(e) => setMessage(e.target.value)}
+            onChange={(e) =>{
+
+              setMessage(e.target.value)
+              socket.emit("typing", [user.id,matchId]);
+            }}
           />
           <button className='chat-submit'
             disabled={
